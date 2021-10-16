@@ -9,9 +9,9 @@ namespace Base.State
         private Dictionary<Type, StateMachine> subStates = new Dictionary<Type, StateMachine>();
         private Dictionary<int, StateMachine> transitions = new Dictionary<int, StateMachine>();
 
-        private StateMachine parent;
-        private StateMachine defaultSubState;
-        private StateMachine currentSubState;
+        private StateMachine _parent;
+        private StateMachine _defaultSubState;
+        private StateMachine _currentSubState;
 
         protected abstract void OnEnter();
         protected abstract void OnUpdate();
@@ -21,14 +21,14 @@ namespace Base.State
         {
             OnEnter();
 
-            if (currentSubState == null && defaultSubState != null)
+            if (_currentSubState == null && _defaultSubState != null)
             {
-                currentSubState = defaultSubState;
+                _currentSubState = _defaultSubState;
             }
 
-            if (currentSubState != null)
+            if (_currentSubState != null)
             {
-                currentSubState.Enter();
+                _currentSubState.Enter();
             }
         }
 
@@ -36,17 +36,17 @@ namespace Base.State
         {
             OnUpdate();
 
-            if (currentSubState != null)
+            if (_currentSubState != null)
             {
-                currentSubState.Update();
+                _currentSubState.Update();
             }
         }
 
         public void Exit()
         {
-            if (currentSubState != null)
+            if (_currentSubState != null)
             {
-                currentSubState.Exit();
+                _currentSubState.Exit();
             }
 
             OnExit();
@@ -67,10 +67,10 @@ namespace Base.State
         {
             if (subStates.Count == 0)
             {
-                defaultSubState = subState;
+                _defaultSubState = subState;
             }
 
-            subState.parent = this;
+            subState._parent = this;
 
             if (subStates.ContainsKey(subState.GetType()))
             {
@@ -84,38 +84,38 @@ namespace Base.State
         public void SendTrigger(int trigger)
         {
             var root = this;
-            while (root?.parent != null)
+            while (root?._parent != null)
             {
-                root = root.parent;
+                root = root._parent;
             }
 
             while (root != null)
             {
                 if (root.transitions.TryGetValue(trigger, out StateMachine toState))
                 {
-                    root.parent?.ChangeSubState(toState);
+                    root._parent?.ChangeSubState(toState);
                     return;
                 }
 
-                root = root.currentSubState;
+                root = root._currentSubState;
             }
         }
 
         private void ChangeSubState(StateMachine state)
         {
-            if (currentSubState != null)
+            if (_currentSubState != null)
             {
-                currentSubState.Exit();
+                _currentSubState.Exit();
             }
 
             var nextState = subStates[state.GetType()];
-            currentSubState = nextState;
+            _currentSubState = nextState;
             nextState.Enter();
         }
 
         public void SetDefaultState()
         {
-            ChangeSubState(defaultSubState);
+            ChangeSubState(_defaultSubState);
         }
     }
 }
