@@ -18,7 +18,7 @@ namespace Game.States.Splash
             AddSubState(_introState);
             AddSubState(_loadingState);
 
-            AddTransition(_introState, _loadingState, (int)StateTriggers.SPLASH_LOADING);
+            AddTransition(_introState, _loadingState, (int)StateTriggers.SplashLoading);
         }
 
         protected override void OnEnter()

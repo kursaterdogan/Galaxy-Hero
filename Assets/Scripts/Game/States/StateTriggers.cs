@@ -2,8 +2,8 @@ namespace Game.States
 {
     public enum StateTriggers
     {
-        NONE,
-        SPLASH_LOADING,
-        INTRO_SCENE
+        None,
+        SplashLoading,
+        IntroScene
     }
 }
