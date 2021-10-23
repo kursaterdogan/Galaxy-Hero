@@ -5,6 +5,9 @@ namespace Game.States.Splash
 
     public class LoadingState : StateMachine
     {
+        private const float FakeLoadingTime = 1f;
+        private float _time;
+
         protected override void OnEnter()
         {
             Debug.Log("Loading State On Enter");
@@ -17,7 +20,12 @@ namespace Game.States.Splash
 
         protected override void OnUpdate()
         {
-            Debug.Log("Loading State On Update");
+            _time += Time.deltaTime;
+
+            if (_time > FakeLoadingTime)
+            {
+                SendTrigger((int)StateTriggers.SplashCompleted);
+            }
         }
     }
 }

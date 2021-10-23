@@ -4,6 +4,7 @@ namespace Game.States
     {
         None,
         SplashLoading,
+        SplashCompleted,
         IntroScene
     }
 }
