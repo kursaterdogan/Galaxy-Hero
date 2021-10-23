@@ -1,21 +1,23 @@
 namespace Game.States.Splash
 {
+    using Components;
     using Base.Component;
     using Base.State;
     using UnityEngine;
 
     public class IntroState : StateMachine
     {
-        //TODO Create _introComponent
-        // private IntroComponent _introComponent;
+        private IntroComponent _introComponent;
 
         public IntroState(ComponentContainer componentContainer)
         {
+            _introComponent = componentContainer.GetComponent("IntroComponent") as IntroComponent;
         }
 
         protected override void OnEnter()
         {
             Debug.Log("Intro state On Enter");
+            _introComponent.StartIntro();
         }
 
         protected override void OnExit()
@@ -26,6 +28,11 @@ namespace Game.States.Splash
         protected override void OnUpdate()
         {
             Debug.Log("Intro state On Update");
+
+            if (_introComponent.IsIntroAnimationCompleted())
+            {
+                SendTrigger((int)StateTriggers.SplashLoading);
+            }
         }
     }
 }
