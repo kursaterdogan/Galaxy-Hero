@@ -13,6 +13,7 @@ namespace Game.Components
         }
 
         [SerializeField] private BaseCanvas splashCanvas;
+        [SerializeField] private BaseCanvas mainMenuCanvas;
 
         private BaseCanvas _activeCanvas;
 
@@ -20,8 +21,10 @@ namespace Game.Components
         public void Initialize(ComponentContainer componentContainer)
         {
             splashCanvas.Initialize(componentContainer);
+            mainMenuCanvas.Initialize(componentContainer);
 
             DeactivateCanvas(splashCanvas);
+            DeactivateCanvas(mainMenuCanvas);
         }
 
         public BaseCanvas GetCanvas(MenuName canvas)
@@ -30,6 +33,8 @@ namespace Game.Components
             {
                 case MenuName.Splash:
                     return splashCanvas;
+                case MenuName.MainMenu:
+                    return mainMenuCanvas;
                 default:
                     return null;
             }
@@ -55,6 +60,9 @@ namespace Game.Components
             {
                 case MenuName.Splash:
                     _activeCanvas = splashCanvas;
+                    break;
+                case MenuName.MainMenu:
+                    _activeCanvas = mainMenuCanvas;
                     break;
             }
 
