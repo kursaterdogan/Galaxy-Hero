@@ -4,23 +4,10 @@ namespace Game.UserInterfaces.Splash
     using System.Collections;
     using UnityEngine;
 
-    public class LoadingIcon : MonoBehaviour, ICanvasObject
+    public class LoadingIcon : MonoBehaviour
     {
         private Vector3 _rotationVector = new Vector3(0, 0, -60);
         private Transform _iconTransform;
-
-        public void Init()
-        {
-        }
-
-        public void Activate()
-        {
-        }
-
-        public void Deactivate()
-        {
-            StopCoroutine(RotateAnimation());
-        }
 
         public void PlayLoadingAnimation()
         {

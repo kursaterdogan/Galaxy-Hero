@@ -20,7 +20,10 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
+            Debug.Log("MainMenuState OnEnter");
+
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+            _uiComponent.DisableSplashCanvasObject(UIComponent.MenuName.Splash);
             _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
             _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
             _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
@@ -30,8 +33,25 @@ namespace Game.States.Main
             _mainMenuCanvas.OnCoPilotMenuRequest += OnCoPilotMenuRequest;
             _mainMenuCanvas.OnCreditsMenuRequest += OnCreditsMenuRequest;
             _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
+        }
 
-            Debug.Log("MainMenuState OnEnter");
+        protected override void OnExit()
+        {
+            _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
+            _mainMenuCanvas.OnSettingsMenuRequest -= OnSettingsMenuRequest;
+            _mainMenuCanvas.OnAchievementsMenuRequest -= OnAchievementsMenuRequest;
+            _mainMenuCanvas.OnMarketMenuRequest -= OnMarketMenuRequest;
+            _mainMenuCanvas.OnInventoryMenuRequest -= OnInventoryMenuRequest;
+            _mainMenuCanvas.OnCoPilotMenuRequest -= OnCoPilotMenuRequest;
+            _mainMenuCanvas.OnCreditsMenuRequest -= OnCreditsMenuRequest;
+            _mainMenuCanvas.OnQuoteMenuRequest -= OnQuoteMenuRequest;
+
+            Debug.Log("MainMenuState OnExit");
+        }
+
+        protected override void OnUpdate()
+        {
+            Debug.Log("MainMenuState OnUpdate");
         }
 
 
@@ -78,24 +98,6 @@ namespace Game.States.Main
         private void RequestInGameMenu()
         {
             SendTrigger((int)StateTriggers.StartGameRequest);
-        }
-
-        protected override void OnExit()
-        {
-            _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
-            _mainMenuCanvas.OnSettingsMenuRequest -= OnSettingsMenuRequest;
-            _mainMenuCanvas.OnAchievementsMenuRequest -= OnAchievementsMenuRequest;
-            _mainMenuCanvas.OnMarketMenuRequest -= OnMarketMenuRequest;
-            _mainMenuCanvas.OnInventoryMenuRequest -= OnInventoryMenuRequest;
-            _mainMenuCanvas.OnCoPilotMenuRequest -= OnCoPilotMenuRequest;
-            _mainMenuCanvas.OnCreditsMenuRequest -= OnCreditsMenuRequest;
-            _mainMenuCanvas.OnQuoteMenuRequest -= OnQuoteMenuRequest;
-
-            Debug.Log("MainMenuState OnExit");
-        }
-
-        protected override void OnUpdate()
-        {
         }
     }
 }

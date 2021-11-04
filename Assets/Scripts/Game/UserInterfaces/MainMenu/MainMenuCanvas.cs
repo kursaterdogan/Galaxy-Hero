@@ -16,6 +16,15 @@ namespace Game.UserInterfaces.MainMenu
         public event MenuRequestDelegate OnCreditsMenuRequest;
         public event MenuRequestDelegate OnQuoteMenuRequest;
 
+        public void RequestInGameMenu()
+        {
+            //TODO Add Provision canvas
+            if (OnInGameMenuRequest != null)
+            {
+                OnInGameMenuRequest();
+            }
+        }
+
         public void RequestQuoteMenu()
         {
             if (OnQuoteMenuRequest != null)

@@ -11,6 +11,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
+            Debug.Log("<color=green>IntroComponent initialized!</color>");
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _splashCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Splash) as SplashCanvas;
         }

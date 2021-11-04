@@ -16,18 +16,19 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("Intro state On Enter");
+            Debug.Log("IntroState OnEnter");
+            
             _introComponent.StartIntro();
         }
 
         protected override void OnExit()
         {
-            Debug.Log("Intro state On Exit");
+            Debug.Log("IntroState OnExit");
         }
 
         protected override void OnUpdate()
         {
-            Debug.Log("Intro state On Update");
+            Debug.Log("IntroState OnUpdate");
 
             if (_introComponent.IsIntroAnimationCompleted())
             {

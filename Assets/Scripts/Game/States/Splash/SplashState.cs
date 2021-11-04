@@ -4,11 +4,13 @@ namespace Game.States.Splash
     using Base.State;
     using UnityEngine;
     using States;
+    using Components;
 
     public class SplashState : StateMachine
     {
         private LoadingState _loadingState;
         private IntroState _introState;
+        private UIComponent _uiComponent;
 
         public SplashState(ComponentContainer componentContainer)
         {
@@ -23,17 +25,17 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("Splash State On Enter");
+            Debug.Log("SplashState OnEnter");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("Splash State On Exit");
+            Debug.Log("Splash State OnExit");
         }
 
         protected override void OnUpdate()
         {
-            Debug.Log("Splash State On Update");
+            Debug.Log("SplashState OnUpdate");
         }
     }
 }
