@@ -96,6 +96,7 @@ namespace Game.States.Main
 
         protected override void OnUpdate()
         {
+            Debug.Log("MainMenuState OnUpdate");
         }
     }
 }
