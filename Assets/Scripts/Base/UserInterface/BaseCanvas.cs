@@ -12,7 +12,7 @@ namespace Base.UserInterface
         public event ReturnToMainMenuDelegate OnReturnToMainMenu;
 
         private Canvas _canvasComponent;
-        [SerializeField] private ICanvasObject[] canvasElements;
+        [SerializeField] ICanvasObject[] canvasElements;
 
         private ComponentContainer _componentContainer;
 
@@ -21,8 +21,7 @@ namespace Base.UserInterface
             _componentContainer = componentContainer;
             _canvasComponent = GetComponent<Canvas>();
             canvasElements = transform.GetComponentsInChildren<ICanvasObject>();
-
-            PreInit();
+            
             Init();
         }
 
@@ -57,10 +56,6 @@ namespace Base.UserInterface
             }
         }
 
-        protected virtual void PreInit()
-        {
-        }
-
         protected virtual void Init()
         {
             for (int i = 0; i < canvasElements.Length; i++)
@@ -75,24 +70,6 @@ namespace Base.UserInterface
             {
                 OnReturnToMainMenu();
             }
-        }
-
-        protected Vector2 GetCanvasSize()
-        {
-            Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-            CanvasScaler canvasScaler = GetComponent<CanvasScaler>();
-
-            var screenMatchMode = canvasScaler.screenMatchMode;
-            var referenceResolution = canvasScaler.referenceResolution;
-            var matchWidthOrHeight = canvasScaler.matchWidthOrHeight;
-
-            float scaleFactor = 0;
-            float logWidth = Mathf.Log(screenSize.x / referenceResolution.x, 2);
-            float logHeight = Mathf.Log(screenSize.y / referenceResolution.y, 2);
-            float logWeightedAverage = Mathf.Lerp(logWidth, logHeight, matchWidthOrHeight);
-            scaleFactor = Mathf.Pow(2, logWeightedAverage);
-
-            return new Vector2(screenSize.x / scaleFactor, screenSize.y / scaleFactor);
         }
     }
 }
