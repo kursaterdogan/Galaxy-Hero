@@ -20,6 +20,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
+            Debug.Log("<color=green>UIComponent initialized!</color>");
             splashCanvas.Initialize(componentContainer);
             mainMenuCanvas.Initialize(componentContainer);
 
