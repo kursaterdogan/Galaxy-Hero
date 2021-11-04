@@ -17,6 +17,7 @@ namespace Game.States.Splash
         protected override void OnEnter()
         {
             Debug.Log("IntroState OnEnter");
+            
             _introComponent.StartIntro();
         }
 
