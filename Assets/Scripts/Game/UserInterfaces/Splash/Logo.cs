@@ -5,27 +5,9 @@ namespace Game.UserInterfaces.Splash
     using UnityEngine.UI;
     using DG.Tweening;
 
-    public class Logo : MonoBehaviour, ICanvasObject
+    public class Logo : MonoBehaviour
     {
         [SerializeField] private Image image;
-
-        public void Activate()
-        {
-        }
-
-        public void Deactivate()
-        {
-        }
-
-        public void Init()
-        {
-            var imageRect = image.GetComponent<RectTransform>();
-        }
-
-        public void SetScreenSize(Vector2 vector2)
-        {
-            image.GetComponent<RectTransform>().sizeDelta = new Vector2();
-        }
 
         public void PlayFadeInAnimation(float duration)
         {
