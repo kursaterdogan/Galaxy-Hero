@@ -19,8 +19,6 @@ namespace Game.States
             AddSubState(_splashState);
             AddSubState(_mainState);
 
-            // _splashState.Enter();
-
             AddTransition(_splashState, _mainState, (int)StateTriggers.SplashCompleted);
         }
 
