@@ -10,12 +10,12 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("Loading State On Enter");
+            Debug.Log("LoadingState OnEnter");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("Loading State On Exit");
+            Debug.Log("LoadingState OnExit");
         }
 
         protected override void OnUpdate()
