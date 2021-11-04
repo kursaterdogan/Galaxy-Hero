@@ -20,7 +20,10 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
+            Debug.Log("MainMenuState OnEnter");
+
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+            _uiComponent.DisableSplashCanvasObject(UIComponent.MenuName.Splash);
             _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
             _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
             _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
@@ -30,8 +33,6 @@ namespace Game.States.Main
             _mainMenuCanvas.OnCoPilotMenuRequest += OnCoPilotMenuRequest;
             _mainMenuCanvas.OnCreditsMenuRequest += OnCreditsMenuRequest;
             _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
-
-            Debug.Log("MainMenuState OnEnter");
         }
 
         protected override void OnExit()
