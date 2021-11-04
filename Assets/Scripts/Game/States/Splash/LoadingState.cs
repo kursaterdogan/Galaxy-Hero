@@ -20,8 +20,9 @@ namespace Game.States.Splash
 
         protected override void OnUpdate()
         {
-            _time += Time.deltaTime;
+            Debug.Log("LoadingState OnUpdate");
 
+            _time += Time.deltaTime;
             if (_time > FakeLoadingTime)
             {
                 SendTrigger((int)StateTriggers.SplashCompleted);
