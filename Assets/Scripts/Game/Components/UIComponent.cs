@@ -10,22 +10,25 @@ namespace Game.Components
         {
             Splash,
             MainMenu,
+            InGame
         }
 
         [SerializeField] private BaseCanvas splashCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
+        [SerializeField] private BaseCanvas inGameCanvas;
 
         private BaseCanvas _activeCanvas;
-
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=green>UIComponent initialized!</color>");
             splashCanvas.Initialize(componentContainer);
             mainMenuCanvas.Initialize(componentContainer);
+            inGameCanvas.Initialize(componentContainer);
 
             DeactivateCanvas(splashCanvas);
             DeactivateCanvas(mainMenuCanvas);
+            DeactivateCanvas(inGameCanvas);
         }
 
         public BaseCanvas GetCanvas(MenuName canvas)
@@ -36,6 +39,8 @@ namespace Game.Components
                     return splashCanvas;
                 case MenuName.MainMenu:
                     return mainMenuCanvas;
+                case MenuName.InGame:
+                    return inGameCanvas;
                 default:
                     return null;
             }
@@ -65,12 +70,21 @@ namespace Game.Components
                 case MenuName.MainMenu:
                     _activeCanvas = mainMenuCanvas;
                     break;
+                case MenuName.InGame:
+                    _activeCanvas = inGameCanvas;
+                    break;
             }
 
             if (_activeCanvas)
             {
                 _activeCanvas.Activate();
             }
+        }
+
+        public void DisableSplashCanvasObject(MenuName menuName)
+        {
+            if (splashCanvas && menuName == MenuName.Splash)
+                splashCanvas.gameObject.SetActive(false);
         }
     }
 }
