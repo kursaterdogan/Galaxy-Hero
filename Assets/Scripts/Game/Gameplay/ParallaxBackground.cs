@@ -23,7 +23,7 @@ namespace Game.Gameplay
 
         private void SetGameCameraTransform()
         {
-            _gameCameraTransform = Camera.main.GetComponent<Transform>();
+            _gameCameraTransform = FindObjectOfType<GameCamera>().GetTransform();
         }
 
         private void SetStartPosition()
