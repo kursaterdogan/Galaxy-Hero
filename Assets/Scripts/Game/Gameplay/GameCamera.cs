@@ -12,7 +12,7 @@ namespace Game.Gameplay
         private float _padding = 50f;
         private float _passiveMoveSpeed = 1f;
 
-        private void Start()
+        private void Awake()
         {
             SetCamera();
             SetMoveBoundaries();
@@ -42,7 +42,9 @@ namespace Game.Gameplay
 
         public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
         {
-            return _mainCamera.ScreenToWorldPoint(screenPosition);
+            Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(screenPosition);
+
+            return worldPosition;
         }
 
         public bool IsPointerOnScreen()
@@ -68,9 +70,11 @@ namespace Game.Gameplay
             return _passiveMoveSpeed;
         }
 
-        public Transform GetTransform()
+        public Vector3 GetPosition()
         {
-            return _mainCamera.GetComponent<Transform>();
+            Vector3 position = _mainCamera.GetComponent<Transform>().position;
+
+            return position;
         }
     }
 }
