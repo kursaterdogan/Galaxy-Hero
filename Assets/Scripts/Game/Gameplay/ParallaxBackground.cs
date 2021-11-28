@@ -11,7 +11,7 @@ namespace Game.Gameplay
 
         private void Start()
         {
-            SetGameCameraPosition();
+            SetGameCameraTransform();
             SetStartPosition();
             SetLength();
         }
@@ -21,7 +21,7 @@ namespace Game.Gameplay
             TriggerEffect();
         }
 
-        private void SetGameCameraPosition()
+        private void SetGameCameraTransform()
         {
             _gameCameraTransform = FindObjectOfType<GameCamera>().GetTransform();
         }
