@@ -6,18 +6,15 @@ namespace Game.Gameplay
     public class Player : MonoBehaviour
     {
         //TODO Integrate with StateMachine
-        private Camera _gameCamera;
-        private int _screenBoundsWidth;
-        private int _screenBoundsHeight;
-        private float _padding = 50f;
-
+        private GameCamera _gameCamera;
         private float _moveSpeed = 5f;
+        private float _passiveMoveSpeed;
 
         private void Start()
         {
             //TODO SetMoveSpeed
             SetGameCamera();
-            SetBoundaries();
+            SetPassiveSpeed();
         }
 
         void Update()
@@ -25,19 +22,24 @@ namespace Game.Gameplay
             Move();
         }
 
-        private void SetGameCamera()
+        private void LateUpdate()
         {
-            _gameCamera = Camera.main;
+            TriggerPassiveMoving();
         }
 
-        private void SetBoundaries()
+        private void SetGameCamera()
         {
-            _screenBoundsHeight = Screen.height;
-            _screenBoundsWidth = Screen.width;
+            _gameCamera = FindObjectOfType<GameCamera>();
+        }
+
+        private void SetPassiveSpeed()
+        {
+            _passiveMoveSpeed = _gameCamera.GetPassiveMoveSpeed();
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
+            //TODO SetTimeScale on InGameState
             if (callbackContext.started)
             {
                 Time.timeScale = 1f;
@@ -51,29 +53,17 @@ namespace Game.Gameplay
         private void Move()
         {
             //TODO Check for mobile device
-            if (IsPointerOnScreen() && Mouse.current.leftButton.isPressed)
+            bool isPointerOnScreen = _gameCamera.IsPointerOnScreen();
+            if (isPointerOnScreen && Mouse.current.leftButton.isPressed)
             {
-                Vector3 worldPosition = _gameCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Mouse.current.position.ReadValue());
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
             }
         }
 
-        private bool IsPointerOnScreen()
+        private void TriggerPassiveMoving()
         {
-            float pointerXPosition = Mouse.current.position.ReadValue().x;
-            float pointerYPosition = Mouse.current.position.ReadValue().y;
-
-            bool isPointerOnScreen = pointerXPosition < _screenBoundsWidth - _padding &&
-                                     pointerXPosition > 0 + _padding &&
-                                     pointerYPosition < _screenBoundsHeight - _padding &&
-                                     pointerYPosition > 0 + _padding;
-
-            if (isPointerOnScreen)
-            {
-                return true;
-            }
-
-            return false;
+            transform.Translate(Vector3.up * _passiveMoveSpeed * Time.deltaTime, Space.World);
         }
     }
 }
