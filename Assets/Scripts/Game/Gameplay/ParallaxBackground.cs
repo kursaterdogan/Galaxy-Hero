@@ -6,7 +6,7 @@ namespace Game.Gameplay
     {
         //TODO Integrate with StateMachine
         [SerializeField] private float speed;
-        private Vector3 _gameCameraPosition;
+        private Transform _gameCameraTransform;
         private float _startPosition, _length, _temp, _distance;
 
         private void Start()
@@ -23,12 +23,12 @@ namespace Game.Gameplay
 
         private void SetGameCameraPosition()
         {
-            _gameCameraPosition = FindObjectOfType<GameCamera>().GetPosition();
+            _gameCameraTransform = FindObjectOfType<GameCamera>().GetTransform();
         }
 
         private void SetStartPosition()
         {
-            _startPosition = _gameCameraPosition.y;
+            _startPosition = _gameCameraTransform.position.y;
         }
 
         private void SetLength()
@@ -38,8 +38,9 @@ namespace Game.Gameplay
 
         private void TriggerEffect()
         {
-            _temp = _gameCameraPosition.y * (1 - speed);
-            _distance = _gameCameraPosition.y * speed;
+            var position = _gameCameraTransform.position;
+            _temp = position.y * (1 - speed);
+            _distance = position.y * speed;
 
             transform.position = new Vector3(0, _startPosition + _distance, 0);
 

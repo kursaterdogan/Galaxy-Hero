@@ -70,11 +70,10 @@ namespace Game.Gameplay
             return _passiveMoveSpeed;
         }
 
-        public Vector3 GetPosition()
+        public Transform GetTransform()
         {
-            Vector3 position = _mainCamera.GetComponent<Transform>().position;
-
-            return position;
+            Transform mainCameraTransform = _mainCamera.GetComponent<Transform>();
+            return mainCameraTransform;
         }
     }
 }
