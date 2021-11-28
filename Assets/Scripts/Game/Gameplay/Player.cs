@@ -13,6 +13,8 @@ namespace Game.Gameplay
         private void Start()
         {
             //TODO SetMoveSpeed
+            //TODO SetTimeScale on InGameState
+            Time.timeScale = 0.5f;
             SetGameCamera();
             SetPassiveSpeed();
         }
@@ -39,7 +41,6 @@ namespace Game.Gameplay
 
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
-            //TODO SetTimeScale on InGameState
             if (callbackContext.started)
             {
                 Time.timeScale = 1f;
