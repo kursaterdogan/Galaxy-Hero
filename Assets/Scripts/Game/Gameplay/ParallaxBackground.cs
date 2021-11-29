@@ -46,8 +46,6 @@ namespace Game.Gameplay
 
             if (_temp > _startPosition + _length)
                 _startPosition += _length;
-            else if (_temp < _startPosition - _length)
-                _startPosition -= _length;
         }
     }
 }
