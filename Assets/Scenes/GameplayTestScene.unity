@@ -256,10 +256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaturnParallax
       objectReference: {fileID: 0}
-    - target: {fileID: 1985731697220196096, guid: 15d474291e173804087b14c6ea8d2df8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1985731697220196127, guid: 15d474291e173804087b14c6ea8d2df8, type: 3}
       propertyPath: m_RootOrder
       value: 5
