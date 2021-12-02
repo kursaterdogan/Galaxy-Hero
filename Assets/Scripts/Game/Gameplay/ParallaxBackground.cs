@@ -16,7 +16,7 @@ namespace Game.Gameplay
             SetLength();
         }
 
-        public void Update()
+        private void Update()
         {
             TriggerEffect();
         }

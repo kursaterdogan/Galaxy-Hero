@@ -19,13 +19,9 @@ namespace Game.Gameplay
             SetPassiveSpeed();
         }
 
-        void Update()
+        private void Update()
         {
             Move();
-        }
-
-        private void LateUpdate()
-        {
             TriggerPassiveMoving();
         }
 

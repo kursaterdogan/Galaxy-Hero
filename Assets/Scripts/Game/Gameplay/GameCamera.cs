@@ -9,7 +9,7 @@ namespace Game.Gameplay
         private Camera _mainCamera;
         private int _screenBoundsWidth;
         private int _screenBoundsHeight;
-        private float _padding = 50f;
+        private float _padding = 10f;
         private float _passiveMoveSpeed = 1f;
 
         private void Awake()
@@ -18,7 +18,7 @@ namespace Game.Gameplay
             SetMoveBoundaries();
         }
 
-        void LateUpdate()
+        private void Update()
         {
             //TODO Trigger this on InGameState
             TriggerPassiveMoving();
