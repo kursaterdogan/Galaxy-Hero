@@ -18,6 +18,7 @@ namespace Game.States.Main
         protected override void OnEnter()
         {
             Debug.Log("MainState OnEnter");
+            //TODO Check MainMenuDefaultState
             SetDefaultState();
         }
 
