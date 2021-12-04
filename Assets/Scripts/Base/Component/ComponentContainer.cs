@@ -4,26 +4,26 @@ namespace Base.Component
 
     public class ComponentContainer
     {
-        private Dictionary<string, object> components;
+        private Dictionary<string, object> _components;
 
         public ComponentContainer()
         {
-            components = new Dictionary<string, object>();
+            _components = new Dictionary<string, object>();
         }
 
         public void AddComponent(string componentKey, object component)
         {
-            components.Add(componentKey, component);
+            _components.Add(componentKey, component);
         }
 
         public object GetComponent(string componentKey)
         {
-            if (!components.ContainsKey(componentKey))
+            if (!_components.ContainsKey(componentKey))
             {
                 return null;
             }
 
-            return components[componentKey];
+            return _components[componentKey];
         }
     }
 }
