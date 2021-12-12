@@ -66,11 +66,6 @@ namespace Game.Gameplay
             return false;
         }
 
-        public float GetPassiveMoveSpeed()
-        {
-            return _passiveMoveSpeed;
-        }
-
         public Transform GetTransform()
         {
             Transform mainCameraTransform = _mainCamera.GetComponent<Transform>();
