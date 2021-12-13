@@ -291,3 +291,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34c3088862678a4c84ee668bbf2eb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 6613991968790275153}
+  - {fileID: 6613991969449811223}
+  - {fileID: 6613991969655170178}
+  - {fileID: 6613991968933073113}
+  - {fileID: 6613991968315303053}
+  - {fileID: 6613991969949276007}
+  - {fileID: 6613991967903868870}
+  - {fileID: 6613991969925194257}

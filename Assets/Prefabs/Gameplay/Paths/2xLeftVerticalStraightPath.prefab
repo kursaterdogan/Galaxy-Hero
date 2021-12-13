@@ -141,6 +141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34c3088862678a4c84ee668bbf2eb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 5105785993376591973}
+  - {fileID: 5105785992815710671}
+  - {fileID: 5105785993177181910}
+  - {fileID: 5105785992862495036}
+  - {fileID: 5105785993937107965}
+  - {fileID: 5105785993387196747}
+  - {fileID: 5105785992627483389}
+  - {fileID: 5105785993617980127}
 --- !u!1 &5105785993177181911
 GameObject:
   m_ObjectHideFlags: 0

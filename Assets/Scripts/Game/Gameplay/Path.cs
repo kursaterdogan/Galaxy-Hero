@@ -6,26 +6,11 @@ namespace Game.Gameplay
 
     public class Path : MonoBehaviour
     {
-        private List<Transform> _waypoints;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            SetWayPoints();
-        }
-
-        private void SetWayPoints()
-        {
-            _waypoints = new List<Transform>();
-            foreach (Transform child in transform)
-            {
-                _waypoints.Add(child);
-            }
-        }
+        [SerializeField] private List<Transform> waypoints;
 
         public List<Transform> GetWaypoints()
         {
-            return _waypoints;
+            return waypoints;
         }
     }
 }
