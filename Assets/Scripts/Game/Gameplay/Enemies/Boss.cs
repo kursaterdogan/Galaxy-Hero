@@ -6,6 +6,7 @@ namespace Game.Gameplay.Enemies
 
     public abstract class Boss : Enemy
     {
-        //TODO Boss
+        //TODO Bosses
+        protected abstract void SpecialMove();
     }
 }

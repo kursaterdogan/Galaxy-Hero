@@ -1,5 +1,3 @@
-using System;
-
 namespace Game.Gameplay
 {
     using System.Collections;
