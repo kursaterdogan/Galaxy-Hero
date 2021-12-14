@@ -31,6 +31,7 @@ namespace Game.Gameplay
         private void SetStartPosition()
         {
             transform.position = _waypoints[_waypointIndex].position;
+            _waypointIndex++;
         }
 
         private void FollowPath()
