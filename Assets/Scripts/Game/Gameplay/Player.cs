@@ -50,5 +50,11 @@ namespace Game.Gameplay
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            //TODO Check EnemyTrigger
+            Debug.Log(col.name);
+        }
     }
 }
