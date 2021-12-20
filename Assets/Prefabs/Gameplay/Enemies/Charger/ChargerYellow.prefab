@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6397026722200244836}
   - component: {fileID: 6397026722200244837}
   m_Layer: 0
-  m_Name: Charger_Yellow
+  m_Name: ChargerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

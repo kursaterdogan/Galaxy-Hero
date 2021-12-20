@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7532379494448548404}
   - component: {fileID: 7532379494448548406}
   m_Layer: 0
-  m_Name: Boss_Red
+  m_Name: BossRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
