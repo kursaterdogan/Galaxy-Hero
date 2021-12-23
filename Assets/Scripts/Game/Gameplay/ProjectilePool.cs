@@ -6,12 +6,12 @@ namespace Game.Gameplay
 
     public class ProjectilePool : MonoBehaviour
     {
+        //TODO Integrate with StateMachine
         [SerializeField] private GameObject playerProjectile;
-        private int amountToPoll = 50;
+        private int amountToPoll = 10;
         private List<GameObject> _playerProjectiles;
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             CreatePlayerProjectiles();
         }
