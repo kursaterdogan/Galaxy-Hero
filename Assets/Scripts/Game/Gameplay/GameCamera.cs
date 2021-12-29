@@ -11,18 +11,11 @@ namespace Game.Gameplay
         private int _screenBoundsWidth;
         private int _screenBoundsHeight;
         private float _padding = 10f;
-        private float _passiveMoveSpeed = 1f;
 
         private void Awake()
         {
             SetCamera();
             SetMoveBoundaries();
-        }
-
-        private void Update()
-        {
-            //TODO Trigger this on InGameState
-            TriggerPassiveMoving();
         }
 
         private void SetCamera()
@@ -34,11 +27,6 @@ namespace Game.Gameplay
         {
             _screenBoundsHeight = Screen.height;
             _screenBoundsWidth = Screen.width;
-        }
-
-        private void TriggerPassiveMoving()
-        {
-            _mainCamera.transform.Translate(Vector3.up * _passiveMoveSpeed * Time.deltaTime, Space.World);
         }
 
         public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
@@ -64,12 +52,6 @@ namespace Game.Gameplay
             }
 
             return false;
-        }
-
-        public Transform GetTransform()
-        {
-            Transform mainCameraTransform = _mainCamera.GetComponent<Transform>();
-            return mainCameraTransform;
         }
     }
 }
