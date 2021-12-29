@@ -25,7 +25,7 @@ namespace Game.Gameplay
 
         private void TriggerEffect()
         {
-            if (transform.position.y < -_length)
+            if (transform.position.y <= -_length)
                 transform.position += new Vector3(0, _length, 0);
 
             transform.Translate(Vector3.down * speed * Time.deltaTime, Space.World);
