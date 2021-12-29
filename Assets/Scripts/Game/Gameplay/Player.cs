@@ -68,8 +68,7 @@ namespace Game.Gameplay
         private void Move()
         {
             //TODO Check for mobile device
-            bool isPointerOnScreen = _gameCamera.IsPointerOnScreen();
-            if (isPointerOnScreen && Mouse.current.leftButton.isPressed)
+            if (_gameCamera.IsPointerOnScreen() && Mouse.current.leftButton.isPressed)
             {
                 Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Mouse.current.position.ReadValue());
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
