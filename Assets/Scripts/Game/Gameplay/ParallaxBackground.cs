@@ -6,27 +6,33 @@ namespace Game.Gameplay
     {
         //TODO Integrate with StateMachine
         [SerializeField] private float speed;
-        private float _length;
+        private Vector3 _length;
 
         private void Start()
         {
+            SetStartPosition();
             SetLength();
         }
 
         private void Update()
         {
-            TriggerEffect();
+            PassiveMove();
+        }
+
+        private void SetStartPosition()
+        {
+            transform.position = new Vector3(0, 0, 0);
         }
 
         private void SetLength()
         {
-            _length = GetComponent<SpriteRenderer>().bounds.size.y;
+            _length.y = GetComponent<SpriteRenderer>().bounds.size.y;
         }
 
-        private void TriggerEffect()
+        private void PassiveMove()
         {
-            if (transform.position.y <= -_length)
-                transform.position += new Vector3(0, _length, 0);
+            if (transform.position.y <= -_length.y)
+                transform.position += _length;
 
             transform.Translate(Vector3.down * speed * Time.deltaTime, Space.World);
         }
