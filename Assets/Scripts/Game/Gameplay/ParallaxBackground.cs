@@ -34,7 +34,7 @@ namespace Game.Gameplay
             if (transform.position.y <= -_length.y)
                 transform.position += _length;
 
-            transform.Translate(Vector3.down * speed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.down * (speed * Time.deltaTime), Space.World);
         }
     }
 }
