@@ -6,7 +6,6 @@ namespace Game.Gameplay
     public class GameCamera : MonoBehaviour
     {
         //TODO Integrate with StateMachine
-        //TODO If IsLevelComplete => Change PassiveMoveSpeed Before OnExit
         private Camera _mainCamera;
         private int _screenBoundsWidth;
         private int _screenBoundsHeight;
