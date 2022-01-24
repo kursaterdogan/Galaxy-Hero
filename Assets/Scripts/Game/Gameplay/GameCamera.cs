@@ -37,8 +37,8 @@ namespace Game.Gameplay
 
         public bool IsPointerOnScreen()
         {
-            float pointerXPosition = Mouse.current.position.ReadValue().x;
-            float pointerYPosition = Mouse.current.position.ReadValue().y;
+            float pointerXPosition = Pointer.current.position.ReadValue().x;
+            float pointerYPosition = Pointer.current.position.ReadValue().y;
 
             bool isPointerOnScreen = pointerXPosition < _screenBoundsWidth - _padding &&
                                      pointerXPosition > 0 + _padding &&
