@@ -45,12 +45,7 @@ namespace Game.Gameplay
                                      pointerYPosition < _screenBoundsHeight - _padding &&
                                      pointerYPosition > 0 + _padding;
 
-            if (isPointerOnScreen)
-            {
-                return true;
-            }
-
-            return false;
+            return isPointerOnScreen;
         }
     }
 }
