@@ -36,22 +36,11 @@
                 },
                 {
                     "name": "",
-                    "id": "d95f1ec8-e701-48b7-b7be-c33af25b7f22",
+                    "id": "8d999c6b-e60f-4f84-aee3-f167b3d9bb7e",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "17b247d2-d048-416f-9e38-5db919ae7490",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
