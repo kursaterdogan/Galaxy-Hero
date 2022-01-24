@@ -55,7 +55,6 @@ namespace Game.Gameplay
 
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
-            Debug.Log(callbackContext.phase);
             if (callbackContext.started)
             {
                 Time.timeScale = 1f;
