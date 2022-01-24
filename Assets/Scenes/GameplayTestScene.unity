@@ -537,11 +537,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424817292142907293, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: 
+      value: Touch
       objectReference: {fileID: 0}
     - target: {fileID: 7424817292142907293, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
       propertyPath: m_NotificationBehavior
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424817292142907293, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7424817292142907293, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
