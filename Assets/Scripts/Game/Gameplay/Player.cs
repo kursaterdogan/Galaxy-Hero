@@ -55,6 +55,7 @@ namespace Game.Gameplay
 
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
+            Debug.Log(callbackContext.phase);
             if (callbackContext.started)
             {
                 Time.timeScale = 1f;
@@ -67,10 +68,9 @@ namespace Game.Gameplay
 
         private void Move()
         {
-            //TODO Check for mobile device
-            if (_gameCamera.IsPointerOnScreen() && Mouse.current.leftButton.isPressed)
+            if (_gameCamera.IsPointerOnScreen() && Pointer.current.press.isPressed)
             {
-                Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
             }
         }
