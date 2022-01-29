@@ -11,10 +11,7 @@ namespace Game.UserInterfaces.InGame
         public void RequestMainMenu()
         {
             //TODO Link with pause
-            if (OnReturnToMainMenu != null)
-            {
-                OnReturnToMainMenu();
-            }
+            OnReturnToMainMenu?.Invoke();
         }
     }
 }
