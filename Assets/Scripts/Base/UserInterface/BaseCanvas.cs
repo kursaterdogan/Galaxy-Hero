@@ -13,10 +13,6 @@ namespace Base.UserInterface
             _canvasComponent = GetComponent<Canvas>();
         }
 
-        protected virtual void Init()
-        {
-        }
-
         public void Activate()
         {
             _canvasComponent.enabled = true;
@@ -25,6 +21,10 @@ namespace Base.UserInterface
         public void Deactivate()
         {
             _canvasComponent.enabled = false;
+        }
+
+        protected virtual void Init()
+        {
         }
     }
 }
