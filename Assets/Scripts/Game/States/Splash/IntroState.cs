@@ -17,13 +17,8 @@ namespace Game.States.Splash
         protected override void OnEnter()
         {
             Debug.Log("IntroState OnEnter");
-            
-            _introComponent.StartIntro();
-        }
 
-        protected override void OnExit()
-        {
-            Debug.Log("IntroState OnExit");
+            _introComponent.StartIntro();
         }
 
         protected override void OnUpdate()
@@ -34,6 +29,11 @@ namespace Game.States.Splash
             {
                 SendTrigger((int)StateTriggers.SplashLoading);
             }
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("IntroState OnExit");
         }
     }
 }
