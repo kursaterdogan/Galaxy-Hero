@@ -22,14 +22,14 @@ namespace Game.States.Main
             SetDefaultState();
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("MainState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("MainState OnUpdate");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("MainState OnExit");
         }
     }
 }
