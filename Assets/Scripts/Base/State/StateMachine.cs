@@ -101,6 +101,11 @@ namespace Base.State
             }
         }
 
+        public void SetDefaultState()
+        {
+            ChangeSubState(_defaultSubState);
+        }
+
         private void ChangeSubState(StateMachine state)
         {
             if (_currentSubState != null)
@@ -111,11 +116,6 @@ namespace Base.State
             var nextState = _subStates[state.GetType()];
             _currentSubState = nextState;
             nextState.Enter();
-        }
-
-        public void SetDefaultState()
-        {
-            ChangeSubState(_defaultSubState);
         }
     }
 }
