@@ -52,6 +52,12 @@ namespace Game.Components
             ActivateCanvas(menuName);
         }
 
+        public void DisableSplashCanvasObject(MenuName menuName)
+        {
+            if (splashCanvas && menuName == MenuName.Splash)
+                splashCanvas.gameObject.SetActive(false);
+        }
+
         private void DeactivateCanvas(BaseCanvas canvas)
         {
             if (canvas)
@@ -79,12 +85,6 @@ namespace Game.Components
             {
                 _activeCanvas.Activate();
             }
-        }
-
-        public void DisableSplashCanvasObject(MenuName menuName)
-        {
-            if (splashCanvas && menuName == MenuName.Splash)
-                splashCanvas.gameObject.SetActive(false);
         }
     }
 }
