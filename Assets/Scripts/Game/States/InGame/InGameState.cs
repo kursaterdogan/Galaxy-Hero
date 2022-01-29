@@ -13,7 +13,6 @@ namespace Game.States.InGame
 
         public InGameState(ComponentContainer componentContainer)
         {
-            
         }
 
         protected override void OnEnter()
@@ -21,14 +20,14 @@ namespace Game.States.InGame
             Debug.Log("InGameState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("InGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("InGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("InGameState OnExit");
         }
     }
 }
