@@ -9,7 +9,6 @@ namespace Game.States.Main
     public class MainMenuState : StateMachine
     {
         private UIComponent _uiComponent;
-
         private MainMenuCanvas _mainMenuCanvas;
 
         public MainMenuState(ComponentContainer componentContainer)
@@ -35,6 +34,11 @@ namespace Game.States.Main
             _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
         }
 
+        protected override void OnUpdate()
+        {
+            Debug.Log("MainMenuState OnUpdate");
+        }
+
         protected override void OnExit()
         {
             _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
@@ -48,12 +52,6 @@ namespace Game.States.Main
 
             Debug.Log("MainMenuState OnExit");
         }
-
-        protected override void OnUpdate()
-        {
-            Debug.Log("MainMenuState OnUpdate");
-        }
-
 
         private void OnCreditsMenuRequest()
         {
