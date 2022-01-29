@@ -15,14 +15,14 @@ namespace Game.States.InGame
             Debug.Log("PauseGameState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("PauseGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("PauseGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("PauseGameState OnExit");
         }
     }
 }
