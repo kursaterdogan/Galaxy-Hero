@@ -28,14 +28,14 @@ namespace Game.States.Splash
             Debug.Log("SplashState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("Splash State OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("SplashState OnUpdate");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("Splash State OnExit");
         }
     }
 }
