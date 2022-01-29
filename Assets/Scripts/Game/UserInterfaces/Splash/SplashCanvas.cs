@@ -10,20 +10,16 @@ namespace Game.UserInterfaces.Splash
         [SerializeField] private LoadingIcon loadingIcon;
 
         private const float AnimationTime = 1.0f;
-
         private bool _isIntroAnimCompleted;
-
-        protected override void Init()
-        {
-            if (appLogo == null)
-                Debug.LogError("AppLogo reference is null");
-            if (loadingIcon == null)
-                Debug.LogError("LoadingIcon reference is null");
-        }
 
         public void PlayIntroAnimation()
         {
             StartCoroutine(IntroAnimation());
+        }
+
+        public bool IsIntroCompleted()
+        {
+            return _isIntroAnimCompleted;
         }
 
         private IEnumerator IntroAnimation()
@@ -40,11 +36,6 @@ namespace Game.UserInterfaces.Splash
 
             loadingIcon.gameObject.SetActive(true);
             loadingIcon.PlayLoadingAnimation();
-        }
-
-        public bool IsIntroCompleted()
-        {
-            return _isIntroAnimCompleted;
         }
     }
 }
