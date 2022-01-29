@@ -33,6 +33,18 @@ namespace Game.Gameplay
             Move();
         }
 
+        public void OnMove(InputAction.CallbackContext callbackContext)
+        {
+            if (callbackContext.started)
+            {
+                Time.timeScale = 1f;
+            }
+            else if (callbackContext.canceled)
+            {
+                Time.timeScale = 0.5f;
+            }
+        }
+
         private void SetGameCamera()
         {
             _gameCamera = FindObjectOfType<GameCamera>();
@@ -53,18 +65,6 @@ namespace Game.Gameplay
             StopCoroutine(_firingCoroutine);
         }
 
-        public void OnMove(InputAction.CallbackContext callbackContext)
-        {
-            if (callbackContext.started)
-            {
-                Time.timeScale = 1f;
-            }
-            else if (callbackContext.canceled)
-            {
-                Time.timeScale = 0.5f;
-            }
-        }
-
         private void Move()
         {
             if (_gameCamera.IsPointerOnScreen() && Pointer.current.press.isPressed)
@@ -80,7 +80,7 @@ namespace Game.Gameplay
             // Debug.Log(col.name);
         }
 
-        IEnumerator FireContinously()
+        private IEnumerator FireContinously()
         {
             while (true)
             {
