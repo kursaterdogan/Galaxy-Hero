@@ -17,14 +17,14 @@ namespace Game.States.InGame
             RequestInGame();
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("PrepareGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("PrepareGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("PrepareGameState OnExit");
         }
 
         private void RequestInGame()
