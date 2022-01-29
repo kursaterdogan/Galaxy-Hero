@@ -13,11 +13,6 @@ namespace Game.States.Splash
             Debug.Log("LoadingState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("LoadingState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("LoadingState OnUpdate");
@@ -27,6 +22,11 @@ namespace Game.States.Splash
             {
                 SendTrigger((int)StateTriggers.SplashCompleted);
             }
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("LoadingState OnExit");
         }
     }
 }
