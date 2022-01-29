@@ -17,17 +17,6 @@ namespace Game.Gameplay
             SetMoveBoundaries();
         }
 
-        private void SetCamera()
-        {
-            _mainCamera = Camera.main;
-        }
-
-        private void SetMoveBoundaries()
-        {
-            _screenBoundsHeight = Screen.height;
-            _screenBoundsWidth = Screen.width;
-        }
-
         public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
         {
             Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(screenPosition);
@@ -46,6 +35,17 @@ namespace Game.Gameplay
                                      pointerYPosition > 0 + _padding;
 
             return isPointerOnScreen;
+        }
+
+        private void SetCamera()
+        {
+            _mainCamera = Camera.main;
+        }
+
+        private void SetMoveBoundaries()
+        {
+            _screenBoundsHeight = Screen.height;
+            _screenBoundsWidth = Screen.width;
         }
     }
 }
