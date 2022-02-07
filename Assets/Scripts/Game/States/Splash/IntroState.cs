@@ -1,10 +1,10 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+
 namespace Game.States.Splash
 {
-    using Components;
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-
     public class IntroState : StateMachine
     {
         private IntroComponent _introComponent;

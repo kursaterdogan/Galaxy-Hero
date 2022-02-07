@@ -1,8 +1,8 @@
+using UnityEngine;
+using Base.State;
+
 namespace Game.States.Splash
 {
-    using Base.State;
-    using UnityEngine;
-
     public class LoadingState : StateMachine
     {
         private const float FakeLoadingTime = 1f;

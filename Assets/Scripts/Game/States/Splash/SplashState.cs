@@ -1,11 +1,10 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+
 namespace Game.States.Splash
 {
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-    using States;
-    using Components;
-
     public class SplashState : StateMachine
     {
         private LoadingState _loadingState;
