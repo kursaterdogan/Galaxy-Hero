@@ -1,11 +1,11 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+using Game.UserInterfaces.MainMenu;
+
 namespace Game.States.Main
 {
-    using Base.Component;
-    using Base.State;
-    using Components;
-    using UserInterfaces.MainMenu;
-    using UnityEngine;
-
     public class MainMenuState : StateMachine
     {
         private UIComponent _uiComponent;

@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+
 namespace Game.States.Main
 {
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-
     public class MainState : StateMachine
     {
         private MainMenuState _mainMenuState;
