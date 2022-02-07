@@ -14,17 +14,21 @@ namespace Game.States.Splash
         public SplashState(ComponentContainer componentContainer)
         {
             _introState = new IntroState(componentContainer);
-            _loadingState = new LoadingState();
+            _loadingState = new LoadingState(componentContainer);
 
             AddSubState(_introState);
             AddSubState(_loadingState);
 
             AddTransition(_introState, _loadingState, (int)StateTriggers.SplashLoading);
+
+            _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
         }
 
         protected override void OnEnter()
         {
             Debug.Log("SplashState OnEnter");
+
+            _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
         }
 
         protected override void OnUpdate()
