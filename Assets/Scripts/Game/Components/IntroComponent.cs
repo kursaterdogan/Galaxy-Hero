@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Components
 {
-    public class IntroComponent : MonoBehaviour, IComponent
+    public class IntroComponent : MonoBehaviour, IComponent, IStartable
     {
         private UIComponent _uiComponent;
         private SplashCanvas _splashCanvas;
@@ -12,18 +12,19 @@ namespace Game.Components
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=green>IntroComponent initialized!</color>");
+
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
+            
             _splashCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Splash) as SplashCanvas;
         }
 
-        public bool IsIntroAnimationCompleted()
+        public void CallStart()
         {
-            return _splashCanvas.IsIntroCompleted();
+            StartIntro();
         }
 
-        public void StartIntro()
+        private void StartIntro()
         {
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
             _splashCanvas.PlayIntroAnimation();
         }
     }
