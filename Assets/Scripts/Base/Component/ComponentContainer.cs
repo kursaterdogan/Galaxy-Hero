@@ -1,7 +1,7 @@
+using System.Collections.Generic;
+
 namespace Base.Component
 {
-    using System.Collections.Generic;
-
     public class ComponentContainer
     {
         private Dictionary<string, object> _components;
