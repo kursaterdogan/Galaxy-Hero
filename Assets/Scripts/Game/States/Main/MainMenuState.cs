@@ -21,8 +21,8 @@ namespace Game.States.Main
         {
             Debug.Log("MainMenuState OnEnter");
 
+            //TODO Check MainMenuCanvas
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
-            _uiComponent.DisableSplashCanvasObject(UIComponent.MenuName.Splash);
             _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
             _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
             _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
