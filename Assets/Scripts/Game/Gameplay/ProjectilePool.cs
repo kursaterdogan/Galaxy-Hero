@@ -1,9 +1,8 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Game.Gameplay
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public class ProjectilePool : MonoBehaviour
     {
         //TODO Integrate with StateMachine

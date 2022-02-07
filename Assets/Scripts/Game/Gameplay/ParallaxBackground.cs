@@ -1,7 +1,7 @@
+using UnityEngine;
+
 namespace Game.Gameplay
 {
-    using UnityEngine;
-
     public class ParallaxBackground : MonoBehaviour
     {
         //TODO Integrate with StateMachine

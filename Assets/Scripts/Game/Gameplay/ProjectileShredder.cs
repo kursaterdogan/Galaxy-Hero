@@ -1,9 +1,7 @@
+using UnityEngine;
+
 namespace Game.Gameplay
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public class ProjectileShredder : MonoBehaviour
     {
         //TODO Integrate with StateMachine

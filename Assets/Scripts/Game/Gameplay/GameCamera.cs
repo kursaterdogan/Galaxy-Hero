@@ -1,8 +1,8 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 namespace Game.Gameplay
 {
-    using UnityEngine;
-    using UnityEngine.InputSystem;
-
     public class GameCamera : MonoBehaviour
     {
         //TODO Integrate with StateMachine

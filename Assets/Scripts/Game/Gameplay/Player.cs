@@ -1,9 +1,10 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+
 namespace Game.Gameplay
 {
-    using UnityEngine;
-    using UnityEngine.InputSystem;
-    using System.Collections;
-
     public class Player : MonoBehaviour
     {
         //TODO Integrate with StateMachine
