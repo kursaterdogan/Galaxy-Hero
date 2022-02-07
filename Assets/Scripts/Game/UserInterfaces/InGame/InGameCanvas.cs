@@ -1,7 +1,7 @@
+using Base.UserInterface;
+
 namespace Game.UserInterfaces.InGame
 {
-    using Base.UserInterface;
-
     public class InGameCanvas : BaseCanvas
     {
         public delegate void ReturnToMainMenuDelegate();

@@ -1,9 +1,9 @@
+using System.Collections;
+using UnityEngine;
+using Base.UserInterface;
+
 namespace Game.UserInterfaces.Splash
 {
-    using Base.UserInterface;
-    using System.Collections;
-    using UnityEngine;
-
     public class SplashCanvas : BaseCanvas
     {
         [SerializeField] private Logo appLogo;
