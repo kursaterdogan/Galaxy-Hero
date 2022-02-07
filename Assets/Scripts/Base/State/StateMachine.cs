@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Base.State
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public abstract class StateMachine
     {
         private Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
