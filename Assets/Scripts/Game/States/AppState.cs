@@ -1,12 +1,12 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.States.InGame;
+using Game.States.Main;
+using Game.States.Splash;
+
 namespace Game.States
 {
-    using UnityEngine;
-    using Base.State;
-    using Base.Component;
-    using Splash;
-    using Main;
-    using InGame;
-
     public class AppState : StateMachine
     {
         private SplashState _splashState;
