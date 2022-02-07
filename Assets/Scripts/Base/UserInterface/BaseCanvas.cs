@@ -1,8 +1,8 @@
+using Base.Component;
+using UnityEngine;
+
 namespace Base.UserInterface
 {
-    using Component;
-    using UnityEngine;
-
     [RequireComponent(typeof(Canvas))]
     public abstract class BaseCanvas : MonoBehaviour
     {
