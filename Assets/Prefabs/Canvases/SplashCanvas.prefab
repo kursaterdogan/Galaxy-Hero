@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7781856250261378935}
   - component: {fileID: 7781856250261378929}
   m_Layer: 5
-  m_Name: AppLogo
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07caf512b49ecb844bdaa7b7dcd85dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 7781856250261378935}
 --- !u!1 &7781856250982369612
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,5 +291,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d130fdf8c83e14cadc4eb07773e177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appLogo: {fileID: 7781856250261378929}
+  logo: {fileID: 7781856250261378929}
   loadingIcon: {fileID: 7781856250982369614}
