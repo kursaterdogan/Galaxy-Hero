@@ -6,16 +6,16 @@ namespace Base.State
 {
     public abstract class StateMachine
     {
-        private Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
-        private Dictionary<int, StateMachine> _transitions = new Dictionary<int, StateMachine>();
+        protected abstract void OnEnter();
+        protected abstract void OnUpdate();
+        protected abstract void OnExit();
 
         private StateMachine _parent;
         private StateMachine _defaultSubState;
         private StateMachine _currentSubState;
 
-        protected abstract void OnEnter();
-        protected abstract void OnUpdate();
-        protected abstract void OnExit();
+        private Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
+        private Dictionary<int, StateMachine> _transitions = new Dictionary<int, StateMachine>();
 
         public void Enter()
         {
