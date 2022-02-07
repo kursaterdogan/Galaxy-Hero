@@ -1,11 +1,11 @@
+using UnityEngine;
+using Base.State;
+using Base.Component;
+using Game.Components;
+using Game.UserInterfaces.InGame;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-    using Components;
-    using Game.UserInterfaces.InGame;
-
     public class InGameState : StateMachine
     {
         private UIComponent _uiComponent;

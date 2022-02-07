@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.State;
+using Base.Component;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-
     public class EndGameState : StateMachine
     {
         public EndGameState(ComponentContainer componentContainer)

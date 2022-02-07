@@ -1,11 +1,11 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+using Game.UserInterfaces.InGame;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-    using Components;
-    using UserInterfaces.InGame;
-
     public class GameState : StateMachine
     {
         private PrepareGameState _prepareGameState;
