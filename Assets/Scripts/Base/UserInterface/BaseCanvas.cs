@@ -1,8 +1,8 @@
+using Base.Component;
+using UnityEngine;
+
 namespace Base.UserInterface
 {
-    using Component;
-    using UnityEngine;
-
     [RequireComponent(typeof(Canvas))]
     public abstract class BaseCanvas : MonoBehaviour
     {
@@ -13,10 +13,6 @@ namespace Base.UserInterface
             _canvasComponent = GetComponent<Canvas>();
         }
 
-        protected virtual void Init()
-        {
-        }
-
         public void Activate()
         {
             _canvasComponent.enabled = true;
@@ -25,6 +21,10 @@ namespace Base.UserInterface
         public void Deactivate()
         {
             _canvasComponent.enabled = false;
+        }
+
+        protected virtual void Init()
+        {
         }
     }
 }

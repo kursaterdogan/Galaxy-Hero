@@ -1,11 +1,10 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+
 namespace Game.States.Splash
 {
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-    using States;
-    using Components;
-
     public class SplashState : StateMachine
     {
         private LoadingState _loadingState;
@@ -28,14 +27,14 @@ namespace Game.States.Splash
             Debug.Log("SplashState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("Splash State OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("SplashState OnUpdate");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("Splash State OnExit");
         }
     }
 }

@@ -1,10 +1,10 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+using Game.Components;
+
 namespace Game.States.Splash
 {
-    using Components;
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-
     public class IntroState : StateMachine
     {
         private IntroComponent _introComponent;
@@ -17,13 +17,8 @@ namespace Game.States.Splash
         protected override void OnEnter()
         {
             Debug.Log("IntroState OnEnter");
-            
-            _introComponent.StartIntro();
-        }
 
-        protected override void OnExit()
-        {
-            Debug.Log("IntroState OnExit");
+            _introComponent.StartIntro();
         }
 
         protected override void OnUpdate()
@@ -34,6 +29,11 @@ namespace Game.States.Splash
             {
                 SendTrigger((int)StateTriggers.SplashLoading);
             }
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("IntroState OnExit");
         }
     }
 }

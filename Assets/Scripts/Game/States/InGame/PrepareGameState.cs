@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.State;
+using Base.Component;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-
     public class PrepareGameState : StateMachine
     {
         public PrepareGameState(ComponentContainer componentContainer)
@@ -17,14 +17,14 @@ namespace Game.States.InGame
             RequestInGame();
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("PrepareGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("PrepareGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("PrepareGameState OnExit");
         }
 
         private void RequestInGame()

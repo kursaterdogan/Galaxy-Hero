@@ -1,10 +1,9 @@
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
 namespace Game.UserInterfaces.Splash
 {
-    using Base.UserInterface;
-    using UnityEngine;
-    using UnityEngine.UI;
-    using DG.Tweening;
-
     public class Logo : MonoBehaviour
     {
         [SerializeField] private Image image;

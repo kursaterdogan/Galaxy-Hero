@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Base.State
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public abstract class StateMachine
     {
-        private Dictionary<Type, StateMachine> subStates = new Dictionary<Type, StateMachine>();
-        private Dictionary<int, StateMachine> transitions = new Dictionary<int, StateMachine>();
+        private Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
+        private Dictionary<int, StateMachine> _transitions = new Dictionary<int, StateMachine>();
 
         private StateMachine _parent;
         private StateMachine _defaultSubState;
@@ -54,31 +54,31 @@ namespace Base.State
 
         public void AddTransition(StateMachine sourceStateMachine, StateMachine targetStateMachine, int trigger)
         {
-            if (sourceStateMachine.transitions.ContainsKey(trigger))
+            if (sourceStateMachine._transitions.ContainsKey(trigger))
             {
                 Debug.LogWarning("Duplicated transition! : " + trigger);
                 return;
             }
 
-            sourceStateMachine.transitions.Add(trigger, targetStateMachine);
+            sourceStateMachine._transitions.Add(trigger, targetStateMachine);
         }
 
         public void AddSubState(StateMachine subState)
         {
-            if (subStates.Count == 0)
+            if (_subStates.Count == 0)
             {
                 _defaultSubState = subState;
             }
 
             subState._parent = this;
 
-            if (subStates.ContainsKey(subState.GetType()))
+            if (_subStates.ContainsKey(subState.GetType()))
             {
                 Debug.LogWarning("Duplicated sub state : " + subState.GetType());
                 return;
             }
 
-            subStates.Add(subState.GetType(), subState);
+            _subStates.Add(subState.GetType(), subState);
         }
 
         public void SendTrigger(int trigger)
@@ -91,7 +91,7 @@ namespace Base.State
 
             while (root != null)
             {
-                if (root.transitions.TryGetValue(trigger, out StateMachine toState))
+                if (root._transitions.TryGetValue(trigger, out StateMachine toState))
                 {
                     root._parent?.ChangeSubState(toState);
                     return;
@@ -101,6 +101,11 @@ namespace Base.State
             }
         }
 
+        public void SetDefaultState()
+        {
+            ChangeSubState(_defaultSubState);
+        }
+
         private void ChangeSubState(StateMachine state)
         {
             if (_currentSubState != null)
@@ -108,14 +113,9 @@ namespace Base.State
                 _currentSubState.Exit();
             }
 
-            var nextState = subStates[state.GetType()];
+            var nextState = _subStates[state.GetType()];
             _currentSubState = nextState;
             nextState.Enter();
-        }
-
-        public void SetDefaultState()
-        {
-            ChangeSubState(_defaultSubState);
         }
     }
 }

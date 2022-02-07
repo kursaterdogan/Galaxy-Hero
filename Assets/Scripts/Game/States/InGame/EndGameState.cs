@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.State;
+using Base.Component;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-
     public class EndGameState : StateMachine
     {
         public EndGameState(ComponentContainer componentContainer)
@@ -15,14 +15,14 @@ namespace Game.States.InGame
             Debug.Log("EndGameState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("EndGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("EndGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("EndGameState OnExit");
         }
     }
 }

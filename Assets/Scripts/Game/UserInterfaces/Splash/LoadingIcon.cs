@@ -1,9 +1,8 @@
+using System.Collections;
+using UnityEngine;
+
 namespace Game.UserInterfaces.Splash
 {
-    using Base.UserInterface;
-    using System.Collections;
-    using UnityEngine;
-
     public class LoadingIcon : MonoBehaviour
     {
         private Vector3 _rotationVector = new Vector3(0, 0, -60);

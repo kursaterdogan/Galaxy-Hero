@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.State;
+using Base.Component;
+
 namespace Game.States.InGame
 {
-    using Base.State;
-    using UnityEngine;
-    using Base.Component;
-
     public class PauseGameState : StateMachine
     {
         public PauseGameState(ComponentContainer componentContainer)
@@ -15,14 +15,14 @@ namespace Game.States.InGame
             Debug.Log("PauseGameState OnEnter");
         }
 
-        protected override void OnExit()
-        {
-            Debug.Log("PauseGameState OnExit");
-        }
-
         protected override void OnUpdate()
         {
             Debug.Log("PauseGameState Update");
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("PauseGameState OnExit");
         }
     }
 }

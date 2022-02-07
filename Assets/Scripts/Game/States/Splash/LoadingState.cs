@@ -1,8 +1,8 @@
+using UnityEngine;
+using Base.State;
+
 namespace Game.States.Splash
 {
-    using Base.State;
-    using UnityEngine;
-
     public class LoadingState : StateMachine
     {
         private const float FakeLoadingTime = 1f;
@@ -11,11 +11,6 @@ namespace Game.States.Splash
         protected override void OnEnter()
         {
             Debug.Log("LoadingState OnEnter");
-        }
-
-        protected override void OnExit()
-        {
-            Debug.Log("LoadingState OnExit");
         }
 
         protected override void OnUpdate()
@@ -27,6 +22,11 @@ namespace Game.States.Splash
             {
                 SendTrigger((int)StateTriggers.SplashCompleted);
             }
+        }
+
+        protected override void OnExit()
+        {
+            Debug.Log("LoadingState OnExit");
         }
     }
 }

@@ -1,10 +1,10 @@
+using UnityEngine;
+using Base.Component;
+using Game.Components;
+using Game.States;
+
 namespace Game
 {
-    using UnityEngine;
-    using Base.Component;
-    using Components;
-    using States;
-
     public class MainComponent : MonoBehaviour
     {
         private ComponentContainer _componentContainer;

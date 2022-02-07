@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.Component;
+using Base.State;
+
 namespace Game.States.Main
 {
-    using Base.Component;
-    using Base.State;
-    using UnityEngine;
-
     public class MainState : StateMachine
     {
         private MainMenuState _mainMenuState;
@@ -18,16 +18,18 @@ namespace Game.States.Main
         protected override void OnEnter()
         {
             Debug.Log("MainState OnEnter");
+            //TODO Check MainMenuDefaultState
             SetDefaultState();
+        }
+
+        protected override void OnUpdate()
+        {
+            Debug.Log("MainState OnUpdate");
         }
 
         protected override void OnExit()
         {
             Debug.Log("MainState OnExit");
-        }
-
-        protected override void OnUpdate()
-        {
         }
     }
 }

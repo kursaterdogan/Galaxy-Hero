@@ -1,7 +1,7 @@
+using Base.UserInterface;
+
 namespace Game.UserInterfaces.MainMenu
 {
-    using Base.UserInterface;
-
     public class MainMenuCanvas : BaseCanvas
     {
         public delegate void MenuRequestDelegate();
@@ -19,74 +19,47 @@ namespace Game.UserInterfaces.MainMenu
         public void RequestInGameMenu()
         {
             //TODO Add Provision canvas
-            if (OnInGameMenuRequest != null)
-            {
-                OnInGameMenuRequest();
-            }
+            OnInGameMenuRequest?.Invoke();
         }
 
         public void RequestQuoteMenu()
         {
-            if (OnQuoteMenuRequest != null)
-            {
-                OnQuoteMenuRequest();
-            }
+            OnQuoteMenuRequest?.Invoke();
         }
 
         public void RequestSettingsMenu()
         {
-            if (OnSettingsMenuRequest != null)
-            {
-                OnSettingsMenuRequest();
-            }
+            OnSettingsMenuRequest?.Invoke();
         }
 
         public void RequestAchievementsMenu()
         {
-            if (OnAchievementsMenuRequest != null)
-            {
-                OnAchievementsMenuRequest();
-            }
+            OnAchievementsMenuRequest?.Invoke();
         }
 
         public void RequestMarketMenu()
         {
-            if (OnMarketMenuRequest != null)
-            {
-                OnMarketMenuRequest();
-            }
+            OnMarketMenuRequest?.Invoke();
         }
 
         public void RequestInventoryMenu()
         {
-            if (OnInventoryMenuRequest != null)
-            {
-                OnInventoryMenuRequest();
-            }
+            OnInventoryMenuRequest?.Invoke();
         }
 
         public void RequestGarageMenu()
         {
-            if (OnGarageMenuRequest != null)
-            {
-                OnGarageMenuRequest();
-            }
+            OnGarageMenuRequest?.Invoke();
         }
 
         public void RequestCoPilotMenu()
         {
-            if (OnCoPilotMenuRequest != null)
-            {
-                OnCoPilotMenuRequest();
-            }
+            OnCoPilotMenuRequest?.Invoke();
         }
 
         public void RequestCreditsMenu()
         {
-            if (OnCreditsMenuRequest != null)
-            {
-                OnCreditsMenuRequest();
-            }
+            OnCreditsMenuRequest?.Invoke();
         }
     }
 }
