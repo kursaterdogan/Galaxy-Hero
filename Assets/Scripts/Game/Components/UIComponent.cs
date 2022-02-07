@@ -1,9 +1,9 @@
+using UnityEngine;
+using Base.Component;
+using Base.UserInterface;
+
 namespace Game.Components
 {
-    using Base.Component;
-    using Base.UserInterface;
-    using UnityEngine;
-
     public class UIComponent : MonoBehaviour, IComponent
     {
         public enum MenuName

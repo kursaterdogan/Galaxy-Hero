@@ -1,9 +1,9 @@
+using Base.Component;
+using Game.UserInterfaces.Splash;
+using UnityEngine;
+
 namespace Game.Components
 {
-    using Base.Component;
-    using UserInterfaces.Splash;
-    using UnityEngine;
-
     public class IntroComponent : MonoBehaviour, IComponent
     {
         private UIComponent _uiComponent;
