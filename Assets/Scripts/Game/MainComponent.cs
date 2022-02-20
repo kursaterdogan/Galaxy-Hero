@@ -11,6 +11,7 @@ namespace Game
 
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
+        private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
 
@@ -25,6 +26,7 @@ namespace Game
             //TODO Create Components
             CreateUIComponent();
             CreateIntroComponent();
+            CreateGameplayComponent();
 
             InitializeComponents();
             CreateAppState();
@@ -36,6 +38,7 @@ namespace Game
             //TODO Initialize Components
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
+            _gameplayComponent.Initialize(_componentContainer);
         }
 
         private void CreateUIComponent()
@@ -48,6 +51,12 @@ namespace Game
         {
             _uiComponent = FindObjectOfType<UIComponent>();
             _componentContainer.AddComponent("UIComponent", _uiComponent);
+        }
+
+        private void CreateGameplayComponent()
+        {
+            _gameplayComponent = FindObjectOfType<GameplayComponent>();
+            _componentContainer.AddComponent("GameplayComponent", _gameplayComponent);
         }
 
         private void CreateAppState()
