@@ -10,7 +10,6 @@ namespace Game.States.InGame
     {
         private PrepareGameState _prepareGameState;
         private InGameState _inGameState;
-        private PauseGameState _pauseGameState;
         private EndGameState _endGameState;
 
         private UIComponent _uiComponent;
@@ -23,17 +22,13 @@ namespace Game.States.InGame
 
             _prepareGameState = new PrepareGameState(componentContainer);
             _inGameState = new InGameState(componentContainer);
-            _pauseGameState = new PauseGameState(componentContainer);
             _endGameState = new EndGameState(componentContainer);
 
             AddSubState(_prepareGameState);
             AddSubState(_inGameState);
-            AddSubState(_pauseGameState);
             AddSubState(_endGameState);
 
             AddTransition(_prepareGameState, _inGameState, (int)StateTriggers.PlayGameRequest);
-            AddTransition(_inGameState, _pauseGameState, (int)StateTriggers.PauseGameRequest);
-            AddTransition(_pauseGameState, _inGameState, (int)StateTriggers.ResumeGameRequest);
             AddTransition(_inGameState, _endGameState, (int)StateTriggers.GameOver);
             AddTransition(_endGameState, _prepareGameState, (int)StateTriggers.ReplayGameRequest);
         }
@@ -51,12 +46,14 @@ namespace Game.States.InGame
             Debug.Log("GameState OnExit");
 
             _inGameCanvas.OnReturnToMainMenu -= ReturnToMainMenu;
-            SetDefaultState();
+            //TODO Check GameState Default State
+            // SetDefaultState();
         }
 
         private void ReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.GoToMainMenuRequest);
+            //TODO Add Pause, Restart, GameOver
+            SendTrigger((int)StateTriggers.GameOver);
         }
     }
 }
