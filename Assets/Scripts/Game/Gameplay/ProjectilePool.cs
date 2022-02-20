@@ -8,7 +8,7 @@ namespace Game.Gameplay
         //TODO Integrate with StateMachine
         [SerializeField] private GameObject playerProjectile;
         private List<GameObject> _playerProjectiles;
-        private int amountToPoll = 10;
+        private int amountToPoll = 3;
 
         void Awake()
         {
@@ -17,13 +17,18 @@ namespace Game.Gameplay
 
         public GameObject GetPlayerProjectile()
         {
-            for (int i = 0; i < amountToPoll; i++)
+            for (int i = 0; i < _playerProjectiles.Count; i++)
             {
                 if (!_playerProjectiles[i].activeInHierarchy)
                     return _playerProjectiles[i];
             }
 
-            return null;
+            //TODO Optimize
+            GameObject temporaryProjectile = Instantiate(playerProjectile, transform);
+            temporaryProjectile.SetActive(false);
+            _playerProjectiles.Add(temporaryProjectile);
+
+            return temporaryProjectile;
         }
 
         private void CreatePlayerProjectiles()
@@ -32,18 +37,9 @@ namespace Game.Gameplay
 
             for (int i = 0; i < amountToPoll; i++)
             {
-                GameObject temp = Instantiate(playerProjectile, transform);
-                temp.SetActive(false);
-                _playerProjectiles.Add(temp);
-            }
-        }
-
-        private void ResetPlayerProjectiles()
-        {
-            for (int i = 0; i < amountToPoll; i++)
-            {
-                if (_playerProjectiles[i].activeInHierarchy)
-                    _playerProjectiles[i].SetActive(false);
+                GameObject temporaryProjectile = Instantiate(playerProjectile, transform);
+                temporaryProjectile.SetActive(false);
+                _playerProjectiles.Add(temporaryProjectile);
             }
         }
     }
