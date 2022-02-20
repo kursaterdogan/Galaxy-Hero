@@ -16,12 +16,7 @@ namespace Game.States.InGame
             //TODO Add Provision canvas
             RequestInGame();
         }
-
-        protected override void OnUpdate()
-        {
-            Debug.Log("PrepareGameState Update");
-        }
-
+        
         protected override void OnExit()
         {
             Debug.Log("PrepareGameState OnExit");

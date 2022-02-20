@@ -20,11 +20,6 @@ namespace Game.States.InGame
             Debug.Log("InGameState OnEnter");
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("InGameState Update");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("InGameState OnExit");

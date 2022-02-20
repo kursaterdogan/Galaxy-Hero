@@ -30,11 +30,6 @@ namespace Game.States.Splash
             _introComponent.CallStart();
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("IntroState OnUpdate");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("IntroState OnExit");

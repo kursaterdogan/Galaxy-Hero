@@ -26,11 +26,6 @@ namespace Game.States.Splash
             _splashCanvas.OnLoadingAnimationRequest += OnLoadingAnimationRequest;
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("LoadingState OnUpdate");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("LoadingState OnExit");

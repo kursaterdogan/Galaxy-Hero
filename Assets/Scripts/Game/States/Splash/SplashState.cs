@@ -31,11 +31,6 @@ namespace Game.States.Splash
             _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("SplashState OnUpdate");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("Splash State OnExit");

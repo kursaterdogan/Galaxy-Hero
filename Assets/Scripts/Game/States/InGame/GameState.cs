@@ -46,11 +46,6 @@ namespace Game.States.InGame
             _inGameCanvas.OnReturnToMainMenu += ReturnToMainMenu;
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("GameState Update");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("GameState OnExit");

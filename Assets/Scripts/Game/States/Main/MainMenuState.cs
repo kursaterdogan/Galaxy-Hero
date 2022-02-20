@@ -34,11 +34,6 @@ namespace Game.States.Main
             _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("MainMenuState OnUpdate");
-        }
-
         protected override void OnExit()
         {
             _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;

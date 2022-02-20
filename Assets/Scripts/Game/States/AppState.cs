@@ -33,11 +33,6 @@ namespace Game.States
             Debug.Log("AppState OnEnter");
         }
 
-        protected override void OnUpdate()
-        {
-            Debug.Log("AppState Update");
-        }
-
         protected override void OnExit()
         {
             Debug.Log("AppState OnExit");

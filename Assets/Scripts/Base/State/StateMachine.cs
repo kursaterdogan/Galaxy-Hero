@@ -7,7 +7,6 @@ namespace Base.State
     public abstract class StateMachine
     {
         protected abstract void OnEnter();
-        protected abstract void OnUpdate();
         protected abstract void OnExit();
 
         private StateMachine _parent;
@@ -29,16 +28,6 @@ namespace Base.State
             if (_currentSubState != null)
             {
                 _currentSubState.Enter();
-            }
-        }
-
-        public void Update()
-        {
-            OnUpdate();
-
-            if (_currentSubState != null)
-            {
-                _currentSubState.Update();
             }
         }
 

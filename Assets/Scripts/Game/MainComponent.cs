@@ -31,11 +31,6 @@ namespace Game
             _appState.Enter();
         }
 
-        private void Update()
-        {
-            _appState.Update();
-        }
-
         private void InitializeComponents()
         {
             //TODO Initialize Components
