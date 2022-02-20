@@ -160,10 +160,6 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e195868c-71f0-419b-9878-72b64b3175d0
-    m_ActionName: Player/Fire[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: bc09d20c-d27a-4d00-bc28-88fcbca140d8
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -202,8 +198,8 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e9ccc65d-307d-48a7-8545-379842f76b03
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Touch
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
