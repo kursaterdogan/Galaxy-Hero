@@ -36,10 +36,6 @@ namespace Game
             _appState.Update();
         }
 
-        public void OnDestroy()
-        {
-        }
-
         private void InitializeComponents()
         {
             //TODO Initialize Components

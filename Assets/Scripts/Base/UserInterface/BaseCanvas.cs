@@ -22,9 +22,5 @@ namespace Base.UserInterface
         {
             _canvasComponent.enabled = false;
         }
-
-        protected virtual void Init()
-        {
-        }
     }
 }
