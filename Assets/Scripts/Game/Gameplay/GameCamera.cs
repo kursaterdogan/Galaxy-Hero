@@ -13,7 +13,7 @@ namespace Game.Gameplay
 
         private float _maxVerticalPosition;
 
-        private void Awake()
+        void Awake()
         {
             SetCamera();
             SetMoveBoundaries();
