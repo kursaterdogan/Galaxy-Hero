@@ -6,12 +6,12 @@ namespace Game.Gameplay
     {
         private float _maxVerticalPosition;
 
-        private void Start()
+        void Start()
         {
             SetMaxVerticalPosition();
         }
 
-        private void Update()
+        void Update()
         {
             CheckDestroyPosition();
         }
