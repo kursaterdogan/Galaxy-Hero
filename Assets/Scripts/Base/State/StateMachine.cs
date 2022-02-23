@@ -13,8 +13,8 @@ namespace Base.State
         private StateMachine _defaultSubState;
         private StateMachine _currentSubState;
 
-        private Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
-        private Dictionary<int, StateMachine> _transitions = new Dictionary<int, StateMachine>();
+        private readonly Dictionary<Type, StateMachine> _subStates = new Dictionary<Type, StateMachine>();
+        private readonly Dictionary<int, StateMachine> _transitions = new Dictionary<int, StateMachine>();
 
         public void Enter()
         {
@@ -79,10 +79,7 @@ namespace Base.State
 
         private void ChangeSubState(StateMachine state)
         {
-            if (_currentSubState != null)
-            {
-                _currentSubState.Exit();
-            }
+            _currentSubState?.Exit();
 
             var nextState = _subStates[state.GetType()];
             _currentSubState = nextState;
@@ -95,11 +92,5 @@ namespace Base.State
 
             OnExit();
         }
-
-        // public void SetDefaultState()
-        // {
-        //     // TODO Handle DefaultSubState
-        //     ChangeSubState(_defaultSubState);
-        // }
     }
 }
