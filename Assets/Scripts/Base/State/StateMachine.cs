@@ -25,10 +25,7 @@ namespace Base.State
                 _currentSubState = _defaultSubState;
             }
 
-            if (_currentSubState != null)
-            {
-                _currentSubState.Enter();
-            }
+            _currentSubState?.Enter();
         }
 
         protected void AddSubState(StateMachine subState)
@@ -94,10 +91,7 @@ namespace Base.State
 
         private void Exit()
         {
-            if (_currentSubState != null)
-            {
-                _currentSubState.Exit();
-            }
+            _currentSubState?.Exit();
 
             OnExit();
         }
