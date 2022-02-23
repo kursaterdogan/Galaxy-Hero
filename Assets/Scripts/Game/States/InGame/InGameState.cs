@@ -11,8 +11,7 @@ namespace Game.States.InGame
         private UIComponent _uiComponent;
         private GameplayComponent _gameplayComponent;
         private InGameCanvas _inGameCanvas;
-
-
+        
         public InGameState(ComponentContainer componentContainer)
         {
             _gameplayComponent = componentContainer.GetComponent("GameplayComponent") as GameplayComponent;
