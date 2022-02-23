@@ -15,13 +15,13 @@ namespace Game
 
         private AppState _appState;
 
-        private void Awake()
+        void Awake()
         {
             Debug.Log("<color=green>MainComponent initialized!</color>");
             _componentContainer = new ComponentContainer();
         }
 
-        private void Start()
+        void Start()
         {
             //TODO Create Components
             CreateUIComponent();
