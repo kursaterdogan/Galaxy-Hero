@@ -31,28 +31,7 @@ namespace Base.State
             }
         }
 
-        public void Exit()
-        {
-            if (_currentSubState != null)
-            {
-                _currentSubState.Exit();
-            }
-
-            OnExit();
-        }
-
-        public void AddTransition(StateMachine sourceStateMachine, StateMachine targetStateMachine, int trigger)
-        {
-            if (sourceStateMachine._transitions.ContainsKey(trigger))
-            {
-                Debug.LogWarning("Duplicated transition! : " + trigger);
-                return;
-            }
-
-            sourceStateMachine._transitions.Add(trigger, targetStateMachine);
-        }
-
-        public void AddSubState(StateMachine subState)
+        protected void AddSubState(StateMachine subState)
         {
             if (_subStates.Count == 0)
             {
@@ -70,7 +49,18 @@ namespace Base.State
             _subStates.Add(subState.GetType(), subState);
         }
 
-        public void SendTrigger(int trigger)
+        protected void AddTransition(StateMachine sourceStateMachine, StateMachine targetStateMachine, int trigger)
+        {
+            if (sourceStateMachine._transitions.ContainsKey(trigger))
+            {
+                Debug.LogWarning("Duplicated transition! : " + trigger);
+                return;
+            }
+
+            sourceStateMachine._transitions.Add(trigger, targetStateMachine);
+        }
+
+        protected void SendTrigger(int trigger)
         {
             var root = this;
             while (root?._parent != null)
@@ -90,11 +80,6 @@ namespace Base.State
             }
         }
 
-        public void SetDefaultState()
-        {
-            ChangeSubState(_defaultSubState);
-        }
-
         private void ChangeSubState(StateMachine state)
         {
             if (_currentSubState != null)
@@ -106,5 +91,21 @@ namespace Base.State
             _currentSubState = nextState;
             nextState.Enter();
         }
+
+        private void Exit()
+        {
+            if (_currentSubState != null)
+            {
+                _currentSubState.Exit();
+            }
+
+            OnExit();
+        }
+
+        // public void SetDefaultState()
+        // {
+        //     // TODO Handle DefaultSubState
+        //     ChangeSubState(_defaultSubState);
+        // }
     }
 }
