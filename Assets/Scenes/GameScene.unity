@@ -167,7 +167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &553759200
 MonoBehaviour:
@@ -215,10 +215,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1461923318}
-  - {fileID: 1694595644}
   - {fileID: 1627540208}
+  - {fileID: 1694595644}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1041500093 stripped
 MonoBehaviour:
@@ -423,13 +423,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 586687352}
     m_Modifications:
+    - target: {fileID: 189519222, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d36869e7688fa52458a564aff4f47553, type: 3}
     - target: {fileID: 6383528282250814232, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6383528282250814232, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6383528282250814308, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6383528282250814309, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_Pivot.x
@@ -441,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6383528282250814309, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6383528282250814309, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -526,7 +534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7784845535108079260, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7784845535108079261, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_Pivot.x
@@ -538,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784845535108079261, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7784845535108079261, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_AnchorMax.x
@@ -615,6 +623,10 @@ PrefabInstance:
     - target: {fileID: 7784845535108079328, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_Name
       value: InGameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784845535108079328, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
@@ -742,6 +754,10 @@ PrefabInstance:
     - target: {fileID: 7781856251748204984, guid: ffea1c3629849e545a26afdbe9adbdef, type: 3}
       propertyPath: m_Name
       value: SplashCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781856251748204984, guid: ffea1c3629849e545a26afdbe9adbdef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781856251748204997, guid: ffea1c3629849e545a26afdbe9adbdef, type: 3}
       propertyPath: m_Pivot.x
