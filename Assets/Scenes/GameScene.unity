@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6383528282250814308, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6383528282250814309, guid: 2670f18e9e61f234fb805e593e81c21b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -520,6 +524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 586687352}
     m_Modifications:
+    - target: {fileID: 7784845535108079260, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7784845535108079261, guid: 3ccd0f39246531943b9524d5d824f2ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0
