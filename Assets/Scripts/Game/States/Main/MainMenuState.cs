@@ -9,6 +9,7 @@ namespace Game.States.Main
     public class MainMenuState : StateMachine
     {
         private UIComponent _uiComponent;
+
         private MainMenuCanvas _mainMenuCanvas;
 
         public MainMenuState(ComponentContainer componentContainer)
@@ -23,6 +24,7 @@ namespace Game.States.Main
 
             //TODO Check MainMenuCanvas
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+
             _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
             _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
             _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
