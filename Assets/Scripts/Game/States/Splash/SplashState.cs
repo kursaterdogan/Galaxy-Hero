@@ -1,7 +1,6 @@
 using UnityEngine;
 using Base.Component;
 using Base.State;
-using Game.Components;
 
 namespace Game.States.Splash
 {
@@ -9,7 +8,6 @@ namespace Game.States.Splash
     {
         private LoadingState _loadingState;
         private IntroState _introState;
-        private UIComponent _uiComponent;
 
         public SplashState(ComponentContainer componentContainer)
         {
@@ -20,15 +18,11 @@ namespace Game.States.Splash
             AddSubState(_loadingState);
 
             AddTransition(_introState, _loadingState, (int)StateTriggers.SplashLoading);
-
-            _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
         }
 
         protected override void OnEnter()
         {
             Debug.Log("SplashState OnEnter");
-
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
         }
 
         protected override void OnExit()

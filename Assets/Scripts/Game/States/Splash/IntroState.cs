@@ -10,7 +10,7 @@ namespace Game.States.Splash
     {
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
-        
+
         private SplashCanvas _splashCanvas;
 
         public IntroState(ComponentContainer componentContainer)
@@ -25,9 +25,11 @@ namespace Game.States.Splash
         {
             Debug.Log("IntroState OnEnter");
 
-            _splashCanvas.OnIntroAnimationRequest += OnIntroAnimationRequest;
-
             _introComponent.CallStart();
+
+            _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
+
+            _splashCanvas.OnIntroAnimationRequest += OnIntroAnimationRequest;
         }
 
         protected override void OnExit()
