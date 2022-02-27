@@ -30,7 +30,7 @@ namespace Game.States.Splash
         {
             Debug.Log("LoadingState OnExit");
 
-            _splashCanvas.OnLoadingAnimationRequest += OnLoadingAnimationRequest;
+            _splashCanvas.OnLoadingAnimationRequest -= OnLoadingAnimationRequest;
         }
 
         private void OnLoadingAnimationRequest()
