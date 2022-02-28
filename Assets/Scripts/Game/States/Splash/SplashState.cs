@@ -6,13 +6,13 @@ namespace Game.States.Splash
 {
     public class SplashState : StateMachine
     {
-        private LoadingState _loadingState;
+        private IntroState _introState;
 
         public SplashState(ComponentContainer componentContainer)
         {
-            _loadingState = new LoadingState(componentContainer);
+            _introState = new IntroState(componentContainer);
 
-            AddSubState(_loadingState);
+            AddSubState(_introState);
         }
 
         protected override void OnEnter()
