@@ -40,23 +40,32 @@ namespace Game.States.InGame
             //TODO Create PrepareGameStateCanvas
             //TODO Move To IngGameState
             _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
-            _inGameCanvas.OnReturnToMainMenu += ReturnToMainMenu;
+
+            SubscribeToInGameCanvasRequestDelegates();
         }
 
         protected override void OnExit()
         {
-            Debug.Log("GameState OnExit");
-
             //TODO Move to InGameState
-            _inGameCanvas.OnReturnToMainMenu -= ReturnToMainMenu;
-            //TODO Check GameState Default State
-            // SetDefaultState();
+            UnsubscribeToInGameCanvasRequestDelegates();
+
+            Debug.Log("GameState OnExit");
         }
 
-        private void ReturnToMainMenu()
+        private void SubscribeToInGameCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+        }
+
+        private void UnsubscribeToInGameCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
+        }
+
+        private void RequestReturnToMainMenu()
         {
             //TODO Add Pause, Restart, GameOver
-            SendTrigger((int)StateTriggers.GameOver);
+            SendTrigger((int)StateTriggers.ReturnToMainMenu);
         }
     }
 }
