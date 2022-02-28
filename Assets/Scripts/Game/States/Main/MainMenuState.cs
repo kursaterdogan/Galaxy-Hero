@@ -25,7 +25,19 @@ namespace Game.States.Main
             //TODO Check MainMenuCanvas
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
 
-            _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
+            SubscribeToMainMenuRequestDelegates();
+        }
+
+        protected override void OnExit()
+        {
+            UnsubscribeToMainMenuRequestDelegates();
+
+            Debug.Log("MainMenuState OnExit");
+        }
+
+        private void SubscribeToMainMenuRequestDelegates()
+        {
+            _mainMenuCanvas.OnInGameMenuRequest += RequestStartGame;
             _mainMenuCanvas.OnSettingsMenuRequest += RequestSettingsMenu;
             _mainMenuCanvas.OnAchievementsMenuRequest += RequestAchievementsMenu;
             _mainMenuCanvas.OnGarageMenuRequest += RequestGarageMenu;
@@ -34,16 +46,15 @@ namespace Game.States.Main
             _mainMenuCanvas.OnQuoteMenuRequest += RequestQuoteMenu;
         }
 
-        protected override void OnExit()
+        private void UnsubscribeToMainMenuRequestDelegates()
         {
-            _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
+            _mainMenuCanvas.OnInGameMenuRequest -= RequestStartGame;
             _mainMenuCanvas.OnSettingsMenuRequest -= RequestSettingsMenu;
             _mainMenuCanvas.OnAchievementsMenuRequest -= RequestAchievementsMenu;
+            _mainMenuCanvas.OnGarageMenuRequest -= RequestGarageMenu;
             _mainMenuCanvas.OnCoPilotMenuRequest -= RequestCoPilotMenu;
             _mainMenuCanvas.OnCreditsMenuRequest -= RequestCreditsMenu;
             _mainMenuCanvas.OnQuoteMenuRequest -= RequestQuoteMenu;
-
-            Debug.Log("MainMenuState OnExit");
         }
 
         private void RequestCreditsMenu()
@@ -77,7 +88,7 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToQuote);
         }
 
-        private void RequestInGameMenu()
+        private void RequestStartGame()
         {
             SendTrigger((int)StateTriggers.StartGame);
         }
