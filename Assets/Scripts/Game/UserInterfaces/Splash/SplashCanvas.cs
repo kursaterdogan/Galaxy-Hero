@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Base.UserInterface;
 
@@ -6,49 +5,35 @@ namespace Game.UserInterfaces.Splash
 {
     public class SplashCanvas : BaseCanvas
     {
-        public delegate void SplashRequestDelegate();
-
-        public event SplashRequestDelegate OnIntroAnimationRequest;
-        public event SplashRequestDelegate OnLoadingAnimationRequest;
-
         [SerializeField] private Logo logo;
         [SerializeField] private LoadingIcon loadingIcon;
 
-        private const float AnimationTime = 1.0f;
-
-        public void PlayIntroAnimation()
-        {
-            StartCoroutine(IntroAnimation());
-        }
-
-        private IEnumerator IntroAnimation()
+        public void PlayLogoFadeInAnimation(float animationTime)
         {
             logo.gameObject.SetActive(true);
-            logo.PlayFadeInAnimation(AnimationTime);
-            yield return new WaitForSeconds(AnimationTime);
-            logo.PlayFadeOutAnimation(AnimationTime);
+            logo.PlayFadeInAnimation(animationTime);
+        }
 
-            RequestIntroAnimation();
+        public void PlayLogoFadeOutAnimation(float animationTime)
+        {
+            logo.PlayFadeOutAnimation(animationTime);
+        }
 
+        public void PlayLoadingIconAnimation()
+        {
             loadingIcon.gameObject.SetActive(true);
             loadingIcon.PlayLoadingAnimation();
-            yield return new WaitForSeconds(AnimationTime);
+        }
+
+        public void StopLoadingIconAnimation()
+        {
             loadingIcon.StopLoadingAnimation();
+        }
 
-            RequestLoadingAnimation();
-
+        public void DisableObjects()
+        {
             logo.gameObject.SetActive(false);
             loadingIcon.gameObject.SetActive(false);
-        }
-
-        private void RequestIntroAnimation()
-        {
-            OnIntroAnimationRequest?.Invoke();
-        }
-
-        private void RequestLoadingAnimation()
-        {
-            OnLoadingAnimationRequest?.Invoke();
         }
     }
 }
