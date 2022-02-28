@@ -25,12 +25,12 @@ namespace Game.States.InGame
         {
             Debug.Log("InGameState OnEnter");
 
-            _gameplayComponent.CallStart();
+            _gameplayComponent.OnConstruct();
         }
 
         protected override void OnExit()
         {
-            _gameplayComponent.CallExit();
+            _gameplayComponent.OnDestruct();
 
             Debug.Log("InGameState OnExit");
         }
