@@ -8,12 +8,12 @@ namespace Game.Components
     {
         public enum MenuName
         {
-            Splash,
+            Intro,
             MainMenu,
             InGame
         }
 
-        [SerializeField] private BaseCanvas splashCanvas;
+        [SerializeField] private BaseCanvas introCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
         [SerializeField] private BaseCanvas inGameCanvas;
 
@@ -22,11 +22,12 @@ namespace Game.Components
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=green>UIComponent initialized!</color>");
-            splashCanvas.Initialize(componentContainer);
+
+            introCanvas.Initialize(componentContainer);
             mainMenuCanvas.Initialize(componentContainer);
             inGameCanvas.Initialize(componentContainer);
 
-            DeactivateCanvas(splashCanvas);
+            DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
             DeactivateCanvas(inGameCanvas);
         }
@@ -35,8 +36,8 @@ namespace Game.Components
         {
             switch (canvas)
             {
-                case MenuName.Splash:
-                    return splashCanvas;
+                case MenuName.Intro:
+                    return introCanvas;
                 case MenuName.MainMenu:
                     return mainMenuCanvas;
                 case MenuName.InGame:
@@ -64,8 +65,8 @@ namespace Game.Components
         {
             switch (menuName)
             {
-                case MenuName.Splash:
-                    _activeCanvas = splashCanvas;
+                case MenuName.Intro:
+                    _activeCanvas = introCanvas;
                     break;
                 case MenuName.MainMenu:
                     _activeCanvas = mainMenuCanvas;
