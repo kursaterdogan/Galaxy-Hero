@@ -1382,7 +1382,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7784845535108079333}
         m_TargetAssemblyTypeName: Game.UserInterfaces.InGame.InGameCanvas, Assembly-CSharp
-        m_MethodName: RequestMainMenu
+        m_MethodName: RequestReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

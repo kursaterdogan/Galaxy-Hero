@@ -411,10 +411,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2330815418909432404}
     - target: {fileID: 3249127296522909532, guid: a33978713873a1e43ad23d91edf435c6, type: 3}
-      propertyPath: splashCanvas
-      value: 
-      objectReference: {fileID: 1041500093}
-    - target: {fileID: 3249127296522909532, guid: a33978713873a1e43ad23d91edf435c6, type: 3}
       propertyPath: mainMenuCanvas
       value: 
       objectReference: {fileID: 7880262967702634434}
