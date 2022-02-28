@@ -19,7 +19,7 @@ namespace Game.UserInterfaces.MainMenu
         public event GarageRequestDelegate OnBombeoUpgradeRequest;
         public event GarageRequestDelegate OnLasteoUpgradeRequest;
 
-        public event GarageRequestDelegate OnReturnToMainMenu;
+        public event GarageRequestDelegate OnReturnToMainMenuRequest;
 
         [SerializeField] private TMP_Text coinText;
 
@@ -123,10 +123,10 @@ namespace Game.UserInterfaces.MainMenu
             OnLasteoUpgradeRequest?.Invoke();
         }
 
-        public void RequestMainMenu()
+        public void RequestReturnToMainMenu()
         {
             //TODO Subscribe & Unsubscribe
-            OnReturnToMainMenu?.Invoke();
+            OnReturnToMainMenuRequest?.Invoke();
         }
     }
 }
