@@ -14,22 +14,17 @@ namespace Game.States.InGame
         {
             Debug.Log("PrepareGameState OnEnter");
             //TODO Add Provision canvas
-            RequestInGame();
+            RequestPlayGame();
         }
-        
+
         protected override void OnExit()
         {
             Debug.Log("PrepareGameState OnExit");
         }
 
-        private void RequestInGame()
+        private void RequestPlayGame()
         {
             SendTrigger((int)StateTriggers.PlayGame);
-        }
-
-        private void RequestPause()
-        {
-            SendTrigger((int)StateTriggers.PauseGame);
         }
     }
 }
