@@ -10,7 +10,7 @@ namespace Game
         private ComponentContainer _componentContainer;
 
         private UIComponent _uiComponent;
-        private SplashComponent _splashComponent;
+        private IntroComponent _introComponent;
         private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
@@ -25,7 +25,7 @@ namespace Game
         {
             //TODO Create Components
             CreateUIComponent();
-            CreateSplashComponent();
+            CreateIntroComponent();
             CreateGameplayComponent();
 
             InitializeComponents();
@@ -37,7 +37,7 @@ namespace Game
         {
             //TODO Initialize Components
             _uiComponent.Initialize(_componentContainer);
-            _splashComponent.Initialize(_componentContainer);
+            _introComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
         }
 
@@ -47,10 +47,10 @@ namespace Game
             _componentContainer.AddComponent("UIComponent", _uiComponent);
         }
 
-        private void CreateSplashComponent()
+        private void CreateIntroComponent()
         {
-            _splashComponent = FindObjectOfType<SplashComponent>();
-            _componentContainer.AddComponent("SplashComponent", _splashComponent);
+            _introComponent = FindObjectOfType<IntroComponent>();
+            _componentContainer.AddComponent("IntroComponent", _introComponent);
         }
 
         private void CreateGameplayComponent()
