@@ -6,21 +6,21 @@ namespace Base.UserInterface
     [RequireComponent(typeof(Canvas))]
     public abstract class BaseCanvas : MonoBehaviour
     {
-        private Canvas _canvasComponent;
+        private Canvas _canvas;
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            _canvasComponent = GetComponent<Canvas>();
+            _canvas = GetComponent<Canvas>();
         }
 
         public void Activate()
         {
-            _canvasComponent.enabled = true;
+            _canvas.enabled = true;
         }
 
         public void Deactivate()
         {
-            _canvasComponent.enabled = false;
+            _canvas.enabled = false;
         }
     }
 }
