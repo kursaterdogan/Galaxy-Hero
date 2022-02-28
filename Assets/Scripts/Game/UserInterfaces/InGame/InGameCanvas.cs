@@ -4,14 +4,14 @@ namespace Game.UserInterfaces.InGame
 {
     public class InGameCanvas : BaseCanvas
     {
-        public delegate void ReturnToMainMenuDelegate();
+        public delegate void InGameRequestDelegate();
 
-        public event ReturnToMainMenuDelegate OnReturnToMainMenu;
+        public event InGameRequestDelegate OnReturnToMainMenuRequest;
 
-        public void RequestMainMenu()
+        public void RequestReturnToMainMenu()
         {
             //TODO Link with pause
-            OnReturnToMainMenu?.Invoke();
+            OnReturnToMainMenuRequest?.Invoke();
         }
     }
 }
