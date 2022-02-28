@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c212a3825d08d4ab6a9a4764dddb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashCanvas: {fileID: 0}
+  introCanvas: {fileID: 0}
+  mainMenuCanvas: {fileID: 0}
+  inGameCanvas: {fileID: 0}
