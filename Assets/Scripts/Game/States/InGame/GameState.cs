@@ -37,6 +37,8 @@ namespace Game.States.InGame
         {
             Debug.Log("GameState OnEnter");
 
+            //TODO Create PrepareGameStateCanvas
+            //TODO Move To IngGameState
             _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
             _inGameCanvas.OnReturnToMainMenu += ReturnToMainMenu;
         }
