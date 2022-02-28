@@ -10,14 +10,14 @@ namespace Game.UserInterfaces.Splash
 
         public void OnStart()
         {
-            loadingIcon.gameObject.SetActive(true);
-            logo.gameObject.SetActive(true);
+            EnableLoadingIcon();
+            EnableLogo();
         }
 
         public void OnQuit()
         {
-            loadingIcon.gameObject.SetActive(false);
-            logo.gameObject.SetActive(false);
+            DisableLogo();
+            DisableLoadingIcon();
         }
 
         public void PlayLogoFadeOutAnimation(float animationTime)
@@ -33,6 +33,26 @@ namespace Game.UserInterfaces.Splash
         public void StopLoadingIconAnimation()
         {
             loadingIcon.StopLoadingAnimation();
+        }
+
+        private void EnableLogo()
+        {
+            logo.gameObject.SetActive(true);
+        }
+
+        private void EnableLoadingIcon()
+        {
+            loadingIcon.gameObject.SetActive(true);
+        }
+
+        private void DisableLogo()
+        {
+            logo.gameObject.SetActive(false);
+        }
+
+        private void DisableLoadingIcon()
+        {
+            loadingIcon.gameObject.SetActive(false);
         }
     }
 }
