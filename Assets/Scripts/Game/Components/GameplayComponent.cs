@@ -5,7 +5,7 @@ using Game.UserInterfaces.InGame;
 
 namespace Game.Components
 {
-    public class GameplayComponent : MonoBehaviour, IComponent, IStartable, IExitable
+    public class GameplayComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
         [SerializeField] private GameObject[] parallaxBackgroundPrefabs;
         [SerializeField] private ProjectilePool projectilePoolPrefab;
@@ -16,18 +16,15 @@ namespace Game.Components
         private Player _player;
 
         private UIComponent _uiComponent;
-        private InGameCanvas _inGameCanvas;
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=green>GameplayComponent initialized!</color>");
 
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
-
-            _inGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.InGame) as InGameCanvas;
         }
 
-        public void CallStart()
+        public void OnConstruct()
         {
             //TODO Method
             _parallaxBackground = Instantiate(parallaxBackgroundPrefabs[0]);
@@ -35,7 +32,7 @@ namespace Game.Components
             _player = Instantiate(playerPrefab);
         }
 
-        public void CallExit()
+        public void OnDestruct()
         {
             //TODO Method
             Destroy(_player.gameObject);

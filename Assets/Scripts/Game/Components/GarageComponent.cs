@@ -3,12 +3,13 @@ using Base.Component;
 
 namespace Game.Components
 {
-    public class GarageComponent : MonoBehaviour, IComponent, IStartable, IExitable
+    public class GarageComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
         private UIComponent _uiComponent;
 
         public void Initialize(ComponentContainer componentContainer)
         {
+            Debug.Log("<color=green>GarageComponent initialized!</color>");
             //TODO GarageState
             //TODO WalletComponent
             //TODO AccountComponent
@@ -18,12 +19,12 @@ namespace Game.Components
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
         }
 
-        public void CallStart()
+        public void OnConstruct()
         {
             throw new System.NotImplementedException();
         }
 
-        public void CallExit()
+        public void OnDestruct()
         {
             throw new System.NotImplementedException();
         }
