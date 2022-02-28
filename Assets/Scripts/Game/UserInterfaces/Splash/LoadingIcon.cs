@@ -5,7 +5,7 @@ namespace Game.UserInterfaces.Splash
 {
     public class LoadingIcon : MonoBehaviour
     {
-        [SerializeField] private Transform _transform;
+        [SerializeField] private Transform rectTransform;
 
         private Vector3 _rotationVector = new Vector3(0, 0, -60);
 
@@ -23,7 +23,7 @@ namespace Game.UserInterfaces.Splash
         {
             while (true)
             {
-                _transform.Rotate(Time.deltaTime * _rotationVector);
+                rectTransform.Rotate(Time.deltaTime * _rotationVector);
                 yield return null;
             }
         }
