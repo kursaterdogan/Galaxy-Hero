@@ -24,12 +24,12 @@ namespace Game.States.InGame
 
         private void RequestInGame()
         {
-            SendTrigger((int)StateTriggers.PlayGameRequest);
+            SendTrigger((int)StateTriggers.PlayGame);
         }
 
         private void RequestPause()
         {
-            SendTrigger((int)StateTriggers.PauseGameRequest);
+            SendTrigger((int)StateTriggers.PauseGame);
         }
     }
 }

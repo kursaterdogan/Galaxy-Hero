@@ -28,9 +28,9 @@ namespace Game.States.InGame
             AddSubState(_inGameState);
             AddSubState(_endGameState);
 
-            AddTransition(_prepareGameState, _inGameState, (int)StateTriggers.PlayGameRequest);
+            AddTransition(_prepareGameState, _inGameState, (int)StateTriggers.PlayGame);
             AddTransition(_inGameState, _endGameState, (int)StateTriggers.GameOver);
-            AddTransition(_endGameState, _prepareGameState, (int)StateTriggers.ReplayGameRequest);
+            AddTransition(_endGameState, _prepareGameState, (int)StateTriggers.ReplayGame);
         }
 
         protected override void OnEnter()
