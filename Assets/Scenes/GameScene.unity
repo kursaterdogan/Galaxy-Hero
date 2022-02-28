@@ -619,7 +619,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6663183158817050308, guid: cdfec13e266525543b342685f50b3c95, type: 3}
       propertyPath: m_Name
-      value: IntroComponent
+      value: SplashComponent
       objectReference: {fileID: 0}
     - target: {fileID: 6663183158817050309, guid: cdfec13e266525543b342685f50b3c95, type: 3}
       propertyPath: m_RootOrder
