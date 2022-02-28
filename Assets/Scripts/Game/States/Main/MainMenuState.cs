@@ -26,73 +26,60 @@ namespace Game.States.Main
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
 
             _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
-            _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
-            _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
-            _mainMenuCanvas.OnMarketMenuRequest += OnMarketMenuRequest;
-            _mainMenuCanvas.OnInventoryMenuRequest += OnInventoryMenuRequest;
-            _mainMenuCanvas.OnGarageMenuRequest += OnGarageMenuRequest;
-            _mainMenuCanvas.OnCoPilotMenuRequest += OnCoPilotMenuRequest;
-            _mainMenuCanvas.OnCreditsMenuRequest += OnCreditsMenuRequest;
-            _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
+            _mainMenuCanvas.OnSettingsMenuRequest += RequestSettingsMenu;
+            _mainMenuCanvas.OnAchievementsMenuRequest += RequestAchievementsMenu;
+            _mainMenuCanvas.OnGarageMenuRequest += RequestGarageMenu;
+            _mainMenuCanvas.OnCoPilotMenuRequest += RequestCoPilotMenu;
+            _mainMenuCanvas.OnCreditsMenuRequest += RequestCreditsMenu;
+            _mainMenuCanvas.OnQuoteMenuRequest += RequestQuoteMenu;
         }
 
         protected override void OnExit()
         {
             _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
-            _mainMenuCanvas.OnSettingsMenuRequest -= OnSettingsMenuRequest;
-            _mainMenuCanvas.OnAchievementsMenuRequest -= OnAchievementsMenuRequest;
-            _mainMenuCanvas.OnMarketMenuRequest -= OnMarketMenuRequest;
-            _mainMenuCanvas.OnInventoryMenuRequest -= OnInventoryMenuRequest;
-            _mainMenuCanvas.OnCoPilotMenuRequest -= OnCoPilotMenuRequest;
-            _mainMenuCanvas.OnCreditsMenuRequest -= OnCreditsMenuRequest;
-            _mainMenuCanvas.OnQuoteMenuRequest -= OnQuoteMenuRequest;
+            _mainMenuCanvas.OnSettingsMenuRequest -= RequestSettingsMenu;
+            _mainMenuCanvas.OnAchievementsMenuRequest -= RequestAchievementsMenu;
+            _mainMenuCanvas.OnCoPilotMenuRequest -= RequestCoPilotMenu;
+            _mainMenuCanvas.OnCreditsMenuRequest -= RequestCreditsMenu;
+            _mainMenuCanvas.OnQuoteMenuRequest -= RequestQuoteMenu;
 
             Debug.Log("MainMenuState OnExit");
         }
 
-        private void OnCreditsMenuRequest()
+        private void RequestCreditsMenu()
         {
             SendTrigger((int)StateTriggers.GoToCredits);
         }
 
-        private void OnCoPilotMenuRequest()
+        private void RequestCoPilotMenu()
         {
-            SendTrigger((int)StateTriggers.GoToCoPilotRequest);
+            //TODO Delete & Rename Unused Triggers 
+            SendTrigger((int)StateTriggers.GoToCoPilot);
         }
 
-        private void OnGarageMenuRequest()
+        private void RequestGarageMenu()
         {
-            SendTrigger((int)StateTriggers.GoToGarageRequest);
+            SendTrigger((int)StateTriggers.GoToGarage);
         }
 
-        private void OnInventoryMenuRequest()
+        private void RequestAchievementsMenu()
         {
-            SendTrigger((int)StateTriggers.GoToInventoryRequest);
+            SendTrigger((int)StateTriggers.GoToAchievements);
         }
 
-        private void OnMarketMenuRequest()
+        private void RequestSettingsMenu()
         {
-            SendTrigger((int)StateTriggers.GoToMarketRequest);
+            SendTrigger((int)StateTriggers.GoToSettings);
         }
 
-        private void OnAchievementsMenuRequest()
+        private void RequestQuoteMenu()
         {
-            SendTrigger((int)StateTriggers.GoToAchievementsRequest);
-        }
-
-        private void OnSettingsMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToSettingsRequest);
-        }
-
-        private void OnQuoteMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToQuoteRequest);
+            SendTrigger((int)StateTriggers.GoToQuote);
         }
 
         private void RequestInGameMenu()
         {
-            SendTrigger((int)StateTriggers.StartGameRequest);
+            SendTrigger((int)StateTriggers.StartGame);
         }
     }
 }
