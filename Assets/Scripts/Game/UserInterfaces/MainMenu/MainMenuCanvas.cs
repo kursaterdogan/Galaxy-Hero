@@ -4,17 +4,17 @@ namespace Game.UserInterfaces.MainMenu
 {
     public class MainMenuCanvas : BaseCanvas
     {
-        public delegate void MenuRequestDelegate();
+        public delegate void MainMenuRequestDelegate();
 
-        public event MenuRequestDelegate OnInGameMenuRequest;
-        public event MenuRequestDelegate OnSettingsMenuRequest;
-        public event MenuRequestDelegate OnAchievementsMenuRequest;
-        public event MenuRequestDelegate OnMarketMenuRequest;
-        public event MenuRequestDelegate OnInventoryMenuRequest;
-        public event MenuRequestDelegate OnGarageMenuRequest;
-        public event MenuRequestDelegate OnCoPilotMenuRequest;
-        public event MenuRequestDelegate OnCreditsMenuRequest;
-        public event MenuRequestDelegate OnQuoteMenuRequest;
+        public event MainMenuRequestDelegate OnInGameMenuRequest;
+        public event MainMenuRequestDelegate OnSettingsMenuRequest;
+        public event MainMenuRequestDelegate OnAchievementsMenuRequest;
+        public event MainMenuRequestDelegate OnMarketMenuRequest;
+        public event MainMenuRequestDelegate OnInventoryMenuRequest;
+        public event MainMenuRequestDelegate OnGarageMenuRequest;
+        public event MainMenuRequestDelegate OnCoPilotMenuRequest;
+        public event MainMenuRequestDelegate OnCreditsMenuRequest;
+        public event MainMenuRequestDelegate OnQuoteMenuRequest;
 
         public void RequestInGameMenu()
         {
