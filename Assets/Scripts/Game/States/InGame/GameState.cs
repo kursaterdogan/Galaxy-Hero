@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
@@ -36,8 +35,6 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>GameState OnEnter</color>");
-
             //TODO Create PrepareGameStateCanvas
             //TODO Move To IngGameState
             _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
@@ -49,8 +46,6 @@ namespace Game.States.InGame
         {
             //TODO Move to InGameState
             UnsubscribeToInGameCanvasRequestDelegates();
-
-            Debug.Log("<color=cyan>GameState OnExit</color>");
         }
 
         private void SubscribeToInGameCanvasRequestDelegates()
