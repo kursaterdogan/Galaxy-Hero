@@ -10,11 +10,13 @@ namespace Game.Components
         {
             Intro,
             MainMenu,
+            Inventory,
             InGame
         }
 
         [SerializeField] private BaseCanvas introCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
+        [SerializeField] private BaseCanvas inventoryCanvas;
         [SerializeField] private BaseCanvas inGameCanvas;
 
         private BaseCanvas _activeCanvas;
@@ -23,12 +25,14 @@ namespace Game.Components
         {
             Debug.Log("<color=green>UIComponent initialized!</color>");
 
-            introCanvas.Initialize(componentContainer);
-            mainMenuCanvas.Initialize(componentContainer);
-            inGameCanvas.Initialize(componentContainer);
+            introCanvas.Initialize();
+            mainMenuCanvas.Initialize();
+            inventoryCanvas.Initialize();
+            inGameCanvas.Initialize();
 
             DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
+            DeactivateCanvas(inventoryCanvas);
             DeactivateCanvas(inGameCanvas);
         }
 
@@ -40,6 +44,8 @@ namespace Game.Components
                     return introCanvas;
                 case MenuName.MainMenu:
                     return mainMenuCanvas;
+                case MenuName.Inventory:
+                    return inventoryCanvas;
                 case MenuName.InGame:
                     return inGameCanvas;
                 default:
@@ -70,6 +76,9 @@ namespace Game.Components
                     break;
                 case MenuName.MainMenu:
                     _activeCanvas = mainMenuCanvas;
+                    break;
+                case MenuName.Inventory:
+                    _activeCanvas = inventoryCanvas;
                     break;
                 case MenuName.InGame:
                     _activeCanvas = inGameCanvas;
