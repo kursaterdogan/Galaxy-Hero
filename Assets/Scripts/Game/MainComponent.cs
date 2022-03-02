@@ -12,6 +12,7 @@ namespace Game
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
         private InventoryComponent _inventoryComponent;
+        private GarageComponent _garageComponent;
         private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
@@ -28,6 +29,7 @@ namespace Game
             CreateUIComponent();
             CreateIntroComponent();
             CreateInventoryComponent();
+            CreateGarageComponent();
             CreateGameplayComponent();
 
             InitializeComponents();
@@ -41,6 +43,7 @@ namespace Game
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
             _inventoryComponent.Initialize(_componentContainer);
+            _garageComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
         }
 
@@ -60,6 +63,12 @@ namespace Game
         {
             _inventoryComponent = FindObjectOfType<InventoryComponent>();
             _componentContainer.AddComponent("InventoryComponent", _inventoryComponent);
+        }
+
+        private void CreateGarageComponent()
+        {
+            _garageComponent = FindObjectOfType<GarageComponent>();
+            _componentContainer.AddComponent("GarageComponent", _garageComponent);
         }
 
         private void CreateGameplayComponent()
