@@ -8,16 +8,17 @@ namespace Game.States.InGame
     {
         public EndGameState(ComponentContainer componentContainer)
         {
+            //TODO Hande EndGameState
         }
 
         protected override void OnEnter()
         {
-            Debug.Log("EndGameState OnEnter");
+            Debug.Log("<color=orange>EndGameState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("EndGameState OnExit");
+            Debug.Log("<color=cyan>EndGameState OnExit</color>");
         }
     }
 }

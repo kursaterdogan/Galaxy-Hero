@@ -26,7 +26,7 @@ namespace Game.States.Main
         protected override void OnEnter()
         {
             //TODO Handle OnEnter
-            Debug.Log("GarageState OnEnter");
+            Debug.Log("<color=orange>GarageState OnEnter</color>");
 
             SubscribeToCanvasRequestDelegates();
 
@@ -38,7 +38,7 @@ namespace Game.States.Main
             //TODO Handle OnExit
             UnsubscribeToCanvasRequestDelegates();
 
-            Debug.Log("GarageState OnExit");
+            Debug.Log("<color=cyan>GarageState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()

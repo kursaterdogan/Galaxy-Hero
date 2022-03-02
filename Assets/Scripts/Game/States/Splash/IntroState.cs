@@ -23,7 +23,7 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("LoadingState OnEnter");
+            Debug.Log("<color=orange>LoadingState OnEnter</color>");
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
 
@@ -40,7 +40,7 @@ namespace Game.States.Splash
 
             _introCanvas.OnQuit();
 
-            Debug.Log("LoadingState OnExit");
+            Debug.Log("<color=cyan>LoadingState OnExit</color>");
         }
 
         public void SubscribeToComponentChangeDelegates()

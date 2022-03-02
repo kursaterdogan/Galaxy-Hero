@@ -31,12 +31,12 @@ namespace Game.States
 
         protected override void OnEnter()
         {
-            Debug.Log("AppState OnEnter");
+            Debug.Log("<color=orange>AppState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("AppState OnExit");
+            Debug.Log("<color=cyan>AppState OnExit</color>");
         }
     }
 }

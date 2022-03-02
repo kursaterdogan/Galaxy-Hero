@@ -29,12 +29,12 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
-            Debug.Log("MainState OnEnter");
+            Debug.Log("<color=orange>MainState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("MainState OnExit");
+            Debug.Log("<color=cyan>MainState OnExit</color>");
         }
     }
 }

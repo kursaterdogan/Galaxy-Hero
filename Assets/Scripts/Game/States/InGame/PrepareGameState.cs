@@ -8,18 +8,19 @@ namespace Game.States.InGame
     {
         public PrepareGameState(ComponentContainer componentContainer)
         {
+            //TODO Hande PrepareGameState
         }
 
         protected override void OnEnter()
         {
-            Debug.Log("PrepareGameState OnEnter");
+            Debug.Log("<color=orange>PrepareGameState OnEnter</color>");
             //TODO Add Provision canvas
             RequestPlayGame();
         }
 
         protected override void OnExit()
         {
-            Debug.Log("PrepareGameState OnExit");
+            Debug.Log("<color=cyan>PrepareGameState OnExit</color>");
         }
 
         private void RequestPlayGame()

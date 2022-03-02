@@ -17,12 +17,12 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("SplashState OnEnter");
+            Debug.Log("<color=orange>SplashState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("SplashState OnExit");
+            Debug.Log("<color=cyan>SplashState OnExit</color>");
         }
     }
 }

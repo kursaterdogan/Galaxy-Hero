@@ -14,6 +14,7 @@ namespace Game.States.InGame
         
         public InGameState(ComponentContainer componentContainer)
         {
+            //TODO Hande InGameState
             _gameplayComponent = componentContainer.GetComponent("GameplayComponent") as GameplayComponent;
 
             //TODO Handle Canvas Delegates
@@ -23,7 +24,7 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
-            Debug.Log("InGameState OnEnter");
+            Debug.Log("<color=orange>InGameState OnEnter</color>");
 
             _gameplayComponent.OnConstruct();
         }
@@ -32,7 +33,7 @@ namespace Game.States.InGame
         {
             _gameplayComponent.OnDestruct();
 
-            Debug.Log("InGameState OnExit");
+            Debug.Log("<color=cyan>InGameState OnExit</color>");
         }
     }
 }

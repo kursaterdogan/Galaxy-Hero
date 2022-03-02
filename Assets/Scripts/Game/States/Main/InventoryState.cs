@@ -24,7 +24,7 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
-            Debug.Log("InventoryState OnEnter");
+            Debug.Log("<color=orange>InventoryState OnEnter</color>");
 
             SubscribeToCanvasRequestDelegates();
 
@@ -35,7 +35,7 @@ namespace Game.States.Main
         {
             UnsubscribeToCanvasRequestDelegates();
 
-            Debug.Log("InventoryState OnExit");
+            Debug.Log("<color=cyan>InventoryState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()

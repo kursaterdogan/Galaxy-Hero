@@ -21,7 +21,7 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
-            Debug.Log("MainMenuState OnEnter");
+            Debug.Log("<color=orange>MainMenuState OnEnter</color>");
 
             SubscribeToCanvasRequestDelegates();
 
@@ -32,7 +32,7 @@ namespace Game.States.Main
         {
             UnsubscribeToCanvasRequestDelegates();
 
-            Debug.Log("MainMenuState OnExit");
+            Debug.Log("<color=cyan>MainMenuState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()

@@ -17,6 +17,7 @@ namespace Game.States.InGame
 
         public GameState(ComponentContainer componentContainer)
         {
+            //TODO Hande GameState
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _inGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.InGame) as InGameCanvas;
 
@@ -35,7 +36,7 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
-            Debug.Log("GameState OnEnter");
+            Debug.Log("<color=orange>GameState OnEnter</color>");
 
             //TODO Create PrepareGameStateCanvas
             //TODO Move To IngGameState
@@ -49,7 +50,7 @@ namespace Game.States.InGame
             //TODO Move to InGameState
             UnsubscribeToInGameCanvasRequestDelegates();
 
-            Debug.Log("GameState OnExit");
+            Debug.Log("<color=cyan>GameState OnExit</color>");
         }
 
         private void SubscribeToInGameCanvasRequestDelegates()
