@@ -11,12 +11,14 @@ namespace Game.Components
             Intro,
             MainMenu,
             Inventory,
+            Garage,
             InGame
         }
 
         [SerializeField] private BaseCanvas introCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
         [SerializeField] private BaseCanvas inventoryCanvas;
+        [SerializeField] private BaseCanvas garageCanvas;
         [SerializeField] private BaseCanvas inGameCanvas;
 
         private BaseCanvas _activeCanvas;
@@ -28,11 +30,13 @@ namespace Game.Components
             introCanvas.Initialize();
             mainMenuCanvas.Initialize();
             inventoryCanvas.Initialize();
+            garageCanvas.Initialize();
             inGameCanvas.Initialize();
 
             DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
             DeactivateCanvas(inventoryCanvas);
+            DeactivateCanvas(garageCanvas);
             DeactivateCanvas(inGameCanvas);
         }
 
@@ -46,6 +50,8 @@ namespace Game.Components
                     return mainMenuCanvas;
                 case MenuName.Inventory:
                     return inventoryCanvas;
+                case MenuName.Garage:
+                    return garageCanvas;
                 case MenuName.InGame:
                     return inGameCanvas;
                 default:
@@ -79,6 +85,9 @@ namespace Game.Components
                     break;
                 case MenuName.Inventory:
                     _activeCanvas = inventoryCanvas;
+                    break;
+                case MenuName.Garage:
+                    _activeCanvas = garageCanvas;
                     break;
                 case MenuName.InGame:
                     _activeCanvas = inGameCanvas;
