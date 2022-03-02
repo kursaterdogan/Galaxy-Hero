@@ -8,7 +8,7 @@ namespace Base.UserInterface
     {
         private Canvas _canvas;
 
-        public void Initialize(ComponentContainer componentContainer)
+        public void Initialize()
         {
             _canvas = GetComponent<Canvas>();
         }
