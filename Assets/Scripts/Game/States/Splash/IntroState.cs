@@ -6,7 +6,7 @@ using Game.UserInterfaces.Splash;
 
 namespace Game.States.Splash
 {
-    public class IntroState : StateMachine
+    public class IntroState : StateMachine, IChangeable
     {
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
@@ -27,7 +27,7 @@ namespace Game.States.Splash
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
 
-            SubscribeToIntroChangeDelegates();
+            SubscribeToComponentChangeDelegates();
 
             _introCanvas.OnStart();
 
@@ -36,21 +36,21 @@ namespace Game.States.Splash
 
         protected override void OnExit()
         {
-            UnsubscribeToIntroChangeDelegates();
+            UnsubscribeToComponentChangeDelegates();
 
             _introCanvas.OnQuit();
 
             Debug.Log("LoadingState OnExit");
         }
 
-        private void SubscribeToIntroChangeDelegates()
+        public void SubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart += StartIntroAnimation;
             _introComponent.OnIntroAnimationComplete += CompleteIntroAnimation;
             _introComponent.OnIntroAnimationComplete += RequestMainMenu;
         }
 
-        private void UnsubscribeToIntroChangeDelegates()
+        public void UnsubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart -= StartIntroAnimation;
             _introComponent.OnIntroAnimationComplete -= CompleteIntroAnimation;
