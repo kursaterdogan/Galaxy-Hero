@@ -37,14 +37,16 @@ namespace Game.States.Main
 
         public void SubscribeToCanvasRequestDelegates()
         {
-            _mainMenuCanvas.OnInGameMenuRequest += RequestStartGame;
-            _mainMenuCanvas.OnInventoryMenuRequest += RequestInventory;
+            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
+            _mainMenuCanvas.OnInventoryRequest += RequestInventory;
+            _mainMenuCanvas.OnGarageRequest += RequestGarage;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
-            _mainMenuCanvas.OnInGameMenuRequest -= RequestStartGame;
-            _mainMenuCanvas.OnInventoryMenuRequest -= RequestInventory;
+            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
+            _mainMenuCanvas.OnInventoryRequest -= RequestInventory;
+            _mainMenuCanvas.OnGarageRequest -= RequestGarage;
         }
 
         private void RequestCredits()
@@ -63,9 +65,9 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToInventory);
         }
 
-        private void RequestAchievements()
+        private void RequestGarage()
         {
-            SendTrigger((int)StateTriggers.GoToAchievements);
+            SendTrigger((int)StateTriggers.GoToGarage);
         }
 
         private void RequestSettingsMenu()
