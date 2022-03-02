@@ -22,42 +22,42 @@ namespace Game.UserInterfaces.MainMenu
             OnInGameMenuRequest?.Invoke();
         }
 
-        public void RequestQuoteMenu()
+        public void RequestQuote()
         {
             OnQuoteMenuRequest?.Invoke();
         }
 
-        public void RequestSettingsMenu()
+        public void RequestSettings()
         {
             OnSettingsMenuRequest?.Invoke();
         }
 
-        public void RequestAchievementsMenu()
+        public void RequestAchievements()
         {
             OnAchievementsMenuRequest?.Invoke();
         }
 
-        public void RequestMarketMenu()
+        public void RequestMarket()
         {
             OnMarketMenuRequest?.Invoke();
         }
 
-        public void RequestInventoryMenu()
+        public void RequestInventory()
         {
             OnInventoryMenuRequest?.Invoke();
         }
 
-        public void RequestGarageMenu()
+        public void RequestGarage()
         {
             OnGarageMenuRequest?.Invoke();
         }
 
-        public void RequestCoPilotMenu()
+        public void RequestCoPilot()
         {
             OnCoPilotMenuRequest?.Invoke();
         }
 
-        public void RequestCreditsMenu()
+        public void RequestCredits()
         {
             OnCreditsMenuRequest?.Invoke();
         }
