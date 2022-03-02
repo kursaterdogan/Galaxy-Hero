@@ -1,7 +1,6 @@
 using UnityEngine;
 using Base.Component;
 using Game.Gameplay;
-using Game.UserInterfaces.InGame;
 
 namespace Game.Components
 {
@@ -19,7 +18,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=lime>GameplayComponent initialized!</color>");
+            Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
         }

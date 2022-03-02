@@ -8,7 +8,7 @@ namespace Game.Components
         public void Initialize(ComponentContainer componentContainer)
         {
             //TODO Handle Inventory
-            Debug.Log("<color=lime>InventoryComponent initialized!</color>");
+            Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
         }
     }
 }
