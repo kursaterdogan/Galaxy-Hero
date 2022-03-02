@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
@@ -26,8 +25,6 @@ namespace Game.States.Main
         protected override void OnEnter()
         {
             //TODO Handle OnEnter
-            Debug.Log("<color=orange>GarageState OnEnter</color>");
-
             SubscribeToCanvasRequestDelegates();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.Garage);
@@ -37,8 +34,6 @@ namespace Game.States.Main
         {
             //TODO Handle OnExit
             UnsubscribeToCanvasRequestDelegates();
-
-            Debug.Log("<color=cyan>GarageState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()
