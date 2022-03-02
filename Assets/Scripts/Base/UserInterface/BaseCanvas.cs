@@ -10,7 +10,8 @@ namespace Base.UserInterface
         public void Initialize()
         {
             _canvas = GetComponent<Canvas>();
-            Debug.Log("<color=magenta>" + gameObject.name + " initialized!</color>");
+
+            Debug.Log("<color=yellow>" + GetType().Name + " initialized!</color>");
         }
 
         public void Activate()
