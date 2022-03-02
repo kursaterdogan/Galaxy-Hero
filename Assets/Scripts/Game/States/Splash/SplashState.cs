@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 
@@ -17,12 +16,10 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>SplashState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("<color=cyan>SplashState OnExit</color>");
         }
     }
 }
