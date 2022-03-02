@@ -2,7 +2,7 @@ using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
-using Game.UserInterfaces.MainMenu;
+using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
 {

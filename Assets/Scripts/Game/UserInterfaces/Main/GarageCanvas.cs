@@ -1,8 +1,8 @@
-using UnityEngine;
 using Base.UserInterface;
 using TMPro;
+using UnityEngine;
 
-namespace Game.UserInterfaces.MainMenu
+namespace Game.UserInterfaces.Main
 {
     public class GarageCanvas : BaseCanvas
     {

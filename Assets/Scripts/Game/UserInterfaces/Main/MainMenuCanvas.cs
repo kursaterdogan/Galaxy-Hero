@@ -1,6 +1,6 @@
 using Base.UserInterface;
 
-namespace Game.UserInterfaces.MainMenu
+namespace Game.UserInterfaces.Main
 {
     public class MainMenuCanvas : BaseCanvas
     {
