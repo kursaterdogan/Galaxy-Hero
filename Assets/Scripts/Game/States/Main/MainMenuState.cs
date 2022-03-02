@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
@@ -21,8 +20,6 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>MainMenuState OnEnter</color>");
-
             SubscribeToCanvasRequestDelegates();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
@@ -31,8 +28,6 @@ namespace Game.States.Main
         protected override void OnExit()
         {
             UnsubscribeToCanvasRequestDelegates();
-
-            Debug.Log("<color=cyan>MainMenuState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()
