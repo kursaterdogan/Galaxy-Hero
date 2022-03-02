@@ -6,7 +6,7 @@ using Game.UserInterfaces.MainMenu;
 
 namespace Game.States.Main
 {
-    public class MainMenuState : StateMachine
+    public class MainMenuState : StateMachine, IRequestable
     {
         private UIComponent _uiComponent;
 
@@ -15,6 +15,7 @@ namespace Game.States.Main
         public MainMenuState(ComponentContainer componentContainer)
         {
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
+
             _mainMenuCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.MainMenu) as MainMenuCanvas;
         }
 
@@ -22,58 +23,47 @@ namespace Game.States.Main
         {
             Debug.Log("MainMenuState OnEnter");
 
-            //TODO Check MainMenuCanvas
-            _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+            SubscribeToCanvasRequestDelegates();
 
-            SubscribeToMainMenuRequestDelegates();
+            _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
         }
 
         protected override void OnExit()
         {
-            UnsubscribeToMainMenuRequestDelegates();
+            UnsubscribeToCanvasRequestDelegates();
 
             Debug.Log("MainMenuState OnExit");
         }
 
-        private void SubscribeToMainMenuRequestDelegates()
+        public void SubscribeToCanvasRequestDelegates()
         {
             _mainMenuCanvas.OnInGameMenuRequest += RequestStartGame;
-            _mainMenuCanvas.OnSettingsMenuRequest += RequestSettingsMenu;
-            _mainMenuCanvas.OnAchievementsMenuRequest += RequestAchievementsMenu;
-            _mainMenuCanvas.OnGarageMenuRequest += RequestGarageMenu;
-            _mainMenuCanvas.OnCoPilotMenuRequest += RequestCoPilotMenu;
-            _mainMenuCanvas.OnCreditsMenuRequest += RequestCreditsMenu;
-            _mainMenuCanvas.OnQuoteMenuRequest += RequestQuoteMenu;
+            _mainMenuCanvas.OnInventoryMenuRequest += RequestInventory;
         }
 
-        private void UnsubscribeToMainMenuRequestDelegates()
+        public void UnsubscribeToCanvasRequestDelegates()
         {
             _mainMenuCanvas.OnInGameMenuRequest -= RequestStartGame;
-            _mainMenuCanvas.OnSettingsMenuRequest -= RequestSettingsMenu;
-            _mainMenuCanvas.OnAchievementsMenuRequest -= RequestAchievementsMenu;
-            _mainMenuCanvas.OnGarageMenuRequest -= RequestGarageMenu;
-            _mainMenuCanvas.OnCoPilotMenuRequest -= RequestCoPilotMenu;
-            _mainMenuCanvas.OnCreditsMenuRequest -= RequestCreditsMenu;
-            _mainMenuCanvas.OnQuoteMenuRequest -= RequestQuoteMenu;
+            _mainMenuCanvas.OnInventoryMenuRequest -= RequestInventory;
         }
 
-        private void RequestCreditsMenu()
+        private void RequestCredits()
         {
             SendTrigger((int)StateTriggers.GoToCredits);
         }
 
-        private void RequestCoPilotMenu()
+        private void RequestCoPilot()
         {
             //TODO Delete & Rename Unused Triggers 
             SendTrigger((int)StateTriggers.GoToCoPilot);
         }
 
-        private void RequestGarageMenu()
+        private void RequestInventory()
         {
-            SendTrigger((int)StateTriggers.GoToGarage);
+            SendTrigger((int)StateTriggers.GoToInventory);
         }
 
-        private void RequestAchievementsMenu()
+        private void RequestAchievements()
         {
             SendTrigger((int)StateTriggers.GoToAchievements);
         }
@@ -83,7 +73,7 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToSettings);
         }
 
-        private void RequestQuoteMenu()
+        private void RequestQuote()
         {
             SendTrigger((int)StateTriggers.GoToQuote);
         }
