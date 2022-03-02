@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introCanvas: {fileID: 0}
   mainMenuCanvas: {fileID: 0}
+  inventoryCanvas: {fileID: 0}
+  garageCanvas: {fileID: 0}
   inGameCanvas: {fileID: 0}
