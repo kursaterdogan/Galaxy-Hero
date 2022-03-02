@@ -4,7 +4,7 @@ namespace Game.States
     {
         GoToMainMenu,
         ReturnToMainMenu,
-        GoToAchievements,
+        GoToGarage,
         GoToInventory,
         GoToSettings,
         GoToCoPilot,
