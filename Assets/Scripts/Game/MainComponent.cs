@@ -11,6 +11,7 @@ namespace Game
 
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
+        private InventoryComponent _inventoryComponent;
         private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
@@ -26,6 +27,7 @@ namespace Game
             //TODO Create Components
             CreateUIComponent();
             CreateIntroComponent();
+            CreateInventoryComponent();
             CreateGameplayComponent();
 
             InitializeComponents();
@@ -35,9 +37,10 @@ namespace Game
 
         private void InitializeComponents()
         {
-            //TODO Initialize Components
+            //TODO Initialize Components & Refactor Need componentContainer?
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
+            _inventoryComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
         }
 
@@ -51,6 +54,12 @@ namespace Game
         {
             _introComponent = FindObjectOfType<IntroComponent>();
             _componentContainer.AddComponent("IntroComponent", _introComponent);
+        }
+
+        private void CreateInventoryComponent()
+        {
+            _inventoryComponent = FindObjectOfType<InventoryComponent>();
+            _componentContainer.AddComponent("InventoryComponent", _inventoryComponent);
         }
 
         private void CreateGameplayComponent()
