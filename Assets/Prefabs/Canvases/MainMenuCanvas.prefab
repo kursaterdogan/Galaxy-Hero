@@ -952,19 +952,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 940789503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6383528282250814311}
-        m_TargetAssemblyTypeName: Game.UserInterfaces.MainMenu.MainMenuCanvas, Assembly-CSharp
-        m_MethodName: RequestCreditsMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &959814823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1876562177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6383528282250814311}
+        m_TargetAssemblyTypeName: Game.UserInterfaces.MainMenu.MainMenuCanvas, Assembly-CSharp
+        m_MethodName: RequestInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2017672638
 GameObject:
   m_ObjectHideFlags: 0
