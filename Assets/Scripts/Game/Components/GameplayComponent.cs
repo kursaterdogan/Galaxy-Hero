@@ -19,7 +19,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>GameplayComponent initialized!</color>");
+            Debug.Log("<color=lime>GameplayComponent initialized!</color>");
 
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
         }

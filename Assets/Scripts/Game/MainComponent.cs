@@ -19,7 +19,7 @@ namespace Game
 
         void Awake()
         {
-            Debug.Log("<color=green>MainComponent initialized!</color>");
+            Debug.Log("<color=lime>MainComponent initialized!</color>");
             _componentContainer = new ComponentContainer();
         }
 

@@ -9,7 +9,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>GarageComponent initialized!</color>");
+            Debug.Log("<color=lime>GarageComponent initialized!</color>");
             //TODO GarageState
             //TODO WalletComponent
             //TODO AccountComponent

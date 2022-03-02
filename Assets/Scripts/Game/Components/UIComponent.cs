@@ -25,7 +25,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>UIComponent initialized!</color>");
+            Debug.Log("<color=lime>UIComponent initialized!</color>");
 
             introCanvas.Initialize();
             mainMenuCanvas.Initialize();

@@ -15,7 +15,7 @@ namespace Game.Components
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>IntroComponent initialized!</color>");
+            Debug.Log("<color=lime>IntroComponent initialized!</color>");
         }
 
         public void OnConstruct()
