@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
@@ -23,8 +22,6 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>LoadingState OnEnter</color>");
-
             _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
 
             SubscribeToComponentChangeDelegates();
@@ -39,8 +36,6 @@ namespace Game.States.Splash
             UnsubscribeToComponentChangeDelegates();
 
             _introCanvas.OnQuit();
-
-            Debug.Log("<color=cyan>LoadingState OnExit</color>");
         }
 
         public void SubscribeToComponentChangeDelegates()
