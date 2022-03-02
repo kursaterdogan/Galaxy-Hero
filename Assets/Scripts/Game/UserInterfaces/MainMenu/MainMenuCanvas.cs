@@ -6,60 +6,54 @@ namespace Game.UserInterfaces.MainMenu
     {
         public delegate void MainMenuRequestDelegate();
 
-        public event MainMenuRequestDelegate OnInGameMenuRequest;
-        public event MainMenuRequestDelegate OnSettingsMenuRequest;
-        public event MainMenuRequestDelegate OnAchievementsMenuRequest;
-        public event MainMenuRequestDelegate OnMarketMenuRequest;
-        public event MainMenuRequestDelegate OnInventoryMenuRequest;
-        public event MainMenuRequestDelegate OnGarageMenuRequest;
-        public event MainMenuRequestDelegate OnCoPilotMenuRequest;
-        public event MainMenuRequestDelegate OnCreditsMenuRequest;
-        public event MainMenuRequestDelegate OnQuoteMenuRequest;
+        public event MainMenuRequestDelegate OnInGameRequest;
+        public event MainMenuRequestDelegate OnSettingsRequest;
+        public event MainMenuRequestDelegate OnGarageRequest;
+        public event MainMenuRequestDelegate OnMarketRequest;
+        public event MainMenuRequestDelegate OnInventoryRequest;
+        public event MainMenuRequestDelegate OnCoPilotRequest;
+        public event MainMenuRequestDelegate OnCreditsRequest;
+        public event MainMenuRequestDelegate OnQuoteRequest;
 
         public void RequestInGameMenu()
         {
             //TODO Add Provision canvas
-            OnInGameMenuRequest?.Invoke();
+            OnInGameRequest?.Invoke();
         }
 
         public void RequestQuote()
         {
-            OnQuoteMenuRequest?.Invoke();
+            OnQuoteRequest?.Invoke();
         }
 
         public void RequestSettings()
         {
-            OnSettingsMenuRequest?.Invoke();
-        }
-
-        public void RequestAchievements()
-        {
-            OnAchievementsMenuRequest?.Invoke();
-        }
-
-        public void RequestMarket()
-        {
-            OnMarketMenuRequest?.Invoke();
-        }
-
-        public void RequestInventory()
-        {
-            OnInventoryMenuRequest?.Invoke();
+            OnSettingsRequest?.Invoke();
         }
 
         public void RequestGarage()
         {
-            OnGarageMenuRequest?.Invoke();
+            OnGarageRequest?.Invoke();
+        }
+
+        public void RequestMarket()
+        {
+            OnMarketRequest?.Invoke();
+        }
+
+        public void RequestInventory()
+        {
+            OnInventoryRequest?.Invoke();
         }
 
         public void RequestCoPilot()
         {
-            OnCoPilotMenuRequest?.Invoke();
+            OnCoPilotRequest?.Invoke();
         }
 
         public void RequestCredits()
         {
-            OnCreditsMenuRequest?.Invoke();
+            OnCreditsRequest?.Invoke();
         }
     }
 }
