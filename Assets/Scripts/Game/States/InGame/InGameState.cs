@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.State;
 using Base.Component;
 using Game.Components;
@@ -24,16 +23,12 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>InGameState OnEnter</color>");
-
             _gameplayComponent.OnConstruct();
         }
 
         protected override void OnExit()
         {
             _gameplayComponent.OnDestruct();
-
-            Debug.Log("<color=cyan>InGameState OnExit</color>");
         }
     }
 }
