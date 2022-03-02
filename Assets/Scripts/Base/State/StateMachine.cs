@@ -1,6 +1,6 @@
+using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Base.State
 {
@@ -18,6 +18,10 @@ namespace Base.State
 
         public void Enter()
         {
+            Debug.Log(
+                "<color=orange>" + GetType().Name + " " +
+                System.Reflection.MethodBase.GetCurrentMethod().Name + "</color>");
+
             OnEnter();
 
             if (_currentSubState == null && _defaultSubState != null)
@@ -88,6 +92,10 @@ namespace Base.State
 
         private void Exit()
         {
+            Debug.Log(
+                "<color=cyan>" + GetType().Name + " " +
+                System.Reflection.MethodBase.GetCurrentMethod().Name + "</color>");
+
             _currentSubState?.Exit();
 
             OnExit();
