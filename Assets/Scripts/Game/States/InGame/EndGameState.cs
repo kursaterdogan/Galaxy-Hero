@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.State;
 using Base.Component;
 
@@ -13,12 +12,10 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>EndGameState OnEnter</color>");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("<color=cyan>EndGameState OnExit</color>");
         }
     }
 }
