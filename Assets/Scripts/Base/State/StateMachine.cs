@@ -92,13 +92,13 @@ namespace Base.State
 
         private void Exit()
         {
-            Debug.Log(
-                "<color=cyan>" + GetType().Name + " " +
-                System.Reflection.MethodBase.GetCurrentMethod().Name + "</color>");
-
             _currentSubState?.Exit();
 
             OnExit();
+
+            Debug.Log(
+                "<color=cyan>" + GetType().Name + " " +
+                System.Reflection.MethodBase.GetCurrentMethod().Name + "</color>");
         }
     }
 }
