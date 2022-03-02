@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
@@ -24,8 +23,6 @@ namespace Game.States.Main
 
         protected override void OnEnter()
         {
-            Debug.Log("<color=orange>InventoryState OnEnter</color>");
-
             SubscribeToCanvasRequestDelegates();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.Inventory);
@@ -34,8 +31,6 @@ namespace Game.States.Main
         protected override void OnExit()
         {
             UnsubscribeToCanvasRequestDelegates();
-
-            Debug.Log("<color=cyan>InventoryState OnExit</color>");
         }
 
         public void SubscribeToCanvasRequestDelegates()
