@@ -1,4 +1,3 @@
-using Base.Component;
 using UnityEngine;
 
 namespace Base.UserInterface
@@ -11,6 +10,7 @@ namespace Base.UserInterface
         public void Initialize()
         {
             _canvas = GetComponent<Canvas>();
+            Debug.Log("<color=magenta>" + gameObject.name + " initialized!</color>");
         }
 
         public void Activate()
