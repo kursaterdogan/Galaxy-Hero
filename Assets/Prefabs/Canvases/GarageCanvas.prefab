@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LASTEO
+  m_text: GHOSTEO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3892,7 +3892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106114341046146226}
   m_Layer: 0
-  m_Name: Lasteo
+  m_Name: Ghosteo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6348,7 +6348,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2106114341914855069}
         m_TargetAssemblyTypeName: Game.UserInterfaces.MainMenu.GarageCanvas, Assembly-CSharp
-        m_MethodName: RequestLasteoUpgrade
+        m_MethodName: RequestGhosteoUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6595,7 +6595,7 @@ GameObject:
   - component: {fileID: 2106114341469648589}
   - component: {fileID: 2106114341469648588}
   m_Layer: 5
-  m_Name: LasteoLevelText
+  m_Name: GhosteoLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10196,9 +10196,9 @@ MonoBehaviour:
   - {fileID: 2106114341088890517}
   - {fileID: 2106114342611391456}
   - {fileID: 2106114342353384444}
-  lasteoCostText: {fileID: 2106114342262759603}
-  lasteoLevelText: {fileID: 2106114341469648588}
-  lasteoLevelFrames:
+  ghosteoCostText: {fileID: 2106114342262759603}
+  ghosteoLevelText: {fileID: 2106114341469648588}
+  ghosteoLevelFrames:
   - {fileID: 2106114341509223254}
   - {fileID: 2106114341073387004}
   - {fileID: 2106114341522479790}
@@ -12938,7 +12938,7 @@ GameObject:
   - component: {fileID: 2106114342262759596}
   - component: {fileID: 2106114342262759603}
   m_Layer: 5
-  m_Name: LasteoCostText
+  m_Name: GhosteoCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

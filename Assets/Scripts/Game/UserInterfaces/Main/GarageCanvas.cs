@@ -17,7 +17,7 @@ namespace Game.UserInterfaces.Main
         public event GarageRequestDelegate OnGoldMultiplierUpgradeRequest;
         public event GarageRequestDelegate OnShildeoUpgradeRequest;
         public event GarageRequestDelegate OnBombeoUpgradeRequest;
-        public event GarageRequestDelegate OnLasteoUpgradeRequest;
+        public event GarageRequestDelegate OnGhosteoUpgradeRequest;
 
         public event GarageRequestDelegate OnReturnToMainMenuRequest;
 
@@ -59,9 +59,9 @@ namespace Game.UserInterfaces.Main
         [SerializeField] private TMP_Text bombeoLevelText;
         [SerializeField] private GameObject[] bombeoLevelFrames;
 
-        [SerializeField] private TMP_Text lasteoCostText;
-        [SerializeField] private TMP_Text lasteoLevelText;
-        [SerializeField] private GameObject[] lasteoLevelFrames;
+        [SerializeField] private TMP_Text ghosteoCostText;
+        [SerializeField] private TMP_Text ghosteoLevelText;
+        [SerializeField] private GameObject[] ghosteoLevelFrames;
 
         public void RequestHealthUpgrade()
         {
@@ -117,10 +117,10 @@ namespace Game.UserInterfaces.Main
             OnBombeoUpgradeRequest?.Invoke();
         }
 
-        public void RequestLasteoUpgrade()
+        public void RequestGhosteoUpgrade()
         {
             //TODO Subscribe & Unsubscribe
-            OnLasteoUpgradeRequest?.Invoke();
+            OnGhosteoUpgradeRequest?.Invoke();
         }
 
         public void RequestReturnToMainMenu()
