@@ -10,7 +10,7 @@ namespace Game.UserInterfaces.Main
 
         public void RequestReturnToMainMenu()
         {
-            //TODO Handle SuperPowerCanvas
+            //TODO Handle CreditsCanvas
             OnReturnToMainMenuRequest?.Invoke();
         }
     }
