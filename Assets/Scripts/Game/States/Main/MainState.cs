@@ -9,6 +9,7 @@ namespace Game.States.Main
         private InventoryState _inventoryState;
         private GarageState _garageState;
         private SuperPowerState _superPowerState;
+        private CreditsState _creditsState;
 
         public MainState(ComponentContainer componentContainer)
         {
@@ -16,11 +17,13 @@ namespace Game.States.Main
             _inventoryState = new InventoryState(componentContainer);
             _garageState = new GarageState(componentContainer);
             _superPowerState = new SuperPowerState(componentContainer);
+            _creditsState = new CreditsState(componentContainer);
 
             AddSubState(_mainMenuState);
             AddSubState(_inventoryState);
             AddSubState(_garageState);
             AddSubState(_superPowerState);
+            AddSubState(_creditsState);
 
             AddTransition(_mainMenuState, _inventoryState, (int)StateTriggers.GoToInventory);
             AddTransition(_inventoryState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
@@ -30,6 +33,9 @@ namespace Game.States.Main
 
             AddTransition(_mainMenuState, _superPowerState, (int)StateTriggers.GoToSuperPower);
             AddTransition(_superPowerState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+
+            AddTransition(_mainMenuState, _creditsState, (int)StateTriggers.GoToCredits);
+            AddTransition(_creditsState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
         }
 
         protected override void OnEnter()
