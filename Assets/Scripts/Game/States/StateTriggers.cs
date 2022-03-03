@@ -7,7 +7,7 @@ namespace Game.States
         GoToGarage,
         GoToInventory,
         GoToSettings,
-        GoToCoPilot,
+        GoToSuperPower,
         GoToQuote,
         StartGame,
         PlayGame,
