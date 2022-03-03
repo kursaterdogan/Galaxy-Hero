@@ -1,4 +1,3 @@
-using Base.Component;
 using UnityEngine;
 
 namespace Base.UserInterface
@@ -6,25 +5,23 @@ namespace Base.UserInterface
     [RequireComponent(typeof(Canvas))]
     public abstract class BaseCanvas : MonoBehaviour
     {
-        private Canvas _canvasComponent;
+        private Canvas _canvas;
 
-        public void Initialize(ComponentContainer componentContainer)
+        public void Initialize()
         {
-            _canvasComponent = GetComponent<Canvas>();
+            _canvas = GetComponent<Canvas>();
+
+            Debug.Log("<color=yellow>" + GetType().Name + " initialized!</color>");
         }
 
         public void Activate()
         {
-            _canvasComponent.enabled = true;
+            _canvas.enabled = true;
         }
 
         public void Deactivate()
         {
-            _canvasComponent.enabled = false;
-        }
-
-        protected virtual void Init()
-        {
+            _canvas.enabled = false;
         }
     }
 }

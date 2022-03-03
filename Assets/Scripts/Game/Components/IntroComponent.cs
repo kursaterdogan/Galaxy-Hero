@@ -1,30 +1,40 @@
-using Base.Component;
-using Game.UserInterfaces.Splash;
 using UnityEngine;
+using System.Collections;
+using Base.Component;
 
 namespace Game.Components
 {
-    public class IntroComponent : MonoBehaviour, IComponent
+    public class IntroComponent : MonoBehaviour, IComponent, IConstructable
     {
-        private UIComponent _uiComponent;
-        private SplashCanvas _splashCanvas;
+        public delegate void IntroChangeDelegate();
+
+        public event IntroChangeDelegate OnIntroAnimationStart;
+        public event IntroChangeDelegate OnIntroAnimationComplete;
+
+        private readonly float animationTime = 1.0f;
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>IntroComponent initialized!</color>");
-            _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
-            _splashCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Splash) as SplashCanvas;
+            Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
         }
 
-        public bool IsIntroAnimationCompleted()
+        public void OnConstruct()
         {
-            return _splashCanvas.IsIntroCompleted();
+            StartCoroutine(PlayAnimation());
         }
 
-        public void StartIntro()
+        public float GetAnimationTime()
         {
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Splash);
-            _splashCanvas.PlayIntroAnimation();
+            return animationTime;
+        }
+
+        private IEnumerator PlayAnimation()
+        {
+            OnIntroAnimationStart?.Invoke();
+
+            yield return new WaitForSeconds(animationTime);
+
+            OnIntroAnimationComplete?.Invoke();
         }
     }
 }

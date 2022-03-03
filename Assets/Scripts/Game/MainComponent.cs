@@ -11,52 +11,103 @@ namespace Game
 
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
+        private InventoryComponent _inventoryComponent;
+        private GarageComponent _garageComponent;
+        private SuperPowerComponent _superPowerComponent;
+        private CreditsComponent _creditsComponent;
+        private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
 
-        private void Awake()
+        void Awake()
         {
-            Debug.Log("<color=green>MainComponent initialized!</color>");
+            Debug.Log("<color=lime>" + GetType().Name + " initialized!</color>");
+
             _componentContainer = new ComponentContainer();
         }
 
-        private void Start()
+        void Start()
         {
             //TODO Create Components
             CreateUIComponent();
             CreateIntroComponent();
+            CreateInventoryComponent();
+            CreateGarageComponent();
+            CreateSuperPowerComponent();
+            CreateCreditsComponent();
+            CreateGameplayComponent();
 
             InitializeComponents();
             CreateAppState();
             _appState.Enter();
         }
 
-        private void Update()
-        {
-            _appState.Update();
-        }
-
-        public void OnDestroy()
-        {
-        }
-
         private void InitializeComponents()
         {
-            //TODO Initialize Components
+            //TODO Initialize Components & Refactor Need componentContainer?
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
+            _inventoryComponent.Initialize(_componentContainer);
+            _garageComponent.Initialize(_componentContainer);
+            _superPowerComponent.Initialize(_componentContainer);
+            _creditsComponent.Initialize(_componentContainer);
+            _gameplayComponent.Initialize(_componentContainer);
         }
 
         private void CreateUIComponent()
         {
-            _introComponent = FindObjectOfType<IntroComponent>();
-            _componentContainer.AddComponent("IntroComponent", _introComponent);
+            _uiComponent = FindObjectOfType<UIComponent>();
+            string componentKey = _uiComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _uiComponent);
         }
 
         private void CreateIntroComponent()
         {
-            _uiComponent = FindObjectOfType<UIComponent>();
-            _componentContainer.AddComponent("UIComponent", _uiComponent);
+            _introComponent = FindObjectOfType<IntroComponent>();
+            string componentKey = _introComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _introComponent);
+        }
+
+        private void CreateInventoryComponent()
+        {
+            _inventoryComponent = FindObjectOfType<InventoryComponent>();
+            string componentKey = _inventoryComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _inventoryComponent);
+        }
+
+        private void CreateGarageComponent()
+        {
+            _garageComponent = FindObjectOfType<GarageComponent>();
+            string componentKey = _garageComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _garageComponent);
+        }
+
+        private void CreateSuperPowerComponent()
+        {
+            _superPowerComponent = FindObjectOfType<SuperPowerComponent>();
+            string componentKey = _superPowerComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _superPowerComponent);
+        }
+
+        private void CreateCreditsComponent()
+        {
+            _creditsComponent = FindObjectOfType<CreditsComponent>();
+            string componentKey = _creditsComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _creditsComponent);
+        }
+
+        private void CreateGameplayComponent()
+        {
+            _gameplayComponent = FindObjectOfType<GameplayComponent>();
+            string componentKey = _gameplayComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _gameplayComponent);
         }
 
         private void CreateAppState()

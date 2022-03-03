@@ -8,23 +8,8 @@ namespace Game.UserInterfaces.Splash
     {
         [SerializeField] private Image image;
 
-        public void PlayFadeInAnimation(float duration)
-        {
-            if (image == null)
-            {
-                return;
-            }
-
-            image.DOColor(new Color(image.color.r, image.color.g, image.color.b, 1), duration).SetEase(Ease.InOutSine);
-        }
-
         public void PlayFadeOutAnimation(float duration)
         {
-            if (image == null)
-            {
-                return;
-            }
-
             image.DOColor(new Color(image.color.r, image.color.g, image.color.b, 0), duration).SetEase(Ease.InOutSine);
         }
     }

@@ -8,26 +8,47 @@ namespace Game.Components
     {
         public enum MenuName
         {
-            Splash,
+            Intro,
             MainMenu,
+            Inventory,
+            Garage,
+            SuperPower,
+            Credits,
+            Settings,
             InGame
         }
 
-        [SerializeField] private BaseCanvas splashCanvas;
+        [SerializeField] private BaseCanvas introCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
+        [SerializeField] private BaseCanvas inventoryCanvas;
+        [SerializeField] private BaseCanvas garageCanvas;
+        [SerializeField] private BaseCanvas superPowerCanvas;
+        [SerializeField] private BaseCanvas creditsCanvas;
+        [SerializeField] private BaseCanvas settingsCanvas;
         [SerializeField] private BaseCanvas inGameCanvas;
 
         private BaseCanvas _activeCanvas;
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            Debug.Log("<color=green>UIComponent initialized!</color>");
-            splashCanvas.Initialize(componentContainer);
-            mainMenuCanvas.Initialize(componentContainer);
-            inGameCanvas.Initialize(componentContainer);
+            Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
-            DeactivateCanvas(splashCanvas);
+            introCanvas.Initialize();
+            mainMenuCanvas.Initialize();
+            inventoryCanvas.Initialize();
+            garageCanvas.Initialize();
+            superPowerCanvas.Initialize();
+            creditsCanvas.Initialize();
+            settingsCanvas.Initialize();
+            inGameCanvas.Initialize();
+
+            DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
+            DeactivateCanvas(inventoryCanvas);
+            DeactivateCanvas(garageCanvas);
+            DeactivateCanvas(superPowerCanvas);
+            DeactivateCanvas(creditsCanvas);
+            DeactivateCanvas(settingsCanvas);
             DeactivateCanvas(inGameCanvas);
         }
 
@@ -35,10 +56,20 @@ namespace Game.Components
         {
             switch (canvas)
             {
-                case MenuName.Splash:
-                    return splashCanvas;
+                case MenuName.Intro:
+                    return introCanvas;
                 case MenuName.MainMenu:
                     return mainMenuCanvas;
+                case MenuName.Inventory:
+                    return inventoryCanvas;
+                case MenuName.Garage:
+                    return garageCanvas;
+                case MenuName.SuperPower:
+                    return superPowerCanvas;
+                case MenuName.Credits:
+                    return creditsCanvas;
+                case MenuName.Settings:
+                    return settingsCanvas;
                 case MenuName.InGame:
                     return inGameCanvas;
                 default:
@@ -50,12 +81,6 @@ namespace Game.Components
         {
             DeactivateCanvas(_activeCanvas);
             ActivateCanvas(menuName);
-        }
-
-        public void DisableSplashCanvasObject(MenuName menuName)
-        {
-            if (splashCanvas && menuName == MenuName.Splash)
-                splashCanvas.gameObject.SetActive(false);
         }
 
         private void DeactivateCanvas(BaseCanvas canvas)
@@ -70,11 +95,26 @@ namespace Game.Components
         {
             switch (menuName)
             {
-                case MenuName.Splash:
-                    _activeCanvas = splashCanvas;
+                case MenuName.Intro:
+                    _activeCanvas = introCanvas;
                     break;
                 case MenuName.MainMenu:
                     _activeCanvas = mainMenuCanvas;
+                    break;
+                case MenuName.Inventory:
+                    _activeCanvas = inventoryCanvas;
+                    break;
+                case MenuName.Garage:
+                    _activeCanvas = garageCanvas;
+                    break;
+                case MenuName.SuperPower:
+                    _activeCanvas = superPowerCanvas;
+                    break;
+                case MenuName.Credits:
+                    _activeCanvas = creditsCanvas;
+                    break;
+                case MenuName.Settings:
+                    _activeCanvas = settingsCanvas;
                     break;
                 case MenuName.InGame:
                     _activeCanvas = inGameCanvas;

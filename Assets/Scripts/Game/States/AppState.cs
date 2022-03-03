@@ -1,4 +1,3 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.States.InGame;
@@ -23,24 +22,18 @@ namespace Game.States
             AddSubState(_mainState);
             AddSubState(_gameState);
 
-            AddTransition(_splashState, _mainState, (int)StateTriggers.SplashCompleted);
-            AddTransition(_mainState, _gameState, (int)StateTriggers.StartGameRequest);
-            AddTransition(_gameState, _mainState, (int)StateTriggers.GoToMainMenuRequest);
+            AddTransition(_splashState, _mainState, (int)StateTriggers.GoToMainMenu);
+            AddTransition(_mainState, _gameState, (int)StateTriggers.StartGame);
+            //TODO Handle EndGameState
+            AddTransition(_gameState, _mainState, (int)StateTriggers.ReturnToMainMenu);
         }
 
         protected override void OnEnter()
         {
-            Debug.Log("AppState OnEnter");
-        }
-
-        protected override void OnUpdate()
-        {
-            Debug.Log("AppState Update");
         }
 
         protected override void OnExit()
         {
-            Debug.Log("AppState OnExit");
         }
     }
 }

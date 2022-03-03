@@ -11,10 +11,13 @@ namespace Game.Gameplay
         private int _screenBoundsHeight;
         private float _padding = 10f;
 
-        private void Awake()
+        private float _maxVerticalPosition;
+
+        void Awake()
         {
             SetCamera();
             SetMoveBoundaries();
+            SetMaxVerticalPosition();
         }
 
         public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
@@ -37,6 +40,11 @@ namespace Game.Gameplay
             return isPointerOnScreen;
         }
 
+        public float GetMaxVerticalPosition()
+        {
+            return _maxVerticalPosition;
+        }
+
         private void SetCamera()
         {
             _mainCamera = Camera.main;
@@ -46,6 +54,11 @@ namespace Game.Gameplay
         {
             _screenBoundsHeight = Screen.height;
             _screenBoundsWidth = Screen.width;
+        }
+
+        private void SetMaxVerticalPosition()
+        {
+            _maxVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 1)).y;
         }
     }
 }

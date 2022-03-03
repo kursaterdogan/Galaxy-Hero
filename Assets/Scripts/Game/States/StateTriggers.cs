@@ -2,31 +2,16 @@ namespace Game.States
 {
     public enum StateTriggers
     {
-        None,
-        SplashLoading,
-        SplashCompleted,
-        IntroScene,
-        ReturnMainMenuFromAchievements,
-        OpenAchievement,
-        OpenCard,
-        OpenSpaceship,
-        ReturnToInventory,
-        GoToMarketRequest,
-        GoToMainMenuRequest,
-        GoToAchievementsRequest,
-        GoToSpaceShipUpgradeRequest,
-        GoToGarageRequest,
-        GoToSettingsRequest,
-        GoToInventoryRequest,
-        GoToCoPilotRequest,
-        GoToQuoteRequest,
-        StartGameRequest,
-        PlayGameRequest,
-        PauseGameRequest,
-        ResumeGameRequest,
-        GameOver,
-        ReplayGameRequest,
+        GoToMainMenu,
+        ReturnToMainMenu,
+        GoToInventory,
+        GoToGarage,
+        GoToSuperPower,
         GoToCredits,
-        ReturnMainMenuFromGame
+        GoToSettings,
+        StartGame,
+        PlayGame,
+        GameOver,
+        ReplayGame
     }
 }

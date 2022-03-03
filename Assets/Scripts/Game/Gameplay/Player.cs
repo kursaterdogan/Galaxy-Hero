@@ -18,7 +18,7 @@ namespace Game.Gameplay
         float _projectileSpeed = 15f;
         float _projectileFiringPeriod = 0.2f;
 
-        private void Start()
+        void Start()
         {
             //TODO SetMoveSpeed
             //TODO SetTimeScale on InGameState
@@ -29,9 +29,15 @@ namespace Game.Gameplay
             StartFiringCoroutine();
         }
 
-        private void Update()
+        void Update()
         {
             Move();
+        }
+
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            // TODO Check EnemyTrigger
+            // Debug.Log(col.name);
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -63,6 +69,7 @@ namespace Game.Gameplay
 
         private void StopFiringCoroutine()
         {
+            //TODO HandleFiringCoroutine
             StopCoroutine(_firingCoroutine);
         }
 
@@ -73,12 +80,6 @@ namespace Game.Gameplay
                 Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
             }
-        }
-
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            // TODO Check EnemyTrigger
-            // Debug.Log(col.name);
         }
 
         private IEnumerator FireContinously()

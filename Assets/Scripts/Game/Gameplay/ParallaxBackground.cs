@@ -8,13 +8,13 @@ namespace Game.Gameplay
         [SerializeField] private float speed;
         private Vector3 _length;
 
-        private void Start()
+        void Start()
         {
             SetStartPosition();
             SetLength();
         }
 
-        private void Update()
+        void Update()
         {
             PassiveMove();
         }

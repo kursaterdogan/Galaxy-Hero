@@ -11,13 +11,13 @@ namespace Game.Gameplay
         [SerializeField] private float speed;
         [SerializeField] private int health;
 
-        private void Start()
+        void Start()
         {
             SetWaypoints();
             SetStartPosition();
         }
 
-        private void Update()
+        void Update()
         {
             FollowPath();
         }

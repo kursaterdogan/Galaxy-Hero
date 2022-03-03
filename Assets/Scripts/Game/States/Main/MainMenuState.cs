@@ -1,101 +1,83 @@
-using UnityEngine;
 using Base.Component;
 using Base.State;
 using Game.Components;
-using Game.UserInterfaces.MainMenu;
+using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
 {
-    public class MainMenuState : StateMachine
+    public class MainMenuState : StateMachine, IRequestable
     {
         private UIComponent _uiComponent;
+
         private MainMenuCanvas _mainMenuCanvas;
 
         public MainMenuState(ComponentContainer componentContainer)
         {
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
+
             _mainMenuCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.MainMenu) as MainMenuCanvas;
         }
 
         protected override void OnEnter()
         {
-            Debug.Log("MainMenuState OnEnter");
+            SubscribeToCanvasRequestDelegates();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
-            _uiComponent.DisableSplashCanvasObject(UIComponent.MenuName.Splash);
-            _mainMenuCanvas.OnInGameMenuRequest += RequestInGameMenu;
-            _mainMenuCanvas.OnSettingsMenuRequest += OnSettingsMenuRequest;
-            _mainMenuCanvas.OnAchievementsMenuRequest += OnAchievementsMenuRequest;
-            _mainMenuCanvas.OnMarketMenuRequest += OnMarketMenuRequest;
-            _mainMenuCanvas.OnInventoryMenuRequest += OnInventoryMenuRequest;
-            _mainMenuCanvas.OnGarageMenuRequest += OnGarageMenuRequest;
-            _mainMenuCanvas.OnCoPilotMenuRequest += OnCoPilotMenuRequest;
-            _mainMenuCanvas.OnCreditsMenuRequest += OnCreditsMenuRequest;
-            _mainMenuCanvas.OnQuoteMenuRequest += OnQuoteMenuRequest;
-        }
-
-        protected override void OnUpdate()
-        {
-            Debug.Log("MainMenuState OnUpdate");
         }
 
         protected override void OnExit()
         {
-            _mainMenuCanvas.OnInGameMenuRequest -= RequestInGameMenu;
-            _mainMenuCanvas.OnSettingsMenuRequest -= OnSettingsMenuRequest;
-            _mainMenuCanvas.OnAchievementsMenuRequest -= OnAchievementsMenuRequest;
-            _mainMenuCanvas.OnMarketMenuRequest -= OnMarketMenuRequest;
-            _mainMenuCanvas.OnInventoryMenuRequest -= OnInventoryMenuRequest;
-            _mainMenuCanvas.OnCoPilotMenuRequest -= OnCoPilotMenuRequest;
-            _mainMenuCanvas.OnCreditsMenuRequest -= OnCreditsMenuRequest;
-            _mainMenuCanvas.OnQuoteMenuRequest -= OnQuoteMenuRequest;
-
-            Debug.Log("MainMenuState OnExit");
+            UnsubscribeToCanvasRequestDelegates();
         }
 
-        private void OnCreditsMenuRequest()
+        public void SubscribeToCanvasRequestDelegates()
+        {
+            _mainMenuCanvas.OnInventoryRequest += RequestInventory;
+            _mainMenuCanvas.OnGarageRequest += RequestGarage;
+            _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
+            _mainMenuCanvas.OnCreditsRequest += RequestCredits;
+            _mainMenuCanvas.OnSettingsRequest += RequestSettings;
+            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
+        }
+
+        public void UnsubscribeToCanvasRequestDelegates()
+        {
+            _mainMenuCanvas.OnInventoryRequest -= RequestInventory;
+            _mainMenuCanvas.OnGarageRequest -= RequestGarage;
+            _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
+            _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
+            _mainMenuCanvas.OnSettingsRequest -= RequestSettings;
+            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
+        }
+
+        private void RequestInventory()
+        {
+            SendTrigger((int)StateTriggers.GoToInventory);
+        }
+
+        private void RequestGarage()
+        {
+            SendTrigger((int)StateTriggers.GoToGarage);
+        }
+
+        private void RequestSuperPower()
+        {
+            SendTrigger((int)StateTriggers.GoToSuperPower);
+        }
+
+        private void RequestCredits()
         {
             SendTrigger((int)StateTriggers.GoToCredits);
         }
 
-        private void OnCoPilotMenuRequest()
+        private void RequestSettings()
         {
-            SendTrigger((int)StateTriggers.GoToCoPilotRequest);
+            SendTrigger((int)StateTriggers.GoToSettings);
         }
 
-        private void OnGarageMenuRequest()
+        private void RequestStartGame()
         {
-            SendTrigger((int)StateTriggers.GoToGarageRequest);
-        }
-
-        private void OnInventoryMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToInventoryRequest);
-        }
-
-        private void OnMarketMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToMarketRequest);
-        }
-
-        private void OnAchievementsMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToAchievementsRequest);
-        }
-
-        private void OnSettingsMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToSettingsRequest);
-        }
-
-        private void OnQuoteMenuRequest()
-        {
-            SendTrigger((int)StateTriggers.GoToQuoteRequest);
-        }
-
-        private void RequestInGameMenu()
-        {
-            SendTrigger((int)StateTriggers.StartGameRequest);
+            SendTrigger((int)StateTriggers.StartGame);
         }
     }
 }
