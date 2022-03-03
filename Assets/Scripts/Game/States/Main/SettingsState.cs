@@ -24,7 +24,7 @@ namespace Game.States.Main
         {
             SubscribeToCanvasRequestDelegates();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Credits);
+            _uiComponent.EnableCanvas(UIComponent.MenuName.Settings);
         }
 
         protected override void OnExit()
