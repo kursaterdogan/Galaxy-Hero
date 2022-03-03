@@ -37,6 +37,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest += RequestCredits;
             _mainMenuCanvas.OnInGameRequest += RequestStartGame;
+            _mainMenuCanvas.OnSettingsRequest += RequestSettings;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
@@ -46,6 +47,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
             _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
+            _mainMenuCanvas.OnSettingsRequest -= RequestSettings;
         }
 
         private void RequestInventory()
@@ -60,7 +62,6 @@ namespace Game.States.Main
 
         private void RequestSuperPower()
         {
-            //TODO Delete & Rename Unused Triggers 
             SendTrigger((int)StateTriggers.GoToSuperPower);
         }
 
@@ -69,7 +70,7 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToCredits);
         }
 
-        private void RequestSettingsMenu()
+        private void RequestSettings()
         {
             SendTrigger((int)StateTriggers.GoToSettings);
         }
