@@ -47,4 +47,5 @@ MonoBehaviour:
   mainMenuCanvas: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   garageCanvas: {fileID: 0}
+  superPowerCanvas: {fileID: 0}
   inGameCanvas: {fileID: 0}
