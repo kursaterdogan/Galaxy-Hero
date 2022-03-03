@@ -36,8 +36,8 @@ namespace Game.States.Main
             _mainMenuCanvas.OnGarageRequest += RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest += RequestCredits;
-            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
             _mainMenuCanvas.OnSettingsRequest += RequestSettings;
+            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
@@ -46,8 +46,8 @@ namespace Game.States.Main
             _mainMenuCanvas.OnGarageRequest -= RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
-            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
             _mainMenuCanvas.OnSettingsRequest -= RequestSettings;
+            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
         }
 
         private void RequestInventory()
