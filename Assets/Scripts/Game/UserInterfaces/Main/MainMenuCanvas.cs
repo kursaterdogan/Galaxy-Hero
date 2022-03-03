@@ -11,7 +11,7 @@ namespace Game.UserInterfaces.Main
         public event MainMenuRequestDelegate OnGarageRequest;
         public event MainMenuRequestDelegate OnMarketRequest;
         public event MainMenuRequestDelegate OnInventoryRequest;
-        public event MainMenuRequestDelegate OnCoPilotRequest;
+        public event MainMenuRequestDelegate OnSuperPowerRequest;
         public event MainMenuRequestDelegate OnCreditsRequest;
         public event MainMenuRequestDelegate OnQuoteRequest;
 
@@ -46,9 +46,9 @@ namespace Game.UserInterfaces.Main
             OnInventoryRequest?.Invoke();
         }
 
-        public void RequestCoPilot()
+        public void RequestSuperPower()
         {
-            OnCoPilotRequest?.Invoke();
+            OnSuperPowerRequest?.Invoke();
         }
 
         public void RequestCredits()
