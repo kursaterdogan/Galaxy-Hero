@@ -6,44 +6,21 @@ namespace Game.UserInterfaces.Main
     {
         public delegate void MainMenuRequestDelegate();
 
-        public event MainMenuRequestDelegate OnInGameRequest;
-        public event MainMenuRequestDelegate OnSettingsRequest;
-        public event MainMenuRequestDelegate OnGarageRequest;
-        public event MainMenuRequestDelegate OnMarketRequest;
         public event MainMenuRequestDelegate OnInventoryRequest;
+        public event MainMenuRequestDelegate OnGarageRequest;
         public event MainMenuRequestDelegate OnSuperPowerRequest;
         public event MainMenuRequestDelegate OnCreditsRequest;
-        public event MainMenuRequestDelegate OnQuoteRequest;
+        public event MainMenuRequestDelegate OnSettingsRequest;
+        public event MainMenuRequestDelegate OnInGameRequest;
 
-        public void RequestInGameMenu()
+        public void RequestInventory()
         {
-            //TODO Add Provision canvas
-            OnInGameRequest?.Invoke();
-        }
-
-        public void RequestQuote()
-        {
-            OnQuoteRequest?.Invoke();
-        }
-
-        public void RequestSettings()
-        {
-            OnSettingsRequest?.Invoke();
+            OnInventoryRequest?.Invoke();
         }
 
         public void RequestGarage()
         {
             OnGarageRequest?.Invoke();
-        }
-
-        public void RequestMarket()
-        {
-            OnMarketRequest?.Invoke();
-        }
-
-        public void RequestInventory()
-        {
-            OnInventoryRequest?.Invoke();
         }
 
         public void RequestSuperPower()
@@ -54,6 +31,17 @@ namespace Game.UserInterfaces.Main
         public void RequestCredits()
         {
             OnCreditsRequest?.Invoke();
+        }
+
+        public void RequestSettings()
+        {
+            OnSettingsRequest?.Invoke();
+        }
+
+        public void RequestInGameMenu()
+        {
+            //TODO Add Provision canvas
+            OnInGameRequest?.Invoke();
         }
     }
 }
