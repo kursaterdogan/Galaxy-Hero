@@ -48,4 +48,6 @@ MonoBehaviour:
   inventoryCanvas: {fileID: 0}
   garageCanvas: {fileID: 0}
   superPowerCanvas: {fileID: 0}
+  creditsCanvas: {fileID: 0}
+  settingsCanvas: {fileID: 0}
   inGameCanvas: {fileID: 0}
