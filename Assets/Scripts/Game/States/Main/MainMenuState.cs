@@ -32,29 +32,20 @@ namespace Game.States.Main
 
         public void SubscribeToCanvasRequestDelegates()
         {
-            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
             _mainMenuCanvas.OnInventoryRequest += RequestInventory;
             _mainMenuCanvas.OnGarageRequest += RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
+            _mainMenuCanvas.OnCreditsRequest += RequestCredits;
+            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
-            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
             _mainMenuCanvas.OnInventoryRequest -= RequestInventory;
             _mainMenuCanvas.OnGarageRequest -= RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
-        }
-
-        private void RequestCredits()
-        {
-            SendTrigger((int)StateTriggers.GoToCredits);
-        }
-
-        private void RequestSuperPower()
-        {
-            //TODO Delete & Rename Unused Triggers 
-            SendTrigger((int)StateTriggers.GoToSuperPower);
+            _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
+            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
         }
 
         private void RequestInventory()
@@ -67,14 +58,20 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToGarage);
         }
 
+        private void RequestSuperPower()
+        {
+            //TODO Delete & Rename Unused Triggers 
+            SendTrigger((int)StateTriggers.GoToSuperPower);
+        }
+
+        private void RequestCredits()
+        {
+            SendTrigger((int)StateTriggers.GoToCredits);
+        }
+
         private void RequestSettingsMenu()
         {
             SendTrigger((int)StateTriggers.GoToSettings);
-        }
-
-        private void RequestQuote()
-        {
-            SendTrigger((int)StateTriggers.GoToQuote);
         }
 
         private void RequestStartGame()
