@@ -4,17 +4,14 @@ namespace Game.States
     {
         GoToMainMenu,
         ReturnToMainMenu,
-        GoToGarage,
         GoToInventory,
-        GoToSettings,
+        GoToGarage,
         GoToSuperPower,
-        GoToQuote,
+        GoToCredits,
+        GoToSettings,
         StartGame,
         PlayGame,
-        PauseGame,
-        ResumeGame,
         GameOver,
-        ReplayGame,
-        GoToCredits,
+        ReplayGame
     }
 }
