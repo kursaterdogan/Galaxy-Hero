@@ -25,9 +25,7 @@ namespace Game.Gameplay
         private void CheckDestroyPosition()
         {
             if (transform.position.y > _maxVerticalPosition)
-            {
                 gameObject.SetActive(false);
-            }
         }
     }
 }
