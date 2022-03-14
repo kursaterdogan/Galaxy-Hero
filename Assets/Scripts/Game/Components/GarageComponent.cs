@@ -61,6 +61,7 @@ namespace Game.Components
         public void OnDestruct()
         {
             UnsubscribeToOnUpgradeAction();
+            SaveDatas();
         }
 
         private void SetUpgrades()
@@ -107,6 +108,12 @@ namespace Game.Components
             OnUpgradeAction -= SetBombeoButtonInteractable;
             OnUpgradeAction -= SetGhosteoButtonInteractable;
         }
+        
+        private void SaveDatas()
+        {
+            _dataComponent.SaveCoinData();
+            _dataComponent.SaveGarageData();
+        }
 
         private void SetCoin()
         {
@@ -118,7 +125,7 @@ namespace Game.Components
         private void SetHealth()
         {
             int level = _dataComponent.GarageData.healthLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnHealthUpgradeChange?.Invoke(level, cost);
         }
@@ -126,7 +133,7 @@ namespace Game.Components
         private void SetSpeed()
         {
             int level = _dataComponent.GarageData.speedLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnSpeedUpgradeChange?.Invoke(level, cost);
         }
@@ -134,7 +141,7 @@ namespace Game.Components
         private void SetCannon()
         {
             int level = _dataComponent.GarageData.cannonLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnCannonUpgradeChange?.Invoke(level, cost);
         }
@@ -142,7 +149,7 @@ namespace Game.Components
         private void SetPower()
         {
             int level = _dataComponent.GarageData.powerLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnPowerUpgradeChange?.Invoke(level, cost);
         }
@@ -150,7 +157,7 @@ namespace Game.Components
         private void SetFireRate()
         {
             int level = _dataComponent.GarageData.fireRateLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnFireRateUpgradeChange?.Invoke(level, cost);
         }
@@ -158,7 +165,7 @@ namespace Game.Components
         private void SetScoreMultiplier()
         {
             int level = _dataComponent.GarageData.scoreMultiplierLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnScoreMultiplierUpgradeChange?.Invoke(level, cost);
         }
@@ -166,7 +173,7 @@ namespace Game.Components
         private void SetGoldMultiplier()
         {
             int level = _dataComponent.GarageData.goldMultiplierLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnGoldMultiplierUpgradeChange?.Invoke(level, cost);
         }
@@ -174,7 +181,7 @@ namespace Game.Components
         private void SetShildeo()
         {
             int level = _dataComponent.GarageData.shildeoLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnShildeoUpgradeChange?.Invoke(level, cost);
         }
@@ -182,7 +189,7 @@ namespace Game.Components
         private void SetBombeo()
         {
             int level = _dataComponent.GarageData.bombeoLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnBombeoUpgradeChange?.Invoke(level, cost);
         }
@@ -190,7 +197,7 @@ namespace Game.Components
         private void SetGhosteo()
         {
             int level = _dataComponent.GarageData.ghosteoLevel;
-            string cost = GetCost(level);
+            string cost = GetCostText(level);
 
             OnGhosteoUpgradeChange?.Invoke(level, cost);
         }
@@ -275,12 +282,12 @@ namespace Game.Components
             OnGhosteoButtonInteractableChange?.Invoke(isInteractable);
         }
 
-        private string GetCost(int level)
+        private string GetCostText(int level)
         {
             if (level == MaxLevel)
                 return MaxLevelText;
 
-            return (level * CostMultiplier).ToString();
+            return (level * level * CostMultiplier).ToString();
         }
 
         private bool IsPurchasable(int level)
