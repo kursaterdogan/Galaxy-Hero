@@ -83,7 +83,7 @@ namespace Game.Components
         private void CreateCoinData()
         {
             if (!File.Exists(_dataPath + CoinDataFileName))
-                _coinData = new CoinData()
+                _coinData = new CoinData
                 {
                     ownedCoin = 1000
                 };
