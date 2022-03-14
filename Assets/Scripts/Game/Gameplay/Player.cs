@@ -43,13 +43,9 @@ namespace Game.Gameplay
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
             if (callbackContext.started)
-            {
                 Time.timeScale = 1f;
-            }
             else if (callbackContext.canceled)
-            {
                 Time.timeScale = 0.5f;
-            }
         }
 
         private void SetGameCamera()
