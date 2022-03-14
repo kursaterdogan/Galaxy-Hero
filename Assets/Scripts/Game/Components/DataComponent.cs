@@ -20,6 +20,7 @@ namespace Game.Components
             //TODO Handle DataComponent
 
             SetDataPath();
+            CreateGarageData();
 
             //TODO Create DefaultData
         }
@@ -44,6 +45,26 @@ namespace Game.Components
         {
             string content = JsonUtility.ToJson(dataObject);
             File.WriteAllText(_dataPath + dataFileName, content);
+        }
+        
+        private void CreateGarageData()
+        {
+            if (!File.Exists(_dataPath + _garageDataFileName))
+                _garageDataObject = new GarageData
+                {
+                    healthLevel = 1,
+                    speedLevel = 1,
+                    cannonLevel = 1,
+                    powerLevel = 1,
+                    fireRateLevel = 1,
+                    scoreMultiplierLevel = 1,
+                    goldMultiplierLevel = 1,
+                    shildeoLevel = 1,
+                    ghosteoLevel = 1,
+                    bombeoLevel = 1
+                };
+            else
+                LoadData(_garageDataFileName, out _garageDataObject);
         }
     }
 }
