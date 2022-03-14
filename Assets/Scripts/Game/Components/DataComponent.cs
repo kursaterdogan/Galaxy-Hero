@@ -8,11 +8,15 @@ namespace Game.Components
     public class DataComponent : MonoBehaviour, IComponent
     {
         public GarageData GarageDataObject => _garageDataObject;
+        private CoinData CoinDataObject => _coinDataObject;
 
         private string _dataPath;
 
-        private string _garageDataFileName = "/GarageData.json";
+        private CoinData _coinDataObject;
         private GarageData _garageDataObject;
+
+        private string _coinDataFileName = "/CoinData.json";
+        private string _garageDataFileName = "/GarageData.json";
 
         public void Initialize(ComponentContainer componentContainer)
         {
@@ -20,9 +24,18 @@ namespace Game.Components
             //TODO Handle DataComponent
 
             SetDataPath();
+
+            CreateCoinData();
             CreateGarageData();
 
-            //TODO Create DefaultData
+            //TODO Handle Save
+            SaveGarageData();
+            SaveCoinData();
+        }
+
+        public void SaveCoinData()
+        {
+            SaveData(_coinDataFileName, in _coinDataObject);
         }
 
         public void SaveGarageData()
@@ -46,7 +59,7 @@ namespace Game.Components
             string content = JsonUtility.ToJson(dataObject);
             File.WriteAllText(_dataPath + dataFileName, content);
         }
-        
+
         private void CreateGarageData()
         {
             if (!File.Exists(_dataPath + _garageDataFileName))
@@ -65,6 +78,17 @@ namespace Game.Components
                 };
             else
                 LoadData(_garageDataFileName, out _garageDataObject);
+        }
+
+        private void CreateCoinData()
+        {
+            if (!File.Exists(_dataPath + _coinDataFileName))
+                _coinDataObject = new CoinData()
+                {
+                    ownedCoin = 1000
+                };
+            else
+                LoadData(_coinDataFileName, out _coinDataObject);
         }
     }
 }
