@@ -15,7 +15,6 @@ namespace Game.States.Main
         public GarageState(ComponentContainer componentContainer)
         {
             //TODO Initialize GarageCanvas
-            //TODO Add Components
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _garageComponent = componentContainer.GetComponent("GarageComponent") as GarageComponent;
 
@@ -36,6 +35,8 @@ namespace Game.States.Main
         {
             UnsubscribeToComponentChangeDelegates();
             UnsubscribeToCanvasRequestDelegates();
+            
+            _garageComponent.OnDestruct();
         }
 
         public void SubscribeToComponentChangeDelegates()
