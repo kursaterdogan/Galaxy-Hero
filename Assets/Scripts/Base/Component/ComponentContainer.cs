@@ -19,9 +19,7 @@ namespace Base.Component
         public object GetComponent(string componentKey)
         {
             if (!_components.ContainsKey(componentKey))
-            {
                 return null;
-            }
 
             return _components[componentKey];
         }
