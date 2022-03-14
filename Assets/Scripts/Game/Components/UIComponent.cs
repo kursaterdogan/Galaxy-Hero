@@ -86,9 +86,7 @@ namespace Game.Components
         private void DeactivateCanvas(BaseCanvas canvas)
         {
             if (canvas)
-            {
                 canvas.Deactivate();
-            }
         }
 
         private void ActivateCanvas(MenuName menuName)
@@ -122,9 +120,7 @@ namespace Game.Components
             }
 
             if (_activeCanvas)
-            {
                 _activeCanvas.Activate();
-            }
         }
     }
 }
