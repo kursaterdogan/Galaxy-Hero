@@ -7,16 +7,19 @@ namespace Game.Components
 {
     public class DataComponent : MonoBehaviour, IComponent
     {
+        private const string CoinDataFileName = "/CoinData.json";
+        private const string PlanetDataFileName = "/PlanetData.json";
+        private const string GarageDataFileName = "/GarageData.json";
+        
+        public CoinData CoinDataObject => _coinDataObject;
+        public PlanetData PlanetDataObject => _planetDataObject;
         public GarageData GarageDataObject => _garageDataObject;
-        private CoinData CoinDataObject => _coinDataObject;
 
         private string _dataPath;
 
         private CoinData _coinDataObject;
+        private PlanetData _planetDataObject;
         private GarageData _garageDataObject;
-
-        private string _coinDataFileName = "/CoinData.json";
-        private string _garageDataFileName = "/GarageData.json";
 
         public void Initialize(ComponentContainer componentContainer)
         {
@@ -26,21 +29,28 @@ namespace Game.Components
             SetDataPath();
 
             CreateCoinData();
+            CreatePlanetData();
             CreateGarageData();
 
             //TODO Handle Save
-            SaveGarageData();
             SaveCoinData();
+            SavePlanetData();
+            SaveGarageData();
         }
 
         public void SaveCoinData()
         {
-            SaveData(_coinDataFileName, in _coinDataObject);
+            SaveData(CoinDataFileName, in _coinDataObject);
+        }
+
+        public void SavePlanetData()
+        {
+            SaveData(PlanetDataFileName, in _planetDataObject);
         }
 
         public void SaveGarageData()
         {
-            SaveData(_garageDataFileName, in _garageDataObject);
+            SaveData(GarageDataFileName, in _garageDataObject);
         }
 
         private void SetDataPath()
@@ -62,7 +72,7 @@ namespace Game.Components
 
         private void CreateGarageData()
         {
-            if (!File.Exists(_dataPath + _garageDataFileName))
+            if (!File.Exists(_dataPath + GarageDataFileName))
                 _garageDataObject = new GarageData
                 {
                     healthLevel = 1,
@@ -77,18 +87,26 @@ namespace Game.Components
                     bombeoLevel = 1
                 };
             else
-                LoadData(_garageDataFileName, out _garageDataObject);
+                LoadData(GarageDataFileName, out _garageDataObject);
         }
 
         private void CreateCoinData()
         {
-            if (!File.Exists(_dataPath + _coinDataFileName))
+            if (!File.Exists(_dataPath + CoinDataFileName))
                 _coinDataObject = new CoinData()
                 {
                     ownedCoin = 1000
                 };
             else
-                LoadData(_coinDataFileName, out _coinDataObject);
+                LoadData(CoinDataFileName, out _coinDataObject);
+        }
+
+        private void CreatePlanetData()
+        {
+            if (!File.Exists(_dataPath + PlanetDataFileName))
+                _planetDataObject = new PlanetData();
+            else
+                LoadData(PlanetDataFileName, out _planetDataObject);
         }
     }
 }
