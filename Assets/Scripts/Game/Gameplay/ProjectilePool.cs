@@ -20,7 +20,9 @@ namespace Game.Gameplay
             for (int i = 0; i < _playerProjectiles.Count; i++)
             {
                 if (!_playerProjectiles[i].activeInHierarchy)
+                {
                     return _playerProjectiles[i];
+                }
             }
 
             //TODO Optimize
