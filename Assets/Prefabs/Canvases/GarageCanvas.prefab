@@ -10202,8 +10202,14 @@ MonoBehaviour:
   - {fileID: 2106114341927950389}
   fireRateCostText: {fileID: 2106114342521877739}
   fireRateLevelText: {fileID: 2106114342049825231}
-  fireRateUpgradeButton: {fileID: 2106114341113670453}
-  fireRateLevelFrames: []
+  fireRateUpgradeButton: {fileID: 2106114342584287984}
+  fireRateLevelFrames:
+  - {fileID: 2106114341774853314}
+  - {fileID: 2106114342304561331}
+  - {fileID: 2106114342223441073}
+  - {fileID: 2106114340899086885}
+  - {fileID: 2106114342265440298}
+  - {fileID: 2106114341586126240}
   scoreMultiplierCostText: {fileID: 2106114340870875743}
   scoreMultiplierLevelText: {fileID: 2106114341938684228}
   scoreMultiplierUpgradeButton: {fileID: 2106114340764847940}
