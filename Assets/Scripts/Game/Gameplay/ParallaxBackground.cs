@@ -32,7 +32,9 @@ namespace Game.Gameplay
         private void PassiveMove()
         {
             if (transform.position.y <= -_length.y)
+            {
                 transform.position += _length;
+            }
 
             transform.Translate(Vector3.down * (speed * Time.deltaTime), Space.World);
         }
