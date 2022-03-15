@@ -18,7 +18,6 @@ namespace Game.Gameplay
         void Update()
         {
             PassiveMove();
-            SetScale();
         }
 
         private void SetStartPosition()
