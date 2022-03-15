@@ -74,6 +74,8 @@ namespace Game.UserInterfaces.Main
         [SerializeField] private Button ghosteoUpgradeButton;
         [SerializeField] private Image[] ghosteoLevelFrames;
 
+        #region Upgrade Changes
+
         public void SetCoin(string ownedCoin)
         {
             coinText.text = ownedCoin;
@@ -164,120 +166,116 @@ namespace Game.UserInterfaces.Main
             if (isInteractable != healthUpgradeButton.interactable)
                 healthUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetSpeedButtonInteractable(bool isInteractable)
         {
             if (isInteractable != speedUpgradeButton.interactable)
                 speedUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetCannonButtonInteractable(bool isInteractable)
         {
             if (isInteractable != cannonUpgradeButton.interactable)
                 cannonUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetPowerButtonInteractable(bool isInteractable)
         {
             if (isInteractable != powerUpgradeButton.interactable)
                 powerUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetFireRateButtonInteractable(bool isInteractable)
         {
             if (isInteractable != fireRateUpgradeButton.interactable)
                 fireRateUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetScoreMultiplierButtonInteractable(bool isInteractable)
         {
             if (isInteractable != scoreMultiplierUpgradeButton.interactable)
                 scoreMultiplierUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetGoldMultiplierButtonInteractable(bool isInteractable)
         {
             if (isInteractable != goldMultiplierUpgradeButton.interactable)
                 goldMultiplierUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetShildeoButtonInteractable(bool isInteractable)
         {
             if (isInteractable != shildeoUpgradeButton.interactable)
                 shildeoUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetBombeoButtonInteractable(bool isInteractable)
         {
             if (isInteractable != bombeoUpgradeButton.interactable)
                 bombeoUpgradeButton.interactable = isInteractable;
         }
-        
+
         public void SetGhosteoButtonInteractable(bool isInteractable)
         {
             if (isInteractable != ghosteoUpgradeButton.interactable)
                 ghosteoUpgradeButton.interactable = isInteractable;
         }
 
+        #endregion
+
+        #region Upgrade Requests
+
         public void RequestHealthUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnHealthUpgradeRequest?.Invoke();
         }
 
         public void RequestSpeedUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnSpeedUpgradeRequest?.Invoke();
         }
 
         public void RequestCanonUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnCannonUpgradeRequest?.Invoke();
         }
 
         public void RequestPowerUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnPowerUpgradeRequest?.Invoke();
         }
 
         public void RequestFireRateUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnFireRateUpgradeRequest?.Invoke();
         }
 
         public void RequestScoreMultiplierUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnScoreMultiplierUpgradeRequest?.Invoke();
         }
 
         public void RequestGoldMultiplierUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnGoldMultiplierUpgradeRequest?.Invoke();
         }
 
         public void RequestShildeoUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnShildeoUpgradeRequest?.Invoke();
         }
 
         public void RequestBombeoUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnBombeoUpgradeRequest?.Invoke();
         }
 
         public void RequestGhosteoUpgrade()
         {
-            //TODO Subscribe & Unsubscribe
             OnGhosteoUpgradeRequest?.Invoke();
         }
+
+        #endregion
 
         public void RequestReturnToMainMenu()
         {
