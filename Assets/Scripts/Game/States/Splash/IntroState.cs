@@ -7,10 +7,10 @@ namespace Game.States.Splash
 {
     public class IntroState : StateMachine, IChangeable
     {
-        private UIComponent _uiComponent;
-        private IntroComponent _introComponent;
+        private readonly UIComponent _uiComponent;
+        private readonly IntroComponent _introComponent;
 
-        private IntroCanvas _introCanvas;
+        private readonly IntroCanvas _introCanvas;
 
         public IntroState(ComponentContainer componentContainer)
         {
