@@ -8,7 +8,7 @@ namespace Game.Components
     {
         private const int MaxLevel = 6;
         private const int CostMultiplier = 500;
-        private const string MaxLevelText = "";
+        private const string MaxLevelText = "MAX";
 
         public delegate void GarageCoinChangeDelegate(string ownedCoin);
 
