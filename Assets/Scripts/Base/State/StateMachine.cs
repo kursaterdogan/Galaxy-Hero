@@ -25,9 +25,7 @@ namespace Base.State
             OnEnter();
 
             if (_currentSubState == null && _defaultSubState != null)
-            {
                 _currentSubState = _defaultSubState;
-            }
 
             _currentSubState?.Enter();
         }
@@ -35,9 +33,7 @@ namespace Base.State
         protected void AddSubState(StateMachine subState)
         {
             if (_subStates.Count == 0)
-            {
                 _defaultSubState = subState;
-            }
 
             subState._parent = this;
 

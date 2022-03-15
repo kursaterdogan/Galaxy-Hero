@@ -9,6 +9,7 @@ namespace Game
     {
         private ComponentContainer _componentContainer;
 
+        private DataComponent _dataComponent;
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
         private InventoryComponent _inventoryComponent;
@@ -29,6 +30,7 @@ namespace Game
         void Start()
         {
             //TODO Create Components
+            CreateDataComponent();
             CreateUIComponent();
             CreateIntroComponent();
             CreateInventoryComponent();
@@ -45,6 +47,7 @@ namespace Game
         private void InitializeComponents()
         {
             //TODO Initialize Components & Refactor Need componentContainer?
+            _dataComponent.Initialize(_componentContainer);
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
             _inventoryComponent.Initialize(_componentContainer);
@@ -52,6 +55,14 @@ namespace Game
             _superPowerComponent.Initialize(_componentContainer);
             _creditsComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
+        }
+
+        private void CreateDataComponent()
+        {
+            _dataComponent = FindObjectOfType<DataComponent>();
+            string componentKey = _dataComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _dataComponent);
         }
 
         private void CreateUIComponent()

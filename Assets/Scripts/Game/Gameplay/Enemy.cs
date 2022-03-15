@@ -42,9 +42,7 @@ namespace Game.Gameplay
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, delta);
 
                 if (transform.position.Equals(targetPosition))
-                {
                     _waypointIndex++;
-                }
             }
             else
             {
