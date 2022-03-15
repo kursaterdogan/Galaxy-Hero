@@ -14,7 +14,6 @@ namespace Game.States.Main
 
         public GarageState(ComponentContainer componentContainer)
         {
-            //TODO Initialize GarageCanvas
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _garageComponent = componentContainer.GetComponent("GarageComponent") as GarageComponent;
 
@@ -35,7 +34,7 @@ namespace Game.States.Main
         {
             UnsubscribeToComponentChangeDelegates();
             UnsubscribeToCanvasRequestDelegates();
-            
+
             _garageComponent.OnDestruct();
         }
 
@@ -96,12 +95,36 @@ namespace Game.States.Main
         public void SubscribeToCanvasRequestDelegates()
         {
             _garageCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+
+            _garageCanvas.OnHealthUpgradeRequest += RequestHealthUpgrade;
+            _garageCanvas.OnSpeedUpgradeRequest += RequestSpeedUpgrade;
+            _garageCanvas.OnCannonUpgradeRequest += RequestCannonUpgrade;
+            _garageCanvas.OnPowerUpgradeRequest += RequestPowerUpgrade;
+            _garageCanvas.OnFireRateUpgradeRequest += RequestFireRateUpgrade;
+            _garageCanvas.OnScoreMultiplierUpgradeRequest += RequestScoreMultiplierUpgrade;
+            _garageCanvas.OnGoldMultiplierUpgradeRequest += RequestGoldMultiplierUpgrade;
+            _garageCanvas.OnShildeoUpgradeRequest += RequestShildeoUpgrade;
+            _garageCanvas.OnBombeoUpgradeRequest += RequestBombeoUpgrade;
+            _garageCanvas.OnGhosteoUpgradeRequest += RequestGhosteoUpgrade;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
             _garageCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
+
+            _garageCanvas.OnHealthUpgradeRequest -= RequestHealthUpgrade;
+            _garageCanvas.OnSpeedUpgradeRequest -= RequestSpeedUpgrade;
+            _garageCanvas.OnCannonUpgradeRequest -= RequestCannonUpgrade;
+            _garageCanvas.OnPowerUpgradeRequest -= RequestPowerUpgrade;
+            _garageCanvas.OnFireRateUpgradeRequest -= RequestFireRateUpgrade;
+            _garageCanvas.OnScoreMultiplierUpgradeRequest -= RequestScoreMultiplierUpgrade;
+            _garageCanvas.OnGoldMultiplierUpgradeRequest -= RequestGoldMultiplierUpgrade;
+            _garageCanvas.OnShildeoUpgradeRequest -= RequestShildeoUpgrade;
+            _garageCanvas.OnBombeoUpgradeRequest -= RequestBombeoUpgrade;
+            _garageCanvas.OnGhosteoUpgradeRequest -= RequestGhosteoUpgrade;
         }
+
+        #region Upgrade Changes
 
         private void ChangeCoinAmount(string ownedCoin)
         {
@@ -207,6 +230,62 @@ namespace Game.States.Main
         {
             _garageCanvas.SetGhosteoButtonInteractable(isInteractable);
         }
+
+        #endregion
+
+        #region Upgrade Requests
+
+        private void RequestHealthUpgrade()
+        {
+            _garageComponent.UpgradeHealth();
+        }
+
+        private void RequestSpeedUpgrade()
+        {
+            _garageComponent.UpgradeSpeed();
+        }
+
+        private void RequestCannonUpgrade()
+        {
+            _garageComponent.UpgradeCannon();
+        }
+
+        private void RequestPowerUpgrade()
+        {
+            _garageComponent.UpgradePower();
+        }
+
+        private void RequestFireRateUpgrade()
+        {
+            _garageComponent.UpgradeFireRate();
+        }
+
+        private void RequestScoreMultiplierUpgrade()
+        {
+            _garageComponent.UpgradeScoreMultiplier();
+        }
+
+        private void RequestGoldMultiplierUpgrade()
+        {
+            _garageComponent.UpgradeGoldMultiplier();
+        }
+
+        private void RequestShildeoUpgrade()
+        {
+            _garageComponent.UpgradeShildeo();
+        }
+
+        private void RequestBombeoUpgrade()
+        {
+            _garageComponent.UpgradeBombeo();
+        }
+
+        private void RequestGhosteoUpgrade()
+        {
+            _garageComponent.UpgradeGhosteo();
+        }
+
+        #endregion
 
         private void RequestReturnToMainMenu()
         {
