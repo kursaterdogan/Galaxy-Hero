@@ -7,10 +7,10 @@ namespace Game.States.Main
 {
     public class GarageState : StateMachine, IChangeable, IRequestable
     {
-        private UIComponent _uiComponent;
-        private GarageComponent _garageComponent;
+        private readonly UIComponent _uiComponent;
+        private readonly GarageComponent _garageComponent;
 
-        private GarageCanvas _garageCanvas;
+        private readonly GarageCanvas _garageCanvas;
 
         public GarageState(ComponentContainer componentContainer)
         {
