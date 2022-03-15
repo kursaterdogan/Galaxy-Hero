@@ -64,9 +64,172 @@ namespace Game.Components
             SaveDatas();
         }
 
+        #region Upgrade Requests
+
+        public void UpgradeHealth()
+        {
+            int level = _dataComponent.GarageData.healthLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.healthLevel++;
+            SetHealth();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeSpeed()
+        {
+            int level = _dataComponent.GarageData.speedLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.speedLevel++;
+            SetSpeed();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeCannon()
+        {
+            int level = _dataComponent.GarageData.cannonLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.cannonLevel++;
+            SetCannon();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradePower()
+        {
+            int level = _dataComponent.GarageData.powerLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.powerLevel++;
+            SetPower();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeFireRate()
+        {
+            int level = _dataComponent.GarageData.fireRateLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.fireRateLevel++;
+            SetFireRate();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeScoreMultiplier()
+        {
+            int level = _dataComponent.GarageData.scoreMultiplierLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.scoreMultiplierLevel++;
+            SetScoreMultiplier();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeGoldMultiplier()
+        {
+            int level = _dataComponent.GarageData.goldMultiplierLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.goldMultiplierLevel++;
+            SetGoldMultiplier();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeShildeo()
+        {
+            int level = _dataComponent.GarageData.shildeoLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.shildeoLevel++;
+            SetShildeo();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeBombeo()
+        {
+            int level = _dataComponent.GarageData.bombeoLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.bombeoLevel++;
+            SetBombeo();
+            OnUpgradeAction?.Invoke();
+        }
+
+        public void UpgradeGhosteo()
+        {
+            int level = _dataComponent.GarageData.ghosteoLevel;
+
+            if (!IsPurchasable(level))
+                return;
+
+            BuyUpgrade(level);
+            _dataComponent.GarageData.ghosteoLevel++;
+            SetGhosteo();
+            OnUpgradeAction?.Invoke();
+        }
+
+        #endregion
+
+        private bool IsPurchasable(int level)
+        {
+            int ownedCoin = _dataComponent.CoinData.ownedCoin;
+            bool isPurchasable = level != MaxLevel && ownedCoin >= GetCost(level);
+
+            return isPurchasable;
+        }
+
+        private void BuyUpgrade(int level)
+        {
+            int cost = GetCost(level);
+
+            _dataComponent.CoinData.ownedCoin -= cost;
+        }
+
+        private int GetCost(int level)
+        {
+            return level * level * CostMultiplier;
+        }
+
+        private string GetCostText(int level)
+        {
+            if (level == MaxLevel)
+                return MaxLevelText;
+
+            return GetCost(level).ToString();
+        }
+
         private void SetUpgrades()
         {
             OnUpgradeAction?.Invoke();
+
             SetHealth();
             SetSpeed();
             SetCannon();
@@ -77,6 +240,12 @@ namespace Game.Components
             SetShildeo();
             SetBombeo();
             SetGhosteo();
+        }
+
+        private void SaveDatas()
+        {
+            _dataComponent.SaveCoinData();
+            _dataComponent.SaveGarageData();
         }
 
         private void SubscribeToOnUpgradeAction()
@@ -108,12 +277,8 @@ namespace Game.Components
             OnUpgradeAction -= SetBombeoButtonInteractable;
             OnUpgradeAction -= SetGhosteoButtonInteractable;
         }
-        
-        private void SaveDatas()
-        {
-            _dataComponent.SaveCoinData();
-            _dataComponent.SaveGarageData();
-        }
+
+        #region Upgrade Changes
 
         private void SetCoin()
         {
@@ -282,20 +447,6 @@ namespace Game.Components
             OnGhosteoButtonInteractableChange?.Invoke(isInteractable);
         }
 
-        private string GetCostText(int level)
-        {
-            if (level == MaxLevel)
-                return MaxLevelText;
-
-            return (level * level * CostMultiplier).ToString();
-        }
-
-        private bool IsPurchasable(int level)
-        {
-            int ownedCoin = _dataComponent.CoinData.ownedCoin;
-            bool isPurchasable = ownedCoin >= level * CostMultiplier && level != MaxLevel;
-
-            return isPurchasable;
-        }
+        #endregion
     }
 }
