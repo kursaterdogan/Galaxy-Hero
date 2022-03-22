@@ -36,7 +36,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnGarageRequest += RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest += RequestCredits;
-            _mainMenuCanvas.OnSettingsRequest += RequestSettings;
+            _mainMenuCanvas.OnAchievementRequest += RequestAchievement;
             _mainMenuCanvas.OnInGameRequest += RequestStartGame;
         }
 
@@ -46,7 +46,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnGarageRequest -= RequestGarage;
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
-            _mainMenuCanvas.OnSettingsRequest -= RequestSettings;
+            _mainMenuCanvas.OnAchievementRequest -= RequestAchievement;
             _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
         }
 
@@ -70,9 +70,9 @@ namespace Game.States.Main
             SendTrigger((int)StateTriggers.GoToCredits);
         }
 
-        private void RequestSettings()
+        private void RequestAchievement()
         {
-            SendTrigger((int)StateTriggers.GoToSettings);
+            SendTrigger((int)StateTriggers.GoToAchievement);
         }
 
         private void RequestStartGame()
