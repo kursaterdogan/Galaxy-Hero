@@ -6,10 +6,6 @@ namespace Game.Components
 {
     public class GarageComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
-        private const int MaxLevel = 6;
-        private const int CostMultiplier = 500;
-        private const string MaxLevelText = "MAX";
-
         public delegate void GarageCoinChangeDelegate(string ownedCoin);
 
         public event GarageCoinChangeDelegate OnCoinAmountChange;
@@ -41,6 +37,10 @@ namespace Game.Components
         public event GarageLevelChangeDelegate OnGhosteoUpgradeChange;
 
         private event Action OnUpgradeAction;
+
+        private const int MaxLevel = 6;
+        private const int CostMultiplier = 500;
+        private const string MaxLevelText = "MAX";
 
         private DataComponent _dataComponent;
 
