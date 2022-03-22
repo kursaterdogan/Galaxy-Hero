@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &68085972 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1295695901, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
+  m_PrefabInstance: {fileID: 1653646989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &155304588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,6 +610,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d130fdf8c83e14cadc4eb07773e177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1166385747 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1098715605, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
+  m_PrefabInstance: {fileID: 1653646989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1219026240 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1219026240, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
@@ -755,6 +765,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 586687352}
     m_Modifications:
+    - target: {fileID: 1219026240, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
+      propertyPath: marsCardAnimator
+      value: 
+      objectReference: {fileID: 1166385747}
+    - target: {fileID: 1219026240, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
+      propertyPath: saturnCardAnimator
+      value: 
+      objectReference: {fileID: 68085972}
     - target: {fileID: 5772274480306367898, guid: 078f51da1d15aab47b8dd0dd1d6c04c7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
