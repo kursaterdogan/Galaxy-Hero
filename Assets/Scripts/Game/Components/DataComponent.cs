@@ -84,9 +84,9 @@ namespace Game.Components
         private void SetDataPath()
         {
 #if UNITY_EDITOR
-            _dataPath = Application.dataPath + "/";
+            _dataPath = Application.dataPath;
 #else
-            _dataPath = Application.persistentDataPath + "/";
+            _dataPath = Application.persistentDataPath;
 #endif
         }
 
