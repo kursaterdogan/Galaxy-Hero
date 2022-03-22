@@ -7,6 +7,7 @@ namespace Game.Gameplay
     {
         //TODO Integrate with StateMachine
         private Camera _mainCamera;
+        private float _aspect;
         private float _screenBoundsWidth;
         private float _screenBoundsHeight;
         private float _padding = 10f;
@@ -15,6 +16,7 @@ namespace Game.Gameplay
         void Awake()
         {
             SetCamera();
+            SetAspect();
             SetMoveBoundaries();
             SetMaxVerticalPosition();
         }
@@ -46,12 +48,17 @@ namespace Game.Gameplay
 
         public float GetAspectRatio()
         {
-            return _mainCamera.aspect;
+            return _aspect;
         }
 
         private void SetCamera()
         {
             _mainCamera = Camera.main;
+        }
+
+        private void SetAspect()
+        {
+            _aspect = _mainCamera.aspect;
         }
 
         private void SetMoveBoundaries()
