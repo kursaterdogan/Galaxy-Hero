@@ -49,5 +49,5 @@ MonoBehaviour:
   garageCanvas: {fileID: 0}
   superPowerCanvas: {fileID: 0}
   creditsCanvas: {fileID: 0}
-  settingsCanvas: {fileID: 0}
+  achievementCanvas: {fileID: 0}
   inGameCanvas: {fileID: 0}
