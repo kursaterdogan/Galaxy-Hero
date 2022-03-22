@@ -7,10 +7,10 @@ namespace Game.States.Main
 {
     public class CreditsState : StateMachine, IRequestable
     {
-        private UIComponent _uiComponent;
-        private CreditsComponent _creditsComponent;
+        private readonly UIComponent _uiComponent;
+        private readonly CreditsComponent _creditsComponent;
 
-        private CreditsCanvas _creditsCanvas;
+        private readonly CreditsCanvas _creditsCanvas;
 
         public CreditsState(ComponentContainer componentContainer)
         {
