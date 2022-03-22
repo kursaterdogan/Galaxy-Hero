@@ -32,10 +32,10 @@ namespace Game.States.Main
 
         protected override void OnExit()
         {
+            _garageComponent.OnDestruct();
+
             UnsubscribeToComponentChangeDelegates();
             UnsubscribeToCanvasRequestDelegates();
-
-            _garageComponent.OnDestruct();
         }
 
         public void SubscribeToComponentChangeDelegates()
