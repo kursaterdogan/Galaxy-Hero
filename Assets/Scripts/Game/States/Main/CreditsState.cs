@@ -39,7 +39,7 @@ namespace Game.States.Main
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
-            _creditsCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+            _creditsCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
         }
         
         private void RequestReturnToMainMenu()
