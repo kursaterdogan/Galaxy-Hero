@@ -107,7 +107,7 @@ namespace Game.Components
             if (!File.Exists(_dataPath + CoinDataFileName))
                 _coinData = new CoinData
                 {
-                    ownedCoin = 100000
+                    ownedCoin = 10000
                 };
             else
                 LoadData(CoinDataFileName, out _coinData);
