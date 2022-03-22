@@ -1,3 +1,4 @@
+using UnityEngine;
 using Base.UserInterface;
 
 namespace Game.UserInterfaces.Main
@@ -8,9 +9,67 @@ namespace Game.UserInterfaces.Main
 
         public event InventoryRequestDelegate OnReturnToMainMenuRequest;
 
+        [SerializeField] private Animator saturnCardAnimator;
+        [SerializeField] private Animator marsCardAnimator;
+
+        [SerializeField] private GameObject saturnDescriptionText;
+        [SerializeField] private GameObject saturnUnlockText;
+        [SerializeField] private GameObject marsDescriptionText;
+        [SerializeField] private GameObject marsUnlockText;
+
+        private readonly int _open = Animator.StringToHash("Open");
+        private readonly int _shake = Animator.StringToHash("Shake");
+
+        public void StartSaturnCardOpen()
+        {
+            saturnCardAnimator.SetBool(_open, true);
+            saturnDescriptionText.SetActive(true);
+        }
+
+        public void StartSaturnCardShake()
+        {
+            saturnCardAnimator.SetBool(_shake, true);
+            saturnUnlockText.SetActive(true);
+        }
+
+        public void EndSaturnCardOpen()
+        {
+            saturnCardAnimator.SetBool(_open, false);
+            saturnDescriptionText.SetActive(false);
+        }
+
+        public void EndSaturnCardShake()
+        {
+            saturnCardAnimator.SetBool(_shake, false);
+            saturnUnlockText.SetActive(false);
+        }
+
+        public void StartMarsCardOpen()
+        {
+            marsCardAnimator.SetBool(_open, true);
+            marsDescriptionText.SetActive(true);
+        }
+
+        public void StartMarsCardShake()
+        {
+            marsCardAnimator.SetBool(_shake, true);
+            marsUnlockText.SetActive(true);
+        }
+
+        public void EndMarsCardOpen()
+        {
+            marsCardAnimator.SetBool(_open, false);
+            marsDescriptionText.SetActive(false);
+        }
+
+        public void EndMarsCardShake()
+        {
+            marsCardAnimator.SetBool(_shake, false);
+            marsUnlockText.SetActive(false);
+        }
+
         public void RequestReturnToMainMenu()
         {
-            //TODO Handle Inventory
             OnReturnToMainMenuRequest?.Invoke();
         }
     }
