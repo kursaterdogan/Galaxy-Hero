@@ -10,7 +10,7 @@ namespace Game.UserInterfaces.Main
         public event MainMenuRequestDelegate OnGarageRequest;
         public event MainMenuRequestDelegate OnSuperPowerRequest;
         public event MainMenuRequestDelegate OnCreditsRequest;
-        public event MainMenuRequestDelegate OnSettingsRequest;
+        public event MainMenuRequestDelegate OnAchievementRequest;
         public event MainMenuRequestDelegate OnInGameRequest;
 
         public void RequestInventory()
@@ -33,9 +33,9 @@ namespace Game.UserInterfaces.Main
             OnCreditsRequest?.Invoke();
         }
 
-        public void RequestSettings()
+        public void RequestAchievement()
         {
-            OnSettingsRequest?.Invoke();
+            OnAchievementRequest?.Invoke();
         }
 
         public void RequestInGameMenu()
