@@ -8,7 +8,6 @@ namespace Game.Components
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
-            //TODO Handle CreditsComponent
         }
     }
 }
