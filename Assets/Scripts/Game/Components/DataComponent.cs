@@ -12,12 +12,14 @@ namespace Game.Components
         private const string SuperPowerDataFileName = "/SuperPowerData.json";
         private const string GarageDataFileName = "/GarageData.json";
         private const string InventoryDataFileName = "/InventoryData.json";
+        private const string AchievementDataFileName = "/AchievementData.json";
 
         public CoinData CoinData => _coinData;
         public PlanetData PlanetData => _planetData;
         public SuperPowerData SuperPowerData => _superPowerData;
         public GarageData GarageData => _garageData;
         public InventoryData InventoryData => _inventoryData;
+        public AchievementData AchievementData => _achievementData;
 
         private string _dataPath;
 
@@ -26,11 +28,11 @@ namespace Game.Components
         private SuperPowerData _superPowerData;
         private GarageData _garageData;
         private InventoryData _inventoryData;
+        private AchievementData _achievementData;
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
-            //TODO Handle DataComponent
 
             SetDataPath();
 
@@ -39,13 +41,14 @@ namespace Game.Components
             CreateSuperPowerData();
             CreateGarageData();
             CreateInventoryData();
+            CreateAchievementData();
 
-            //TODO Handle Save
             SaveCoinData();
             SavePlanetData();
             SaveSuperPowerData();
             SaveGarageData();
             SaveInventoryData();
+            SaveAchievementData();
         }
 
         public void SaveCoinData()
@@ -67,10 +70,15 @@ namespace Game.Components
         {
             SaveData(GarageDataFileName, in _garageData);
         }
-        
+
         public void SaveInventoryData()
         {
             SaveData(InventoryDataFileName, in _inventoryData);
+        }
+
+        public void SaveAchievementData()
+        {
+            SaveData(AchievementDataFileName, in _achievementData);
         }
 
         private void SetDataPath()
@@ -147,6 +155,14 @@ namespace Game.Components
                 _inventoryData = new InventoryData();
             else
                 LoadData(InventoryDataFileName, out _inventoryData);
+        }
+
+        private void CreateAchievementData()
+        {
+            if (!File.Exists(_dataPath + AchievementDataFileName))
+                _achievementData = new AchievementData();
+            else
+                LoadData(AchievementDataFileName, out _achievementData);
         }
     }
 }
