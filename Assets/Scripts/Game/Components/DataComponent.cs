@@ -11,11 +11,13 @@ namespace Game.Components
         private const string PlanetDataFileName = "/PlanetData.json";
         private const string SuperPowerDataFileName = "/SuperPowerData.json";
         private const string GarageDataFileName = "/GarageData.json";
+        private const string InventoryDataFileName = "/InventoryData.json";
 
         public CoinData CoinData => _coinData;
         public PlanetData PlanetData => _planetData;
         public SuperPowerData SuperPowerData => _superPowerData;
         public GarageData GarageData => _garageData;
+        public InventoryData InventoryData => _inventoryData;
 
         private string _dataPath;
 
@@ -23,6 +25,7 @@ namespace Game.Components
         private PlanetData _planetData;
         private SuperPowerData _superPowerData;
         private GarageData _garageData;
+        private InventoryData _inventoryData;
 
         public void Initialize(ComponentContainer componentContainer)
         {
@@ -35,12 +38,14 @@ namespace Game.Components
             CreatePlanetData();
             CreateSuperPowerData();
             CreateGarageData();
+            CreateInventoryData();
 
             //TODO Handle Save
             SaveCoinData();
             SavePlanetData();
             SaveSuperPowerData();
             SaveGarageData();
+            SaveInventoryData();
         }
 
         public void SaveCoinData()
@@ -62,12 +67,17 @@ namespace Game.Components
         {
             SaveData(GarageDataFileName, in _garageData);
         }
+        
+        public void SaveInventoryData()
+        {
+            SaveData(InventoryDataFileName, in _inventoryData);
+        }
 
         private void SetDataPath()
         {
-#if UNITY_EDITOR 
+#if UNITY_EDITOR
             _dataPath = Application.dataPath + "/";
-#else 
+#else
             _dataPath = Application.persistentDataPath + "/";
 #endif
         }
@@ -129,6 +139,14 @@ namespace Game.Components
                 };
             else
                 LoadData(GarageDataFileName, out _garageData);
+        }
+
+        private void CreateInventoryData()
+        {
+            if (!File.Exists(_dataPath + InventoryDataFileName))
+                _inventoryData = new InventoryData();
+            else
+                LoadData(InventoryDataFileName, out _inventoryData);
         }
     }
 }

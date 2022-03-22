@@ -11,6 +11,7 @@ namespace Game.Gameplay
         void Start()
         {
             SetStartPosition();
+            SetScale();
             SetLength();
         }
 
@@ -22,6 +23,13 @@ namespace Game.Gameplay
         private void SetStartPosition()
         {
             transform.position = new Vector3(0, 0, 0);
+        }
+
+        private void SetScale()
+        {
+            float aspectRatio = FindObjectOfType<GameCamera>().GetAspectRatio();
+
+            transform.localScale = new Vector3(aspectRatio, aspectRatio, transform.localScale.z);
         }
 
         private void SetLength()
