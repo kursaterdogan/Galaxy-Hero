@@ -10,7 +10,6 @@ namespace Game.UserInterfaces.Main
 
         public void RequestReturnToMainMenu()
         {
-            //TODO Handle CreditsCanvas
             OnReturnToMainMenuRequest?.Invoke();
         }
     }

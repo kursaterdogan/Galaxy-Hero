@@ -16,6 +16,7 @@ namespace Game
         private GarageComponent _garageComponent;
         private SuperPowerComponent _superPowerComponent;
         private CreditsComponent _creditsComponent;
+        private AchievementComponent _achievementComponent;
         private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
@@ -37,6 +38,7 @@ namespace Game
             CreateGarageComponent();
             CreateSuperPowerComponent();
             CreateCreditsComponent();
+            CreateAchievementComponent();
             CreateGameplayComponent();
 
             InitializeComponents();
@@ -54,6 +56,7 @@ namespace Game
             _garageComponent.Initialize(_componentContainer);
             _superPowerComponent.Initialize(_componentContainer);
             _creditsComponent.Initialize(_componentContainer);
+            _achievementComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
         }
 
@@ -111,6 +114,14 @@ namespace Game
             string componentKey = _creditsComponent.GetType().Name;
 
             _componentContainer.AddComponent(componentKey, _creditsComponent);
+        }
+
+        private void CreateAchievementComponent()
+        {
+            _achievementComponent = FindObjectOfType<AchievementComponent>();
+            string componentKey = _achievementComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _achievementComponent);
         }
 
         private void CreateGameplayComponent()
