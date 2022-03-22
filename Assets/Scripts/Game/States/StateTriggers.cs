@@ -8,7 +8,7 @@ namespace Game.States
         GoToGarage,
         GoToSuperPower,
         GoToCredits,
-        GoToSettings,
+        GoToAchievement,
         StartGame,
         PlayGame,
         GameOver,
