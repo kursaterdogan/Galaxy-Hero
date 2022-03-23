@@ -124,7 +124,7 @@ namespace Game.States.Main
             _garageCanvas.OnGhosteoUpgradeRequest -= RequestGhosteoUpgrade;
         }
 
-        #region Upgrade Changes
+        #region Changes
 
         private void ChangeCoinAmount(string ownedCoin)
         {
@@ -233,7 +233,7 @@ namespace Game.States.Main
 
         #endregion
 
-        #region Upgrade Requests
+        #region Requests
 
         private void RequestHealthUpgrade()
         {
@@ -285,11 +285,11 @@ namespace Game.States.Main
             _garageComponent.UpgradeGhosteo();
         }
 
-        #endregion
-
         private void RequestReturnToMainMenu()
         {
             SendTrigger((int)StateTriggers.ReturnToMainMenu);
         }
+
+        #endregion
     }
 }
