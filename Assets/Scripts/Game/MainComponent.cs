@@ -12,6 +12,7 @@ namespace Game
         private DataComponent _dataComponent;
         private UIComponent _uiComponent;
         private IntroComponent _introComponent;
+        private MainMenuComponent _mainMenuComponent;
         private InventoryComponent _inventoryComponent;
         private GarageComponent _garageComponent;
         private SuperPowerComponent _superPowerComponent;
@@ -30,10 +31,10 @@ namespace Game
 
         void Start()
         {
-            //TODO Create Components
             CreateDataComponent();
             CreateUIComponent();
             CreateIntroComponent();
+            CreateMainMenuComponent();
             CreateInventoryComponent();
             CreateGarageComponent();
             CreateSuperPowerComponent();
@@ -48,10 +49,10 @@ namespace Game
 
         private void InitializeComponents()
         {
-            //TODO Initialize Components & Refactor Need componentContainer?
             _dataComponent.Initialize(_componentContainer);
             _uiComponent.Initialize(_componentContainer);
             _introComponent.Initialize(_componentContainer);
+            _mainMenuComponent.Initialize(_componentContainer);
             _inventoryComponent.Initialize(_componentContainer);
             _garageComponent.Initialize(_componentContainer);
             _superPowerComponent.Initialize(_componentContainer);
@@ -82,6 +83,14 @@ namespace Game
             string componentKey = _introComponent.GetType().Name;
 
             _componentContainer.AddComponent(componentKey, _introComponent);
+        }
+
+        private void CreateMainMenuComponent()
+        {
+            _mainMenuComponent = FindObjectOfType<MainMenuComponent>();
+            string componentKey = _mainMenuComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _mainMenuComponent);
         }
 
         private void CreateInventoryComponent()

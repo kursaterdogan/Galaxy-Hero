@@ -167,8 +167,6 @@ namespace Game.Components
             OnActivateGhosteo?.Invoke();
         }
 
-        #endregion
-
         private void SetActiveSuperPower()
         {
             SuperPowerName activeSuperPower = GetSelectedSuperPower();
@@ -192,6 +190,8 @@ namespace Game.Components
                     break;
             }
         }
+
+        #endregion
 
         private void SetSelectedSuperPower(SuperPowerName selectedSuperPower)
         {
