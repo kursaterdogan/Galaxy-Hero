@@ -69,7 +69,7 @@ namespace Game.Components
 
         private void SetIsGalaxySaved()
         {
-            _isGalaxySaved = _dataComponent.AchievementData.isGalaxySaved;
+            _isGalaxySaved = _dataComponent.InventoryData.isSaturnSaved && _dataComponent.InventoryData.isMarsSaved;
         }
 
         private void SetHighScore()
