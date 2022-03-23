@@ -63,7 +63,7 @@ namespace Game.Components
             SaveDatas();
         }
 
-        #region Upgrade Requests
+        #region Requests
 
         public void UpgradeHealth()
         {
@@ -197,87 +197,7 @@ namespace Game.Components
 
         #endregion
 
-        private bool IsPurchasable(int level)
-        {
-            int ownedCoin = _dataComponent.CoinData.ownedCoin;
-            bool isPurchasable = level != MaxLevel && ownedCoin >= GetCost(level);
-
-            return isPurchasable;
-        }
-
-        private void BuyUpgrade(int level)
-        {
-            int cost = GetCost(level);
-
-            _dataComponent.CoinData.ownedCoin -= cost;
-        }
-
-        private int GetCost(int level)
-        {
-            return level * level * CostMultiplier;
-        }
-
-        private string GetCostText(int level)
-        {
-            if (level == MaxLevel)
-                return MaxLevelText;
-
-            return GetCost(level).ToString();
-        }
-
-        private void SetUpgrades()
-        {
-            OnUpgradeAction?.Invoke();
-
-            SetHealth();
-            SetSpeed();
-            SetCannon();
-            SetPower();
-            SetFireRate();
-            SetScoreMultiplier();
-            SetGoldMultiplier();
-            SetShildeo();
-            SetBombeo();
-            SetGhosteo();
-        }
-
-        private void SaveDatas()
-        {
-            _dataComponent.SaveCoinData();
-            _dataComponent.SaveGarageData();
-        }
-
-        private void SubscribeToOnUpgradeAction()
-        {
-            OnUpgradeAction += SetCoin;
-            OnUpgradeAction += SetHealthButtonInteractable;
-            OnUpgradeAction += SetSpeedButtonInteractable;
-            OnUpgradeAction += SetCannonButtonInteractable;
-            OnUpgradeAction += SetPowerButtonInteractable;
-            OnUpgradeAction += SetFireRateButtonInteractable;
-            OnUpgradeAction += SetScoreMultiplierButtonInteractable;
-            OnUpgradeAction += SetGoldMultiplierButtonInteractable;
-            OnUpgradeAction += SetShildeoButtonInteractable;
-            OnUpgradeAction += SetBombeoButtonInteractable;
-            OnUpgradeAction += SetGhosteoButtonInteractable;
-        }
-
-        private void UnsubscribeToOnUpgradeAction()
-        {
-            OnUpgradeAction -= SetCoin;
-            OnUpgradeAction -= SetHealthButtonInteractable;
-            OnUpgradeAction -= SetSpeedButtonInteractable;
-            OnUpgradeAction -= SetCannonButtonInteractable;
-            OnUpgradeAction -= SetPowerButtonInteractable;
-            OnUpgradeAction -= SetFireRateButtonInteractable;
-            OnUpgradeAction -= SetScoreMultiplierButtonInteractable;
-            OnUpgradeAction -= SetGoldMultiplierButtonInteractable;
-            OnUpgradeAction -= SetShildeoButtonInteractable;
-            OnUpgradeAction -= SetBombeoButtonInteractable;
-            OnUpgradeAction -= SetGhosteoButtonInteractable;
-        }
-
-        #region Upgrade Changes
+        #region Changes
 
         private void SetCoin()
         {
@@ -447,5 +367,85 @@ namespace Game.Components
         }
 
         #endregion
+
+        private bool IsPurchasable(int level)
+        {
+            int ownedCoin = _dataComponent.CoinData.ownedCoin;
+            bool isPurchasable = level != MaxLevel && ownedCoin >= GetCost(level);
+
+            return isPurchasable;
+        }
+
+        private void BuyUpgrade(int level)
+        {
+            int cost = GetCost(level);
+
+            _dataComponent.CoinData.ownedCoin -= cost;
+        }
+
+        private int GetCost(int level)
+        {
+            return level * level * CostMultiplier;
+        }
+
+        private string GetCostText(int level)
+        {
+            if (level == MaxLevel)
+                return MaxLevelText;
+
+            return GetCost(level).ToString();
+        }
+
+        private void SetUpgrades()
+        {
+            OnUpgradeAction?.Invoke();
+
+            SetHealth();
+            SetSpeed();
+            SetCannon();
+            SetPower();
+            SetFireRate();
+            SetScoreMultiplier();
+            SetGoldMultiplier();
+            SetShildeo();
+            SetBombeo();
+            SetGhosteo();
+        }
+
+        private void SaveDatas()
+        {
+            _dataComponent.SaveCoinData();
+            _dataComponent.SaveGarageData();
+        }
+
+        private void SubscribeToOnUpgradeAction()
+        {
+            OnUpgradeAction += SetCoin;
+            OnUpgradeAction += SetHealthButtonInteractable;
+            OnUpgradeAction += SetSpeedButtonInteractable;
+            OnUpgradeAction += SetCannonButtonInteractable;
+            OnUpgradeAction += SetPowerButtonInteractable;
+            OnUpgradeAction += SetFireRateButtonInteractable;
+            OnUpgradeAction += SetScoreMultiplierButtonInteractable;
+            OnUpgradeAction += SetGoldMultiplierButtonInteractable;
+            OnUpgradeAction += SetShildeoButtonInteractable;
+            OnUpgradeAction += SetBombeoButtonInteractable;
+            OnUpgradeAction += SetGhosteoButtonInteractable;
+        }
+
+        private void UnsubscribeToOnUpgradeAction()
+        {
+            OnUpgradeAction -= SetCoin;
+            OnUpgradeAction -= SetHealthButtonInteractable;
+            OnUpgradeAction -= SetSpeedButtonInteractable;
+            OnUpgradeAction -= SetCannonButtonInteractable;
+            OnUpgradeAction -= SetPowerButtonInteractable;
+            OnUpgradeAction -= SetFireRateButtonInteractable;
+            OnUpgradeAction -= SetScoreMultiplierButtonInteractable;
+            OnUpgradeAction -= SetGoldMultiplierButtonInteractable;
+            OnUpgradeAction -= SetShildeoButtonInteractable;
+            OnUpgradeAction -= SetBombeoButtonInteractable;
+            OnUpgradeAction -= SetGhosteoButtonInteractable;
+        }
     }
 }
