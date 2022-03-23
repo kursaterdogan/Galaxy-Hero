@@ -20,6 +20,8 @@ namespace Game.UserInterfaces.Main
         private readonly int _open = Animator.StringToHash("Open");
         private readonly int _shake = Animator.StringToHash("Shake");
 
+        #region Changes
+
         public void StartSaturnCardOpen()
         {
             saturnCardAnimator.SetBool(_open, true);
@@ -67,6 +69,8 @@ namespace Game.UserInterfaces.Main
             marsCardAnimator.SetBool(_shake, false);
             marsUnlockText.SetActive(false);
         }
+
+        #endregion
 
         public void RequestReturnToMainMenu()
         {
