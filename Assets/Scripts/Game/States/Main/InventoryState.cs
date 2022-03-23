@@ -72,6 +72,8 @@ namespace Game.States.Main
             _inventoryCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
         }
 
+        #region Changes
+
         private void StartSaturnCardOpen()
         {
             _inventoryCanvas.StartSaturnCardOpen();
@@ -111,6 +113,8 @@ namespace Game.States.Main
         {
             _inventoryCanvas.EndMarsCardShake();
         }
+
+        #endregion
 
         private void RequestReturnToMainMenu()
         {

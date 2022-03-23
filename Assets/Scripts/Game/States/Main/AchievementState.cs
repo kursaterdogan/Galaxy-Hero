@@ -66,6 +66,8 @@ namespace Game.States.Main
             _achievementCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
         }
 
+        #region Changes
+
         private void ChangeHighScore(string highScore)
         {
             _achievementCanvas.ChangeHighScore(highScore);
@@ -90,6 +92,8 @@ namespace Game.States.Main
         {
             _achievementCanvas.DeactivateOCaptainMyCaptainText();
         }
+
+        #endregion
 
         private void RequestReturnToMainMenu()
         {

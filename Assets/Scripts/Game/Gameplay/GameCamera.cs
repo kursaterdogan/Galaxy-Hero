@@ -6,11 +6,14 @@ namespace Game.Gameplay
     public class GameCamera : MonoBehaviour
     {
         //TODO Integrate with StateMachine
+        private const float AspectPadding = 0.05f;
+        private const float ScreenBoundPadding = 10f;
+
         private Camera _mainCamera;
+
         private float _aspect;
-        private float _screenBoundsWidth;
-        private float _screenBoundsHeight;
-        private float _padding = 10f;
+        private float _screenBoundWidth;
+        private float _screenBoundHeight;
         private float _maxVerticalPosition;
 
         void Awake()
@@ -33,10 +36,13 @@ namespace Game.Gameplay
             float pointerXPosition = Pointer.current.position.ReadValue().x;
             float pointerYPosition = Pointer.current.position.ReadValue().y;
 
-            bool isPointerOnScreen = pointerXPosition < _screenBoundsWidth - _padding &&
-                                     pointerXPosition > 0 + _padding &&
-                                     pointerYPosition < _screenBoundsHeight - _padding &&
-                                     pointerYPosition > 0 + _padding;
+            bool isPointerOnScreen = pointerXPosition < _screenBoundWidth - ScreenBoundPadding
+                                     &&
+                                     pointerXPosition > ScreenBoundPadding
+                                     &&
+                                     pointerYPosition < _screenBoundHeight - ScreenBoundPadding
+                                     &&
+                                     pointerYPosition > ScreenBoundPadding;
 
             return isPointerOnScreen;
         }
@@ -58,13 +64,13 @@ namespace Game.Gameplay
 
         private void SetAspect()
         {
-            _aspect = _mainCamera.aspect;
+            _aspect = _mainCamera.aspect + AspectPadding;
         }
 
         private void SetMoveBoundaries()
         {
-            _screenBoundsHeight = Screen.height;
-            _screenBoundsWidth = Screen.width;
+            _screenBoundHeight = Screen.height;
+            _screenBoundWidth = Screen.width;
         }
 
         private void SetMaxVerticalPosition()

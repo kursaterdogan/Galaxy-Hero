@@ -43,15 +43,7 @@ namespace Game.Components
             EndMarsCard();
         }
 
-        private void SetIsSaturnSaved()
-        {
-            _isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
-        }
-
-        private void SetIsMarsSaved()
-        {
-            _isMarsSaved = _dataComponent.InventoryData.isMarsSaved;
-        }
+        #region Changes
 
         private void StartSaturnCard()
         {
@@ -69,7 +61,6 @@ namespace Game.Components
                 OnMarsCardShakeStart?.Invoke();
         }
 
-
         private void EndSaturnCard()
         {
             if (_isSaturnSaved)
@@ -84,6 +75,18 @@ namespace Game.Components
                 OnMarsCardOpenEnd?.Invoke();
             else
                 OnMarsCardShakeEnd?.Invoke();
+        }
+
+        #endregion
+
+        private void SetIsSaturnSaved()
+        {
+            _isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
+        }
+
+        private void SetIsMarsSaved()
+        {
+            _isMarsSaved = _dataComponent.InventoryData.isMarsSaved;
         }
     }
 }

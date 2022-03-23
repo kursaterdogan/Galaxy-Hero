@@ -84,9 +84,9 @@ namespace Game.Components
         private void SetDataPath()
         {
 #if UNITY_EDITOR
-            _dataPath = Application.dataPath + "/";
+            _dataPath = Application.dataPath;
 #else
-            _dataPath = Application.persistentDataPath + "/";
+            _dataPath = Application.persistentDataPath;
 #endif
         }
 
@@ -107,7 +107,7 @@ namespace Game.Components
             if (!File.Exists(_dataPath + CoinDataFileName))
                 _coinData = new CoinData
                 {
-                    ownedCoin = 100000
+                    ownedCoin = 10000
                 };
             else
                 LoadData(CoinDataFileName, out _coinData);

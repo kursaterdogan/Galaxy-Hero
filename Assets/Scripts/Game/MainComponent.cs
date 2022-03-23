@@ -43,7 +43,7 @@ namespace Game
 
             InitializeComponents();
             CreateAppState();
-            _appState.Enter();
+            EnterAppState();
         }
 
         private void InitializeComponents()
@@ -135,6 +135,11 @@ namespace Game
         private void CreateAppState()
         {
             _appState = new AppState(_componentContainer);
+        }
+
+        private void EnterAppState()
+        {
+            _appState.Enter();
         }
     }
 }

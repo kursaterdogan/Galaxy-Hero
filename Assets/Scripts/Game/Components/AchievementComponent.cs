@@ -42,15 +42,7 @@ namespace Game.Components
             DeactivateGalaxyStatus();
         }
 
-        private void SetIsGalaxySaved()
-        {
-            _isGalaxySaved = _dataComponent.AchievementData.isGalaxySaved;
-        }
-
-        private void SetHighScore()
-        {
-            _highScore = _dataComponent.AchievementData.highScore.ToString();
-        }
+        #region Changes
 
         private void ChangeHighScore()
         {
@@ -71,6 +63,18 @@ namespace Game.Components
                 OnOCaptainMyCaptainDeactivate?.Invoke();
             else
                 OnNeedHelpDeactivate?.Invoke();
+        }
+
+        #endregion
+
+        private void SetIsGalaxySaved()
+        {
+            _isGalaxySaved = _dataComponent.AchievementData.isGalaxySaved;
+        }
+
+        private void SetHighScore()
+        {
+            _highScore = _dataComponent.AchievementData.highScore.ToString();
         }
     }
 }
