@@ -53,6 +53,8 @@ namespace Game.Components
             _isMarsSaved = _dataComponent.InventoryData.isMarsSaved;
         }
 
+        #region Changes
+
         private void StartSaturnCard()
         {
             if (_isSaturnSaved)
@@ -69,7 +71,6 @@ namespace Game.Components
                 OnMarsCardShakeStart?.Invoke();
         }
 
-
         private void EndSaturnCard()
         {
             if (_isSaturnSaved)
@@ -85,5 +86,7 @@ namespace Game.Components
             else
                 OnMarsCardShakeEnd?.Invoke();
         }
+
+        #endregion
     }
 }
