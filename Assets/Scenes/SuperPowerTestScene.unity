@@ -218,18 +218,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuperPowerCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8352022235597286334, guid: a29ee64c9f9fb14438755cad4366d199, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8352022235597286334, guid: a29ee64c9f9fb14438755cad4366d199, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8352022235597286334, guid: a29ee64c9f9fb14438755cad4366d199, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a29ee64c9f9fb14438755cad4366d199, type: 3}
 --- !u!1001 &1309881289
