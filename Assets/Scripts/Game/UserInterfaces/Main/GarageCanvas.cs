@@ -74,7 +74,7 @@ namespace Game.UserInterfaces.Main
         [SerializeField] private Button ghosteoUpgradeButton;
         [SerializeField] private Image[] ghosteoLevelFrames;
 
-        #region Upgrade Changes
+        #region Changes
 
         public void SetCoin(string ownedCoin)
         {
@@ -223,7 +223,7 @@ namespace Game.UserInterfaces.Main
 
         #endregion
 
-        #region Upgrade Requests
+        #region Requests
 
         public void RequestHealthUpgrade()
         {
@@ -275,12 +275,12 @@ namespace Game.UserInterfaces.Main
             OnGhosteoUpgradeRequest?.Invoke();
         }
 
-        #endregion
-
         public void RequestReturnToMainMenu()
         {
             OnReturnToMainMenuRequest?.Invoke();
         }
+
+        #endregion
 
         private void SetLevelFrames(int level, Image[] levelFrames)
         {
