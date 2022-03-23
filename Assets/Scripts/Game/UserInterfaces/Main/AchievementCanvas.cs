@@ -14,6 +14,8 @@ namespace Game.UserInterfaces.Main
         [SerializeField] private GameObject oCaptainMyCaptainText;
         [SerializeField] private TMP_Text highScoreAmountText;
 
+        #region Changes
+
         public void ChangeHighScore(string highScore)
         {
             highScoreAmountText.text = highScore;
@@ -28,7 +30,7 @@ namespace Game.UserInterfaces.Main
         {
             oCaptainMyCaptainText.SetActive(true);
         }
-        
+
         public void DeactivateNeedHelpText()
         {
             needHelpText.SetActive(false);
@@ -38,6 +40,8 @@ namespace Game.UserInterfaces.Main
         {
             oCaptainMyCaptainText.SetActive(false);
         }
+
+        #endregion
 
         public void RequestReturnToMainMenu()
         {
