@@ -15,18 +15,21 @@ namespace Game.Components
         private Player _player;
 
         private UIComponent _uiComponent;
+        private DataComponent _dataComponent;
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
+            _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
         }
 
         public void OnConstruct()
         {
             //TODO Method
-            _parallaxBackground = Instantiate(parallaxBackgroundPrefabs[0]);
+            int selectedPlanet = _dataComponent.PlanetData.selectedPlanet;
+            _parallaxBackground = Instantiate(parallaxBackgroundPrefabs[selectedPlanet]);
             _projectilePool = Instantiate(projectilePoolPrefab);
             _player = Instantiate(playerPrefab);
         }
