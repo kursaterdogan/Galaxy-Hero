@@ -22,45 +22,37 @@ namespace Game.States.Splash
 
         protected override void OnEnter()
         {
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
-
             SubscribeToComponentChangeDelegates();
 
             _introCanvas.OnStart();
 
             _introComponent.OnConstruct();
+
+            _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
         }
 
         protected override void OnExit()
         {
-            UnsubscribeToComponentChangeDelegates();
-
             _introCanvas.OnQuit();
+
+            UnsubscribeToComponentChangeDelegates();
         }
 
         public void SubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart += StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete += CompleteIntroAnimation;
             _introComponent.OnIntroAnimationComplete += RequestMainMenu;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart -= StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete -= CompleteIntroAnimation;
             _introComponent.OnIntroAnimationComplete -= RequestMainMenu;
         }
 
-        private void StartIntroAnimation()
+        private void StartIntroAnimation(float time)
         {
-            _introCanvas.PlayLoadingIconAnimation();
-            _introCanvas.PlayLogoFadeOutAnimation(_introComponent.GetAnimationTime());
-        }
-
-        private void CompleteIntroAnimation()
-        {
-            _introCanvas.StopLoadingIconAnimation();
+            _introCanvas.PlayLogoFadeOutAnimation(time);
         }
 
         private void RequestMainMenu()
