@@ -6,9 +6,10 @@ namespace Game.Gameplay
     public class ProjectilePool : MonoBehaviour
     {
         //TODO Integrate with StateMachine
+        private const int AmountToPoll = 3;
+
         [SerializeField] private GameObject playerProjectile;
         private List<GameObject> _playerProjectiles;
-        private int amountToPoll = 3;
 
         void Awake()
         {
@@ -35,7 +36,7 @@ namespace Game.Gameplay
         {
             _playerProjectiles = new List<GameObject>();
 
-            for (int i = 0; i < amountToPoll; i++)
+            for (int i = 0; i < AmountToPoll; i++)
             {
                 GameObject temporaryProjectile = Instantiate(playerProjectile, transform);
                 temporaryProjectile.SetActive(false);
