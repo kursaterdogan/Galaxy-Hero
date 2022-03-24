@@ -8,9 +8,9 @@ namespace Game.States
 {
     public class AppState : StateMachine
     {
-        private SplashState _splashState;
-        private MainState _mainState;
-        private GameState _gameState;
+        private readonly SplashState _splashState;
+        private readonly MainState _mainState;
+        private readonly GameState _gameState;
 
         public AppState(ComponentContainer componentContainer)
         {
