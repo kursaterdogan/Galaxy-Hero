@@ -15,7 +15,9 @@ namespace Game.Components
             SuperPower,
             Credits,
             Achievement,
-            InGame
+            PrepareGame,
+            InGame,
+            EndGame
         }
 
         [SerializeField] private BaseCanvas introCanvas;
@@ -25,7 +27,9 @@ namespace Game.Components
         [SerializeField] private BaseCanvas superPowerCanvas;
         [SerializeField] private BaseCanvas creditsCanvas;
         [SerializeField] private BaseCanvas achievementCanvas;
+        [SerializeField] private BaseCanvas prepareGameCanvas;
         [SerializeField] private BaseCanvas inGameCanvas;
+        [SerializeField] private BaseCanvas endGameCanvas;
 
         private BaseCanvas _activeCanvas;
 
@@ -40,7 +44,9 @@ namespace Game.Components
             superPowerCanvas.Initialize();
             creditsCanvas.Initialize();
             achievementCanvas.Initialize();
+            prepareGameCanvas.Initialize();
             inGameCanvas.Initialize();
+            // endGameCanvas.Initialize();
 
             DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
@@ -49,7 +55,9 @@ namespace Game.Components
             DeactivateCanvas(superPowerCanvas);
             DeactivateCanvas(creditsCanvas);
             DeactivateCanvas(achievementCanvas);
+            DeactivateCanvas(prepareGameCanvas);
             DeactivateCanvas(inGameCanvas);
+            // DeactivateCanvas(endGameCanvas);
         }
 
         public BaseCanvas GetCanvas(MenuName canvas)
@@ -70,8 +78,12 @@ namespace Game.Components
                     return creditsCanvas;
                 case MenuName.Achievement:
                     return achievementCanvas;
+                case MenuName.PrepareGame:
+                    return prepareGameCanvas;
                 case MenuName.InGame:
                     return inGameCanvas;
+                case MenuName.EndGame:
+                    return endGameCanvas;
                 default:
                     return null;
             }
@@ -114,8 +126,14 @@ namespace Game.Components
                 case MenuName.Achievement:
                     _activeCanvas = achievementCanvas;
                     break;
+                case MenuName.PrepareGame:
+                    _activeCanvas = prepareGameCanvas;
+                    break;
                 case MenuName.InGame:
                     _activeCanvas = inGameCanvas;
+                    break;
+                case MenuName.EndGame:
+                    _activeCanvas = endGameCanvas;
                     break;
             }
 
