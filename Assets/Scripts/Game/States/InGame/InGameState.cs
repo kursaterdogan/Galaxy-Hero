@@ -5,12 +5,12 @@ using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
 {
-    public class InGameState : StateMachine
+    public class InGameState : StateMachine, IRequestable
     {
-        private UIComponent _uiComponent;
-        private GameplayComponent _gameplayComponent;
-        private InGameCanvas _inGameCanvas;
-        
+        private readonly UIComponent _uiComponent;
+        private readonly GameplayComponent _gameplayComponent;
+        private readonly InGameCanvas _inGameCanvas;
+
         public InGameState(ComponentContainer componentContainer)
         {
             //TODO Hande InGameState
@@ -23,12 +23,34 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
+            SubscribeToCanvasRequestDelegates();
+
             _gameplayComponent.OnConstruct();
+
+            _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
         }
 
         protected override void OnExit()
         {
             _gameplayComponent.OnDestruct();
+
+            UnsubscribeToCanvasRequestDelegates();
+        }
+
+        public void SubscribeToCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+        }
+
+        public void UnsubscribeToCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
+        }
+
+        private void RequestReturnToMainMenu()
+        {
+            //TODO Add Pause, Restart, GameOver
+            SendTrigger((int)StateTriggers.ReturnToMainMenu);
         }
     }
 }
