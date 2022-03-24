@@ -19,7 +19,8 @@ namespace Game
         private CreditsComponent _creditsComponent;
         private AchievementComponent _achievementComponent;
         private PrepareGameComponent _prepareGameComponent;
-        private GameplayComponent _gameplayComponent;
+        private InGameComponent _inGameComponent;
+        private EndGameComponent _endGameComponent;
 
         private AppState _appState;
 
@@ -27,7 +28,7 @@ namespace Game
         {
             Debug.Log("<color=lime>" + GetType().Name + " initialized!</color>");
 
-            _componentContainer = new ComponentContainer();
+            CreateComponentContainer();
         }
 
         void Start()
@@ -42,11 +43,17 @@ namespace Game
             CreateCreditsComponent();
             CreateAchievementComponent();
             CreatePrepareGameComponent();
-            CreateGameplayComponent();
+            CreateInGameComponent();
+            CreateEndGameComponent();
 
             InitializeComponents();
             CreateAppState();
             EnterAppState();
+        }
+
+        private void CreateComponentContainer()
+        {
+            _componentContainer = new ComponentContainer();
         }
 
         private void InitializeComponents()
@@ -61,7 +68,8 @@ namespace Game
             _creditsComponent.Initialize(_componentContainer);
             _achievementComponent.Initialize(_componentContainer);
             _prepareGameComponent.Initialize(_componentContainer);
-            _gameplayComponent.Initialize(_componentContainer);
+            _inGameComponent.Initialize(_componentContainer);
+            _endGameComponent.Initialize(_componentContainer);
         }
 
         private void CreateDataComponent()
@@ -144,12 +152,20 @@ namespace Game
             _componentContainer.AddComponent(componentKey, _prepareGameComponent);
         }
 
-        private void CreateGameplayComponent()
+        private void CreateInGameComponent()
         {
-            _gameplayComponent = FindObjectOfType<GameplayComponent>();
-            string componentKey = _gameplayComponent.GetType().Name;
+            _inGameComponent = FindObjectOfType<InGameComponent>();
+            string componentKey = _inGameComponent.GetType().Name;
 
-            _componentContainer.AddComponent(componentKey, _gameplayComponent);
+            _componentContainer.AddComponent(componentKey, _inGameComponent);
+        }
+
+        private void CreateEndGameComponent()
+        {
+            _endGameComponent = FindObjectOfType<EndGameComponent>();
+            string componentKey = _endGameComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _endGameComponent);
         }
 
         private void CreateAppState()
