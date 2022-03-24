@@ -5,12 +5,12 @@ namespace Game.UserInterfaces.InGame
     public class InGameCanvas : BaseCanvas
     {
         public delegate void InGameRequestDelegate();
-
+        
         public event InGameRequestDelegate OnReturnToMainMenuRequest;
 
         public void RequestReturnToMainMenu()
         {
-            //TODO Link with pause
+            //TODO Handle InGameCanvas
             OnReturnToMainMenuRequest?.Invoke();
         }
     }
