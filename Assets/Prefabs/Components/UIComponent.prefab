@@ -50,4 +50,6 @@ MonoBehaviour:
   superPowerCanvas: {fileID: 0}
   creditsCanvas: {fileID: 0}
   achievementCanvas: {fileID: 0}
+  prepareGameCanvas: {fileID: 0}
   inGameCanvas: {fileID: 0}
+  endGameCanvas: {fileID: 0}
