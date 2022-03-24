@@ -11,7 +11,6 @@ namespace Game.States
         GoToAchievement,
         StartGame,
         PlayGame,
-        GameOver,
-        ReplayGame
+        EndGame,
     }
 }
