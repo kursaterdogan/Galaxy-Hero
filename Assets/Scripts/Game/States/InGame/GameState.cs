@@ -1,7 +1,5 @@
 using Base.Component;
 using Base.State;
-using Game.Components;
-using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
 {
@@ -21,10 +19,8 @@ namespace Game.States.InGame
             AddSubState(_inGameState);
             AddSubState(_endGameState);
 
-            //TODO Handle Transitions
             AddTransition(_prepareGameState, _inGameState, (int)StateTriggers.PlayGame);
-            AddTransition(_inGameState, _endGameState, (int)StateTriggers.GameOver);
-            AddTransition(_endGameState, _prepareGameState, (int)StateTriggers.ReplayGame);
+            AddTransition(_inGameState, _endGameState, (int)StateTriggers.EndGame);
         }
 
         protected override void OnEnter()
@@ -33,6 +29,7 @@ namespace Game.States.InGame
 
         protected override void OnExit()
         {
+            SetDefaultState();
         }
     }
 }
