@@ -76,6 +76,11 @@ namespace Base.State
                 root = root._currentSubState;
             }
         }
+        
+        protected void SetDefaultState()
+        {
+            ChangeSubState(_defaultSubState);
+        }
 
         private void ChangeSubState(StateMachine state)
         {
