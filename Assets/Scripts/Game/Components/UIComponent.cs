@@ -46,7 +46,7 @@ namespace Game.Components
             achievementCanvas.Initialize();
             prepareGameCanvas.Initialize();
             inGameCanvas.Initialize();
-            // endGameCanvas.Initialize();
+            endGameCanvas.Initialize();
 
             DeactivateCanvas(introCanvas);
             DeactivateCanvas(mainMenuCanvas);
@@ -57,7 +57,7 @@ namespace Game.Components
             DeactivateCanvas(achievementCanvas);
             DeactivateCanvas(prepareGameCanvas);
             DeactivateCanvas(inGameCanvas);
-            // DeactivateCanvas(endGameCanvas);
+            DeactivateCanvas(endGameCanvas);
         }
 
         public BaseCanvas GetCanvas(MenuName canvas)
