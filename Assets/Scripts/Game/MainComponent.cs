@@ -18,6 +18,7 @@ namespace Game
         private SuperPowerComponent _superPowerComponent;
         private CreditsComponent _creditsComponent;
         private AchievementComponent _achievementComponent;
+        private PrepareGameComponent _prepareGameComponent;
         private GameplayComponent _gameplayComponent;
 
         private AppState _appState;
@@ -40,6 +41,7 @@ namespace Game
             CreateSuperPowerComponent();
             CreateCreditsComponent();
             CreateAchievementComponent();
+            CreatePrepareGameComponent();
             CreateGameplayComponent();
 
             InitializeComponents();
@@ -58,6 +60,7 @@ namespace Game
             _superPowerComponent.Initialize(_componentContainer);
             _creditsComponent.Initialize(_componentContainer);
             _achievementComponent.Initialize(_componentContainer);
+            _prepareGameComponent.Initialize(_componentContainer);
             _gameplayComponent.Initialize(_componentContainer);
         }
 
@@ -131,6 +134,14 @@ namespace Game
             string componentKey = _achievementComponent.GetType().Name;
 
             _componentContainer.AddComponent(componentKey, _achievementComponent);
+        }
+
+        private void CreatePrepareGameComponent()
+        {
+            _prepareGameComponent = FindObjectOfType<PrepareGameComponent>();
+            string componentKey = _prepareGameComponent.GetType().Name;
+
+            _componentContainer.AddComponent(componentKey, _prepareGameComponent);
         }
 
         private void CreateGameplayComponent()
