@@ -8,16 +8,15 @@ namespace Game.States.InGame
     public class InGameState : StateMachine, IRequestable
     {
         private readonly UIComponent _uiComponent;
-        private readonly GameplayComponent _gameplayComponent;
+        private readonly InGameComponent _inGameComponent;
         private readonly InGameCanvas _inGameCanvas;
 
         public InGameState(ComponentContainer componentContainer)
         {
             //TODO Hande InGameState
-            _gameplayComponent = componentContainer.GetComponent("GameplayComponent") as GameplayComponent;
-
-            //TODO Handle Canvas Delegates
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
+            _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
+
             _inGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.InGame) as InGameCanvas;
         }
 
@@ -25,32 +24,31 @@ namespace Game.States.InGame
         {
             SubscribeToCanvasRequestDelegates();
 
-            _gameplayComponent.OnConstruct();
+            _inGameComponent.OnConstruct();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
         }
 
         protected override void OnExit()
         {
-            _gameplayComponent.OnDestruct();
+            _inGameComponent.OnDestruct();
 
             UnsubscribeToCanvasRequestDelegates();
         }
 
         public void SubscribeToCanvasRequestDelegates()
         {
-            _inGameCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+            _inGameCanvas.OnReturnToMainMenuRequest += RequestEndGame;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
-            _inGameCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
+            _inGameCanvas.OnReturnToMainMenuRequest -= RequestEndGame;
         }
 
-        private void RequestReturnToMainMenu()
+        private void RequestEndGame()
         {
-            //TODO Add Pause, Restart, GameOver
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTriggers.EndGame);
         }
     }
 }
