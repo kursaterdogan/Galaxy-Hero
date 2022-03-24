@@ -7,7 +7,7 @@ namespace Game.UserInterfaces.Splash
     {
         [SerializeField] private Transform rectTransform;
 
-        private Vector3 _rotationVector = new Vector3(0, 0, -60);
+        private readonly Vector3 _rotationVector = new Vector3(0, 0, -60);
 
         public void PlayLoadingAnimation()
         {
