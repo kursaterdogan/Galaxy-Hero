@@ -9,13 +9,13 @@ namespace Game.Gameplay.Player
         //TODO Integrate with StateMachine
         //TODO Inject GameCamera
         private GameCamera _gameCamera;
-        private float _moveSpeed = 5f;
+        private float _moveSpeed = 5.0f;
 
         private ProjectilePool _projectilePool;
+        private WaitForSeconds _firingWaitForSeconds;
         private Coroutine _firingCoroutine;
-        [SerializeField] private Transform firingPoint;
-        float _projectileSpeed = 15f;
-        float _projectileFiringPeriod = 0.2f;
+        [SerializeField] private Transform[] firingPoints;
+        float _projectileFiringPeriod = 0.5f;
 
         void Start()
         {
@@ -25,6 +25,7 @@ namespace Game.Gameplay.Player
             Time.timeScale = 0.5f;
             SetGameCamera();
             SetProjectilePool();
+            SetFiringWaitForSeconds();
             StartFiringCoroutine();
         }
 
@@ -57,6 +58,11 @@ namespace Game.Gameplay.Player
             _projectilePool = FindObjectOfType<ProjectilePool>();
         }
 
+        private void SetFiringWaitForSeconds()
+        {
+            _firingWaitForSeconds = new WaitForSeconds(_projectileFiringPeriod);
+        }
+
         private void StartFiringCoroutine()
         {
             _firingCoroutine = StartCoroutine(FireContinously());
@@ -81,11 +87,15 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                GameObject laser = _projectilePool.GetPlayerProjectile();
-                laser.transform.position = firingPoint.position;
-                laser.SetActive(true);
-                laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
-                yield return new WaitForSeconds(_projectileFiringPeriod);
+                foreach (var firingPoint in firingPoints)
+                {
+                    PlayerProjectile projectile = _projectilePool.GetPlayerProjectile();
+                    projectile.SetPosition(firingPoint.transform.position);
+                    projectile.SetRotation(firingPoint.transform.rotation);
+                    projectile.gameObject.SetActive(true);
+                }
+
+                yield return _firingWaitForSeconds;
             }
         }
     }
