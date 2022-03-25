@@ -13,7 +13,7 @@ namespace Game.Gameplay.Player
         private float _moveSpeed = 5.0f;
 
         private ProjectilePool _projectilePool;
-        private WaitForSeconds _firingWaitForSeconds;
+        private WaitForSeconds _fireRateWaitForSeconds;
         private Coroutine _firingCoroutine;
         [SerializeField] private Cannon cannon;
         [SerializeField] private int cannonLevel;
@@ -74,7 +74,7 @@ namespace Game.Gameplay.Player
 
         private void SetFiringWaitForSeconds()
         {
-            _firingWaitForSeconds = new WaitForSeconds(_fireRate);
+            _fireRateWaitForSeconds = new WaitForSeconds(_fireRate);
         }
 
         private void StartFiringCoroutine()
@@ -109,7 +109,7 @@ namespace Game.Gameplay.Player
                     projectile.gameObject.SetActive(true);
                 }
 
-                yield return _firingWaitForSeconds;
+                yield return _fireRateWaitForSeconds;
             }
         }
     }
