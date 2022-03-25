@@ -18,7 +18,7 @@ namespace Game.Gameplay.Player
         [SerializeField] private Cannon cannon;
         [SerializeField] private int cannonLevel;
         private List<Transform> _firePoints;
-        float _projectileFiringPeriod = 0.5f;
+        private float _fireRate = 1;
 
         void Start()
         {
@@ -42,6 +42,11 @@ namespace Game.Gameplay.Player
         {
             // TODO Check EnemyTrigger
             // Debug.Log(col.name);
+        }
+
+        public void SetFireRate(int fireRateLevel)
+        {
+            _fireRate /= fireRateLevel;
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -69,7 +74,7 @@ namespace Game.Gameplay.Player
 
         private void SetFiringWaitForSeconds()
         {
-            _firingWaitForSeconds = new WaitForSeconds(_projectileFiringPeriod);
+            _firingWaitForSeconds = new WaitForSeconds(_fireRate);
         }
 
         private void StartFiringCoroutine()
