@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,9 @@ namespace Game.Gameplay.Player
         private ProjectilePool _projectilePool;
         private WaitForSeconds _firingWaitForSeconds;
         private Coroutine _firingCoroutine;
-        [SerializeField] private Transform[] firingPoints;
+        [SerializeField] private Cannon cannon;
+        [SerializeField] private int cannonLevel;
+        private List<Transform> _firePoints;
         float _projectileFiringPeriod = 0.5f;
 
         void Start()
@@ -24,6 +27,7 @@ namespace Game.Gameplay.Player
             //TODO Set ProjectileSpeed & ProjectileFiringPeriod
             Time.timeScale = 0.5f;
             SetGameCamera();
+            SetFirePoints();
             SetProjectilePool();
             SetFiringWaitForSeconds();
             StartFiringCoroutine();
@@ -51,6 +55,11 @@ namespace Game.Gameplay.Player
         private void SetGameCamera()
         {
             _gameCamera = FindObjectOfType<GameCamera>();
+        }
+
+        private void SetFirePoints()
+        {
+            _firePoints = cannon.GetFirePoints(cannonLevel);
         }
 
         private void SetProjectilePool()
@@ -87,7 +96,7 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                foreach (var firingPoint in firingPoints)
+                foreach (var firingPoint in _firePoints)
                 {
                     PlayerProjectile projectile = _projectilePool.GetPlayerProjectile();
                     projectile.SetPosition(firingPoint.transform.position);
