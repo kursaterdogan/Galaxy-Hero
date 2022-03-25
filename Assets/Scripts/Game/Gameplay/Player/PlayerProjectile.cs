@@ -28,11 +28,6 @@ namespace Game.Gameplay.Player
             transform.position = position;
         }
 
-        public void SetRotation(Quaternion rotation)
-        {
-            transform.rotation = rotation;
-        }
-
         private void SetVelocity()
         {
             rb2d.velocity = new Vector2(0, _projectileSpeed);
