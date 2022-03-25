@@ -32,8 +32,7 @@ namespace Game.Gameplay.Player
 
         private void SetMaxVerticalPosition()
         {
-            GameCamera gameCamera = FindObjectOfType<GameCamera>();
-            _maxVerticalPosition = gameCamera.GetMaxVerticalPosition();
+            _maxVerticalPosition = FindObjectOfType<GameCamera>().GetMaxVerticalPosition();
         }
 
         private void CreatePool()
