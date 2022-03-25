@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4860229139737306623}
   - component: {fileID: 4860229139737306616}
   m_Layer: 0
-  m_Name: Shooter_Navy
+  m_Name: ShooterNavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
