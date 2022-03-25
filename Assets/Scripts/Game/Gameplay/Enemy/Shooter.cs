@@ -6,14 +6,16 @@ namespace Game.Gameplay.Enemy
     {
         //TODO Shooter
         [SerializeField] private EnemyProjectile enemyProjectilePrefab;
-        [SerializeField] private Transform firingPoint;
+        [SerializeField] private Transform[] firePoints;
 
         protected override void Attack()
         {
-            EnemyProjectile enemyProjectile =
-                Instantiate(enemyProjectilePrefab, firingPoint.position, Quaternion.identity);
-
-            enemyProjectile.SetDestroyPosition(DestroyPosition);
+            foreach (Transform firePoint in firePoints)
+            {
+                EnemyProjectile enemyProjectile =
+                    Instantiate(enemyProjectilePrefab, firePoint.position, Quaternion.identity);
+                enemyProjectile.SetDestroyPosition(DestroyPosition);
+            }
         }
     }
 }
