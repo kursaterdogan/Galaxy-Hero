@@ -21,7 +21,7 @@ namespace Game.Gameplay.Player
 
         public PlayerProjectile GetPlayerProjectile()
         {
-            foreach (var playerProjectile in _playerProjectiles)
+            foreach (PlayerProjectile playerProjectile in _playerProjectiles)
             {
                 if (!playerProjectile.gameObject.activeInHierarchy)
                     return playerProjectile;
