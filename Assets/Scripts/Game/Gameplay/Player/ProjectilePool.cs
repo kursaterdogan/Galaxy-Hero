@@ -8,40 +8,51 @@ namespace Game.Gameplay.Player
         //TODO Integrate with StateMachine
         private const int AmountToPoll = 3;
 
-        [SerializeField] private GameObject playerProjectile;
-        private List<GameObject> _playerProjectiles;
+        [SerializeField] private PlayerProjectile playerProjectilePrefab;
+        private List<PlayerProjectile> _playerProjectiles;
+
+        private float _maxVerticalPosition;
 
         void Awake()
         {
-            CreatePlayerProjectiles();
+            SetMaxVerticalPosition();
+            CreatePool();
         }
 
-        public GameObject GetPlayerProjectile()
+        public PlayerProjectile GetPlayerProjectile()
         {
-            for (int i = 0; i < _playerProjectiles.Count; i++)
+            foreach (var playerProjectile in _playerProjectiles)
             {
-                if (!_playerProjectiles[i].activeInHierarchy)
-                    return _playerProjectiles[i];
+                if (!playerProjectile.gameObject.activeInHierarchy)
+                    return playerProjectile;
             }
 
-            //TODO Optimize
-            GameObject temporaryProjectile = Instantiate(playerProjectile, transform);
-            temporaryProjectile.SetActive(false);
-            _playerProjectiles.Add(temporaryProjectile);
-
-            return temporaryProjectile;
+            return CreatePlayerProjectile();
         }
 
-        private void CreatePlayerProjectiles()
+        private void SetMaxVerticalPosition()
         {
-            _playerProjectiles = new List<GameObject>();
+            GameCamera gameCamera = FindObjectOfType<GameCamera>();
+            _maxVerticalPosition = gameCamera.GetMaxVerticalPosition();
+        }
+
+        private void CreatePool()
+        {
+            _playerProjectiles = new List<PlayerProjectile>();
 
             for (int i = 0; i < AmountToPoll; i++)
             {
-                GameObject temporaryProjectile = Instantiate(playerProjectile, transform);
-                temporaryProjectile.SetActive(false);
-                _playerProjectiles.Add(temporaryProjectile);
+                CreatePlayerProjectile();
             }
+        }
+
+        private PlayerProjectile CreatePlayerProjectile()
+        {
+            PlayerProjectile playerProjectile = Instantiate(playerProjectilePrefab, transform);
+            playerProjectile.SetMaxVerticalPosition(_maxVerticalPosition);
+            playerProjectile.gameObject.SetActive(false);
+            _playerProjectiles.Add(playerProjectile);
+            return playerProjectile;
         }
     }
 }
