@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-namespace Game.Gameplay
+namespace Game.Gameplay.Player
 {
     public class Player : MonoBehaviour
     {
