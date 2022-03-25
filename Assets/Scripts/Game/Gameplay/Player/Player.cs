@@ -101,10 +101,10 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                foreach (var firingPoint in _firePoints)
+                foreach (Transform firePoint in _firePoints)
                 {
                     PlayerProjectile projectile = _projectilePool.GetPlayerProjectile();
-                    projectile.SetPosition(firingPoint.transform.position);
+                    projectile.SetPosition(firePoint.transform.position);
                     projectile.gameObject.SetActive(true);
                 }
 
