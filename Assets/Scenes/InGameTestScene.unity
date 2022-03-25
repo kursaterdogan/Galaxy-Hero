@@ -428,30 +428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 420510558127734498, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1638006021227921709, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2324976029600381217, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463990086021383043, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6577742292955905978, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6839342904451170474, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 7424817292142907290, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -499,14 +475,6 @@ PrefabInstance:
     - target: {fileID: 7424817292142907291, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424817292142907294, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: cannonLevel
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8798461989561979057, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f748405a65b02a44bb3b66df06b7557d, type: 3}
