@@ -105,7 +105,6 @@ namespace Game.Gameplay.Player
                 {
                     PlayerProjectile projectile = _projectilePool.GetPlayerProjectile();
                     projectile.SetPosition(firingPoint.transform.position);
-                    projectile.SetRotation(firingPoint.transform.rotation);
                     projectile.gameObject.SetActive(true);
                 }
 
