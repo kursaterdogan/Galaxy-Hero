@@ -7,17 +7,19 @@ namespace Game.Gameplay.Enemy
     {
         protected abstract void Attack();
 
+        [SerializeField] protected float score;
+        [SerializeField] protected int health;
+        [SerializeField] protected float speed;
+        protected float DestroyPosition;
+
         [SerializeField] private Path path;
         private List<Transform> _waypoints;
         private int _waypointIndex;
 
-        [SerializeField] protected float score;
-        [SerializeField] protected int health;
-        [SerializeField] protected float speed;
-
         void Start()
         {
             SetWaypoints();
+            SetDestroyPosition();
             SetStartPosition();
         }
 
@@ -29,6 +31,11 @@ namespace Game.Gameplay.Enemy
         private void SetWaypoints()
         {
             _waypoints = path.GetWaypoints();
+        }
+
+        private void SetDestroyPosition()
+        {
+            DestroyPosition = FindObjectOfType<GameCamera>().GetMinVerticalPosition();
         }
 
         private void SetStartPosition()
