@@ -135,4 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 2535332642487508005}
-  projectileSpeed: -10
+  speed: -10
