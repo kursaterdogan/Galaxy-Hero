@@ -7,13 +7,15 @@ namespace Game.Gameplay
     {
         //TODO Integrate with StateMachine
         private const float AspectPadding = 0.05f;
-        private const float ScreenBoundPadding = 10f;
+        private const float ScreenBoundPadding = 10.0f;
+        private const float VerticalPositionPadding = 1.0f;
 
         private Camera _mainCamera;
 
         private float _aspect;
         private float _screenBoundWidth;
         private float _screenBoundHeight;
+        private float _minVerticalPosition;
         private float _maxVerticalPosition;
 
         void Awake()
@@ -22,6 +24,7 @@ namespace Game.Gameplay
             SetAspect();
             SetMoveBoundaries();
             SetMaxVerticalPosition();
+            SetMinVerticalPosition();
         }
 
         public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
@@ -52,6 +55,11 @@ namespace Game.Gameplay
             return _maxVerticalPosition;
         }
 
+        public float GetMinVerticalPosition()
+        {
+            return _minVerticalPosition;
+        }
+
         public float GetAspectRatio()
         {
             return _aspect;
@@ -73,9 +81,14 @@ namespace Game.Gameplay
             _screenBoundWidth = Screen.width;
         }
 
+        private void SetMinVerticalPosition()
+        {
+            _minVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 0)).y - VerticalPositionPadding;
+        }
+
         private void SetMaxVerticalPosition()
         {
-            _maxVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 1)).y;
+            _maxVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 1)).y + VerticalPositionPadding;
         }
     }
 }
