@@ -59,7 +59,7 @@ namespace Base.State
 
         protected void SendTrigger(int trigger)
         {
-            var root = this;
+            StateMachine root = this;
             while (root?._parent != null)
             {
                 root = root._parent;
@@ -86,7 +86,7 @@ namespace Base.State
         {
             _currentSubState?.Exit();
 
-            var nextState = _subStates[state.GetType()];
+            StateMachine nextState = _subStates[state.GetType()];
             _currentSubState = nextState;
             nextState.Enter();
         }
