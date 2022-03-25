@@ -49,7 +49,7 @@ namespace Game.Gameplay.Player
         private PlayerProjectile CreatePlayerProjectile()
         {
             PlayerProjectile playerProjectile = Instantiate(playerProjectilePrefab, transform);
-            playerProjectile.SetMaxVerticalPosition(_maxVerticalPosition);
+            playerProjectile.SetDestroyPosition(_maxVerticalPosition);
             playerProjectile.gameObject.SetActive(false);
             _playerProjectiles.Add(playerProjectile);
             return playerProjectile;
