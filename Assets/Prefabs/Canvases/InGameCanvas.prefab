@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 671967986}
   - component: {fileID: 671967985}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 5 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741999659}
   m_Layer: 5
-  m_Name: Life
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 924008900}
   - component: {fileID: 924008899}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 3 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 927232505}
   - component: {fileID: 927232504}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 2 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 1354920622}
   - component: {fileID: 1354920621}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 4 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 1683103568}
   - component: {fileID: 1683103567}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 1 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1158,12 +1158,12 @@ GameObject:
   - component: {fileID: 8542197056284527274}
   - component: {fileID: 8814994866246910452}
   m_Layer: 5
-  m_Name: Filled
+  m_Name: Level 6 Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8825550427142395649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1411,6 +1411,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ddfee7d47b5842a8a2562a8a062be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 333856291}
+  healthLevel:
+  - {fileID: 474677861}
+  - {fileID: 2126660484}
+  - {fileID: 1681235397}
+  - {fileID: 1651227863}
+  - {fileID: 1574018070}
+  - {fileID: 9042932364949066791}
+  healthLevelFrames:
+  - {fileID: 1683103567}
+  - {fileID: 927232504}
+  - {fileID: 924008899}
+  - {fileID: 1354920621}
+  - {fileID: 671967985}
+  - {fileID: 8814994866246910452}
 --- !u!1 &7987720302301986129
 GameObject:
   m_ObjectHideFlags: 0
