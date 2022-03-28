@@ -373,7 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390343996032520337, guid: aa51371935d04e94589f3008a6a6419e, type: 3}
       propertyPath: m_Name
-      value: ProjectilePool
+      value: PlayerProjectilePool
       objectReference: {fileID: 0}
     - target: {fileID: 2390343996032520339, guid: aa51371935d04e94589f3008a6a6419e, type: 3}
       propertyPath: m_RootOrder
