@@ -1,41 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Gameplay.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, ILaunchable
     {
         //TODO Integrate with StateMachine
         //TODO Inject GameCamera
+        private const float DefaultTimeScale = 0.5f;
+        private const float NormalTimeScale = 1.0f;
+
         private GameCamera _gameCamera;
         private float _moveSpeed = 5.0f;
 
         private ProjectilePool _projectilePool;
         private WaitForSeconds _fireRateWaitForSeconds;
-        private Coroutine _firingCoroutine;
+
         [SerializeField] private Cannon cannon;
         [SerializeField] private int cannonLevel;
         private List<Transform> _firePoints;
-        private float _fireRate = 1;
+        private float _fireRate = 1.0f;
 
         void Start()
         {
             //TODO SetMoveSpeed
             //TODO SetTimeScale on InGameState
             //TODO Set ProjectileSpeed & ProjectileFiringPeriod
-            Time.timeScale = 0.5f;
+            SetTimeScale(DefaultTimeScale);
             SetGameCamera();
             SetFirePoints();
             SetProjectilePool();
             SetFiringWaitForSeconds();
-            StartFiringCoroutine();
+            
+            OnLaunch();
         }
 
         void Update()
         {
             Move();
+        }
+
+        public void OnLaunch()
+        {
+            StartFiringCoroutine();
         }
 
         void OnTriggerEnter2D(Collider2D col)
@@ -52,9 +62,14 @@ namespace Game.Gameplay.Player
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
             if (callbackContext.started)
-                Time.timeScale = 1f;
+                SetTimeScale(NormalTimeScale);
             else if (callbackContext.canceled)
-                Time.timeScale = 0.5f;
+                SetTimeScale(DefaultTimeScale);
+        }
+
+        private void SetTimeScale(float timeScale)
+        {
+            Time.timeScale = timeScale;
         }
 
         private void SetGameCamera()
@@ -79,13 +94,7 @@ namespace Game.Gameplay.Player
 
         private void StartFiringCoroutine()
         {
-            _firingCoroutine = StartCoroutine(FireContinously());
-        }
-
-        private void StopFiringCoroutine()
-        {
-            //TODO HandleFiringCoroutine
-            StopCoroutine(_firingCoroutine);
+            StartCoroutine(FireContinously());
         }
 
         private void Move()
