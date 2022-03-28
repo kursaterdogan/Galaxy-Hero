@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8620890930380102913}
   - component: {fileID: -8479512863042250373}
   m_Layer: 0
-  m_Name: GreenEnemyProjectile
+  m_Name: GreenShooterProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
