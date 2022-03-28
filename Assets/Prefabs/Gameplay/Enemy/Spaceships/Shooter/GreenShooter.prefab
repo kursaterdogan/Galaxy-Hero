@@ -40,10 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 20080674941814057}
   - component: {fileID: 20080674941814062}
-  - component: {fileID: 20080674941814063}
   - component: {fileID: 20080674941814056}
+  - component: {fileID: 20080674941814063}
   m_Layer: 0
-  m_Name: ShooterGreen
+  m_Name: GreenShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,27 +117,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &20080674941814063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20080674941814060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12121b85b42a59f41a334ad7143dea1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  health: 3
-  speed: 2
-  path: {fileID: 1921261931203338907, guid: 9328fffa214fbb2488c80a7f07b74a4c, type: 3}
-  enemyProjectilePrefab: {fileID: -8479512863042250373, guid: bb59bec98c78bb548a5e1e3cfe6047c3, type: 3}
-  firePoints:
-  - {fileID: 471756197}
-  - {fileID: 7235571915168697213}
-  - {fileID: 1799998525705525239}
 --- !u!60 &20080674941814056
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -247,6 +226,27 @@ PolygonCollider2D:
       - {x: 0.114999995, y: -3.6799998}
       - {x: 0.715, y: -3.1899998}
       - {x: 1.1949999, y: -3.1899998}
+--- !u!114 &20080674941814063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20080674941814060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12121b85b42a59f41a334ad7143dea1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  health: 3
+  speed: 2
+  path: {fileID: 1921261931203338907, guid: 9328fffa214fbb2488c80a7f07b74a4c, type: 3}
+  enemyProjectilePrefab: {fileID: -8479512863042250373, guid: bb59bec98c78bb548a5e1e3cfe6047c3, type: 3}
+  firePoints:
+  - {fileID: 471756197}
+  - {fileID: 7235571915168697213}
+  - {fileID: 1799998525705525239}
 --- !u!1 &4017773206118833595
 GameObject:
   m_ObjectHideFlags: 0

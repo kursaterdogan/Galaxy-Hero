@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7613767977375094906}
   - component: {fileID: 7613767977375094905}
   m_Layer: 0
-  m_Name: ShooterTurquosie
+  m_Name: TurquosieShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

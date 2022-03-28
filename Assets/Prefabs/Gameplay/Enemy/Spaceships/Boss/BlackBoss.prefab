@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4640414482159545512}
   - component: {fileID: 4640414482159545515}
   m_Layer: 0
-  m_Name: BossBlack
+  m_Name: BlackBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
