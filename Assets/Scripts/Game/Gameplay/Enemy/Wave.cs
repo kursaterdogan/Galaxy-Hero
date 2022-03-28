@@ -4,16 +4,23 @@ namespace Game.Gameplay.Enemy
 {
     public class Wave : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private int enemyCount;
+        [SerializeField] private float spawnCooldown;
+
+        public GameObject GetEnemy()
         {
-        
+            return enemyPrefab;
         }
 
-        // Update is called once per frame
-        void Update()
+        public int GetEnemyCount()
         {
-        
+            return enemyCount;
+        }
+
+        public float GetSpawnCooldown()
+        {
+            return spawnCooldown;
         }
     }
 }
