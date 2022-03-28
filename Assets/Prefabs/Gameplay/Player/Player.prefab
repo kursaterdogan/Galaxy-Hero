@@ -913,9 +913,9 @@ GameObject:
   - component: {fileID: 7424817292142907291}
   - component: {fileID: 7424817292142907292}
   - component: {fileID: 7424817292142907293}
-  - component: {fileID: 7424817292142907294}
   - component: {fileID: 7207784759193383298}
   - component: {fileID: 1630891749}
+  - component: {fileID: 7424817292142907294}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1077,20 +1077,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7424817292142907294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424817292142907290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88badce4a55a6c245923e8e61d48273b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannon: {fileID: 2720497927111012844}
-  cannonLevel: 4
 --- !u!58 &7207784759193383298
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1128,6 +1114,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7424817292142907294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424817292142907290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88badce4a55a6c245923e8e61d48273b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannon: {fileID: 2720497927111012844}
+  cannonLevel: 4
 --- !u!1 &7543693735999365564
 GameObject:
   m_ObjectHideFlags: 0
