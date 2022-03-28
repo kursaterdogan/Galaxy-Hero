@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe73603ba231374dbc0a9c475edeecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - {fileID: 9087945646247761715, guid: 60cba9a53c415884ca1f4fa23ff23642, type: 3}
+  - {fileID: 9087945646247761715, guid: 60cba9a53c415884ca1f4fa23ff23642, type: 3}
   waveSpawnCooldown: 5
