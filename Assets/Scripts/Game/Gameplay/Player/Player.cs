@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Base.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Base.Gameplay;
 
 namespace Game.Gameplay.Player
 {
@@ -26,11 +25,6 @@ namespace Game.Gameplay.Player
         private float _speed = 5.0f;
         private float _fireRate = 1.0f;
 
-        void Start()
-        {
-            SetTimeScale(DefaultTimeScale);
-        }
-
         void Update()
         {
             Move();
@@ -49,6 +43,7 @@ namespace Game.Gameplay.Player
 
         public void OnLaunch()
         {
+            SetTimeScale(DefaultTimeScale);
             StartFiringCoroutine();
         }
 
@@ -96,7 +91,7 @@ namespace Game.Gameplay.Player
         {
             _firePoints = cannon.GetFirePoints(_cannonLevel);
         }
-        
+
         private void SetFiringWaitForSeconds()
         {
             _fireRateWaitForSeconds = new WaitForSeconds(_fireRate);
