@@ -7,14 +7,14 @@ namespace Game.Components
 {
     public class DataComponent : MonoBehaviour, IComponent
     {
-        private const string CoinDataFileName = "/CoinData.json";
+        private const string GoldDataFileName = "/GoldData.json";
         private const string PlanetDataFileName = "/PlanetData.json";
         private const string SuperPowerDataFileName = "/SuperPowerData.json";
         private const string GarageDataFileName = "/GarageData.json";
         private const string InventoryDataFileName = "/InventoryData.json";
         private const string AchievementDataFileName = "/AchievementData.json";
 
-        public CoinData CoinData => _coinData;
+        public GoldData GoldData => _goldData;
         public PlanetData PlanetData => _planetData;
         public SuperPowerData SuperPowerData => _superPowerData;
         public GarageData GarageData => _garageData;
@@ -23,7 +23,7 @@ namespace Game.Components
 
         private string _dataPath;
 
-        private CoinData _coinData;
+        private GoldData _goldData;
         private PlanetData _planetData;
         private SuperPowerData _superPowerData;
         private GarageData _garageData;
@@ -36,14 +36,14 @@ namespace Game.Components
 
             SetDataPath();
 
-            CreateCoinData();
+            CreateGoldData();
             CreatePlanetData();
             CreateSuperPowerData();
             CreateGarageData();
             CreateInventoryData();
             CreateAchievementData();
 
-            SaveCoinData();
+            SaveGoldData();
             SavePlanetData();
             SaveSuperPowerData();
             SaveGarageData();
@@ -51,9 +51,9 @@ namespace Game.Components
             SaveAchievementData();
         }
 
-        public void SaveCoinData()
+        public void SaveGoldData()
         {
-            SaveData(CoinDataFileName, in _coinData);
+            SaveData(GoldDataFileName, in _goldData);
         }
 
         public void SavePlanetData()
@@ -102,15 +102,15 @@ namespace Game.Components
             File.WriteAllText(_dataPath + dataFileName, content);
         }
 
-        private void CreateCoinData()
+        private void CreateGoldData()
         {
-            if (!File.Exists(_dataPath + CoinDataFileName))
-                _coinData = new CoinData
+            if (!File.Exists(_dataPath + GoldDataFileName))
+                _goldData = new GoldData
                 {
-                    ownedCoin = 10000
+                    ownedGold = 10000
                 };
             else
-                LoadData(CoinDataFileName, out _coinData);
+                LoadData(GoldDataFileName, out _goldData);
         }
 
         private void CreatePlanetData()
