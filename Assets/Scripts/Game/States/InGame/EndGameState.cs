@@ -14,7 +14,6 @@ namespace Game.States.InGame
 
         public EndGameState(ComponentContainer componentContainer)
         {
-            //TODO Handle EndGameState
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _endGameComponent = componentContainer.GetComponent("EndGameComponent") as EndGameComponent;
 
@@ -25,6 +24,9 @@ namespace Game.States.InGame
         {
             SubscribeToComponentChangeDelegates();
             SubscribeToCanvasRequestDelegates();
+
+            _endGameCanvas.OnStart();
+            _endGameComponent.OnConstruct();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.EndGame);
         }
@@ -37,10 +39,22 @@ namespace Game.States.InGame
 
         public void SubscribeToComponentChangeDelegates()
         {
+            _endGameComponent.OnWin += Win;
+            _endGameComponent.OnLose += Lose;
+            _endGameComponent.OnSavePlanetChange += ChangeSavePlanetText;
+            _endGameComponent.OnNeedYourHelpChange += ChangeNeedYourHelpText;
+            _endGameComponent.OnScoreChange += ChangeScore;
+            _endGameComponent.OnCoinChange += ChangeCoin;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
         {
+            _endGameComponent.OnWin -= Win;
+            _endGameComponent.OnLose -= Lose;
+            _endGameComponent.OnSavePlanetChange -= ChangeSavePlanetText;
+            _endGameComponent.OnNeedYourHelpChange -= ChangeNeedYourHelpText;
+            _endGameComponent.OnScoreChange -= ChangeScore;
+            _endGameComponent.OnCoinChange -= ChangeCoin;
         }
 
         public void SubscribeToCanvasRequestDelegates()
@@ -52,6 +66,40 @@ namespace Game.States.InGame
         {
             _endGameCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
         }
+
+        #region Changes
+
+        private void Win()
+        {
+            _endGameCanvas.EnableWinObjects();
+        }
+
+        private void Lose()
+        {
+            _endGameCanvas.EnableLoseObjects();
+        }
+
+        private void ChangeSavePlanetText(string savePlanet)
+        {
+            _endGameCanvas.ChangeSavePlanetText(savePlanet);
+        }
+
+        private void ChangeNeedYourHelpText(string needYourHelp)
+        {
+            _endGameCanvas.ChangeNeedYourHelpText(needYourHelp);
+        }
+
+        private void ChangeScore(string score, string scoreAmount)
+        {
+            _endGameCanvas.ChangeScore(score, scoreAmount);
+        }
+
+        private void ChangeCoin(string ownedCoin, string lastGainedCoin)
+        {
+            _endGameCanvas.ChangeCoin(ownedCoin, lastGainedCoin);
+        }
+
+        #endregion
 
         private void RequestReturnToMainMenu()
         {
