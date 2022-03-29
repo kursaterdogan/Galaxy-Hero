@@ -44,7 +44,7 @@ namespace Game.States.InGame
             _endGameComponent.OnSavePlanetChange += ChangeSavePlanetText;
             _endGameComponent.OnNeedYourHelpChange += ChangeNeedYourHelpText;
             _endGameComponent.OnScoreChange += ChangeScore;
-            _endGameComponent.OnCoinChange += ChangeCoin;
+            _endGameComponent.OnGoldChange += ChangeGold;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
@@ -54,7 +54,7 @@ namespace Game.States.InGame
             _endGameComponent.OnSavePlanetChange -= ChangeSavePlanetText;
             _endGameComponent.OnNeedYourHelpChange -= ChangeNeedYourHelpText;
             _endGameComponent.OnScoreChange -= ChangeScore;
-            _endGameComponent.OnCoinChange -= ChangeCoin;
+            _endGameComponent.OnGoldChange -= ChangeGold;
         }
 
         public void SubscribeToCanvasRequestDelegates()
@@ -94,9 +94,9 @@ namespace Game.States.InGame
             _endGameCanvas.ChangeScore(score, scoreAmount);
         }
 
-        private void ChangeCoin(string ownedCoin, string lastGainedCoin)
+        private void ChangeGold(string ownedCoin, string lastGainedCoin)
         {
-            _endGameCanvas.ChangeCoin(ownedCoin, lastGainedCoin);
+            _endGameCanvas.ChangeGold(ownedCoin, lastGainedCoin);
         }
 
         #endregion
