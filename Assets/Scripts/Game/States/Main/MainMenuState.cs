@@ -65,7 +65,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest += RequestCredits;
             _mainMenuCanvas.OnAchievementRequest += RequestAchievement;
-            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
+            _mainMenuCanvas.OnStartGameRequest += RequestStartGame;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
@@ -77,7 +77,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
             _mainMenuCanvas.OnAchievementRequest -= RequestAchievement;
-            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
+            _mainMenuCanvas.OnStartGameRequest -= RequestStartGame;
         }
 
         #region Changes
