@@ -51,19 +51,16 @@ namespace Game.Components
         public void OnConstruct()
         {
             SetHealthLevel();
-            ChangeCurrentHealthLevel(4);
 
-            SetUpGame();
+            //TODO Handle HealthLevel
+            // ChangeCurrentHealthLevel(4);
 
             LaunchGame();
         }
 
         public void OnDestruct()
         {
-            //TODO Method
-            Destroy(_player.gameObject);
-            Destroy(_playerProjectilePool.gameObject);
-            Destroy(_parallaxBackground.gameObject);
+            DestroyGame();
 
             SaveAchievementData();
             SaveCoinData();
@@ -108,6 +105,15 @@ namespace Game.Components
         {
             _enemySpawner.OnLaunch();
             _player.OnLaunch();
+        }
+
+        private void DestroyGame()
+        {
+            Destroy(_player.gameObject);
+            Destroy(_enemySpawner.gameObject);
+            Destroy(_playerProjectilePool.gameObject);
+            Destroy(_parallaxBackground.gameObject);
+            Destroy(_gameManager.gameObject);
         }
 
         private void SetUpGameManager()
