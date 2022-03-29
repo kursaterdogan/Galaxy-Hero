@@ -5,7 +5,7 @@ namespace Game.Components
 {
     public class MainMenuComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
-        private enum PlanetName
+        public enum PlanetName
         {
             Saturn,
             Mars
@@ -70,6 +70,14 @@ namespace Game.Components
 
         #endregion
 
+        public PlanetName GetSelectedPlanet()
+        {
+            int selectedPlanet = _dataComponent.PlanetData.selectedPlanet;
+            PlanetName planetName = (PlanetName)selectedPlanet;
+
+            return planetName;
+        }
+
         public string GetSelectedPlanetName()
         {
             return GetSelectedPlanet().ToString();
@@ -119,14 +127,6 @@ namespace Game.Components
         }
 
         #endregion
-
-        private PlanetName GetSelectedPlanet()
-        {
-            int selectedPlanet = _dataComponent.PlanetData.selectedPlanet;
-            PlanetName planetName = (PlanetName)selectedPlanet;
-
-            return planetName;
-        }
 
         private void SetSelectedPlanet(PlanetName planetName)
         {
