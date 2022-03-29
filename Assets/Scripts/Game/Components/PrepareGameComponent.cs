@@ -10,26 +10,58 @@ namespace Game.Components
 
         public event PrepareGameChangeDelegate OnLoadingComplete;
 
-        private const float AnimationTime = 1.0f;
+        public delegate void PrepareGameTextChangeDelegate(string text);
+
+        public event PrepareGameTextChangeDelegate OnHighScoreChange;
+        public event PrepareGameTextChangeDelegate OnSuperPowerChange;
+
+        private const float AnimationTime = 0.5f;
+
+        private DataComponent _dataComponent;
+        private SuperPowerComponent _superPowerComponent;
+        private InGameComponent _inGameComponent;
 
         public void Initialize(ComponentContainer componentContainer)
         {
-            //TODO Handle PrepareGameComponent
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
+
+            _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
+            _superPowerComponent = componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
+            _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
         }
 
         public void OnConstruct()
         {
-            StartCoroutine(PlayAnimation());
+            ChangeHighScore();
+            ChangeSuperPower();
+            StartCoroutine(LoadGame());
         }
 
         public void OnDestruct()
         {
-            StopCoroutine(PlayAnimation());
+            StopCoroutine(LoadGame());
         }
 
-        private IEnumerator PlayAnimation()
+        #region Changes
+
+        private void ChangeHighScore()
         {
+            string highScore = _dataComponent.AchievementData.highScore.ToString();
+            OnHighScoreChange?.Invoke(highScore);
+        }
+
+        private void ChangeSuperPower()
+        {
+            string superPower = _superPowerComponent.GetSelectedSuperPower().ToString();
+            OnSuperPowerChange?.Invoke(superPower);
+        }
+
+        #endregion
+
+        private IEnumerator LoadGame()
+        {
+            _inGameComponent.SetUpGame();
+
             yield return new WaitForSeconds(AnimationTime);
 
             OnLoadingComplete?.Invoke();
