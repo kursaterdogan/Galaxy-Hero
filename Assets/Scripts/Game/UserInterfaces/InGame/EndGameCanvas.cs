@@ -17,8 +17,8 @@ namespace Game.UserInterfaces.InGame
 
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text scoreAmountText;
-        [SerializeField] private TMP_Text ownedCoinText;
-        [SerializeField] private TMP_Text lastGainedCoinText;
+        [SerializeField] private TMP_Text ownedGoldText;
+        [SerializeField] private TMP_Text lastGainedGoldText;
 
         public void OnStart()
         {
@@ -36,10 +36,10 @@ namespace Game.UserInterfaces.InGame
             scoreAmountText.text = scoreAmount;
         }
 
-        public void ChangeCoin(string ownedCoin, string lastGainedCoin)
+        public void ChangeGold(string ownedGold, string lastGainedGold)
         {
-            ownedCoinText.text = ownedCoin;
-            lastGainedCoinText.text = lastGainedCoin;
+            ownedGoldText.text = ownedGold;
+            lastGainedGoldText.text = lastGainedGold;
         }
 
         public void ChangeSavePlanetText(string savePlanet)
