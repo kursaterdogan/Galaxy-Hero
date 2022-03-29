@@ -29,7 +29,7 @@ namespace Game.States.InGame
 
         protected override void OnExit()
         {
-            SetDefaultState();
+            SetCurrentSubStateToDefaultSubState();
         }
     }
 }
