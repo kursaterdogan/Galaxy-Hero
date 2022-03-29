@@ -41,17 +41,35 @@ namespace Game.States.InGame
 
         public void SubscribeToComponentChangeDelegates()
         {
+            _prepareGameComponent.OnHighScoreChange += ChangeHighScore;
+            _prepareGameComponent.OnSuperPowerChange += ChangeSuperPower;
             _prepareGameComponent.OnLoadingComplete += RequestPlayGame;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
         {
+            _prepareGameComponent.OnHighScoreChange -= ChangeHighScore;
+            _prepareGameComponent.OnSuperPowerChange -= ChangeSuperPower;
             _prepareGameComponent.OnLoadingComplete -= RequestPlayGame;
+        }
+
+        #region Changes
+
+        private void ChangeHighScore(string highScore)
+        {
+            _prepareGameCanvas.SetHighScoreText(highScore);
+        }
+
+        private void ChangeSuperPower(string selectedSuperPower)
+        {
+            _prepareGameCanvas.SetSelectedSuperPowerText(selectedSuperPower);
         }
 
         private void RequestPlayGame()
         {
             SendTrigger((int)StateTriggers.PlayGame);
         }
+
+        #endregion
     }
 }
