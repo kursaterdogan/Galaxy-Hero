@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Base.Gameplay;
 
 namespace Game.Gameplay.Enemy
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour, ILaunchable
     {
         [SerializeField] private List<Wave> waves;
 
         [SerializeField] private float waveSpawnCooldown;
         private WaitForSeconds _waveSpawnWaitForSeconds;
 
-        void Start()
+        public void OnLaunch()
         {
             SetWaveSpawnWaitForSeconds();
             StartSpawnCoroutine();
