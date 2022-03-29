@@ -7072,7 +7072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2776047224659933945}
   m_Layer: 5
-  m_Name: Coin
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7959,7 +7959,7 @@ GameObject:
   - component: {fileID: 2106114341669261793}
   - component: {fileID: 2106114341669261792}
   m_Layer: 5
-  m_Name: CoinText
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10159,7 +10159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f368663a7f0abfc408282f60483d6e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 2106114341669261792}
+  goldText: {fileID: 2106114341669261792}
   healthCostText: {fileID: 2106114342182322564}
   healthLevelText: {fileID: 2106114340586569057}
   healthUpgradeButton: {fileID: 2106114342165045914}
