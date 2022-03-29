@@ -21,6 +21,7 @@ namespace Game.Components
         public event EndGameTextChangeDelegate OnCoinChange;
 
         private const string ScoreText = "Score";
+        private const string CoinPrefixText = "+";
         private const string HighScoreText = "HighScore";
         private const string SavePlanetText = "You Saved The ";
         private const string NeedYourHelpText = " Need Your Help";
@@ -61,7 +62,7 @@ namespace Game.Components
         private void ChangeCoin()
         {
             string ownedCoin = _dataComponent.CoinData.ownedCoin.ToString();
-            string lastGainedCoin = _inGameComponent.LastGainedCoin.ToString();
+            string lastGainedCoin = CoinPrefixText + _inGameComponent.LastGainedCoin;
 
             OnCoinChange?.Invoke(ownedCoin, lastGainedCoin);
         }
