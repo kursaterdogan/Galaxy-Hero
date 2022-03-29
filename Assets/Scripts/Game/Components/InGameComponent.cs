@@ -106,7 +106,6 @@ namespace Game.Components
 
         private void LaunchGame()
         {
-            _playerProjectilePool.OnLaunch();
             _enemySpawner.OnLaunch();
             _player.OnLaunch();
         }
