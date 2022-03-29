@@ -33,7 +33,7 @@ namespace Game.States.InGame
 
         protected override void OnExit()
         {
-            _prepareGameComponent.OnConstruct();
+            _prepareGameComponent.OnDestruct();
             _prepareGameCanvas.OnQuit();
 
             UnsubscribeToComponentChangeDelegates();
