@@ -19,9 +19,9 @@ namespace Game.Gameplay.Player
         private WaitForSeconds _fireRateWaitForSeconds;
 
         [SerializeField] private Cannon cannon;
-        private int _cannonLevel;
         private List<Transform> _firePoints;
 
+        private int _cannonLevel;
         private float _speed = 5.0f;
         private float _fireRate = 1.0f;
 
