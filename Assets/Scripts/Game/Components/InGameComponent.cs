@@ -69,6 +69,15 @@ namespace Game.Components
             SaveCoinData();
         }
 
+        public void SetUpGame()
+        {
+            SetUpGameManager();
+            SetUpParallaxBackground();
+            SetUpEnemySpawner();
+            SetUpPlayerProjectilePool();
+            SetUpPlayer();
+        }
+
         #region Changes
 
         private void SetHealthLevel()
@@ -99,15 +108,6 @@ namespace Game.Components
         }
 
         #endregion
-
-        public void SetUpGame()
-        {
-            SetUpGameManager();
-            SetUpParallaxBackground();
-            SetUpEnemySpawner();
-            SetUpPlayerProjectilePool();
-            SetUpPlayer();
-        }
 
         private void LaunchGame()
         {
