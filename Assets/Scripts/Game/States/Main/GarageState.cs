@@ -40,7 +40,7 @@ namespace Game.States.Main
 
         public void SubscribeToComponentChangeDelegates()
         {
-            _garageComponent.OnCoinAmountChange += ChangeCoinAmount;
+            _garageComponent.OnGoldAmountChange += ChangeGoldAmount;
 
             _garageComponent.OnHealthButtonInteractableChange += ChangeHealthButtonInteractable;
             _garageComponent.OnSpeedButtonInteractableChange += ChangeSpeedButtonInteractable;
@@ -67,7 +67,7 @@ namespace Game.States.Main
 
         public void UnsubscribeToComponentChangeDelegates()
         {
-            _garageComponent.OnCoinAmountChange -= ChangeCoinAmount;
+            _garageComponent.OnGoldAmountChange -= ChangeGoldAmount;
 
             _garageComponent.OnHealthButtonInteractableChange -= ChangeHealthButtonInteractable;
             _garageComponent.OnSpeedButtonInteractableChange -= ChangeSpeedButtonInteractable;
@@ -126,9 +126,9 @@ namespace Game.States.Main
 
         #region Changes
 
-        private void ChangeCoinAmount(string ownedCoin)
+        private void ChangeGoldAmount(string ownedGold)
         {
-            _garageCanvas.SetCoin(ownedCoin);
+            _garageCanvas.SetGold(ownedGold);
         }
 
         private void ChangeHealthUpgrade(int level, string cost)
