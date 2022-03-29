@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Base.Gameplay;
@@ -14,38 +15,25 @@ namespace Game.Gameplay.Player
         private const float NormalTimeScale = 1.0f;
 
         private GameCamera _gameCamera;
-        private float _moveSpeed = 5.0f;
-
         private PlayerProjectilePool _playerProjectilePool;
+
         private WaitForSeconds _fireRateWaitForSeconds;
 
         [SerializeField] private Cannon cannon;
-        [SerializeField] private int cannonLevel;
+        private int _cannonLevel;
         private List<Transform> _firePoints;
+
+        private float _speed = 5.0f;
         private float _fireRate = 1.0f;
 
         void Start()
         {
-            //TODO SetMoveSpeed
-            //TODO SetTimeScale on InGameState
-            //TODO Set ProjectileSpeed & ProjectileFiringPeriod
             SetTimeScale(DefaultTimeScale);
-            SetGameCamera();
-            SetFirePoints();
-            SetProjectilePool();
-            SetFiringWaitForSeconds();
-            
-            OnLaunch();
         }
 
         void Update()
         {
             Move();
-        }
-
-        public void OnLaunch()
-        {
-            StartFiringCoroutine();
         }
 
         void OnTriggerEnter2D(Collider2D col)
@@ -54,9 +42,41 @@ namespace Game.Gameplay.Player
             // Debug.Log(col.name);
         }
 
-        public void SetFireRate(int fireRateLevel)
+        void OnDestroy()
         {
-            _fireRate /= fireRateLevel;
+            SetTimeScale(NormalTimeScale);
+        }
+
+        public void OnLaunch()
+        {
+            StartFiringCoroutine();
+        }
+
+        public void SetGameCamera(GameCamera gameCamera)
+        {
+            _gameCamera = gameCamera;
+        }
+
+        public void SetPlayerProjectilePool(PlayerProjectilePool playerProjectilePool)
+        {
+            _playerProjectilePool = playerProjectilePool;
+        }
+
+        public void SetSpeed(float speed)
+        {
+            _speed = speed;
+        }
+
+        public void SetCannonLevel(int cannonLevel)
+        {
+            _cannonLevel = cannonLevel;
+            SetFirePoints();
+        }
+
+        public void SetFireRate(float fireRate)
+        {
+            _fireRate = fireRate;
+            SetFiringWaitForSeconds();
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -72,21 +92,11 @@ namespace Game.Gameplay.Player
             Time.timeScale = timeScale;
         }
 
-        private void SetGameCamera()
-        {
-            _gameCamera = FindObjectOfType<GameCamera>();
-        }
-
         private void SetFirePoints()
         {
-            _firePoints = cannon.GetFirePoints(cannonLevel);
+            _firePoints = cannon.GetFirePoints(_cannonLevel);
         }
-
-        private void SetProjectilePool()
-        {
-            _playerProjectilePool = FindObjectOfType<PlayerProjectilePool>();
-        }
-
+        
         private void SetFiringWaitForSeconds()
         {
             _fireRateWaitForSeconds = new WaitForSeconds(_fireRate);
@@ -102,7 +112,7 @@ namespace Game.Gameplay.Player
             if (_gameCamera.IsPointerOnScreen() && Pointer.current.press.isPressed)
             {
                 Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
-                transform.position = Vector2.Lerp(transform.position, worldPosition, _moveSpeed * Time.deltaTime);
+                transform.position = Vector2.Lerp(transform.position, worldPosition, _speed * Time.deltaTime);
             }
         }
 
