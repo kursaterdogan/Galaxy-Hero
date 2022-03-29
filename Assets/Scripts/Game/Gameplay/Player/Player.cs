@@ -16,7 +16,7 @@ namespace Game.Gameplay.Player
         private GameCamera _gameCamera;
         private float _moveSpeed = 5.0f;
 
-        private ProjectilePool _projectilePool;
+        private PlayerProjectilePool _playerProjectilePool;
         private WaitForSeconds _fireRateWaitForSeconds;
 
         [SerializeField] private Cannon cannon;
@@ -84,7 +84,7 @@ namespace Game.Gameplay.Player
 
         private void SetProjectilePool()
         {
-            _projectilePool = FindObjectOfType<ProjectilePool>();
+            _playerProjectilePool = FindObjectOfType<PlayerProjectilePool>();
         }
 
         private void SetFiringWaitForSeconds()
@@ -112,7 +112,7 @@ namespace Game.Gameplay.Player
             {
                 foreach (Transform firePoint in _firePoints)
                 {
-                    PlayerProjectile projectile = _projectilePool.GetPlayerProjectile();
+                    PlayerProjectile projectile = _playerProjectilePool.GetPlayerProjectile();
                     projectile.SetPosition(firePoint.transform.position);
                     projectile.gameObject.SetActive(true);
                 }
