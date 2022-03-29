@@ -77,8 +77,8 @@ crashlytics-build.properties
 Recordings/
 
 # Datas
-Assets/CoinData.json
-Assets/CoinData.json.meta
+Assets/GoldData.json
+Assets/GoldData.json.meta
 Assets/GarageData.json
 Assets/GarageData.json.meta
 Assets/PlanetData.json
