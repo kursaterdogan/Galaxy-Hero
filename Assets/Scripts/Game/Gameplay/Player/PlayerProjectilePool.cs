@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Player
 {
-    public class ProjectilePool : MonoBehaviour
+    public class PlayerProjectilePool : MonoBehaviour
     {
         //TODO Integrate with StateMachine
         private const int AmountToPoll = 3;
