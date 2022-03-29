@@ -60,7 +60,8 @@ namespace Game.Components
         public void OnDestruct()
         {
             UnsubscribeToOnUpgradeAction();
-            SaveDatas();
+            SaveCoinData();
+            SaveGarageData();
         }
 
         #region Requests
@@ -412,9 +413,13 @@ namespace Game.Components
             SetGhosteo();
         }
 
-        private void SaveDatas()
+        private void SaveCoinData()
         {
             _dataComponent.SaveCoinData();
+        }
+
+        private void SaveGarageData()
+        {
             _dataComponent.SaveGarageData();
         }
 
