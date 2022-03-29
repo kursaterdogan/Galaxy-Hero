@@ -1412,14 +1412,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 333856291}
-  healthLevel:
+  healthLevels:
   - {fileID: 474677861}
   - {fileID: 2126660484}
   - {fileID: 1681235397}
   - {fileID: 1651227863}
   - {fileID: 1574018070}
   - {fileID: 9042932364949066791}
-  healthLevelFrames:
+  currentHealthLevels:
   - {fileID: 1683103567}
   - {fileID: 927232504}
   - {fileID: 924008899}
