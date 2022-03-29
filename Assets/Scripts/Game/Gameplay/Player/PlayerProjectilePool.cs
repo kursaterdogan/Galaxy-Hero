@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Base.Gameplay;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
 {
-    public class PlayerProjectilePool : MonoBehaviour
+    public class PlayerProjectilePool : MonoBehaviour, ILaunchable
     {
         //TODO Integrate with StateMachine
         private const int AmountToPoll = 3;
@@ -13,9 +14,8 @@ namespace Game.Gameplay.Player
 
         private float _maxVerticalPosition;
 
-        void Awake()
+        public void OnLaunch()
         {
-            SetMaxVerticalPosition();
             CreatePool();
         }
 
@@ -30,9 +30,9 @@ namespace Game.Gameplay.Player
             return CreatePlayerProjectile();
         }
 
-        private void SetMaxVerticalPosition()
+        public void SetMaxVerticalPosition(float maxVerticalPosition)
         {
-            _maxVerticalPosition = FindObjectOfType<GameCamera>().GetMaxVerticalPosition();
+            _maxVerticalPosition = maxVerticalPosition;
         }
 
         private void CreatePool()
