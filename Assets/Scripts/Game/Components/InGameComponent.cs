@@ -22,6 +22,7 @@ namespace Game.Components
 
         public int LastScore => _lastScore;
         public int LastGainedCoin => _lastGainedCoin;
+        public bool IsPlanetSaved => _isPlanetSaved;
 
         [SerializeField] private GameManager gameManagerPrefab;
         [SerializeField] private GameObject[] parallaxBackgroundPrefabs;
@@ -36,6 +37,7 @@ namespace Game.Components
         private PlayerProjectilePool _playerProjectilePool;
         private Player _player;
 
+        private bool _isPlanetSaved;
         private int _lastScore;
         private int _lastGainedCoin;
 
@@ -50,6 +52,7 @@ namespace Game.Components
 
         public void OnConstruct()
         {
+            SetIsPlanetSaved();
             SetHealthLevel();
 
             //TODO Handle HealthLevel
@@ -88,6 +91,11 @@ namespace Game.Components
         private void ChangeLastScore(int score)
         {
             _lastScore = score;
+        }
+
+        private void ChangeIsPlanetSaved()
+        {
+            _isPlanetSaved = true;
         }
 
         #endregion
@@ -129,6 +137,7 @@ namespace Game.Components
             _gameManager.OnScoreChange += ChangeScore;
             _gameManager.OnHealthChange += ChangeCurrentHealthLevel;
             _gameManager.OnLastScoreChange += ChangeLastScore;
+            _gameManager.OnPlanetSave += ChangeIsPlanetSaved;
         }
 
         private void SetUpParallaxBackground()
@@ -187,6 +196,11 @@ namespace Game.Components
 
             _dataComponent.CoinData.ownedCoin += gainedGold;
             _dataComponent.SaveCoinData();
+        }
+
+        private void SetIsPlanetSaved()
+        {
+            _isPlanetSaved = false;
         }
     }
 }
