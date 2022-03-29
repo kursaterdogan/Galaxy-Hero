@@ -24,6 +24,8 @@ namespace Game.UserInterfaces.InGame
             DisableLoadingIcon();
         }
 
+        #region Changes
+
         public void SetHighScoreText(string highScore)
         {
             highScoreAmountText.text = highScore;
@@ -33,6 +35,8 @@ namespace Game.UserInterfaces.InGame
         {
             selectedSuperPowerText.text = superPower;
         }
+
+        #endregion
 
         private void EnableLoadingIcon()
         {
