@@ -17,6 +17,8 @@ namespace Game.Components
         public event InGameHealthLevelChangeDelegate OnHealthLevelChange;
         public event InGameHealthLevelChangeDelegate OnCurrentHealthLevelChange;
 
+        private const int SaturnGiftGoldGainMultiplier = 2;
+        private const int MarsGiftScoreGainMultiplier = 2;
         private const float FireRateDividend = 1.2f;
         private const float SpeedMultiplier = 3f;
 
@@ -42,12 +44,14 @@ namespace Game.Components
         private int _lastGainedCoin;
 
         private DataComponent _dataComponent;
+        private MainMenuComponent _mainMenuComponent;
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
+            _mainMenuComponent = componentContainer.GetComponent("MainMenuComponent") as MainMenuComponent;
         }
 
         public void OnConstruct()
@@ -67,6 +71,7 @@ namespace Game.Components
 
             SaveAchievementData();
             SaveCoinData();
+            SaveInventoryData();
         }
 
         public void SetUpGame()
@@ -128,8 +133,18 @@ namespace Game.Components
         {
             _gameManager = Instantiate(gameManagerPrefab);
 
-            int scoreMultiplierLevel = _dataComponent.GarageData.scoreMultiplierLevel;
-            _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
+            bool isMarsSaved = _dataComponent.InventoryData.isMarsSaved;
+            if (isMarsSaved)
+            {
+                int scoreMultiplierLevel = _dataComponent.GarageData.scoreMultiplierLevel;
+                _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
+            }
+            else
+            {
+                int scoreMultiplierLevel =
+                    _dataComponent.GarageData.scoreMultiplierLevel * MarsGiftScoreGainMultiplier;
+                _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
+            }
 
             int healthLevel = _dataComponent.GarageData.healthLevel;
             _gameManager.SetHealth(healthLevel);
@@ -177,6 +192,11 @@ namespace Game.Components
             _player.SetCannonLevel(cannonLevel);
         }
 
+        private void SetIsPlanetSaved()
+        {
+            _isPlanetSaved = false;
+        }
+
         private void SaveAchievementData()
         {
             int highScore = _dataComponent.AchievementData.highScore;
@@ -191,16 +211,42 @@ namespace Game.Components
         private void SaveCoinData()
         {
             int goldMultiplierLevel = _dataComponent.GarageData.goldMultiplierLevel;
-            int gainedGold = _lastScore * goldMultiplierLevel;
-            _lastGainedCoin = gainedGold;
+
+            int gainedGold;
+            bool isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
+            if (isSaturnSaved)
+            {
+                gainedGold = _lastScore * goldMultiplierLevel * SaturnGiftGoldGainMultiplier;
+                _lastGainedCoin = gainedGold;
+            }
+            else
+            {
+                gainedGold = _lastScore * goldMultiplierLevel;
+                _lastGainedCoin = gainedGold;
+            }
 
             _dataComponent.CoinData.ownedCoin += gainedGold;
             _dataComponent.SaveCoinData();
         }
 
-        private void SetIsPlanetSaved()
+        private void SaveInventoryData()
         {
-            _isPlanetSaved = false;
+            if (!_isPlanetSaved)
+                return;
+
+            MainMenuComponent.PlanetName planetName = _mainMenuComponent.GetSelectedPlanet();
+
+            switch (planetName)
+            {
+                case MainMenuComponent.PlanetName.Saturn when !_dataComponent.InventoryData.isSaturnSaved:
+                    _dataComponent.InventoryData.isSaturnSaved = true;
+                    _dataComponent.SaveInventoryData();
+                    break;
+                case MainMenuComponent.PlanetName.Mars when !_dataComponent.InventoryData.isMarsSaved:
+                    _dataComponent.InventoryData.isMarsSaved = true;
+                    _dataComponent.SaveInventoryData();
+                    break;
+            }
         }
     }
 }
