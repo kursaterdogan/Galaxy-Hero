@@ -3,8 +3,8 @@ using System;
 namespace Game.Datas
 {
     [Serializable]
-    public class CoinData
+    public class GoldData
     {
-        public int ownedCoin;
+        public int ownedGold;
     }
 }
