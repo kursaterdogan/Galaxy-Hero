@@ -23,7 +23,7 @@ namespace Game.Components
         private const float SpeedMultiplier = 3f;
 
         public int LastScore => _lastScore;
-        public int LastGainedCoin => _lastGainedCoin;
+        public int LastGainedGold => _lastGainedGold;
         public bool IsPlanetSaved => _isPlanetSaved;
 
         [SerializeField] private GameManager gameManagerPrefab;
@@ -41,7 +41,7 @@ namespace Game.Components
 
         private bool _isPlanetSaved;
         private int _lastScore;
-        private int _lastGainedCoin;
+        private int _lastGainedGold;
 
         private DataComponent _dataComponent;
         private MainMenuComponent _mainMenuComponent;
@@ -70,7 +70,7 @@ namespace Game.Components
             DestroyGame();
 
             SaveAchievementData();
-            SaveCoinData();
+            SaveGoldData();
             SaveInventoryData();
         }
 
@@ -208,7 +208,7 @@ namespace Game.Components
             _dataComponent.SaveAchievementData();
         }
 
-        private void SaveCoinData()
+        private void SaveGoldData()
         {
             int goldMultiplierLevel = _dataComponent.GarageData.goldMultiplierLevel;
 
@@ -217,16 +217,16 @@ namespace Game.Components
             if (isSaturnSaved)
             {
                 gainedGold = _lastScore * goldMultiplierLevel * SaturnGiftGoldGainMultiplier;
-                _lastGainedCoin = gainedGold;
+                _lastGainedGold = gainedGold;
             }
             else
             {
                 gainedGold = _lastScore * goldMultiplierLevel;
-                _lastGainedCoin = gainedGold;
+                _lastGainedGold = gainedGold;
             }
 
-            _dataComponent.CoinData.ownedCoin += gainedGold;
-            _dataComponent.SaveCoinData();
+            _dataComponent.GoldData.ownedGold += gainedGold;
+            _dataComponent.SaveGoldData();
         }
 
         private void SaveInventoryData()
