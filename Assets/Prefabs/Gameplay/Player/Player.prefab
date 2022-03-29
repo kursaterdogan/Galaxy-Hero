@@ -1127,7 +1127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 2720497927111012844}
-  cannonLevel: 4
 --- !u!1 &7543693735999365564
 GameObject:
   m_ObjectHideFlags: 0
