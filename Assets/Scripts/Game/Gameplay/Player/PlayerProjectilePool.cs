@@ -4,20 +4,12 @@ using UnityEngine;
 
 namespace Game.Gameplay.Player
 {
-    public class PlayerProjectilePool : MonoBehaviour, ILaunchable
+    public class PlayerProjectilePool : MonoBehaviour
     {
-        //TODO Integrate with StateMachine
-        private const int AmountToPoll = 3;
-
         [SerializeField] private PlayerProjectile playerProjectilePrefab;
-        private List<PlayerProjectile> _playerProjectiles;
+        private readonly List<PlayerProjectile> _playerProjectiles = new List<PlayerProjectile>();
 
         private float _maxVerticalPosition;
-
-        public void OnLaunch()
-        {
-            CreatePool();
-        }
 
         public PlayerProjectile GetPlayerProjectile()
         {
@@ -33,16 +25,6 @@ namespace Game.Gameplay.Player
         public void SetMaxVerticalPosition(float maxVerticalPosition)
         {
             _maxVerticalPosition = maxVerticalPosition;
-        }
-
-        private void CreatePool()
-        {
-            _playerProjectiles = new List<PlayerProjectile>();
-
-            for (int i = 0; i < AmountToPoll; i++)
-            {
-                CreatePlayerProjectile();
-            }
         }
 
         private PlayerProjectile CreatePlayerProjectile()
