@@ -18,10 +18,10 @@ namespace Game.Components
         public delegate void EndGameTextChangeDelegate(string txt, string text);
 
         public event EndGameTextChangeDelegate OnScoreChange;
-        public event EndGameTextChangeDelegate OnCoinChange;
+        public event EndGameTextChangeDelegate OnGoldChange;
 
         private const string ScoreText = "Score";
-        private const string CoinPrefixText = "+";
+        private const string GoldPrefixText = "+";
         private const string HighScoreText = "HighScore";
         private const string SavePlanetText = "You Saved The ";
         private const string NeedYourHelpText = " Need Your Help";
@@ -42,7 +42,7 @@ namespace Game.Components
         public void OnConstruct()
         {
             ChangeHighScore();
-            ChangeCoin();
+            ChangeGold();
             SetPlanetStatus();
         }
 
@@ -59,12 +59,12 @@ namespace Game.Components
                 OnScoreChange?.Invoke(ScoreText, lastScore.ToString());
         }
 
-        private void ChangeCoin()
+        private void ChangeGold()
         {
-            string ownedCoin = _dataComponent.CoinData.ownedCoin.ToString();
-            string lastGainedCoin = CoinPrefixText + _inGameComponent.LastGainedCoin;
+            string ownedCoin = _dataComponent.GoldData.ownedGold.ToString();
+            string lastGainedCoin = GoldPrefixText + _inGameComponent.LastGainedGold;
 
-            OnCoinChange?.Invoke(ownedCoin, lastGainedCoin);
+            OnGoldChange?.Invoke(ownedCoin, lastGainedCoin);
         }
 
         private void SetPlanetStatus()
