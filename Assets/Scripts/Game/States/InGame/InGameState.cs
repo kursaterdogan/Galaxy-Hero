@@ -5,7 +5,7 @@ using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
 {
-    public class InGameState : StateMachine, IRequestable
+    public class InGameState : StateMachine, IChangeable, IRequestable
     {
         private readonly UIComponent _uiComponent;
         private readonly InGameComponent _inGameComponent;
@@ -22,8 +22,10 @@ namespace Game.States.InGame
 
         protected override void OnEnter()
         {
+            SubscribeToComponentChangeDelegates();
             SubscribeToCanvasRequestDelegates();
 
+            _inGameCanvas.OnStart();
             _inGameComponent.OnConstruct();
 
             _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
@@ -33,7 +35,22 @@ namespace Game.States.InGame
         {
             _inGameComponent.OnDestruct();
 
+            UnsubscribeToComponentChangeDelegates();
             UnsubscribeToCanvasRequestDelegates();
+        }
+
+        public void SubscribeToComponentChangeDelegates()
+        {
+            _inGameComponent.OnScoreChange += ChangeScore;
+            _inGameComponent.OnHealthLevelChange += ChangeHealthLevel;
+            _inGameComponent.OnCurrentHealthLevelChange += ChangeCurrentHealthLevel;
+        }
+
+        public void UnsubscribeToComponentChangeDelegates()
+        {
+            _inGameComponent.OnScoreChange -= ChangeScore;
+            _inGameComponent.OnHealthLevelChange -= ChangeHealthLevel;
+            _inGameComponent.OnCurrentHealthLevelChange -= ChangeCurrentHealthLevel;
         }
 
         public void SubscribeToCanvasRequestDelegates()
@@ -44,6 +61,21 @@ namespace Game.States.InGame
         public void UnsubscribeToCanvasRequestDelegates()
         {
             _inGameCanvas.OnReturnToMainMenuRequest -= RequestEndGame;
+        }
+
+        private void ChangeScore(string score)
+        {
+            _inGameCanvas.ChangeScore(score);
+        }
+
+        private void ChangeHealthLevel(int level)
+        {
+            _inGameCanvas.SetHealthLevels(level);
+        }
+
+        private void ChangeCurrentHealthLevel(int level)
+        {
+            _inGameCanvas.SetCurrentHealthLevel(level);
         }
 
         private void RequestEndGame()
