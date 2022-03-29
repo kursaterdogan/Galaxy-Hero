@@ -4,11 +4,15 @@ namespace Game.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        public delegate void GameManagerChangeDelegate(int score);
+        public delegate void GameManagerChangeDelegate(int value);
 
         public event GameManagerChangeDelegate OnScoreChange;
         public event GameManagerChangeDelegate OnHealthChange;
         public event GameManagerChangeDelegate OnLastScoreChange;
+
+        public delegate void GameManagerSaveDelegate();
+
+        public event GameManagerSaveDelegate OnPlanetSave;
 
         private int _scoreMultiplier;
         private int _score;
@@ -54,6 +58,11 @@ namespace Game.Gameplay
         private void ChangeLastScore()
         {
             OnLastScoreChange?.Invoke(_score);
+        }
+
+        private void SavePlanet()
+        {
+            OnPlanetSave?.Invoke();
         }
     }
 }
