@@ -104,7 +104,7 @@ namespace Game.Gameplay.Player
 
         private void Move()
         {
-            if (_gameCamera.IsPointerOnScreen() && Pointer.current.press.isPressed)
+            if (Pointer.current.press.isPressed && _gameCamera.IsPointerOnScreen())
             {
                 Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
                 transform.position = Vector2.Lerp(transform.position, worldPosition, _speed * Time.deltaTime);
