@@ -14,7 +14,6 @@ namespace Game.UserInterfaces.InGame
 
         public void OnStart()
         {
-            //TODO Handle PrepareGameCanvas
             EnableLoadingIcon();
             PlayLoadingIconAnimation();
         }
@@ -25,7 +24,7 @@ namespace Game.UserInterfaces.InGame
             DisableLoadingIcon();
         }
 
-        public void SetHighScoreAmountText(string highScore)
+        public void SetHighScoreText(string highScore)
         {
             highScoreAmountText.text = highScore;
         }
