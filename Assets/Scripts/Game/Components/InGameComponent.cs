@@ -24,6 +24,7 @@ namespace Game.Components
 
         public int LastScore { get; private set; }
         public int LastGainedGold { get; private set; }
+        public bool IsHighScore { get; private set; }
         public bool IsPlanetSaved { get; private set; }
 
         [SerializeField] private GameManager gameManagerPrefab;
@@ -54,7 +55,9 @@ namespace Game.Components
         {
             ResetLastScore();
             ResetLastGainedGold();
+            ResetIsHighScore();
             ResetIsPlanetSaved();
+
             SetHealthLevel();
 
             //TODO Handle HealthLevel
@@ -192,6 +195,11 @@ namespace Game.Components
             LastGainedGold = 0;
         }
 
+        private void ResetIsHighScore()
+        {
+            IsHighScore = false;
+        }
+
         private void ResetIsPlanetSaved()
         {
             IsPlanetSaved = false;
@@ -201,9 +209,10 @@ namespace Game.Components
         {
             int highScore = _dataComponent.AchievementData.highScore;
 
-            if (highScore > LastScore)
+            if (highScore >= LastScore)
                 return;
 
+            IsHighScore = true;
             _dataComponent.AchievementData.highScore = LastScore;
             _dataComponent.SaveAchievementData();
         }
