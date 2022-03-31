@@ -8,7 +8,6 @@ namespace Game.Gameplay
 
         public event GameManagerChangeDelegate OnScoreChange;
         public event GameManagerChangeDelegate OnHealthChange;
-        public event GameManagerChangeDelegate OnLastScoreChange;
 
         public delegate void GameManagerSaveDelegate();
 
@@ -53,11 +52,6 @@ namespace Game.Gameplay
         private void SavePlanet()
         {
             OnPlanetSave?.Invoke();
-        }
-
-        private void SaveLastScore()
-        {
-            OnLastScoreChange?.Invoke(_score);
         }
     }
 }
