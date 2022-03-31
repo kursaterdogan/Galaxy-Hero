@@ -8,8 +8,6 @@ namespace Game.Gameplay.Player
 {
     public class Player : MonoBehaviour, ILaunchable
     {
-        //TODO Integrate with StateMachine
-        //TODO Inject GameCamera
         private const float DefaultTimeScale = 0.5f;
         private const float NormalTimeScale = 1.0f;
 
@@ -21,9 +19,12 @@ namespace Game.Gameplay.Player
         [SerializeField] private Cannon cannon;
         private List<Transform> _firePoints;
 
+        private int _health;
         private int _cannonLevel;
         private float _speed = 5.0f;
         private float _fireRate = 1.0f;
+
+        [SerializeField] private GameObject deathParticlePrefab;
 
         void Start()
         {
@@ -38,8 +39,16 @@ namespace Game.Gameplay.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            // TODO Check EnemyTrigger
-            // Debug.Log(col.name);
+            //TODO Add Shildeo & Ghosteo
+            if (col.CompareTag("EnemyProjectile"))
+            {
+                DecreaseHealth();
+                Destroy(col.gameObject);
+            }
+            else if (col.CompareTag("Enemy"))
+            {
+                DecreaseHealth();
+            }
         }
 
         void OnDestroy()
@@ -53,14 +62,26 @@ namespace Game.Gameplay.Player
             StartFiringCoroutine();
         }
 
-        public void SetGameCamera()
+        private void DecreaseHealth()
+        {
+            CreateDeathParticle();
+            _health--;
+            GameManager.SharedInstance.DecreaseHealth(_health);
+        }
+
+        private void SetGameCamera()
         {
             _gameCamera = FindObjectOfType<GameCamera>();
         }
 
-        public void SetPlayerProjectilePool()
+        private void SetPlayerProjectilePool()
         {
             _playerProjectilePool = FindObjectOfType<PlayerProjectilePool>();
+        }
+
+        public void SetHealth(int health)
+        {
+            _health = health;
         }
 
         public void SetSpeed(float speed)
@@ -130,6 +151,11 @@ namespace Game.Gameplay.Player
 
                 yield return _fireRateWaitForSeconds;
             }
+        }
+
+        private void CreateDeathParticle()
+        {
+            Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         }
     }
 }
