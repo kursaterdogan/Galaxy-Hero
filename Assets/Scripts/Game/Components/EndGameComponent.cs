@@ -41,14 +41,14 @@ namespace Game.Components
 
         public void OnConstruct()
         {
-            ChangeHighScore();
+            ChangeScore();
             ChangeGold();
             SetPlanetStatus();
         }
 
         #region Changes
 
-        private void ChangeHighScore()
+        private void ChangeScore()
         {
             int highScore = _dataComponent.AchievementData.highScore;
             int lastScore = _inGameComponent.LastScore;
