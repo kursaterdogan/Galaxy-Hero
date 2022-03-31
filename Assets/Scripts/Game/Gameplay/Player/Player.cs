@@ -25,6 +25,12 @@ namespace Game.Gameplay.Player
         private float _speed = 5.0f;
         private float _fireRate = 1.0f;
 
+        void Start()
+        {
+            SetGameCamera();
+            SetPlayerProjectilePool();
+        }
+
         void Update()
         {
             Move();
@@ -47,14 +53,14 @@ namespace Game.Gameplay.Player
             StartFiringCoroutine();
         }
 
-        public void SetGameCamera(GameCamera gameCamera)
+        public void SetGameCamera()
         {
-            _gameCamera = gameCamera;
+            _gameCamera = FindObjectOfType<GameCamera>();
         }
 
-        public void SetPlayerProjectilePool(PlayerProjectilePool playerProjectilePool)
+        public void SetPlayerProjectilePool()
         {
-            _playerProjectilePool = playerProjectilePool;
+            _playerProjectilePool = FindObjectOfType<PlayerProjectilePool>();
         }
 
         public void SetSpeed(float speed)
