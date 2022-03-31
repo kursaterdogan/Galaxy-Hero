@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemy
     {
         protected abstract void Attack();
 
-        [SerializeField] protected float score;
+        [SerializeField] protected int score;
         [SerializeField] protected int health;
         [SerializeField] protected float speed;
         protected float DestroyPosition;
@@ -15,6 +15,8 @@ namespace Game.Gameplay.Enemy
         [SerializeField] private Path path;
         private List<Transform> _waypoints;
         private int _waypointIndex;
+
+        [SerializeField] private GameObject deathParticlePrefab;
 
         void Start()
         {
@@ -26,6 +28,18 @@ namespace Game.Gameplay.Enemy
         void Update()
         {
             FollowPath();
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            //TODO Decrease Health
+            if (col.CompareTag("PlayerProjectile"))
+            {
+                CreateDeathParticle();
+                IncreaseScore();
+                col.gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
         }
 
         private void SetWaypoints()
@@ -62,6 +76,16 @@ namespace Game.Gameplay.Enemy
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void CreateDeathParticle()
+        {
+            Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        }
+
+        private void IncreaseScore()
+        {
+            FindObjectOfType<GameManager>().IncreaseScore(score);
         }
     }
 }
