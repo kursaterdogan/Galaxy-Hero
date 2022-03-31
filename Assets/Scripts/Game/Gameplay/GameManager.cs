@@ -13,44 +13,36 @@ namespace Game.Gameplay
 
         public event GameManagerSaveDelegate OnPlanetSave;
 
+        public static GameManager SharedInstance;
+
         private int _scoreMultiplier;
         private int _score;
-        private int _health;
+
+        private void Start()
+        {
+            SharedInstance = this;
+        }
 
         public void SetScoreMultiplier(int scoreMultiplier)
         {
             _scoreMultiplier = scoreMultiplier;
         }
 
-        public void SetHealth(int health)
-        {
-            _health = health;
-        }
-
         public void IncreaseScore(int score)
         {
             _score += score * _scoreMultiplier;
-            ChangeScore();
-        }
-
-        public void DecreaseHealth()
-        {
-            _health -= 1;
-            ChangeHealth();
-        }
-
-        private void ChangeScore()
-        {
             OnScoreChange?.Invoke(_score);
         }
 
-        private void ChangeHealth()
+        public void DecreaseHealth(int health)
         {
-            OnHealthChange?.Invoke(_health);
+            //TODO Death
+            OnHealthChange?.Invoke(health);
         }
 
         private void SavePlanet()
         {
+            //TODO Win
             OnPlanetSave?.Invoke();
         }
     }
