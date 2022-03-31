@@ -22,7 +22,7 @@ namespace Game.Components
 
         private const string ScoreText = "Score";
         private const string GoldPrefixText = "+";
-        private const string HighScoreText = "HighScore";
+        private const string NewHighScoreText = "New High Score";
         private const string SavePlanetText = "You Saved The ";
         private const string NeedYourHelpText = " Need Your Help";
 
@@ -50,12 +50,13 @@ namespace Game.Components
 
         private void ChangeScore()
         {
+            bool isHighScore = _inGameComponent.IsHighScore;
             int highScore = _dataComponent.AchievementData.highScore;
             int lastScore = _inGameComponent.LastScore;
 
-            if (lastScore > highScore)
-                OnScoreChange?.Invoke(HighScoreText, highScore.ToString());
-            else if (highScore >= lastScore)
+            if (isHighScore)
+                OnScoreChange?.Invoke(NewHighScoreText, highScore.ToString());
+            else
                 OnScoreChange?.Invoke(ScoreText, lastScore.ToString());
         }
 
