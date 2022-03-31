@@ -9,7 +9,6 @@ namespace Game.Gameplay.Enemy
         {
             float speedIncrease = speed / 4;
             speed += speedIncrease;
-            Debug.Log(speed);
         }
     }
 }
