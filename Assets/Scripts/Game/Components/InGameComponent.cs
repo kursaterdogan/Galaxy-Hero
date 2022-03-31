@@ -179,9 +179,6 @@ namespace Game.Components
         {
             _player = Instantiate(playerPrefab);
 
-            _player.SetGameCamera(gameCamera);
-            _player.SetPlayerProjectilePool(_playerProjectilePool);
-
             float speed = SpeedMultiplier * _dataComponent.GarageData.speedLevel;
             _player.SetSpeed(speed);
 
