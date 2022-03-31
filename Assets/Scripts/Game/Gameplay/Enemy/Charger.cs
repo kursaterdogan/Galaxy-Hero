@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Game.Gameplay.Enemy
 {
     public class Charger : Enemy
