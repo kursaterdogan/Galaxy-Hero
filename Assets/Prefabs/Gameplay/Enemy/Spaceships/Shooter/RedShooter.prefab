@@ -134,7 +134,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 90f2b9d9f1be60b4d870b5771b147f8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -261,10 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12121b85b42a59f41a334ad7143dea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 10
   health: 3
   speed: 2
   path: {fileID: 6613991969985272068, guid: 545c210d1b679044dbbd68ef88094599, type: 3}
+  deathParticlePrefab: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
   enemyProjectilePrefab: {fileID: 2380671203541807008, guid: 83749e128ce067d408fb1e569adb6b8b, type: 3}
   firePoints:
   - {fileID: 1097949270}

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 44dcf4b51e2e15c48b481dbbdf875019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b800f23829eb1d145aad76fb8d8c6d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: {fileID: 6476019878365928259, guid: 4b6b1d641ba5baa46a72da91a27e2c62, type: 3}
-  speed: 3
+  score: 30
   health: 5
+  speed: 3
+  path: {fileID: 6476019878365928259, guid: 4b6b1d641ba5baa46a72da91a27e2c62, type: 3}
+  deathParticlePrefab: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
 --- !u!60 &6397026722200244837
 PolygonCollider2D:
   m_ObjectHideFlags: 0
