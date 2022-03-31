@@ -143,9 +143,6 @@ namespace Game.Components
                 _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
             }
 
-            int healthLevel = _dataComponent.GarageData.healthLevel;
-            _gameManager.SetHealth(healthLevel);
-
             _gameManager.OnScoreChange += ChangeScore;
             _gameManager.OnHealthChange += ChangeCurrentHealthLevel;
             _gameManager.OnPlanetSave += ChangeIsPlanetSaved;
@@ -174,6 +171,9 @@ namespace Game.Components
         private void SetUpPlayer()
         {
             _player = Instantiate(playerPrefab);
+
+            int healthLevel = _dataComponent.GarageData.healthLevel;
+            _player.SetHealth(healthLevel);
 
             float speed = SpeedMultiplier * _dataComponent.GarageData.speedLevel;
             _player.SetSpeed(speed);
