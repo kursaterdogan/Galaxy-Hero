@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Base.Component;
 using Game.Gameplay;
@@ -22,9 +23,9 @@ namespace Game.Components
         private const float FireRateDividend = 1.2f;
         private const float SpeedMultiplier = 3f;
 
-        public int LastScore => _lastScore;
-        public int LastGainedGold => _lastGainedGold;
-        public bool IsPlanetSaved => _isPlanetSaved;
+        public int LastScore { get; private set; }
+        public int LastGainedGold { get; private set; }
+        public bool IsPlanetSaved { get; private set; }
 
         [SerializeField] private GameManager gameManagerPrefab;
         [SerializeField] private GameObject[] parallaxBackgroundPrefabs;
@@ -39,10 +40,6 @@ namespace Game.Components
         private PlayerProjectilePool _playerProjectilePool;
         private Player _player;
 
-        private bool _isPlanetSaved;
-        private int _lastScore;
-        private int _lastGainedGold;
-
         private DataComponent _dataComponent;
         private MainMenuComponent _mainMenuComponent;
 
@@ -56,7 +53,9 @@ namespace Game.Components
 
         public void OnConstruct()
         {
-            SetIsPlanetSaved();
+            ResetLastScore();
+            ResetLastGainedGold();
+            ResetIsPlanetSaved();
             SetHealthLevel();
 
             //TODO Handle HealthLevel
@@ -99,17 +98,18 @@ namespace Game.Components
 
         private void ChangeScore(int score)
         {
+            LastScore = score;
             OnScoreChange?.Invoke(score.ToString());
         }
 
         private void ChangeLastScore(int score)
         {
-            _lastScore = score;
+            LastScore = score;
         }
 
         private void ChangeIsPlanetSaved()
         {
-            _isPlanetSaved = true;
+            IsPlanetSaved = true;
         }
 
         #endregion
@@ -151,8 +151,8 @@ namespace Game.Components
 
             _gameManager.OnScoreChange += ChangeScore;
             _gameManager.OnHealthChange += ChangeCurrentHealthLevel;
-            _gameManager.OnLastScoreChange += ChangeLastScore;
             _gameManager.OnPlanetSave += ChangeIsPlanetSaved;
+            _gameManager.OnLastScoreChange += ChangeLastScore;
         }
 
         private void SetUpParallaxBackground()
@@ -189,19 +189,29 @@ namespace Game.Components
             _player.SetCannonLevel(cannonLevel);
         }
 
-        private void SetIsPlanetSaved()
+        private void ResetLastScore()
         {
-            _isPlanetSaved = false;
+            LastScore = 0;
+        }
+
+        private void ResetLastGainedGold()
+        {
+            LastGainedGold = 0;
+        }
+
+        private void ResetIsPlanetSaved()
+        {
+            IsPlanetSaved = false;
         }
 
         private void SaveAchievementData()
         {
             int highScore = _dataComponent.AchievementData.highScore;
 
-            if (highScore > _lastScore)
+            if (highScore > LastScore)
                 return;
 
-            _dataComponent.AchievementData.highScore = _lastScore;
+            _dataComponent.AchievementData.highScore = LastScore;
             _dataComponent.SaveAchievementData();
         }
 
@@ -213,13 +223,13 @@ namespace Game.Components
             bool isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
             if (isSaturnSaved)
             {
-                gainedGold = _lastScore * goldMultiplierLevel * SaturnGiftGoldGainMultiplier;
-                _lastGainedGold = gainedGold;
+                gainedGold = LastScore * goldMultiplierLevel * SaturnGiftGoldGainMultiplier;
+                LastGainedGold = gainedGold;
             }
             else
             {
-                gainedGold = _lastScore * goldMultiplierLevel;
-                _lastGainedGold = gainedGold;
+                gainedGold = LastScore * goldMultiplierLevel;
+                LastGainedGold = gainedGold;
             }
 
             _dataComponent.GoldData.ownedGold += gainedGold;
@@ -228,7 +238,7 @@ namespace Game.Components
 
         private void SaveInventoryData()
         {
-            if (!_isPlanetSaved)
+            if (!IsPlanetSaved)
                 return;
 
             MainMenuComponent.PlanetName planetName = _mainMenuComponent.GetSelectedPlanet();
