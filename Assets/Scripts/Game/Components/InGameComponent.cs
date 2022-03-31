@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Base.Component;
 using Game.Gameplay;
@@ -102,11 +101,6 @@ namespace Game.Components
             OnScoreChange?.Invoke(score.ToString());
         }
 
-        private void ChangeLastScore(int score)
-        {
-            LastScore = score;
-        }
-
         private void ChangeIsPlanetSaved()
         {
             IsPlanetSaved = true;
@@ -152,7 +146,6 @@ namespace Game.Components
             _gameManager.OnScoreChange += ChangeScore;
             _gameManager.OnHealthChange += ChangeCurrentHealthLevel;
             _gameManager.OnPlanetSave += ChangeIsPlanetSaved;
-            _gameManager.OnLastScoreChange += ChangeLastScore;
         }
 
         private void SetUpParallaxBackground()
