@@ -8,7 +8,6 @@ namespace Game.Gameplay
         //TODO Integrate with StateMachine
         private const float AspectPadding = 0.05f;
         private const float ScreenBoundPadding = 10.0f;
-        private const float VerticalPositionPadding = 1.0f;
 
         private Camera _mainCamera;
 
@@ -83,12 +82,12 @@ namespace Game.Gameplay
 
         private void SetMinVerticalPosition()
         {
-            _minVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 0)).y - VerticalPositionPadding;
+            _minVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 0)).y;
         }
 
         private void SetMaxVerticalPosition()
         {
-            _maxVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 1)).y + VerticalPositionPadding;
+            _maxVerticalPosition = _mainCamera.ViewportToWorldPoint(new Vector2(0, 1)).y;
         }
     }
 }
