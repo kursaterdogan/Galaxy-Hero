@@ -32,12 +32,22 @@ namespace Game.Gameplay.Enemy
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            //TODO Decrease Health
             if (col.CompareTag("PlayerProjectile"))
+            {
+                col.gameObject.SetActive(false);
+                CreateDeathParticle();
+                health--;
+
+                if (health > 0)
+                    return;
+
+                IncreaseScore();
+                Destroy(gameObject);
+            }
+            else if (col.CompareTag("Player"))
             {
                 CreateDeathParticle();
                 IncreaseScore();
-                col.gameObject.SetActive(false);
                 Destroy(gameObject);
             }
         }
@@ -85,7 +95,7 @@ namespace Game.Gameplay.Enemy
 
         private void IncreaseScore()
         {
-            FindObjectOfType<GameManager>().IncreaseScore(score);
+            GameManager.SharedInstance.IncreaseScore(score);
         }
     }
 }
