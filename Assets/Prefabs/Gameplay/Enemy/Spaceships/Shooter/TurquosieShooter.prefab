@@ -332,7 +332,7 @@ MonoBehaviour:
   health: 3
   speed: 2
   path: {fileID: 8185851059958177927, guid: b9737a9ad7a5ff849ad541181c6fff9c, type: 3}
-  deathParticlePrefab: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
+  deathParticlePrefab: {fileID: 3633786838652776486, guid: f983a863197d4d343b1e2d76c0939fd3, type: 3}
   enemyProjectilePrefab: {fileID: 2770575083207698099, guid: 180df66f6e533f6429789dbe199ab4ad, type: 3}
   firePoints:
   - {fileID: 463952560}

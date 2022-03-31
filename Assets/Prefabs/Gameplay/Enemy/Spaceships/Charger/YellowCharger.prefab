@@ -100,7 +100,7 @@ MonoBehaviour:
   health: 5
   speed: 3
   path: {fileID: 6476019878365928259, guid: 4b6b1d641ba5baa46a72da91a27e2c62, type: 3}
-  deathParticlePrefab: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
+  deathParticlePrefab: {fileID: 8111812214757742045, guid: 9aa6a599e29c02b4594b88dde8c8b6a9, type: 3}
 --- !u!60 &6397026722200244837
 PolygonCollider2D:
   m_ObjectHideFlags: 0
