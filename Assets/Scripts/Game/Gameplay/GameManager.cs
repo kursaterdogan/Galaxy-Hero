@@ -18,11 +18,6 @@ namespace Game.Gameplay
         private int _score;
         private int _health;
 
-        void OnDestroy()
-        {
-            ChangeLastScore();
-        }
-
         public void SetScoreMultiplier(int scoreMultiplier)
         {
             _scoreMultiplier = scoreMultiplier;
@@ -36,7 +31,7 @@ namespace Game.Gameplay
         public void IncreaseScore(int score)
         {
             _score += score * _scoreMultiplier;
-            ChangeScore(_score);
+            ChangeScore();
         }
 
         public void DecreaseHealth()
@@ -45,9 +40,9 @@ namespace Game.Gameplay
             ChangeHealth();
         }
 
-        private void ChangeScore(int score)
+        private void ChangeScore()
         {
-            OnScoreChange?.Invoke(score);
+            OnScoreChange?.Invoke(_score);
         }
 
         private void ChangeHealth()
@@ -55,14 +50,14 @@ namespace Game.Gameplay
             OnHealthChange?.Invoke(_health);
         }
 
-        private void ChangeLastScore()
-        {
-            OnLastScoreChange?.Invoke(_score);
-        }
-
         private void SavePlanet()
         {
             OnPlanetSave?.Invoke();
+        }
+
+        private void SaveLastScore()
+        {
+            OnLastScoreChange?.Invoke(_score);
         }
     }
 }
