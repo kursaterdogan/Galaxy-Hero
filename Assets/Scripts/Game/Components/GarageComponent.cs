@@ -38,9 +38,9 @@ namespace Game.Components
 
         private event Action OnUpgradeAction;
 
-        private const int MaxLevel = 6;
-        private const int CostMultiplier = 500;
-        private const string MaxLevelText = "MAX";
+        private const int _maxLevel = 6;
+        private const int _costMultiplier = 500;
+        private const string _maxLevelText = "MAX";
 
         private DataComponent _dataComponent;
 
@@ -372,7 +372,7 @@ namespace Game.Components
         private bool IsPurchasable(int level)
         {
             int ownedGold = _dataComponent.GoldData.ownedGold;
-            bool isPurchasable = level != MaxLevel && ownedGold >= GetCost(level);
+            bool isPurchasable = level != _maxLevel && ownedGold >= GetCost(level);
 
             return isPurchasable;
         }
@@ -386,13 +386,13 @@ namespace Game.Components
 
         private int GetCost(int level)
         {
-            return level * level * CostMultiplier;
+            return level * level * _costMultiplier;
         }
 
         private string GetCostText(int level)
         {
-            if (level == MaxLevel)
-                return MaxLevelText;
+            if (level == _maxLevel)
+                return _maxLevelText;
 
             return GetCost(level).ToString();
         }
