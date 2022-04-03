@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Base.Gameplay;
+using Game.Enums;
 
 namespace Game.Gameplay.Player
 {
     public class Player : MonoBehaviour, ILaunchable
     {
-        private const float DefaultTimeScale = 0.5f;
-        private const float NormalTimeScale = 1.0f;
+        private const float _defaultTimeScale = 0.5f;
+        private const float _normalTimeScale = 1.0f;
+
+        [SerializeField] private GameObject deathParticlePrefab;
+        [SerializeField] private ParticleSystem shildeoParticleSystem;
+        [SerializeField] private ParticleSystem ghosteoParticleSystem;
+        [SerializeField] private Cannon cannon;
 
         private GameCamera _gameCamera;
         private PlayerProjectilePool _playerProjectilePool;
 
-        private WaitForSeconds _fireRateWaitForSeconds;
-
-        [SerializeField] private Cannon cannon;
         private List<Transform> _firePoints;
+        private SuperPower _activeSuperPower;
+
+        private WaitForSeconds _superPowerWaitForSeconds;
+        private WaitForSeconds _shildeoWaitForSeconds;
+        private WaitForSeconds _bombeoWaitForSeconds;
+        private WaitForSeconds _ghosteoWaitForSeconds;
+        private WaitForSeconds _fireRateWaitForSeconds;
 
         private int _health;
         private int _cannonLevel;
         private float _speed = 5.0f;
-        private float _fireRate = 1.0f;
-
-        [SerializeField] private GameObject deathParticlePrefab;
 
         void Start()
         {
@@ -41,24 +48,37 @@ namespace Game.Gameplay.Player
         {
             //TODO Add Shildeo & Ghosteo
             if (col.CompareTag("EnemyProjectile"))
-            {
                 DecreaseHealth();
-            }
             else if (col.CompareTag("Enemy"))
-            {
                 DecreaseHealth();
-            }
         }
 
         void OnDestroy()
         {
-            SetTimeScale(NormalTimeScale);
+            SetTimeScale(_normalTimeScale);
         }
 
         public void OnLaunch()
         {
-            SetTimeScale(DefaultTimeScale);
-            StartFiringCoroutine();
+            SetTimeScale(_defaultTimeScale);
+            StartCoroutine(FireContinously());
+            StartSuperPower();
+        }
+
+        private void StartSuperPower()
+        {
+            switch (_activeSuperPower)
+            {
+                case SuperPower.Shildeo:
+                    StartCoroutine(Shildeo());
+                    break;
+                case SuperPower.Bombeo:
+                    StartCoroutine(Bombeo());
+                    break;
+                case SuperPower.Ghosteo:
+                    StartCoroutine(Ghosteo());
+                    break;
+            }
         }
 
         private void DecreaseHealth()
@@ -94,18 +114,43 @@ namespace Game.Gameplay.Player
             SetFirePoints();
         }
 
-        public void SetFireRate(float fireRate)
+        public void SetFireDuration(float fireRate)
         {
-            _fireRate = fireRate;
-            SetFiringWaitForSeconds();
+            _fireRateWaitForSeconds = new WaitForSeconds(fireRate);
+        }
+
+        public void SetActiveSuperPower(SuperPower superPower)
+        {
+            _activeSuperPower = superPower;
+        }
+
+        public void SetSuperPowerDuration(float superPowerDuration)
+        {
+            Debug.LogWarning(superPowerDuration);
+            _superPowerWaitForSeconds = new WaitForSeconds(superPowerDuration);
+        }
+
+        public void SetShildeoDuration(float shildeoDuration)
+        {
+            _shildeoWaitForSeconds = new WaitForSeconds(shildeoDuration);
+        }
+
+        public void SetBombeoDuration(float bombeoDuration)
+        {
+            _bombeoWaitForSeconds = new WaitForSeconds(bombeoDuration);
+        }
+
+        public void SetGhosteoDuration(float ghosteoDuration)
+        {
+            _ghosteoWaitForSeconds = new WaitForSeconds(ghosteoDuration);
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
         {
             if (callbackContext.started)
-                SetTimeScale(NormalTimeScale);
+                SetTimeScale(_normalTimeScale);
             else if (callbackContext.canceled)
-                SetTimeScale(DefaultTimeScale);
+                SetTimeScale(_defaultTimeScale);
         }
 
         private void SetTimeScale(float timeScale)
@@ -116,16 +161,6 @@ namespace Game.Gameplay.Player
         private void SetFirePoints()
         {
             _firePoints = cannon.GetFirePoints(_cannonLevel);
-        }
-
-        private void SetFiringWaitForSeconds()
-        {
-            _fireRateWaitForSeconds = new WaitForSeconds(_fireRate);
-        }
-
-        private void StartFiringCoroutine()
-        {
-            StartCoroutine(FireContinously());
         }
 
         private void Move()
@@ -149,6 +184,37 @@ namespace Game.Gameplay.Player
                 }
 
                 yield return _fireRateWaitForSeconds;
+            }
+        }
+
+        private IEnumerator Shildeo()
+        {
+            while (true)
+            {
+                yield return _superPowerWaitForSeconds;
+                shildeoParticleSystem.Play();
+                yield return _shildeoWaitForSeconds;
+                shildeoParticleSystem.Stop();
+            }
+        }
+
+        private IEnumerator Bombeo()
+        {
+            while (true)
+            {
+                yield return _superPowerWaitForSeconds;
+                yield return _bombeoWaitForSeconds;
+            }
+        }
+
+        private IEnumerator Ghosteo()
+        {
+            while (true)
+            {
+                yield return _superPowerWaitForSeconds;
+                ghosteoParticleSystem.Play();
+                yield return _ghosteoWaitForSeconds;
+                ghosteoParticleSystem.Stop();
             }
         }
 
