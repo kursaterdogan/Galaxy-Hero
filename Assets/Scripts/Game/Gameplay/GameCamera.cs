@@ -6,8 +6,8 @@ namespace Game.Gameplay
     public class GameCamera : MonoBehaviour
     {
         //TODO Integrate with StateMachine
-        private const float AspectPadding = 0.05f;
-        private const float ScreenBoundPadding = 10.0f;
+        private const float _aspectPadding = 0.05f;
+        private const float _screenBoundPadding = 10.0f;
 
         private Camera _mainCamera;
 
@@ -38,13 +38,13 @@ namespace Game.Gameplay
             float pointerXPosition = Pointer.current.position.ReadValue().x;
             float pointerYPosition = Pointer.current.position.ReadValue().y;
 
-            bool isPointerOnScreen = pointerXPosition < _screenBoundWidth - ScreenBoundPadding
+            bool isPointerOnScreen = pointerXPosition < _screenBoundWidth - _screenBoundPadding
                                      &&
-                                     pointerXPosition > ScreenBoundPadding
+                                     pointerXPosition > _screenBoundPadding
                                      &&
-                                     pointerYPosition < _screenBoundHeight - ScreenBoundPadding
+                                     pointerYPosition < _screenBoundHeight - _screenBoundPadding
                                      &&
-                                     pointerYPosition > ScreenBoundPadding;
+                                     pointerYPosition > _screenBoundPadding;
 
             return isPointerOnScreen;
         }
@@ -71,7 +71,7 @@ namespace Game.Gameplay
 
         private void SetAspect()
         {
-            _aspect = _mainCamera.aspect + AspectPadding;
+            _aspect = _mainCamera.aspect + _aspectPadding;
         }
 
         private void SetMoveBoundaries()
