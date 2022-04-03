@@ -43,7 +43,6 @@ namespace Game.Gameplay.Player
             if (col.CompareTag("EnemyProjectile"))
             {
                 DecreaseHealth();
-                Destroy(col.gameObject);
             }
             else if (col.CompareTag("Enemy"))
             {
