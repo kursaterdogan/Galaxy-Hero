@@ -23,7 +23,7 @@ namespace Game.Components
         public event SuperPowerChangeDelegate OnActivateBombeo;
         public event SuperPowerChangeDelegate OnActivateGhosteo;
 
-        public const int SuperPowerDuration = 30;
+        private const int _superPowerDuration = 30;
 
         private DataComponent _dataComponent;
 
@@ -47,19 +47,9 @@ namespace Game.Components
             SaveSuperPowerData();
         }
 
-        public SuperPower GetSelectedSuperPower()
+        public float GetSuperPowerDuration()
         {
-            //TODO Handle in Gameplay
-            int selectedSuperPower = _dataComponent.SuperPowerData.selectedSuperPower;
-            SuperPower superPower = (SuperPower)selectedSuperPower;
-
-            return superPower;
-        }
-
-        public int GetSuperPowerDuration()
-        {
-            //TODO Handle in Gameplay
-            return SuperPowerDuration;
+            return _superPowerDuration;
         }
 
         #region Requests
@@ -113,7 +103,7 @@ namespace Game.Components
         private void ChangeShildeoDescription()
         {
             int level = _dataComponent.GarageData.shildeoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Gain Shield For " + level +
+            string description = "Every " + _superPowerDuration + " Seconds Gain Shield For " + level +
                                  " Seconds";
 
             OnShildeoDescriptionChange?.Invoke(description);
@@ -122,7 +112,7 @@ namespace Game.Components
         private void ChangeBombeoDescription()
         {
             int level = _dataComponent.GarageData.bombeoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Fire Bomb With " + level + " Size";
+            string description = "Every " + _superPowerDuration + " Seconds Fire Bomb With " + level + " Size";
 
             OnBombeoDescriptionChange?.Invoke(description);
         }
@@ -130,7 +120,7 @@ namespace Game.Components
         private void ChangeGhosteoDescription()
         {
             int level = _dataComponent.GarageData.ghosteoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Become Immune For " + level +
+            string description = "Every " + _superPowerDuration + " Seconds Become Immune For " + level +
                                  " Seconds";
 
             OnGhosteoDescriptionChange?.Invoke(description);
@@ -186,6 +176,14 @@ namespace Game.Components
         }
 
         #endregion
+
+        private SuperPower GetSelectedSuperPower()
+        {
+            int selectedSuperPower = _dataComponent.SuperPowerData.selectedSuperPower;
+            SuperPower superPower = (SuperPower)selectedSuperPower;
+
+            return superPower;
+        }
 
         private void SetSelectedSuperPower(SuperPower selectedSuperPower)
         {
