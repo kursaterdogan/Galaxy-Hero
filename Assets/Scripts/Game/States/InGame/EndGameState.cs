@@ -1,6 +1,7 @@
 using Base.State;
 using Base.Component;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
@@ -103,7 +104,7 @@ namespace Game.States.InGame
 
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
     }
 }

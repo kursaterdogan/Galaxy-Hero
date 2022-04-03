@@ -1,5 +1,6 @@
 using Base.Component;
 using Base.State;
+using Game.Enums;
 using Game.States.InGame;
 using Game.States.Main;
 using Game.States.Splash;
@@ -22,10 +23,10 @@ namespace Game.States
             AddSubState(_mainState);
             AddSubState(_gameState);
 
-            AddTransition(_splashState, _mainState, (int)StateTriggers.GoToMainMenu);
-            AddTransition(_mainState, _gameState, (int)StateTriggers.StartGame);
+            AddTransition(_splashState, _mainState, (int)StateTrigger.GoToMainMenu);
+            AddTransition(_mainState, _gameState, (int)StateTrigger.StartGame);
             //TODO Handle EndGameState
-            AddTransition(_gameState, _mainState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_gameState, _mainState, (int)StateTrigger.ReturnToMainMenu);
         }
 
         protected override void OnEnter()

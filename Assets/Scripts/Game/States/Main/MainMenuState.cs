@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -118,32 +119,32 @@ namespace Game.States.Main
 
         private void RequestInventory()
         {
-            SendTrigger((int)StateTriggers.GoToInventory);
+            SendTrigger((int)StateTrigger.GoToInventory);
         }
 
         private void RequestGarage()
         {
-            SendTrigger((int)StateTriggers.GoToGarage);
+            SendTrigger((int)StateTrigger.GoToGarage);
         }
 
         private void RequestSuperPower()
         {
-            SendTrigger((int)StateTriggers.GoToSuperPower);
+            SendTrigger((int)StateTrigger.GoToSuperPower);
         }
 
         private void RequestCredits()
         {
-            SendTrigger((int)StateTriggers.GoToCredits);
+            SendTrigger((int)StateTrigger.GoToCredits);
         }
 
         private void RequestAchievement()
         {
-            SendTrigger((int)StateTriggers.GoToAchievement);
+            SendTrigger((int)StateTrigger.GoToAchievement);
         }
 
         private void RequestStartGame()
         {
-            SendTrigger((int)StateTriggers.StartGame);
+            SendTrigger((int)StateTrigger.StartGame);
         }
 
         #endregion

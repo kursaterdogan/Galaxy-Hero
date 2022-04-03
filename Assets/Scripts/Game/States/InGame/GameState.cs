@@ -1,5 +1,6 @@
 using Base.Component;
 using Base.State;
+using Game.Enums;
 
 namespace Game.States.InGame
 {
@@ -19,8 +20,8 @@ namespace Game.States.InGame
             AddSubState(_inGameState);
             AddSubState(_endGameState);
 
-            AddTransition(_prepareGameState, _inGameState, (int)StateTriggers.PlayGame);
-            AddTransition(_inGameState, _endGameState, (int)StateTriggers.EndGame);
+            AddTransition(_prepareGameState, _inGameState, (int)StateTrigger.PlayGame);
+            AddTransition(_inGameState, _endGameState, (int)StateTrigger.EndGame);
         }
 
         protected override void OnEnter()

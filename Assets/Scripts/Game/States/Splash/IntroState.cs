@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Splash;
 
 namespace Game.States.Splash
@@ -57,7 +58,7 @@ namespace Game.States.Splash
 
         private void RequestMainMenu()
         {
-            SendTrigger((int)StateTriggers.GoToMainMenu);
+            SendTrigger((int)StateTrigger.GoToMainMenu);
         }
     }
 }

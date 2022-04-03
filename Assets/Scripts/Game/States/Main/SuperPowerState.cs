@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -135,7 +136,7 @@ namespace Game.States.Main
 
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
 
         #endregion

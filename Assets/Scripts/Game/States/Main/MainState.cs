@@ -1,5 +1,6 @@
 using Base.Component;
 using Base.State;
+using Game.Enums;
 
 namespace Game.States.Main
 {
@@ -28,20 +29,20 @@ namespace Game.States.Main
             AddSubState(_creditsState);
             AddSubState(_achievementState);
 
-            AddTransition(_mainMenuState, _inventoryState, (int)StateTriggers.GoToInventory);
-            AddTransition(_inventoryState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_mainMenuState, _inventoryState, (int)StateTrigger.GoToInventory);
+            AddTransition(_inventoryState, _mainMenuState, (int)StateTrigger.ReturnToMainMenu);
 
-            AddTransition(_mainMenuState, _garageState, (int)StateTriggers.GoToGarage);
-            AddTransition(_garageState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_mainMenuState, _garageState, (int)StateTrigger.GoToGarage);
+            AddTransition(_garageState, _mainMenuState, (int)StateTrigger.ReturnToMainMenu);
 
-            AddTransition(_mainMenuState, _superPowerState, (int)StateTriggers.GoToSuperPower);
-            AddTransition(_superPowerState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_mainMenuState, _superPowerState, (int)StateTrigger.GoToSuperPower);
+            AddTransition(_superPowerState, _mainMenuState, (int)StateTrigger.ReturnToMainMenu);
 
-            AddTransition(_mainMenuState, _creditsState, (int)StateTriggers.GoToCredits);
-            AddTransition(_creditsState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_mainMenuState, _creditsState, (int)StateTrigger.GoToCredits);
+            AddTransition(_creditsState, _mainMenuState, (int)StateTrigger.ReturnToMainMenu);
             
-            AddTransition(_mainMenuState, _achievementState, (int)StateTriggers.GoToAchievement);
-            AddTransition(_achievementState, _mainMenuState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_mainMenuState, _achievementState, (int)StateTrigger.GoToAchievement);
+            AddTransition(_achievementState, _mainMenuState, (int)StateTrigger.ReturnToMainMenu);
         }
 
         protected override void OnEnter()

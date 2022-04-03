@@ -1,6 +1,7 @@
 using Base.State;
 using Base.Component;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
@@ -67,7 +68,7 @@ namespace Game.States.InGame
 
         private void RequestPlayGame()
         {
-            SendTrigger((int)StateTriggers.PlayGame);
+            SendTrigger((int)StateTrigger.PlayGame);
         }
 
         #endregion
