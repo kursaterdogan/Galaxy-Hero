@@ -34,7 +34,6 @@ namespace Game.Gameplay.Enemy
         {
             if (col.CompareTag("PlayerProjectile"))
             {
-                col.gameObject.SetActive(false);
                 CreateDeathParticle();
                 health--;
 
