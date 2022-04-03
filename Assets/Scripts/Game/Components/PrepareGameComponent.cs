@@ -15,7 +15,7 @@ namespace Game.Components
         public event PrepareGameTextChangeDelegate OnHighScoreChange;
         public event PrepareGameTextChangeDelegate OnSuperPowerChange;
 
-        private const float AnimationTime = 0.5f;
+        private const float _animationTime = 0.5f;
 
         private DataComponent _dataComponent;
         private SuperPowerComponent _superPowerComponent;
@@ -62,7 +62,7 @@ namespace Game.Components
         {
             _inGameComponent.SetUpGame();
 
-            yield return new WaitForSeconds(AnimationTime);
+            yield return new WaitForSeconds(_animationTime);
 
             OnLoadingComplete?.Invoke();
         }
