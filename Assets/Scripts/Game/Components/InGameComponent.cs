@@ -1,5 +1,6 @@
 using UnityEngine;
 using Base.Component;
+using Game.Enums;
 using Game.Gameplay;
 using Game.Gameplay.Enemy;
 using Game.Gameplay.Player;
@@ -41,14 +42,12 @@ namespace Game.Components
         private Player _player;
 
         private DataComponent _dataComponent;
-        private MainMenuComponent _mainMenuComponent;
 
         public void Initialize(ComponentContainer componentContainer)
         {
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
-            _mainMenuComponent = componentContainer.GetComponent("MainMenuComponent") as MainMenuComponent;
         }
 
         public void OnConstruct()
@@ -243,15 +242,15 @@ namespace Game.Components
             if (!IsPlanetSaved)
                 return;
 
-            MainMenuComponent.PlanetName planetName = _mainMenuComponent.GetSelectedPlanet();
+            Planet planet = (Planet)_dataComponent.PlanetData.selectedPlanet;
 
-            switch (planetName)
+            switch (planet)
             {
-                case MainMenuComponent.PlanetName.Saturn when !_dataComponent.InventoryData.isSaturnSaved:
+                case Planet.Saturn when !_dataComponent.InventoryData.isSaturnSaved:
                     _dataComponent.InventoryData.isSaturnSaved = true;
                     _dataComponent.SaveInventoryData();
                     break;
-                case MainMenuComponent.PlanetName.Mars when !_dataComponent.InventoryData.isMarsSaved:
+                case Planet.Mars when !_dataComponent.InventoryData.isMarsSaved:
                     _dataComponent.InventoryData.isMarsSaved = true;
                     _dataComponent.SaveInventoryData();
                     break;
