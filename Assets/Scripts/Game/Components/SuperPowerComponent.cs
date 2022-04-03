@@ -23,7 +23,7 @@ namespace Game.Components
         public event SuperPowerChangeDelegate OnActivateBombeo;
         public event SuperPowerChangeDelegate OnActivateGhosteo;
 
-        private const int SuperPowerDuration = 30;
+        public const int SuperPowerDuration = 30;
 
         private DataComponent _dataComponent;
 
