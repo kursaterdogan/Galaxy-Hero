@@ -386,7 +386,7 @@ namespace Game.Components
 
         private int GetCost(int level)
         {
-            return level * level * _costMultiplier;
+            return level * level * level * _costMultiplier;
         }
 
         private string GetCostText(int level)
