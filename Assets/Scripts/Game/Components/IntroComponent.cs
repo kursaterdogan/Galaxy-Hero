@@ -14,7 +14,7 @@ namespace Game.Components
 
         public event IntroChangeDelegate OnIntroAnimationComplete;
 
-        private const float AnimationTime = 1.0f;
+        private const float _animationTime = 1.0f;
 
         public void Initialize(ComponentContainer componentContainer)
         {
@@ -28,9 +28,9 @@ namespace Game.Components
 
         private IEnumerator PlayAnimation()
         {
-            OnIntroAnimationStart?.Invoke(AnimationTime);
+            OnIntroAnimationStart?.Invoke(_animationTime);
 
-            yield return new WaitForSeconds(AnimationTime);
+            yield return new WaitForSeconds(_animationTime);
 
             OnIntroAnimationComplete?.Invoke();
         }
