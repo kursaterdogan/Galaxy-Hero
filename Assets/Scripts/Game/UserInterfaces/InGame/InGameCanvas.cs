@@ -11,7 +11,7 @@ namespace Game.UserInterfaces.InGame
 
         public event InGameRequestDelegate OnReturnToMainMenuRequest;
 
-        private const string DefaultScoreValue = "0";
+        private const string _defaultScoreValue = "0";
         [SerializeField] private TMP_Text scoreText;
 
         [SerializeField] private GameObject[] healthLevels;
@@ -73,7 +73,7 @@ namespace Game.UserInterfaces.InGame
 
         private void ResetScoreText()
         {
-            scoreText.text = DefaultScoreValue;
+            scoreText.text = _defaultScoreValue;
         }
     }
 }
