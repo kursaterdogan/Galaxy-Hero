@@ -18,10 +18,10 @@ namespace Game.Components
         public event InGameHealthLevelChangeDelegate OnHealthLevelChange;
         public event InGameHealthLevelChangeDelegate OnCurrentHealthLevelChange;
 
-        private const int SaturnGiftGoldGainMultiplier = 2;
-        private const int MarsGiftScoreGainMultiplier = 2;
-        private const float FireRateDividend = 1.2f;
-        private const float SpeedMultiplier = 3f;
+        private const int _saturnGiftGoldGainMultiplier = 2;
+        private const int _marsGiftScoreGainMultiplier = 2;
+        private const float _fireRateDividend = 1.2f;
+        private const float _speedMultiplier = 3f;
 
         public int LastScore { get; private set; }
         public int LastGainedGold { get; private set; }
@@ -41,6 +41,8 @@ namespace Game.Components
         private PlayerProjectilePool _playerProjectilePool;
         private Player _player;
 
+        private float _superPowerDuration;
+
         private DataComponent _dataComponent;
 
         public void Initialize(ComponentContainer componentContainer)
@@ -48,6 +50,10 @@ namespace Game.Components
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
+            SuperPowerComponent superPowerComponent =
+                componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
+
+            _superPowerDuration = superPowerComponent.GetSuperPowerDuration();
         }
 
         public void OnConstruct()
@@ -138,7 +144,7 @@ namespace Game.Components
             else
             {
                 int scoreMultiplierLevel =
-                    _dataComponent.GarageData.scoreMultiplierLevel * MarsGiftScoreGainMultiplier;
+                    _dataComponent.GarageData.scoreMultiplierLevel * _marsGiftScoreGainMultiplier;
                 _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
             }
 
@@ -174,14 +180,28 @@ namespace Game.Components
             int healthLevel = _dataComponent.GarageData.healthLevel;
             _player.SetHealth(healthLevel);
 
-            float speed = SpeedMultiplier * _dataComponent.GarageData.speedLevel;
+            float speed = _speedMultiplier * _dataComponent.GarageData.speedLevel;
             _player.SetSpeed(speed);
 
-            float fireRate = FireRateDividend / _dataComponent.GarageData.fireRateLevel;
-            _player.SetFireRate(fireRate);
+            float fireRate = _fireRateDividend / _dataComponent.GarageData.fireRateLevel;
+            _player.SetFireDuration(fireRate);
 
             int cannonLevel = _dataComponent.GarageData.cannonLevel - 1;
             _player.SetCannonLevel(cannonLevel);
+
+            SuperPower superPower = (SuperPower)_dataComponent.SuperPowerData.selectedSuperPower;
+            _player.SetActiveSuperPower(superPower);
+
+            _player.SetSuperPowerDuration(_superPowerDuration);
+
+            float shildeoDuration = _dataComponent.GarageData.shildeoLevel;
+            _player.SetShildeoDuration(shildeoDuration);
+
+            float bombeoDuration = _dataComponent.GarageData.bombeoLevel;
+            _player.SetBombeoDuration(bombeoDuration);
+
+            float ghosteoDuration = _dataComponent.GarageData.ghosteoLevel;
+            _player.SetGhosteoDuration(ghosteoDuration);
         }
 
         private void ResetLastScore()
@@ -224,7 +244,7 @@ namespace Game.Components
             bool isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
             if (isSaturnSaved)
             {
-                gainedGold = LastScore * goldMultiplierLevel * SaturnGiftGoldGainMultiplier;
+                gainedGold = LastScore * goldMultiplierLevel * _saturnGiftGoldGainMultiplier;
                 LastGainedGold = gainedGold;
             }
             else
