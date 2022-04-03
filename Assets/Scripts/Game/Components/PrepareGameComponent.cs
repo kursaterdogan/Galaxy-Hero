@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Base.Component;
+using Game.Enums;
 
 namespace Game.Components
 {
@@ -18,7 +19,6 @@ namespace Game.Components
         private const float _animationTime = 0.5f;
 
         private DataComponent _dataComponent;
-        private SuperPowerComponent _superPowerComponent;
         private InGameComponent _inGameComponent;
 
         public void Initialize(ComponentContainer componentContainer)
@@ -26,7 +26,6 @@ namespace Game.Components
             Debug.Log("<color=lime>" + gameObject.name + " initialized!</color>");
 
             _dataComponent = componentContainer.GetComponent("DataComponent") as DataComponent;
-            _superPowerComponent = componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
             _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
         }
 
@@ -52,7 +51,7 @@ namespace Game.Components
 
         private void ChangeSuperPower()
         {
-            string superPower = _superPowerComponent.GetSelectedSuperPower().ToString();
+            string superPower = ((SuperPower)_dataComponent.SuperPowerData.selectedSuperPower).ToString();
             OnSuperPowerChange?.Invoke(superPower);
         }
 
