@@ -935,6 +935,7 @@ Transform:
   m_LocalScale: {x: 0.125, y: 0.125, z: 1}
   m_Children:
   - {fileID: 2048735594851897548}
+  - {fileID: 8796656127306434599}
   - {fileID: 3353067403664063004}
   - {fileID: 3435359916863056463}
   - {fileID: 89529833}
@@ -1131,6 +1132,9 @@ MonoBehaviour:
   shildeoParticleSystem: {fileID: 1059620420460218043}
   ghosteoParticleSystem: {fileID: 89529832}
   cannon: {fileID: 2720497927111012844}
+  col2D: {fileID: 7207784759193383298}
+  bombeoPrefab: {fileID: 327123554077534188, guid: 53a8baae774840a4880ae2b1953146c6, type: 3}
+  bombeoFirePoint: {fileID: 8796656127306434599}
 --- !u!1 &7543693735999365564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1225,36 @@ Transform:
   m_Father: {fileID: 4544558427729668552}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7916689816027565912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8796656127306434599}
+  m_Layer: 0
+  m_Name: BombeoFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8796656127306434599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916689816027565912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7424817292142907291}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1985438788968449596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1230,7 +1264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3820687487410994208, guid: 36588998f2836904f9268eb4eda8ef68, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3820687487410994208, guid: 36588998f2836904f9268eb4eda8ef68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,7 +1330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107465819665291172, guid: 4b151d08d6adc3543bd4ac76b55b1a4f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9107465819665291172, guid: 4b151d08d6adc3543bd4ac76b55b1a4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1363,7 +1397,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6690460038597737840, guid: c896d670d5a8ea24b8d0962ce9179ff5, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6690460038597737840, guid: c896d670d5a8ea24b8d0962ce9179ff5, type: 3}
       propertyPath: m_LocalPosition.x
