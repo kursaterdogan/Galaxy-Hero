@@ -117,7 +117,7 @@ namespace Game.Components
 
         private void ChangeBombeoDescription()
         {
-            int level = _dataComponent.GarageData.bombeoLevel * _superPowerDurationMultiplier;
+            int level = _dataComponent.GarageData.bombeoLevel;
             string description = "Every " + _superPowerCooldown + " Seconds Fire Bomb With " + level + " Size";
 
             OnBombeoDescriptionChange?.Invoke(description);
