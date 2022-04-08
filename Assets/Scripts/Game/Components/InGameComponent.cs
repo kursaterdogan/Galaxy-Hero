@@ -41,7 +41,8 @@ namespace Game.Components
         private PlayerProjectilePool _playerProjectilePool;
         private Player _player;
 
-        private float _superPowerDuration;
+        private float _superPowerCooldown;
+        private int _superPowerDurationMultiplier;
 
         private DataComponent _dataComponent;
 
@@ -53,7 +54,8 @@ namespace Game.Components
             SuperPowerComponent superPowerComponent =
                 componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
 
-            _superPowerDuration = superPowerComponent.GetSuperPowerDuration();
+            _superPowerCooldown = superPowerComponent.GetSuperPowerCooldown();
+            _superPowerDurationMultiplier = superPowerComponent.GetSuperPowerDurationMultiplier();
         }
 
         public void OnConstruct()
@@ -64,9 +66,6 @@ namespace Game.Components
             ResetIsPlanetSaved();
 
             SetHealthLevel();
-
-            //TODO Handle HealthLevel
-            // ChangeCurrentHealthLevel(4);
 
             LaunchGame();
         }
@@ -192,15 +191,18 @@ namespace Game.Components
             SuperPower superPower = (SuperPower)_dataComponent.SuperPowerData.selectedSuperPower;
             _player.SetActiveSuperPower(superPower);
 
-            _player.SetSuperPowerDuration(_superPowerDuration);
+            _player.SetSuperPowerCooldown(_superPowerCooldown);
 
-            float shildeoDuration = _dataComponent.GarageData.shildeoLevel;
+            float shildeoDuration = _dataComponent.GarageData.shildeoLevel * _superPowerDurationMultiplier;
             _player.SetShildeoDuration(shildeoDuration);
 
-            float bombeoDuration = _dataComponent.GarageData.bombeoLevel;
-            _player.SetBombeoDuration(bombeoDuration);
+            float bombeoScale = _dataComponent.GarageData.bombeoLevel;
+            _player.SetBombeoScale(bombeoScale);
 
-            float ghosteoDuration = _dataComponent.GarageData.ghosteoLevel;
+            float bombeoDestroyPosition = gameCamera.GetMaxVerticalPosition();
+            _player.SetBombeoDestroyPosition(bombeoDestroyPosition);
+
+            float ghosteoDuration = _dataComponent.GarageData.ghosteoLevel * _superPowerDurationMultiplier;
             _player.SetGhosteoDuration(ghosteoDuration);
         }
 
