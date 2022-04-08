@@ -49,6 +49,12 @@ namespace Game.Gameplay.Enemy
                 IncreaseScore();
                 Destroy(gameObject);
             }
+            else if (col.CompareTag("Bombeo"))
+            {
+                CreateDeathParticle();
+                IncreaseScore();
+                Destroy(gameObject);
+            }
         }
 
         private void SetWaypoints()
