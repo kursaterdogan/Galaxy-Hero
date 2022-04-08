@@ -16,23 +16,29 @@ namespace Game.Gameplay.Player
         [SerializeField] private ParticleSystem shildeoParticleSystem;
         [SerializeField] private ParticleSystem ghosteoParticleSystem;
         [SerializeField] private Cannon cannon;
+        [SerializeField] private CircleCollider2D col2D;
 
         private GameCamera _gameCamera;
         private PlayerProjectilePool _playerProjectilePool;
-
         private List<Transform> _firePoints;
         private SuperPower _activeSuperPower;
 
-        private WaitForSeconds _superPowerWaitForSeconds;
-        private WaitForSeconds _shildeoWaitForSeconds;
-        private WaitForSeconds _bombeoWaitForSeconds;
-        private WaitForSeconds _ghosteoWaitForSeconds;
+        private WaitForSeconds _superPowerCooldownWaitForSeconds;
+        private WaitForSeconds _shildeoDurationWaitForSeconds;
+        private WaitForSeconds _ghosteoDurationWaitForSeconds;
         private WaitForSeconds _fireRateWaitForSeconds;
+
+        [SerializeField] private GameObject bombeoPrefab;
+        [SerializeField] private Transform bombeoFirePoint;
+        private float _bombeoScale;
+        private float _bombeoDestroyPosition;
+        private bool _isShildeoActive;
 
         private int _health;
         private int _cannonLevel;
         private float _speed = 5.0f;
 
+        //TODO Refactor Usage of Super Powers
         void Start()
         {
             SetGameCamera();
@@ -46,7 +52,9 @@ namespace Game.Gameplay.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            //TODO Add Shildeo & Ghosteo
+            if (_isShildeoActive)
+                return;
+
             if (col.CompareTag("EnemyProjectile"))
                 DecreaseHealth();
             else if (col.CompareTag("Enemy"))
@@ -124,25 +132,29 @@ namespace Game.Gameplay.Player
             _activeSuperPower = superPower;
         }
 
-        public void SetSuperPowerDuration(float superPowerDuration)
+        public void SetSuperPowerCooldown(float superPowerCooldown)
         {
-            Debug.LogWarning(superPowerDuration);
-            _superPowerWaitForSeconds = new WaitForSeconds(superPowerDuration);
+            _superPowerCooldownWaitForSeconds = new WaitForSeconds(superPowerCooldown);
         }
 
         public void SetShildeoDuration(float shildeoDuration)
         {
-            _shildeoWaitForSeconds = new WaitForSeconds(shildeoDuration);
+            _shildeoDurationWaitForSeconds = new WaitForSeconds(shildeoDuration);
         }
 
-        public void SetBombeoDuration(float bombeoDuration)
+        public void SetBombeoScale(float bombeoScale)
         {
-            _bombeoWaitForSeconds = new WaitForSeconds(bombeoDuration);
+            _bombeoScale = bombeoScale;
         }
 
         public void SetGhosteoDuration(float ghosteoDuration)
         {
-            _ghosteoWaitForSeconds = new WaitForSeconds(ghosteoDuration);
+            _ghosteoDurationWaitForSeconds = new WaitForSeconds(ghosteoDuration);
+        }
+
+        public void SetBombeoDestroyPosition(float destroyPosition)
+        {
+            _bombeoDestroyPosition = destroyPosition;
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -191,10 +203,14 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                yield return _superPowerWaitForSeconds;
+                yield return _superPowerCooldownWaitForSeconds;
                 shildeoParticleSystem.Play();
-                yield return _shildeoWaitForSeconds;
+                col2D.radius *= 2;
+                _isShildeoActive = true;
+                yield return _shildeoDurationWaitForSeconds;
                 shildeoParticleSystem.Stop();
+                col2D.radius /= 2;
+                _isShildeoActive = false;
             }
         }
 
@@ -202,8 +218,10 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                yield return _superPowerWaitForSeconds;
-                yield return _bombeoWaitForSeconds;
+                yield return _superPowerCooldownWaitForSeconds;
+                GameObject bombeo = Instantiate(bombeoPrefab, bombeoFirePoint.position, Quaternion.identity);
+                bombeo.transform.localScale = new Vector3(_bombeoScale, _bombeoScale, 1);
+                bombeo.GetComponent<Bombeo>().SetDestroyPosition(_bombeoDestroyPosition);
             }
         }
 
@@ -211,10 +229,12 @@ namespace Game.Gameplay.Player
         {
             while (true)
             {
-                yield return _superPowerWaitForSeconds;
+                yield return _superPowerCooldownWaitForSeconds;
                 ghosteoParticleSystem.Play();
-                yield return _ghosteoWaitForSeconds;
+                col2D.enabled = false;
+                yield return _ghosteoDurationWaitForSeconds;
                 ghosteoParticleSystem.Stop();
+                col2D.enabled = true;
             }
         }
 
