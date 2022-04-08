@@ -8,6 +8,7 @@ TagManager:
   - EnemyProjectile
   - Enemy
   - Boss
+  - Bombeo
   layers:
   - Default
   - TransparentFX
