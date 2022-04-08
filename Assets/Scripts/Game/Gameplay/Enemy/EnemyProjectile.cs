@@ -8,6 +8,8 @@ namespace Game.Gameplay.Enemy
         {
             if (col.CompareTag("Player"))
                 Destroy(gameObject);
+            else if (col.CompareTag("Bombeo"))
+                Destroy(gameObject);
         }
 
         protected override void CheckDestroyPosition()
