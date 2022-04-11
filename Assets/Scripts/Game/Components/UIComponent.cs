@@ -1,25 +1,12 @@
 using UnityEngine;
 using Base.Component;
 using Base.UserInterface;
+using Game.Enums;
 
 namespace Game.Components
 {
     public class UIComponent : MonoBehaviour, IComponent
     {
-        public enum MenuName
-        {
-            Intro,
-            MainMenu,
-            Inventory,
-            Garage,
-            SuperPower,
-            Credits,
-            Achievement,
-            PrepareGame,
-            InGame,
-            EndGame
-        }
-
         [SerializeField] private BaseCanvas introCanvas;
         [SerializeField] private BaseCanvas mainMenuCanvas;
         [SerializeField] private BaseCanvas inventoryCanvas;
@@ -60,39 +47,39 @@ namespace Game.Components
             DeactivateCanvas(endGameCanvas);
         }
 
-        public BaseCanvas GetCanvas(MenuName canvas)
+        public BaseCanvas GetCanvas(CanvasTrigger canvasTrigger)
         {
-            switch (canvas)
+            switch (canvasTrigger)
             {
-                case MenuName.Intro:
+                case CanvasTrigger.Intro:
                     return introCanvas;
-                case MenuName.MainMenu:
+                case CanvasTrigger.MainMenu:
                     return mainMenuCanvas;
-                case MenuName.Inventory:
+                case CanvasTrigger.Inventory:
                     return inventoryCanvas;
-                case MenuName.Garage:
+                case CanvasTrigger.Garage:
                     return garageCanvas;
-                case MenuName.SuperPower:
+                case CanvasTrigger.SuperPower:
                     return superPowerCanvas;
-                case MenuName.Credits:
+                case CanvasTrigger.Credits:
                     return creditsCanvas;
-                case MenuName.Achievement:
+                case CanvasTrigger.Achievement:
                     return achievementCanvas;
-                case MenuName.PrepareGame:
+                case CanvasTrigger.PrepareGame:
                     return prepareGameCanvas;
-                case MenuName.InGame:
+                case CanvasTrigger.InGame:
                     return inGameCanvas;
-                case MenuName.EndGame:
+                case CanvasTrigger.EndGame:
                     return endGameCanvas;
                 default:
                     return null;
             }
         }
 
-        public void EnableCanvas(MenuName menuName)
+        public void EnableCanvas(CanvasTrigger canvasTrigger)
         {
             DeactivateCanvas(_activeCanvas);
-            ActivateCanvas(menuName);
+            ActivateCanvas(canvasTrigger);
         }
 
         private void DeactivateCanvas(BaseCanvas canvas)
@@ -101,38 +88,38 @@ namespace Game.Components
                 canvas.Deactivate();
         }
 
-        private void ActivateCanvas(MenuName menuName)
+        private void ActivateCanvas(CanvasTrigger canvasTrigger)
         {
-            switch (menuName)
+            switch (canvasTrigger)
             {
-                case MenuName.Intro:
+                case CanvasTrigger.Intro:
                     _activeCanvas = introCanvas;
                     break;
-                case MenuName.MainMenu:
+                case CanvasTrigger.MainMenu:
                     _activeCanvas = mainMenuCanvas;
                     break;
-                case MenuName.Inventory:
+                case CanvasTrigger.Inventory:
                     _activeCanvas = inventoryCanvas;
                     break;
-                case MenuName.Garage:
+                case CanvasTrigger.Garage:
                     _activeCanvas = garageCanvas;
                     break;
-                case MenuName.SuperPower:
+                case CanvasTrigger.SuperPower:
                     _activeCanvas = superPowerCanvas;
                     break;
-                case MenuName.Credits:
+                case CanvasTrigger.Credits:
                     _activeCanvas = creditsCanvas;
                     break;
-                case MenuName.Achievement:
+                case CanvasTrigger.Achievement:
                     _activeCanvas = achievementCanvas;
                     break;
-                case MenuName.PrepareGame:
+                case CanvasTrigger.PrepareGame:
                     _activeCanvas = prepareGameCanvas;
                     break;
-                case MenuName.InGame:
+                case CanvasTrigger.InGame:
                     _activeCanvas = inGameCanvas;
                     break;
-                case MenuName.EndGame:
+                case CanvasTrigger.EndGame:
                     _activeCanvas = endGameCanvas;
                     break;
             }
