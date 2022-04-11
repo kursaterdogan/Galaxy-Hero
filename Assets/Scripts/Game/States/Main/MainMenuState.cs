@@ -19,7 +19,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _mainMenuComponent = componentContainer.GetComponent("MainMenuComponent") as MainMenuComponent;
 
-            _mainMenuCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.MainMenu) as MainMenuCanvas;
+            _mainMenuCanvas = _uiComponent.GetCanvas(CanvasTrigger.MainMenu) as MainMenuCanvas;
         }
 
         protected override void OnEnter()
@@ -29,7 +29,7 @@ namespace Game.States.Main
 
             _mainMenuComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+            _uiComponent.EnableCanvas(CanvasTrigger.MainMenu);
         }
 
         protected override void OnExit()

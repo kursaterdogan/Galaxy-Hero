@@ -18,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _garageComponent = componentContainer.GetComponent("GarageComponent") as GarageComponent;
 
-            _garageCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Garage) as GarageCanvas;
+            _garageCanvas = _uiComponent.GetCanvas(CanvasTrigger.Garage) as GarageCanvas;
         }
 
         protected override void OnEnter()
@@ -28,7 +28,7 @@ namespace Game.States.Main
 
             _garageComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Garage);
+            _uiComponent.EnableCanvas(CanvasTrigger.Garage);
         }
 
         protected override void OnExit()

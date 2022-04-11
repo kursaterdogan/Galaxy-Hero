@@ -18,7 +18,7 @@ namespace Game.States.Splash
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _introComponent = componentContainer.GetComponent("IntroComponent") as IntroComponent;
 
-            _introCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Intro) as IntroCanvas;
+            _introCanvas = _uiComponent.GetCanvas(CanvasTrigger.Intro) as IntroCanvas;
         }
 
         protected override void OnEnter()
@@ -29,7 +29,7 @@ namespace Game.States.Splash
 
             _introComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
+            _uiComponent.EnableCanvas(CanvasTrigger.Intro);
         }
 
         protected override void OnExit()

@@ -18,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _achievementComponent = componentContainer.GetComponent("AchievementComponent") as AchievementComponent;
 
-            _achievementCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Achievement) as AchievementCanvas;
+            _achievementCanvas = _uiComponent.GetCanvas(CanvasTrigger.Achievement) as AchievementCanvas;
         }
 
         protected override void OnEnter()
@@ -28,7 +28,7 @@ namespace Game.States.Main
 
             _achievementComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Achievement);
+            _uiComponent.EnableCanvas(CanvasTrigger.Achievement);
         }
 
         protected override void OnExit()

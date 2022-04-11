@@ -19,7 +19,7 @@ namespace Game.States.InGame
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _prepareGameComponent = componentContainer.GetComponent("PrepareGameComponent") as PrepareGameComponent;
 
-            _prepareGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.PrepareGame) as PrepareGameCanvas;
+            _prepareGameCanvas = _uiComponent.GetCanvas(CanvasTrigger.PrepareGame) as PrepareGameCanvas;
         }
 
         protected override void OnEnter()
@@ -29,7 +29,7 @@ namespace Game.States.InGame
             _prepareGameComponent.OnConstruct();
             _prepareGameCanvas.OnStart();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.PrepareGame);
+            _uiComponent.EnableCanvas(CanvasTrigger.PrepareGame);
         }
 
         protected override void OnExit()

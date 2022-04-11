@@ -18,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _inventoryComponent = componentContainer.GetComponent("InventoryComponent") as InventoryComponent;
 
-            _inventoryCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Inventory) as InventoryCanvas;
+            _inventoryCanvas = _uiComponent.GetCanvas(CanvasTrigger.Inventory) as InventoryCanvas;
         }
 
         protected override void OnEnter()
@@ -28,7 +28,7 @@ namespace Game.States.Main
 
             _inventoryComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Inventory);
+            _uiComponent.EnableCanvas(CanvasTrigger.Inventory);
         }
 
         protected override void OnExit()

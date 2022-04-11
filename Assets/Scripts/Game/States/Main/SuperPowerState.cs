@@ -18,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _superPowerComponent = componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
 
-            _superPowerCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.SuperPower) as SuperPowerCanvas;
+            _superPowerCanvas = _uiComponent.GetCanvas(CanvasTrigger.SuperPower) as SuperPowerCanvas;
         }
 
         protected override void OnEnter()
@@ -28,7 +28,7 @@ namespace Game.States.Main
 
             _superPowerComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.SuperPower);
+            _uiComponent.EnableCanvas(CanvasTrigger.SuperPower);
         }
 
         protected override void OnExit()

@@ -18,14 +18,14 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _creditsComponent = componentContainer.GetComponent("CreditsComponent") as CreditsComponent;
             
-            _creditsCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Credits) as CreditsCanvas;
+            _creditsCanvas = _uiComponent.GetCanvas(CanvasTrigger.Credits) as CreditsCanvas;
         }
 
         protected override void OnEnter()
         {
             SubscribeToCanvasRequestDelegates();
             
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Credits);
+            _uiComponent.EnableCanvas(CanvasTrigger.Credits);
         }
 
         protected override void OnExit()

@@ -18,7 +18,7 @@ namespace Game.States.InGame
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _endGameComponent = componentContainer.GetComponent("EndGameComponent") as EndGameComponent;
 
-            _endGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.EndGame) as EndGameCanvas;
+            _endGameCanvas = _uiComponent.GetCanvas(CanvasTrigger.EndGame) as EndGameCanvas;
         }
 
         protected override void OnEnter()
@@ -29,7 +29,7 @@ namespace Game.States.InGame
             _endGameCanvas.OnStart();
             _endGameComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.EndGame);
+            _uiComponent.EnableCanvas(CanvasTrigger.EndGame);
         }
 
         protected override void OnExit()

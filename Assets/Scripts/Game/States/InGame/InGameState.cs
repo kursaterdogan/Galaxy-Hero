@@ -18,7 +18,7 @@ namespace Game.States.InGame
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
 
-            _inGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.InGame) as InGameCanvas;
+            _inGameCanvas = _uiComponent.GetCanvas(CanvasTrigger.InGame) as InGameCanvas;
         }
 
         protected override void OnEnter()
@@ -29,7 +29,7 @@ namespace Game.States.InGame
             _inGameCanvas.OnStart();
             _inGameComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.InGame);
+            _uiComponent.EnableCanvas(CanvasTrigger.InGame);
         }
 
         protected override void OnExit()
