@@ -15,6 +15,7 @@ namespace Game.States.Main
 
         public CreditsState(ComponentContainer componentContainer)
         {
+            //TODO Handle CreditsComponent
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _creditsComponent = componentContainer.GetComponent("CreditsComponent") as CreditsComponent;
             
