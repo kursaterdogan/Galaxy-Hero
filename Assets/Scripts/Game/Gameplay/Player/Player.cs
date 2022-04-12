@@ -37,6 +37,7 @@ namespace Game.Gameplay.Player
         private int _health;
         private int _cannonLevel;
         private float _speed = 5.0f;
+        private Vector2 _velocity;
 
         //TODO Refactor Usage of Super Powers
         void Start()
@@ -179,8 +180,9 @@ namespace Game.Gameplay.Player
         {
             if (Pointer.current.press.isPressed && _gameCamera.IsPointerOnScreen())
             {
-                Vector3 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
-                transform.position = Vector2.Lerp(transform.position, worldPosition, _speed * Time.deltaTime);
+                Vector2 worldPosition = _gameCamera.GetScreenToWorldPoint(Pointer.current.position.ReadValue());
+                transform.position = Vector2.SmoothDamp(transform.position,
+                    worldPosition, ref _velocity, _speed * Time.deltaTime);
             }
         }
 
