@@ -21,7 +21,7 @@ namespace Game.Components
         private const int _saturnGiftGoldGainMultiplier = 2;
         private const int _marsGiftScoreGainMultiplier = 2;
         private const float _fireRateDividend = 1.2f;
-        private const float _speedMultiplier = 3f;
+        private const float _speedDividend = 30f;
 
         public int LastScore { get; private set; }
         public int LastGainedGold { get; private set; }
@@ -179,7 +179,7 @@ namespace Game.Components
             int healthLevel = _dataComponent.GarageData.healthLevel;
             _player.SetHealth(healthLevel);
 
-            float speed = _speedMultiplier * _dataComponent.GarageData.speedLevel;
+            float speed = _speedDividend / _dataComponent.GarageData.speedLevel;
             _player.SetSpeed(speed);
 
             float fireRate = _fireRateDividend / _dataComponent.GarageData.fireRateLevel;
