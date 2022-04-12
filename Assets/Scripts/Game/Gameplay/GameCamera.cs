@@ -26,9 +26,9 @@ namespace Game.Gameplay
             SetMinVerticalPosition();
         }
 
-        public Vector3 GetScreenToWorldPoint(Vector3 screenPosition)
+        public Vector2 GetScreenToWorldPoint(Vector2 screenPosition)
         {
-            Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(screenPosition);
+            Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(screenPosition);
 
             return worldPosition;
         }
