@@ -12,7 +12,6 @@ namespace Game.Gameplay.Player
 
         public PlayerProjectile GetPlayerProjectile()
         {
-            //TODO Handle Power
             foreach (PlayerProjectile playerProjectile in _playerProjectiles)
             {
                 if (!playerProjectile.gameObject.activeInHierarchy)
