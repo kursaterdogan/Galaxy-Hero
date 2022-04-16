@@ -6,9 +6,7 @@ namespace Game.Gameplay.Enemy
     {
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("Player"))
-                Destroy(gameObject);
-            else if (col.CompareTag("Bombeo"))
+            if (col.CompareTag("Player") || col.CompareTag("Bombeo"))
                 Destroy(gameObject);
         }
 
