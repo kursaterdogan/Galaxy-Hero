@@ -134,8 +134,8 @@ namespace Game.Components
             if (!File.Exists(_dataPath + _garageDataFileName))
                 _garageData = new GarageData
                 {
-                    healthLevel = 1,
-                    speedLevel = 1,
+                    healthLevel = 3,
+                    speedLevel = 3,
                     cannonLevel = 1,
                     powerLevel = 1,
                     fireRateLevel = 1,
