@@ -15,7 +15,6 @@ namespace Game.States.Main
 
         public MainMenuState(ComponentContainer componentContainer)
         {
-            //TODO Handle Start Game
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _mainMenuComponent = componentContainer.GetComponent("MainMenuComponent") as MainMenuComponent;
 
