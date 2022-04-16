@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &394377919
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8967300742221115220, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_Name
+      value: YellowBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967300742221115222, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b42e876b2666bf6439f874acdaa3c108, type: 3}
 --- !u!1001 &557599913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +348,10 @@ PrefabInstance:
     - target: {fileID: 3141599526485328692, guid: 877d0d2992baa634c8465dee4f20e7a2, type: 3}
       propertyPath: m_Name
       value: SaturnEnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141599526485328692, guid: 877d0d2992baa634c8465dee4f20e7a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3141599526485328693, guid: 877d0d2992baa634c8465dee4f20e7a2, type: 3}
       propertyPath: m_RootOrder
