@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 9087945646247761715, guid: 60cba9a53c415884ca1f4fa23ff23642, type: 3}
+  - {fileID: 7798448097275806426, guid: 7cca6490290e8a748ad8d0d4634e7077, type: 3}
   waveSpawnCooldown: 5
