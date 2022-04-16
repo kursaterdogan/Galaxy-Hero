@@ -9,9 +9,10 @@ namespace Game.Gameplay
         public event GameManagerChangeDelegate OnScoreChange;
         public event GameManagerChangeDelegate OnHealthChange;
 
-        public delegate void GameManagerSaveDelegate();
+        public delegate void GameManagerPlanetChangeDelegate();
 
-        public event GameManagerSaveDelegate OnPlanetSave;
+        public event GameManagerPlanetChangeDelegate OnPlanetSave;
+        public event GameManagerPlanetChangeDelegate OnGameComplete;
 
         public static GameManager SharedInstance;
 
@@ -36,14 +37,18 @@ namespace Game.Gameplay
 
         public void DecreaseHealth(int health)
         {
-            //TODO Death
             OnHealthChange?.Invoke(health);
         }
 
-        private void SavePlanet()
+        public void SavePlanet()
         {
-            //TODO Win
             OnPlanetSave?.Invoke();
+            OnGameComplete?.Invoke();
+        }
+
+        public void CompleteGame()
+        {
+            OnGameComplete?.Invoke();
         }
     }
 }
