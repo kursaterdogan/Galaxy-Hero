@@ -9,6 +9,10 @@ namespace Game.Components
 {
     public class InGameComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
+        public delegate void InGameChangeDelegate();
+
+        public event InGameChangeDelegate OnInGameComplete;
+
         public delegate void InGameScoreChangeDelegate(string score);
 
         public event InGameScoreChangeDelegate OnScoreChange;
@@ -113,6 +117,11 @@ namespace Game.Components
             IsPlanetSaved = true;
         }
 
+        private void CompleteInGame()
+        {
+            OnInGameComplete?.Invoke();
+        }
+
         #endregion
 
         private void LaunchGame()
@@ -147,6 +156,7 @@ namespace Game.Components
                 _gameManager.SetScoreMultiplier(scoreMultiplierLevel);
             }
 
+            _gameManager.OnGameComplete += CompleteInGame;
             _gameManager.OnScoreChange += ChangeScore;
             _gameManager.OnHealthChange += ChangeCurrentHealthLevel;
             _gameManager.OnPlanetSave += ChangeIsPlanetSaved;
