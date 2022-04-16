@@ -42,6 +42,7 @@ namespace Game.States.InGame
 
         public void SubscribeToComponentChangeDelegates()
         {
+            _inGameComponent.OnInGameComplete += RequestEndGame;
             _inGameComponent.OnScoreChange += ChangeScore;
             _inGameComponent.OnHealthLevelChange += ChangeHealthLevel;
             _inGameComponent.OnCurrentHealthLevelChange += ChangeCurrentHealthLevel;
@@ -49,6 +50,7 @@ namespace Game.States.InGame
 
         public void UnsubscribeToComponentChangeDelegates()
         {
+            _inGameComponent.OnInGameComplete -= RequestEndGame;
             _inGameComponent.OnScoreChange -= ChangeScore;
             _inGameComponent.OnHealthLevelChange -= ChangeHealthLevel;
             _inGameComponent.OnCurrentHealthLevelChange -= ChangeCurrentHealthLevel;
