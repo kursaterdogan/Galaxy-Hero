@@ -31,7 +31,6 @@ namespace Game.Gameplay.Enemy.Boss
         void Update()
         {
             FollowPath();
-            Debug.LogWarning(health);
         }
 
         void OnTriggerEnter2D(Collider2D col)
