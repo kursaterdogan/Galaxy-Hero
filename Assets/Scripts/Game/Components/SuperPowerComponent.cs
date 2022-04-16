@@ -24,7 +24,6 @@ namespace Game.Components
         public event SuperPowerChangeDelegate OnActivateGhosteo;
 
         private const int _superPowerCooldown = 30;
-        private const int _superPowerDurationMultiplier = 3;
 
         private DataComponent _dataComponent;
 
@@ -51,11 +50,6 @@ namespace Game.Components
         public float GetSuperPowerCooldown()
         {
             return _superPowerCooldown;
-        }
-
-        public int GetSuperPowerDurationMultiplier()
-        {
-            return _superPowerDurationMultiplier;
         }
 
         #region Requests
@@ -108,7 +102,7 @@ namespace Game.Components
 
         private void ChangeShildeoDescription()
         {
-            int level = _dataComponent.GarageData.shildeoLevel * _superPowerDurationMultiplier;
+            int level = _dataComponent.GarageData.shildeoLevel * _dataComponent.GarageData.powerLevel;
             string description = "Every " + _superPowerCooldown + " Seconds Gain Shield For " + level +
                                  " Seconds";
 
@@ -117,7 +111,7 @@ namespace Game.Components
 
         private void ChangeBombeoDescription()
         {
-            int level = _dataComponent.GarageData.bombeoLevel;
+            int level = _dataComponent.GarageData.bombeoLevel * _dataComponent.GarageData.powerLevel;
             string description = "Every " + _superPowerCooldown + " Seconds Fire Bomb With " + level + " Size";
 
             OnBombeoDescriptionChange?.Invoke(description);
@@ -125,7 +119,7 @@ namespace Game.Components
 
         private void ChangeGhosteoDescription()
         {
-            int level = _dataComponent.GarageData.ghosteoLevel * _superPowerDurationMultiplier;
+            int level = _dataComponent.GarageData.ghosteoLevel * _dataComponent.GarageData.powerLevel;
             string description = "Every " + _superPowerCooldown + " Seconds Become Immune For " + level +
                                  " Seconds";
 
