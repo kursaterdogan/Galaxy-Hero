@@ -14,7 +14,6 @@ namespace Game.States.InGame
 
         public InGameState(ComponentContainer componentContainer)
         {
-            //TODO Hande InGameState
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
 
