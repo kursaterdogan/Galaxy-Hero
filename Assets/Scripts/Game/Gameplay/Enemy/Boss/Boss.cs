@@ -68,6 +68,7 @@ namespace Game.Gameplay.Enemy.Boss
 
         private void CreateDeathParticle()
         {
+            //TODO Pool
             Instantiate(deathParticle, transform.position, Quaternion.identity);
         }
 
@@ -101,6 +102,7 @@ namespace Game.Gameplay.Enemy.Boss
         {
             foreach (Transform firePoint in _firePoints)
             {
+                //TODO Pool
                 EnemyProjectile enemyProjectile =
                     Instantiate(_enemyProjectile, firePoint.position, Quaternion.identity);
                 enemyProjectile.SetDestroyPosition(_minVerticalPosition);
