@@ -56,9 +56,7 @@ namespace Game.Gameplay.Player
             if (_isShildeoActive)
                 return;
 
-            if (col.CompareTag("EnemyProjectile"))
-                DecreaseHealth();
-            else if (col.CompareTag("Enemy"))
+            if (col.CompareTag("EnemyProjectile") || col.CompareTag("Enemy"))
                 DecreaseHealth();
         }
 
