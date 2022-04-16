@@ -4,7 +4,6 @@ namespace Game.Gameplay.Enemy
 {
     public class Shooter : Enemy
     {
-        //TODO Shooter
         [SerializeField] private EnemyProjectile enemyProjectilePrefab;
         [SerializeField] private Transform[] firePoints;
 
