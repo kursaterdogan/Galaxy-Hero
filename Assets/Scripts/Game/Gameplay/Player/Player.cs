@@ -68,7 +68,7 @@ namespace Game.Gameplay.Player
         public void OnLaunch()
         {
             SetTimeScale(_defaultTimeScale);
-            StartCoroutine(FireContinously());
+            StartCoroutine(FireCoroutine());
             StartSuperPower();
         }
 
@@ -184,7 +184,7 @@ namespace Game.Gameplay.Player
             }
         }
 
-        private IEnumerator FireContinously()
+        private IEnumerator FireCoroutine()
         {
             while (true)
             {
