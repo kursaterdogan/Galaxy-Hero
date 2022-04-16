@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2a49f495f79f043bb3048eb0b7c07f, type: 3}
+  m_Name: TurquosieAbility
+  m_EditorClassIdentifier: 
+  path: {fileID: 5106358154211079759, guid: 258c5e62a4069164e8dfbbbccd3ccbfb, type: 3}
+  firePointLevel: 0
+  enemyProjectile: {fileID: 2770575083207698099, guid: 180df66f6e533f6429789dbe199ab4ad, type: 3}
+  extraHealth: 4
