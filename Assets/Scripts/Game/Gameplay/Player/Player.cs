@@ -93,6 +93,11 @@ namespace Game.Gameplay.Player
             CreateDeathParticle();
             _health--;
             GameManager.SharedInstance.DecreaseHealth(_health);
+
+            if (_health > 0)
+                return;
+
+            GameManager.SharedInstance.CompleteGame();
         }
 
         private void SetGameCamera()
