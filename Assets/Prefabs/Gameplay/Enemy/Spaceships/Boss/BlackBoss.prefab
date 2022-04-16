@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4640414482159545513}
   - component: {fileID: 4640414482159545512}
   - component: {fileID: 4640414482159545515}
+  - component: {fileID: 2078186630}
   m_Layer: 0
   m_Name: BlackBoss
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1284,3 +1285,21 @@ PolygonCollider2D:
       - {x: 8.503509, y: 4.990663}
       - {x: 8.237017, y: 4.748398}
       - {x: 8.164337, y: 4.699945}
+--- !u!114 &2078186630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640414482159545686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd0bfcd07459d8438d8328b2cb23ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities: []
+  cannon: {fileID: 0}
+  score: 0
+  health: 50
+  speed: 10
+  deathParticle: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
