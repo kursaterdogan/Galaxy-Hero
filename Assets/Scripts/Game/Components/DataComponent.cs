@@ -107,7 +107,7 @@ namespace Game.Components
             if (!File.Exists(_dataPath + _goldDataFileName))
                 _goldData = new GoldData
                 {
-                    ownedGold = 10000
+                    ownedGold = 25000
                 };
             else
                 LoadData(_goldDataFileName, out _goldData);
@@ -134,8 +134,8 @@ namespace Game.Components
             if (!File.Exists(_dataPath + _garageDataFileName))
                 _garageData = new GarageData
                 {
-                    healthLevel = 3,
-                    speedLevel = 3,
+                    healthLevel = 1,
+                    speedLevel = 1,
                     cannonLevel = 1,
                     powerLevel = 1,
                     fireRateLevel = 1,
