@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a2a49f495f79f043bb3048eb0b7c07f, type: 3}
-  m_Name: Ability
+  m_Name: GreenAbility
   m_EditorClassIdentifier: 
-  waypoints: []
+  path: {fileID: 5106358154211079759, guid: e4c4449950707834db92cc0641acf41c, type: 3}
+  firePointLevel: 0
+  enemyProjectile: {fileID: -8479512863042250373, guid: bb59bec98c78bb548a5e1e3cfe6047c3, type: 3}
+  extraHealth: 10
