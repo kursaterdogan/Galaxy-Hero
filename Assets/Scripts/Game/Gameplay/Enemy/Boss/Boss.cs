@@ -24,8 +24,9 @@ namespace Game.Gameplay.Enemy.Boss
 
         void Start()
         {
-            SetMaxVerticalPosition();
+            SetMinVerticalPosition();
             ChangeAbility();
+            SetStartPosition();
         }
 
         void Update()
@@ -49,7 +50,12 @@ namespace Game.Gameplay.Enemy.Boss
             }
         }
 
-        private void SetMaxVerticalPosition()
+        private void SetStartPosition()
+        {
+            transform.position = _waypoints[_waypointIndex].position;
+        }
+
+        private void SetMinVerticalPosition()
         {
             _minVerticalPosition = FindObjectOfType<GameCamera>().GetMinVerticalPosition();
         }
