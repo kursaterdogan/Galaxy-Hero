@@ -15,7 +15,6 @@ namespace Game.States.InGame
 
         public PrepareGameState(ComponentContainer componentContainer)
         {
-            //TODO Handle PrepareGameState
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _prepareGameComponent = componentContainer.GetComponent("PrepareGameComponent") as PrepareGameComponent;
 
