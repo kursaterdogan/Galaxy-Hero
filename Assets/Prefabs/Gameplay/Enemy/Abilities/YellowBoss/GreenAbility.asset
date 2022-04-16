@@ -15,4 +15,4 @@ MonoBehaviour:
   path: {fileID: 5106358154211079759, guid: e4c4449950707834db92cc0641acf41c, type: 3}
   firePointLevel: 0
   enemyProjectile: {fileID: -8479512863042250373, guid: bb59bec98c78bb548a5e1e3cfe6047c3, type: 3}
-  extraHealth: 10
+  extraHealth: 2
