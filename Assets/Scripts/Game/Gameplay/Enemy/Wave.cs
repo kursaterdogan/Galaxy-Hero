@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemy
 {
+    //TODO Scriptable Object
     public class Wave : MonoBehaviour
     {
         [SerializeField] private GameObject enemyPrefab;
