@@ -5,7 +5,6 @@ namespace Game.Gameplay
 {
     public class GameCamera : MonoBehaviour
     {
-        //TODO Integrate with StateMachine
         private const float _aspectPadding = 0.05f;
         private const float _screenBoundPadding = 10.0f;
 
