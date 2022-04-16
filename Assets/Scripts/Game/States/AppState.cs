@@ -25,7 +25,6 @@ namespace Game.States
 
             AddTransition(_splashState, _mainState, (int)StateTrigger.GoToMainMenu);
             AddTransition(_mainState, _gameState, (int)StateTrigger.StartGame);
-            //TODO Handle EndGameState
             AddTransition(_gameState, _mainState, (int)StateTrigger.ReturnToMainMenu);
         }
 
