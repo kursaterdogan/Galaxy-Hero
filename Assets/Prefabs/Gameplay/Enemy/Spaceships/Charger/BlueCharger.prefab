@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 40
-  health: 5
+  health: 4
   speed: 4
   path: {fileID: 5075518118416523467, guid: 15e0e839dc9d2234ca32755fa2f73440, type: 3}
   deathParticlePrefab: {fileID: 3633786838652776486, guid: 84c8d857bdace2d4fb292a77d76f7d12, type: 3}

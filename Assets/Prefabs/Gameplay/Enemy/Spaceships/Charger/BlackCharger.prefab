@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b800f23829eb1d145aad76fb8d8c6d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 20
-  health: 5
-  speed: 4
+  score: 30
+  health: 3
+  speed: 5
   path: {fileID: 5106358154211079759, guid: a45694bde193a4147b48a8c70d58e813, type: 3}
   deathParticlePrefab: {fileID: 8111812214757742045, guid: 6d6a0e880201cb24faa7bd60c47a2f76, type: 3}
 --- !u!60 &3849296878672225406

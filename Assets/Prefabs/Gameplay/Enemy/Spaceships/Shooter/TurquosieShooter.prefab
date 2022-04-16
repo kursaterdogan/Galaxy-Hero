@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 25
-  health: 3
+  health: 10
   speed: 2
   path: {fileID: 8185851059958177927, guid: b9737a9ad7a5ff849ad541181c6fff9c, type: 3}
   deathParticlePrefab: {fileID: 3633786838652776486, guid: f983a863197d4d343b1e2d76c0939fd3, type: 3}
