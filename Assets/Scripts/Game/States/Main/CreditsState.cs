@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -14,17 +15,18 @@ namespace Game.States.Main
 
         public CreditsState(ComponentContainer componentContainer)
         {
+            //TODO Handle CreditsComponent
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _creditsComponent = componentContainer.GetComponent("CreditsComponent") as CreditsComponent;
             
-            _creditsCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Credits) as CreditsCanvas;
+            _creditsCanvas = _uiComponent.GetCanvas(CanvasTrigger.Credits) as CreditsCanvas;
         }
 
         protected override void OnEnter()
         {
             SubscribeToCanvasRequestDelegates();
             
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Credits);
+            _uiComponent.EnableCanvas(CanvasTrigger.Credits);
         }
 
         protected override void OnExit()
@@ -44,7 +46,7 @@ namespace Game.States.Main
         
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
     }
 }

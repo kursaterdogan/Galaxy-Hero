@@ -22,7 +22,7 @@ namespace Game.UserInterfaces.Main
 
         public event GarageRequestDelegate OnReturnToMainMenuRequest;
 
-        [SerializeField] private TMP_Text coinText;
+        [SerializeField] private TMP_Text goldText;
 
         [SerializeField] private TMP_Text healthCostText;
         [SerializeField] private TMP_Text healthLevelText;
@@ -76,9 +76,9 @@ namespace Game.UserInterfaces.Main
 
         #region Changes
 
-        public void SetCoin(string ownedCoin)
+        public void SetGold(string ownedGold)
         {
-            coinText.text = ownedCoin;
+            goldText.text = ownedGold;
         }
 
         public void SetHealth(int level, string cost)

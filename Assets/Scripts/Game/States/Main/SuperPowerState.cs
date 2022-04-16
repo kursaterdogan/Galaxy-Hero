@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -17,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _superPowerComponent = componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
 
-            _superPowerCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.SuperPower) as SuperPowerCanvas;
+            _superPowerCanvas = _uiComponent.GetCanvas(CanvasTrigger.SuperPower) as SuperPowerCanvas;
         }
 
         protected override void OnEnter()
@@ -27,7 +28,7 @@ namespace Game.States.Main
 
             _superPowerComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.SuperPower);
+            _uiComponent.EnableCanvas(CanvasTrigger.SuperPower);
         }
 
         protected override void OnExit()
@@ -135,7 +136,7 @@ namespace Game.States.Main
 
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
 
         #endregion

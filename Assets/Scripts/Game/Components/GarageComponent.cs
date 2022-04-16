@@ -6,9 +6,9 @@ namespace Game.Components
 {
     public class GarageComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
-        public delegate void GarageCoinChangeDelegate(string ownedCoin);
+        public delegate void GarageGoldChangeDelegate(string ownedGold);
 
-        public event GarageCoinChangeDelegate OnCoinAmountChange;
+        public event GarageGoldChangeDelegate OnGoldAmountChange;
 
         public delegate void GarageButtonChangeDelegate(bool isInteractable);
 
@@ -38,9 +38,9 @@ namespace Game.Components
 
         private event Action OnUpgradeAction;
 
-        private const int MaxLevel = 6;
-        private const int CostMultiplier = 500;
-        private const string MaxLevelText = "MAX";
+        private const int _maxLevel = 6;
+        private const int _costMultiplier = 500;
+        private const string _maxLevelText = "MAX";
 
         private DataComponent _dataComponent;
 
@@ -60,7 +60,8 @@ namespace Game.Components
         public void OnDestruct()
         {
             UnsubscribeToOnUpgradeAction();
-            SaveDatas();
+            SaveGoldData();
+            SaveGarageData();
         }
 
         #region Requests
@@ -199,11 +200,11 @@ namespace Game.Components
 
         #region Changes
 
-        private void SetCoin()
+        private void SetGold()
         {
-            int ownedCoin = _dataComponent.CoinData.ownedCoin;
+            int ownedGold = _dataComponent.GoldData.ownedGold;
 
-            OnCoinAmountChange?.Invoke(ownedCoin.ToString());
+            OnGoldAmountChange?.Invoke(ownedGold.ToString());
         }
 
         private void SetHealth()
@@ -370,8 +371,8 @@ namespace Game.Components
 
         private bool IsPurchasable(int level)
         {
-            int ownedCoin = _dataComponent.CoinData.ownedCoin;
-            bool isPurchasable = level != MaxLevel && ownedCoin >= GetCost(level);
+            int ownedGold = _dataComponent.GoldData.ownedGold;
+            bool isPurchasable = level != _maxLevel && ownedGold >= GetCost(level);
 
             return isPurchasable;
         }
@@ -380,18 +381,18 @@ namespace Game.Components
         {
             int cost = GetCost(level);
 
-            _dataComponent.CoinData.ownedCoin -= cost;
+            _dataComponent.GoldData.ownedGold -= cost;
         }
 
         private int GetCost(int level)
         {
-            return level * level * CostMultiplier;
+            return level * level * level * _costMultiplier;
         }
 
         private string GetCostText(int level)
         {
-            if (level == MaxLevel)
-                return MaxLevelText;
+            if (level == _maxLevel)
+                return _maxLevelText;
 
             return GetCost(level).ToString();
         }
@@ -412,15 +413,19 @@ namespace Game.Components
             SetGhosteo();
         }
 
-        private void SaveDatas()
+        private void SaveGoldData()
         {
-            _dataComponent.SaveCoinData();
+            _dataComponent.SaveGoldData();
+        }
+
+        private void SaveGarageData()
+        {
             _dataComponent.SaveGarageData();
         }
 
         private void SubscribeToOnUpgradeAction()
         {
-            OnUpgradeAction += SetCoin;
+            OnUpgradeAction += SetGold;
             OnUpgradeAction += SetHealthButtonInteractable;
             OnUpgradeAction += SetSpeedButtonInteractable;
             OnUpgradeAction += SetCannonButtonInteractable;
@@ -435,7 +440,7 @@ namespace Game.Components
 
         private void UnsubscribeToOnUpgradeAction()
         {
-            OnUpgradeAction -= SetCoin;
+            OnUpgradeAction -= SetGold;
             OnUpgradeAction -= SetHealthButtonInteractable;
             OnUpgradeAction -= SetSpeedButtonInteractable;
             OnUpgradeAction -= SetCannonButtonInteractable;

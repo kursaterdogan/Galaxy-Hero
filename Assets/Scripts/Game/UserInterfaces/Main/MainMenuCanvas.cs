@@ -16,7 +16,7 @@ namespace Game.UserInterfaces.Main
         public event MainMenuRequestDelegate OnSuperPowerRequest;
         public event MainMenuRequestDelegate OnCreditsRequest;
         public event MainMenuRequestDelegate OnAchievementRequest;
-        public event MainMenuRequestDelegate OnInGameRequest;
+        public event MainMenuRequestDelegate OnStartGameRequest;
 
         [SerializeField] private Button leftSelectionButton;
         [SerializeField] private Button rightSelectionButton;
@@ -96,7 +96,7 @@ namespace Game.UserInterfaces.Main
 
         public void RequestInGameMenu()
         {
-            OnInGameRequest?.Invoke();
+            OnStartGameRequest?.Invoke();
         }
 
         #endregion

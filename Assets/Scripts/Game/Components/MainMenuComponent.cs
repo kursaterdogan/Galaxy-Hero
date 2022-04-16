@@ -1,16 +1,11 @@
 using UnityEngine;
 using Base.Component;
+using Game.Enums;
 
 namespace Game.Components
 {
     public class MainMenuComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
-        public enum PlanetName
-        {
-            Saturn,
-            Mars
-        }
-
         public delegate void SelectionButtonChangeDelegate(bool isInteractable);
 
         public event SelectionButtonChangeDelegate OnLeftSelectionButtonInteractableChange;
@@ -44,12 +39,12 @@ namespace Game.Components
 
         public void RequestLeftSelectionButton()
         {
-            PlanetName activePlanetName = GetSelectedPlanet();
+            Planet activePlanet = GetSelectedPlanet();
 
-            if (activePlanetName != PlanetName.Mars)
+            if (activePlanet != Planet.Mars)
                 return;
 
-            SetSelectedPlanet(PlanetName.Saturn);
+            SetSelectedPlanet(Planet.Saturn);
             ChangeLeftSelectionButtonInteractable(false);
             ChangeRightSelectionButtonInteractable(true);
             ActivateSaturn();
@@ -57,12 +52,12 @@ namespace Game.Components
 
         public void RequestRightSelectionButton()
         {
-            PlanetName activePlanetName = GetSelectedPlanet();
+            Planet activePlanet = GetSelectedPlanet();
 
-            if (activePlanetName != PlanetName.Saturn)
+            if (activePlanet != Planet.Saturn)
                 return;
 
-            SetSelectedPlanet(PlanetName.Mars);
+            SetSelectedPlanet(Planet.Mars);
             ChangeLeftSelectionButtonInteractable(true);
             ChangeRightSelectionButtonInteractable(false);
             ActivateMars();
@@ -82,6 +77,14 @@ namespace Game.Components
             OnRightSelectionButtonInteractableChange?.Invoke(isInteractable);
         }
 
+        private Planet GetSelectedPlanet()
+        {
+            int selectedPlanet = _dataComponent.PlanetData.selectedPlanet;
+            Planet planet = (Planet)selectedPlanet;
+
+            return planet;
+        }
+
         private void ActivateSaturn()
         {
             OnActivateSaturn?.Invoke();
@@ -94,18 +97,18 @@ namespace Game.Components
 
         private void SetActivePlanet()
         {
-            PlanetName planetName = GetSelectedPlanet();
+            Planet planet = GetSelectedPlanet();
 
             bool isSaturnSaved = _dataComponent.InventoryData.isSaturnSaved;
 
-            if (planetName == PlanetName.Saturn)
+            if (planet == Planet.Saturn)
             {
                 ChangeLeftSelectionButtonInteractable(false);
                 if (isSaturnSaved)
                     ChangeRightSelectionButtonInteractable(true);
                 ActivateSaturn();
             }
-            else if (planetName == PlanetName.Mars)
+            else if (planet == Planet.Mars)
             {
                 ChangeLeftSelectionButtonInteractable(true);
                 ChangeRightSelectionButtonInteractable(false);
@@ -115,17 +118,9 @@ namespace Game.Components
 
         #endregion
 
-        private PlanetName GetSelectedPlanet()
+        private void SetSelectedPlanet(Planet planet)
         {
-            int selectedPlanet = _dataComponent.PlanetData.selectedPlanet;
-            PlanetName planetName = (PlanetName)selectedPlanet;
-
-            return planetName;
-        }
-
-        private void SetSelectedPlanet(PlanetName planetName)
-        {
-            int selectedPlaneIndex = (int)planetName;
+            int selectedPlaneIndex = (int)planet;
 
             _dataComponent.PlanetData.selectedPlanet = selectedPlaneIndex;
         }

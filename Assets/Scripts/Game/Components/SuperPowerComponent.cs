@@ -1,17 +1,11 @@
 using UnityEngine;
 using Base.Component;
+using Game.Enums;
 
 namespace Game.Components
 {
     public class SuperPowerComponent : MonoBehaviour, IComponent, IConstructable, IDestructible
     {
-        public enum SuperPowerName
-        {
-            Shildeo,
-            Bombeo,
-            Ghosteo
-        }
-
         public delegate void DescriptionChangeDelegate(string description);
 
         public event DescriptionChangeDelegate OnShildeoDescriptionChange;
@@ -29,7 +23,7 @@ namespace Game.Components
         public event SuperPowerChangeDelegate OnActivateBombeo;
         public event SuperPowerChangeDelegate OnActivateGhosteo;
 
-        private const int SuperPowerDuration = 30;
+        private const int _superPowerCooldown = 30;
 
         private DataComponent _dataComponent;
 
@@ -53,38 +47,28 @@ namespace Game.Components
             SaveSuperPowerData();
         }
 
-        public SuperPowerName GetSelectedSuperPower()
+        public float GetSuperPowerCooldown()
         {
-            //TODO Handle in Gameplay
-            int selectedSuperPower = _dataComponent.SuperPowerData.selectedSuperPower;
-            SuperPowerName superPowerName = (SuperPowerName)selectedSuperPower;
-
-            return superPowerName;
-        }
-
-        public int GetSuperPowerDuration()
-        {
-            //TODO Handle in Gameplay
-            return SuperPowerDuration;
+            return _superPowerCooldown;
         }
 
         #region Requests
 
         public void RequestLeftSelectionButton()
         {
-            SuperPowerName activeSuperPower = GetSelectedSuperPower();
+            SuperPower activeSuperPower = GetSelectedSuperPower();
 
             switch (activeSuperPower)
             {
-                case SuperPowerName.Shildeo:
+                case SuperPower.Shildeo:
                     return;
-                case SuperPowerName.Bombeo:
-                    SetSelectedSuperPower(SuperPowerName.Shildeo);
+                case SuperPower.Bombeo:
+                    SetSelectedSuperPower(SuperPower.Shildeo);
                     ChangeLeftSelectionButtonInteractable(false);
                     ActivateShildeo();
                     break;
-                case SuperPowerName.Ghosteo:
-                    SetSelectedSuperPower(SuperPowerName.Bombeo);
+                case SuperPower.Ghosteo:
+                    SetSelectedSuperPower(SuperPower.Bombeo);
                     ChangeRightSelectionButtonInteractable(true);
                     ActivateBombeo();
                     break;
@@ -93,19 +77,19 @@ namespace Game.Components
 
         public void RequestRightSelectionButton()
         {
-            SuperPowerName activeSuperPower = GetSelectedSuperPower();
+            SuperPower activeSuperPower = GetSelectedSuperPower();
 
             switch (activeSuperPower)
             {
-                case SuperPowerName.Ghosteo:
+                case SuperPower.Ghosteo:
                     return;
-                case SuperPowerName.Shildeo:
-                    SetSelectedSuperPower(SuperPowerName.Bombeo);
+                case SuperPower.Shildeo:
+                    SetSelectedSuperPower(SuperPower.Bombeo);
                     ChangeLeftSelectionButtonInteractable(true);
                     ActivateBombeo();
                     break;
-                case SuperPowerName.Bombeo:
-                    SetSelectedSuperPower(SuperPowerName.Ghosteo);
+                case SuperPower.Bombeo:
+                    SetSelectedSuperPower(SuperPower.Ghosteo);
                     ChangeRightSelectionButtonInteractable(false);
                     ActivateGhosteo();
                     break;
@@ -118,8 +102,8 @@ namespace Game.Components
 
         private void ChangeShildeoDescription()
         {
-            int level = _dataComponent.GarageData.shildeoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Gain Shield For " + level +
+            int level = _dataComponent.GarageData.shildeoLevel * _dataComponent.GarageData.powerLevel;
+            string description = "Every " + _superPowerCooldown + " Seconds Gain Shield For " + level +
                                  " Seconds";
 
             OnShildeoDescriptionChange?.Invoke(description);
@@ -127,16 +111,16 @@ namespace Game.Components
 
         private void ChangeBombeoDescription()
         {
-            int level = _dataComponent.GarageData.bombeoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Fire Bomb With " + level + " Power";
+            int level = _dataComponent.GarageData.bombeoLevel * _dataComponent.GarageData.powerLevel;
+            string description = "Every " + _superPowerCooldown + " Seconds Fire Bomb With " + level + " Size";
 
             OnBombeoDescriptionChange?.Invoke(description);
         }
 
         private void ChangeGhosteoDescription()
         {
-            int level = _dataComponent.GarageData.ghosteoLevel;
-            string description = "Every " + SuperPowerDuration + " Seconds Become Immune For " + level +
+            int level = _dataComponent.GarageData.ghosteoLevel * _dataComponent.GarageData.powerLevel;
+            string description = "Every " + _superPowerCooldown + " Seconds Become Immune For " + level +
                                  " Seconds";
 
             OnGhosteoDescriptionChange?.Invoke(description);
@@ -169,21 +153,21 @@ namespace Game.Components
 
         private void SetActiveSuperPower()
         {
-            SuperPowerName activeSuperPower = GetSelectedSuperPower();
+            SuperPower activeSuperPower = GetSelectedSuperPower();
 
             switch (activeSuperPower)
             {
-                case SuperPowerName.Shildeo:
+                case SuperPower.Shildeo:
                     ChangeLeftSelectionButtonInteractable(false);
                     ChangeRightSelectionButtonInteractable(true);
                     ActivateShildeo();
                     break;
-                case SuperPowerName.Bombeo:
+                case SuperPower.Bombeo:
                     ChangeLeftSelectionButtonInteractable(true);
                     ChangeRightSelectionButtonInteractable(true);
                     ActivateBombeo();
                     break;
-                case SuperPowerName.Ghosteo:
+                case SuperPower.Ghosteo:
                     ChangeLeftSelectionButtonInteractable(true);
                     ChangeRightSelectionButtonInteractable(false);
                     ActivateGhosteo();
@@ -193,7 +177,15 @@ namespace Game.Components
 
         #endregion
 
-        private void SetSelectedSuperPower(SuperPowerName selectedSuperPower)
+        private SuperPower GetSelectedSuperPower()
+        {
+            int selectedSuperPower = _dataComponent.SuperPowerData.selectedSuperPower;
+            SuperPower superPower = (SuperPower)selectedSuperPower;
+
+            return superPower;
+        }
+
+        private void SetSelectedSuperPower(SuperPower selectedSuperPower)
         {
             int selectedSuperPowerIndex = (int)selectedSuperPower;
 

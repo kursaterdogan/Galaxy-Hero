@@ -7,14 +7,14 @@ namespace Game.Components
 {
     public class DataComponent : MonoBehaviour, IComponent
     {
-        private const string CoinDataFileName = "/CoinData.json";
-        private const string PlanetDataFileName = "/PlanetData.json";
-        private const string SuperPowerDataFileName = "/SuperPowerData.json";
-        private const string GarageDataFileName = "/GarageData.json";
-        private const string InventoryDataFileName = "/InventoryData.json";
-        private const string AchievementDataFileName = "/AchievementData.json";
+        private const string _goldDataFileName = "/GoldData.json";
+        private const string _planetDataFileName = "/PlanetData.json";
+        private const string _superPowerDataFileName = "/SuperPowerData.json";
+        private const string _garageDataFileName = "/GarageData.json";
+        private const string _inventoryDataFileName = "/InventoryData.json";
+        private const string _achievementDataFileName = "/AchievementData.json";
 
-        public CoinData CoinData => _coinData;
+        public GoldData GoldData => _goldData;
         public PlanetData PlanetData => _planetData;
         public SuperPowerData SuperPowerData => _superPowerData;
         public GarageData GarageData => _garageData;
@@ -23,7 +23,7 @@ namespace Game.Components
 
         private string _dataPath;
 
-        private CoinData _coinData;
+        private GoldData _goldData;
         private PlanetData _planetData;
         private SuperPowerData _superPowerData;
         private GarageData _garageData;
@@ -36,14 +36,14 @@ namespace Game.Components
 
             SetDataPath();
 
-            CreateCoinData();
+            CreateGoldData();
             CreatePlanetData();
             CreateSuperPowerData();
             CreateGarageData();
             CreateInventoryData();
             CreateAchievementData();
 
-            SaveCoinData();
+            SaveGoldData();
             SavePlanetData();
             SaveSuperPowerData();
             SaveGarageData();
@@ -51,34 +51,34 @@ namespace Game.Components
             SaveAchievementData();
         }
 
-        public void SaveCoinData()
+        public void SaveGoldData()
         {
-            SaveData(CoinDataFileName, in _coinData);
+            SaveData(_goldDataFileName, in _goldData);
         }
 
         public void SavePlanetData()
         {
-            SaveData(PlanetDataFileName, in _planetData);
+            SaveData(_planetDataFileName, in _planetData);
         }
 
         public void SaveSuperPowerData()
         {
-            SaveData(SuperPowerDataFileName, in _superPowerData);
+            SaveData(_superPowerDataFileName, in _superPowerData);
         }
 
         public void SaveGarageData()
         {
-            SaveData(GarageDataFileName, in _garageData);
+            SaveData(_garageDataFileName, in _garageData);
         }
 
         public void SaveInventoryData()
         {
-            SaveData(InventoryDataFileName, in _inventoryData);
+            SaveData(_inventoryDataFileName, in _inventoryData);
         }
 
         public void SaveAchievementData()
         {
-            SaveData(AchievementDataFileName, in _achievementData);
+            SaveData(_achievementDataFileName, in _achievementData);
         }
 
         private void SetDataPath()
@@ -102,36 +102,36 @@ namespace Game.Components
             File.WriteAllText(_dataPath + dataFileName, content);
         }
 
-        private void CreateCoinData()
+        private void CreateGoldData()
         {
-            if (!File.Exists(_dataPath + CoinDataFileName))
-                _coinData = new CoinData
+            if (!File.Exists(_dataPath + _goldDataFileName))
+                _goldData = new GoldData
                 {
-                    ownedCoin = 10000
+                    ownedGold = 25000
                 };
             else
-                LoadData(CoinDataFileName, out _coinData);
+                LoadData(_goldDataFileName, out _goldData);
         }
 
         private void CreatePlanetData()
         {
-            if (!File.Exists(_dataPath + PlanetDataFileName))
+            if (!File.Exists(_dataPath + _planetDataFileName))
                 _planetData = new PlanetData();
             else
-                LoadData(PlanetDataFileName, out _planetData);
+                LoadData(_planetDataFileName, out _planetData);
         }
 
         private void CreateSuperPowerData()
         {
-            if (!File.Exists(_dataPath + SuperPowerDataFileName))
+            if (!File.Exists(_dataPath + _superPowerDataFileName))
                 _superPowerData = new SuperPowerData();
             else
-                LoadData(SuperPowerDataFileName, out _superPowerData);
+                LoadData(_superPowerDataFileName, out _superPowerData);
         }
 
         private void CreateGarageData()
         {
-            if (!File.Exists(_dataPath + GarageDataFileName))
+            if (!File.Exists(_dataPath + _garageDataFileName))
                 _garageData = new GarageData
                 {
                     healthLevel = 1,
@@ -146,23 +146,23 @@ namespace Game.Components
                     bombeoLevel = 1
                 };
             else
-                LoadData(GarageDataFileName, out _garageData);
+                LoadData(_garageDataFileName, out _garageData);
         }
 
         private void CreateInventoryData()
         {
-            if (!File.Exists(_dataPath + InventoryDataFileName))
+            if (!File.Exists(_dataPath + _inventoryDataFileName))
                 _inventoryData = new InventoryData();
             else
-                LoadData(InventoryDataFileName, out _inventoryData);
+                LoadData(_inventoryDataFileName, out _inventoryData);
         }
 
         private void CreateAchievementData()
         {
-            if (!File.Exists(_dataPath + AchievementDataFileName))
+            if (!File.Exists(_dataPath + _achievementDataFileName))
                 _achievementData = new AchievementData();
             else
-                LoadData(AchievementDataFileName, out _achievementData);
+                LoadData(_achievementDataFileName, out _achievementData);
         }
     }
 }

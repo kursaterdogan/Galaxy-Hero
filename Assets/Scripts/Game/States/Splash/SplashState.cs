@@ -5,7 +5,7 @@ namespace Game.States.Splash
 {
     public class SplashState : StateMachine
     {
-        private IntroState _introState;
+        private readonly IntroState _introState;
 
         public SplashState(ComponentContainer componentContainer)
         {

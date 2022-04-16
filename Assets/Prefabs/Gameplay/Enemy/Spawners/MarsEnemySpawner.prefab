@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3141599526485328692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3141599526485328693}
+  - component: {fileID: 3141599526485328694}
+  m_Layer: 0
+  m_Name: MarsEnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3141599526485328693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141599526485328692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3141599526485328694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141599526485328692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe73603ba231374dbc0a9c475edeecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4945185721835344762, guid: 3e930de72433a5a44a3584cd24562d6c, type: 3}
+  - {fileID: 4945185721835344762, guid: 3e930de72433a5a44a3584cd24562d6c, type: 3}
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4615461575015346871, guid: 80b2c6882a947fd49a87a2e04f39f3bf, type: 3}
+  - {fileID: 4668351676791561820, guid: 8f52ba361c742cd46936972199c2bfef, type: 3}
+  - {fileID: 7798448097275806426, guid: 5795bbe6beb9e75439438709529f721a, type: 3}
+  - {fileID: 7798448097275806426, guid: 5795bbe6beb9e75439438709529f721a, type: 3}
+  - {fileID: 4668351676791561820, guid: 8f52ba361c742cd46936972199c2bfef, type: 3}
+  - {fileID: 7855183857416261058, guid: 31f92801743c19e48bfbe997a677c690, type: 3}
+  - {fileID: 7855183857416261058, guid: 31f92801743c19e48bfbe997a677c690, type: 3}
+  - {fileID: 4945185721835344762, guid: 3e930de72433a5a44a3584cd24562d6c, type: 3}
+  - {fileID: 7855183857416261058, guid: 31f92801743c19e48bfbe997a677c690, type: 3}
+  - {fileID: 7855183857416261058, guid: 31f92801743c19e48bfbe997a677c690, type: 3}
+  - {fileID: 4945185721835344762, guid: 3e930de72433a5a44a3584cd24562d6c, type: 3}
+  - {fileID: 7798448097275806426, guid: 5795bbe6beb9e75439438709529f721a, type: 3}
+  - {fileID: 7798448097275806426, guid: 5795bbe6beb9e75439438709529f721a, type: 3}
+  - {fileID: 7798448097275806426, guid: 5795bbe6beb9e75439438709529f721a, type: 3}
+  - {fileID: 4668351676791561820, guid: 8f52ba361c742cd46936972199c2bfef, type: 3}
+  - {fileID: 4668351676791561820, guid: 8f52ba361c742cd46936972199c2bfef, type: 3}
+  - {fileID: 4668351676791561820, guid: 8f52ba361c742cd46936972199c2bfef, type: 3}
+  - {fileID: 7798448097275806426, guid: 743d856c2e74d41478cb5d296a935e16, type: 3}
+  waveSpawnCooldown: 3

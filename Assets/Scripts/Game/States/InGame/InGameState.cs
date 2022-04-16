@@ -1,34 +1,88 @@
 using Base.State;
 using Base.Component;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.InGame;
 
 namespace Game.States.InGame
 {
-    public class InGameState : StateMachine
+    public class InGameState : StateMachine, IChangeable, IRequestable
     {
-        private UIComponent _uiComponent;
-        private GameplayComponent _gameplayComponent;
-        private InGameCanvas _inGameCanvas;
-        
+        private readonly UIComponent _uiComponent;
+        private readonly InGameComponent _inGameComponent;
+        private readonly InGameCanvas _inGameCanvas;
+
         public InGameState(ComponentContainer componentContainer)
         {
-            //TODO Hande InGameState
-            _gameplayComponent = componentContainer.GetComponent("GameplayComponent") as GameplayComponent;
-
-            //TODO Handle Canvas Delegates
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
-            _inGameCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.InGame) as InGameCanvas;
+            _inGameComponent = componentContainer.GetComponent("InGameComponent") as InGameComponent;
+
+            _inGameCanvas = _uiComponent.GetCanvas(CanvasTrigger.InGame) as InGameCanvas;
         }
 
         protected override void OnEnter()
         {
-            _gameplayComponent.OnConstruct();
+            SubscribeToComponentChangeDelegates();
+            SubscribeToCanvasRequestDelegates();
+
+            _inGameCanvas.OnStart();
+            _inGameComponent.OnConstruct();
+
+            _uiComponent.EnableCanvas(CanvasTrigger.InGame);
         }
 
         protected override void OnExit()
         {
-            _gameplayComponent.OnDestruct();
+            _inGameComponent.OnDestruct();
+
+            UnsubscribeToComponentChangeDelegates();
+            UnsubscribeToCanvasRequestDelegates();
+        }
+
+        public void SubscribeToComponentChangeDelegates()
+        {
+            _inGameComponent.OnInGameComplete += RequestEndGame;
+            _inGameComponent.OnScoreChange += ChangeScore;
+            _inGameComponent.OnHealthLevelChange += ChangeHealthLevel;
+            _inGameComponent.OnCurrentHealthLevelChange += ChangeCurrentHealthLevel;
+        }
+
+        public void UnsubscribeToComponentChangeDelegates()
+        {
+            _inGameComponent.OnInGameComplete -= RequestEndGame;
+            _inGameComponent.OnScoreChange -= ChangeScore;
+            _inGameComponent.OnHealthLevelChange -= ChangeHealthLevel;
+            _inGameComponent.OnCurrentHealthLevelChange -= ChangeCurrentHealthLevel;
+        }
+
+        public void SubscribeToCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest += RequestEndGame;
+        }
+
+        public void UnsubscribeToCanvasRequestDelegates()
+        {
+            _inGameCanvas.OnReturnToMainMenuRequest -= RequestEndGame;
+        }
+
+        private void ChangeScore(string score)
+        {
+            _inGameCanvas.ChangeScore(score);
+        }
+
+        private void ChangeHealthLevel(int level)
+        {
+            _inGameCanvas.SetHealthLevels(level);
+        }
+
+        private void ChangeCurrentHealthLevel(int level)
+        {
+            _inGameCanvas.SetCurrentHealthLevel(level);
+        }
+
+        private void RequestEndGame()
+        {
+            SendTrigger((int)StateTrigger.EndGame);
         }
     }
 }

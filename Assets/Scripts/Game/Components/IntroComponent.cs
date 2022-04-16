@@ -6,12 +6,15 @@ namespace Game.Components
 {
     public class IntroComponent : MonoBehaviour, IComponent, IConstructable
     {
+        public delegate void IntroTimeChangeDelegate(float time);
+
+        public event IntroTimeChangeDelegate OnIntroAnimationStart;
+
         public delegate void IntroChangeDelegate();
 
-        public event IntroChangeDelegate OnIntroAnimationStart;
         public event IntroChangeDelegate OnIntroAnimationComplete;
 
-        private readonly float animationTime = 1.0f;
+        private const float _animationTime = 1.0f;
 
         public void Initialize(ComponentContainer componentContainer)
         {
@@ -23,16 +26,11 @@ namespace Game.Components
             StartCoroutine(PlayAnimation());
         }
 
-        public float GetAnimationTime()
-        {
-            return animationTime;
-        }
-
         private IEnumerator PlayAnimation()
         {
-            OnIntroAnimationStart?.Invoke();
+            OnIntroAnimationStart?.Invoke(_animationTime);
 
-            yield return new WaitForSeconds(animationTime);
+            yield return new WaitForSeconds(_animationTime);
 
             OnIntroAnimationComplete?.Invoke();
         }

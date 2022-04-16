@@ -4,7 +4,7 @@ namespace Base.Component
 {
     public class ComponentContainer
     {
-        private Dictionary<string, object> _components;
+        private readonly Dictionary<string, object> _components;
 
         public ComponentContainer()
         {

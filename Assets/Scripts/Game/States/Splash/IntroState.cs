@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Splash;
 
 namespace Game.States.Splash
@@ -17,55 +18,47 @@ namespace Game.States.Splash
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _introComponent = componentContainer.GetComponent("IntroComponent") as IntroComponent;
 
-            _introCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Intro) as IntroCanvas;
+            _introCanvas = _uiComponent.GetCanvas(CanvasTrigger.Intro) as IntroCanvas;
         }
 
         protected override void OnEnter()
         {
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Intro);
-
             SubscribeToComponentChangeDelegates();
 
             _introCanvas.OnStart();
 
             _introComponent.OnConstruct();
+
+            _uiComponent.EnableCanvas(CanvasTrigger.Intro);
         }
 
         protected override void OnExit()
         {
-            UnsubscribeToComponentChangeDelegates();
-
             _introCanvas.OnQuit();
+
+            UnsubscribeToComponentChangeDelegates();
         }
 
         public void SubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart += StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete += CompleteIntroAnimation;
             _introComponent.OnIntroAnimationComplete += RequestMainMenu;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart -= StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete -= CompleteIntroAnimation;
             _introComponent.OnIntroAnimationComplete -= RequestMainMenu;
         }
 
-        private void StartIntroAnimation()
+        private void StartIntroAnimation(float time)
         {
-            _introCanvas.PlayLoadingIconAnimation();
-            _introCanvas.PlayLogoFadeOutAnimation(_introComponent.GetAnimationTime());
-        }
-
-        private void CompleteIntroAnimation()
-        {
-            _introCanvas.StopLoadingIconAnimation();
+            _introCanvas.PlayLogoFadeOutAnimation(time);
         }
 
         private void RequestMainMenu()
         {
-            SendTrigger((int)StateTriggers.GoToMainMenu);
+            SendTrigger((int)StateTrigger.GoToMainMenu);
         }
     }
 }

@@ -12,10 +12,12 @@ namespace Game.UserInterfaces.Splash
         {
             EnableLoadingIcon();
             EnableLogo();
+            PlayLoadingIconAnimation();
         }
 
         public void OnQuit()
         {
+            StopLoadingIconAnimation();
             DisableLogo();
             DisableLoadingIcon();
         }
@@ -25,12 +27,12 @@ namespace Game.UserInterfaces.Splash
             logo.PlayFadeOutAnimation(animationTime);
         }
 
-        public void PlayLoadingIconAnimation()
+        private void PlayLoadingIconAnimation()
         {
             loadingIcon.PlayLoadingAnimation();
         }
 
-        public void StopLoadingIconAnimation()
+        private void StopLoadingIconAnimation()
         {
             loadingIcon.StopLoadingAnimation();
         }

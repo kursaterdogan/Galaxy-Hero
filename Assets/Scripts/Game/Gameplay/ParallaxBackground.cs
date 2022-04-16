@@ -4,7 +4,6 @@ namespace Game.Gameplay
 {
     public class ParallaxBackground : MonoBehaviour
     {
-        //TODO Integrate with StateMachine
         [SerializeField] private float speed;
         private Vector3 _length;
 

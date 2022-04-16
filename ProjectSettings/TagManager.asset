@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerProjectile
+  - EnemyProjectile
+  - Enemy
+  - Bombeo
   layers:
   - Default
   - TransparentFX

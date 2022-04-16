@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -17,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _achievementComponent = componentContainer.GetComponent("AchievementComponent") as AchievementComponent;
 
-            _achievementCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Achievement) as AchievementCanvas;
+            _achievementCanvas = _uiComponent.GetCanvas(CanvasTrigger.Achievement) as AchievementCanvas;
         }
 
         protected override void OnEnter()
@@ -27,7 +28,7 @@ namespace Game.States.Main
 
             _achievementComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Achievement);
+            _uiComponent.EnableCanvas(CanvasTrigger.Achievement);
         }
 
         protected override void OnExit()
@@ -97,7 +98,7 @@ namespace Game.States.Main
 
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
     }
 }

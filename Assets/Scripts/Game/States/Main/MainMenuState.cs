@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -14,11 +15,10 @@ namespace Game.States.Main
 
         public MainMenuState(ComponentContainer componentContainer)
         {
-            //TODO Handle Start Game
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _mainMenuComponent = componentContainer.GetComponent("MainMenuComponent") as MainMenuComponent;
 
-            _mainMenuCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.MainMenu) as MainMenuCanvas;
+            _mainMenuCanvas = _uiComponent.GetCanvas(CanvasTrigger.MainMenu) as MainMenuCanvas;
         }
 
         protected override void OnEnter()
@@ -28,7 +28,7 @@ namespace Game.States.Main
 
             _mainMenuComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.MainMenu);
+            _uiComponent.EnableCanvas(CanvasTrigger.MainMenu);
         }
 
         protected override void OnExit()
@@ -65,7 +65,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest += RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest += RequestCredits;
             _mainMenuCanvas.OnAchievementRequest += RequestAchievement;
-            _mainMenuCanvas.OnInGameRequest += RequestStartGame;
+            _mainMenuCanvas.OnStartGameRequest += RequestStartGame;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
@@ -77,7 +77,7 @@ namespace Game.States.Main
             _mainMenuCanvas.OnSuperPowerRequest -= RequestSuperPower;
             _mainMenuCanvas.OnCreditsRequest -= RequestCredits;
             _mainMenuCanvas.OnAchievementRequest -= RequestAchievement;
-            _mainMenuCanvas.OnInGameRequest -= RequestStartGame;
+            _mainMenuCanvas.OnStartGameRequest -= RequestStartGame;
         }
 
         #region Changes
@@ -118,32 +118,32 @@ namespace Game.States.Main
 
         private void RequestInventory()
         {
-            SendTrigger((int)StateTriggers.GoToInventory);
+            SendTrigger((int)StateTrigger.GoToInventory);
         }
 
         private void RequestGarage()
         {
-            SendTrigger((int)StateTriggers.GoToGarage);
+            SendTrigger((int)StateTrigger.GoToGarage);
         }
 
         private void RequestSuperPower()
         {
-            SendTrigger((int)StateTriggers.GoToSuperPower);
+            SendTrigger((int)StateTrigger.GoToSuperPower);
         }
 
         private void RequestCredits()
         {
-            SendTrigger((int)StateTriggers.GoToCredits);
+            SendTrigger((int)StateTrigger.GoToCredits);
         }
 
         private void RequestAchievement()
         {
-            SendTrigger((int)StateTriggers.GoToAchievement);
+            SendTrigger((int)StateTrigger.GoToAchievement);
         }
 
         private void RequestStartGame()
         {
-            SendTrigger((int)StateTriggers.StartGame);
+            SendTrigger((int)StateTrigger.StartGame);
         }
 
         #endregion

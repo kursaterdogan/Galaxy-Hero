@@ -1,6 +1,7 @@
 using Base.Component;
 using Base.State;
 using Game.Components;
+using Game.Enums;
 using Game.UserInterfaces.Main;
 
 namespace Game.States.Main
@@ -17,7 +18,7 @@ namespace Game.States.Main
             _uiComponent = componentContainer.GetComponent("UIComponent") as UIComponent;
             _garageComponent = componentContainer.GetComponent("GarageComponent") as GarageComponent;
 
-            _garageCanvas = _uiComponent.GetCanvas(UIComponent.MenuName.Garage) as GarageCanvas;
+            _garageCanvas = _uiComponent.GetCanvas(CanvasTrigger.Garage) as GarageCanvas;
         }
 
         protected override void OnEnter()
@@ -27,7 +28,7 @@ namespace Game.States.Main
 
             _garageComponent.OnConstruct();
 
-            _uiComponent.EnableCanvas(UIComponent.MenuName.Garage);
+            _uiComponent.EnableCanvas(CanvasTrigger.Garage);
         }
 
         protected override void OnExit()
@@ -40,7 +41,7 @@ namespace Game.States.Main
 
         public void SubscribeToComponentChangeDelegates()
         {
-            _garageComponent.OnCoinAmountChange += ChangeCoinAmount;
+            _garageComponent.OnGoldAmountChange += ChangeGoldAmount;
 
             _garageComponent.OnHealthButtonInteractableChange += ChangeHealthButtonInteractable;
             _garageComponent.OnSpeedButtonInteractableChange += ChangeSpeedButtonInteractable;
@@ -67,7 +68,7 @@ namespace Game.States.Main
 
         public void UnsubscribeToComponentChangeDelegates()
         {
-            _garageComponent.OnCoinAmountChange -= ChangeCoinAmount;
+            _garageComponent.OnGoldAmountChange -= ChangeGoldAmount;
 
             _garageComponent.OnHealthButtonInteractableChange -= ChangeHealthButtonInteractable;
             _garageComponent.OnSpeedButtonInteractableChange -= ChangeSpeedButtonInteractable;
@@ -126,9 +127,9 @@ namespace Game.States.Main
 
         #region Changes
 
-        private void ChangeCoinAmount(string ownedCoin)
+        private void ChangeGoldAmount(string ownedGold)
         {
-            _garageCanvas.SetCoin(ownedCoin);
+            _garageCanvas.SetGold(ownedGold);
         }
 
         private void ChangeHealthUpgrade(int level, string cost)
@@ -287,7 +288,7 @@ namespace Game.States.Main
 
         private void RequestReturnToMainMenu()
         {
-            SendTrigger((int)StateTriggers.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMainMenu);
         }
 
         #endregion

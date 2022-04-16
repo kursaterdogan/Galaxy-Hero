@@ -1,5 +1,6 @@
 using Base.Component;
 using Base.State;
+using Game.Enums;
 using Game.States.InGame;
 using Game.States.Main;
 using Game.States.Splash;
@@ -8,9 +9,9 @@ namespace Game.States
 {
     public class AppState : StateMachine
     {
-        private SplashState _splashState;
-        private MainState _mainState;
-        private GameState _gameState;
+        private readonly SplashState _splashState;
+        private readonly MainState _mainState;
+        private readonly GameState _gameState;
 
         public AppState(ComponentContainer componentContainer)
         {
@@ -22,10 +23,9 @@ namespace Game.States
             AddSubState(_mainState);
             AddSubState(_gameState);
 
-            AddTransition(_splashState, _mainState, (int)StateTriggers.GoToMainMenu);
-            AddTransition(_mainState, _gameState, (int)StateTriggers.StartGame);
-            //TODO Handle EndGameState
-            AddTransition(_gameState, _mainState, (int)StateTriggers.ReturnToMainMenu);
+            AddTransition(_splashState, _mainState, (int)StateTrigger.GoToMainMenu);
+            AddTransition(_mainState, _gameState, (int)StateTrigger.StartGame);
+            AddTransition(_gameState, _mainState, (int)StateTrigger.ReturnToMainMenu);
         }
 
         protected override void OnEnter()
