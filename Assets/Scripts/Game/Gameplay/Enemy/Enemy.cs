@@ -30,7 +30,7 @@ namespace Game.Gameplay.Enemy
             FollowPath();
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("PlayerProjectile"))
             {
