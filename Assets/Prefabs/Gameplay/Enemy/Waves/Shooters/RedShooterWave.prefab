@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7750573743721584646, guid: 87cc717bb03269f4e90317cf51287792, type: 3}
-  enemyCount: 10
+  enemyCount: 3
   spawnCooldown: 1
