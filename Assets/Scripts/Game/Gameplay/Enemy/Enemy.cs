@@ -43,13 +43,7 @@ namespace Game.Gameplay.Enemy
                 IncreaseScore();
                 Destroy(gameObject);
             }
-            else if (col.CompareTag("Player"))
-            {
-                CreateDeathParticle();
-                IncreaseScore();
-                Destroy(gameObject);
-            }
-            else if (col.CompareTag("Bombeo"))
+            else if (col.CompareTag("Player") || col.CompareTag("Bombeo"))
             {
                 CreateDeathParticle();
                 IncreaseScore();
