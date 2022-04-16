@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Gameplay.Player
+namespace Game.Gameplay
 {
     public class Cannon : MonoBehaviour
     {
