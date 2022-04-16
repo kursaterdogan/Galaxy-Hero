@@ -45,9 +45,15 @@ namespace Game.Gameplay.Enemy.Boss
                 if (health > 0)
                     return;
 
-                IncreaseScore();
-                Destroy(gameObject);
+                OnBossDestroy();
             }
+        }
+
+        private void OnBossDestroy()
+        {
+            IncreaseScore();
+            Destroy(gameObject);
+            GameManager.SharedInstance.SavePlanet();
         }
 
         private void SetStartPosition()
