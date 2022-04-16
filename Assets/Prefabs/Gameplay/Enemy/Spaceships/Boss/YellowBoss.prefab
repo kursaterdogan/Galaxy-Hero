@@ -630,7 +630,7 @@ MonoBehaviour:
   score: 1000
   health: 50
   speed: 4
-  deathParticle: {fileID: 4903477252585901057, guid: 6409378dee8f3c5409ecd079a5352798, type: 3}
+  deathParticle: {fileID: 8111812214757742045, guid: 9aa6a599e29c02b4594b88dde8c8b6a9, type: 3}
 --- !u!1 &9016201684247336849
 GameObject:
   m_ObjectHideFlags: 0
