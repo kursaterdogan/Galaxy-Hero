@@ -42,7 +42,7 @@ namespace Game.Components
         private Player _player;
 
         private float _superPowerCooldown;
-        private int _superPowerDurationMultiplier;
+        private int _superPowerMultiplier;
 
         private DataComponent _dataComponent;
 
@@ -55,7 +55,7 @@ namespace Game.Components
                 componentContainer.GetComponent("SuperPowerComponent") as SuperPowerComponent;
 
             _superPowerCooldown = superPowerComponent.GetSuperPowerCooldown();
-            _superPowerDurationMultiplier = superPowerComponent.GetSuperPowerDurationMultiplier();
+            _superPowerMultiplier = _dataComponent.GarageData.powerLevel;
         }
 
         public void OnConstruct()
@@ -193,16 +193,16 @@ namespace Game.Components
 
             _player.SetSuperPowerCooldown(_superPowerCooldown);
 
-            float shildeoDuration = _dataComponent.GarageData.shildeoLevel * _superPowerDurationMultiplier;
+            float shildeoDuration = _dataComponent.GarageData.shildeoLevel * _superPowerMultiplier;
             _player.SetShildeoDuration(shildeoDuration);
 
-            float bombeoScale = _dataComponent.GarageData.bombeoLevel;
+            float bombeoScale = _dataComponent.GarageData.bombeoLevel * _superPowerMultiplier;
             _player.SetBombeoScale(bombeoScale);
 
             float bombeoDestroyPosition = gameCamera.GetMaxVerticalPosition();
             _player.SetBombeoDestroyPosition(bombeoDestroyPosition);
 
-            float ghosteoDuration = _dataComponent.GarageData.ghosteoLevel * _superPowerDurationMultiplier;
+            float ghosteoDuration = _dataComponent.GarageData.ghosteoLevel * _superPowerMultiplier;
             _player.SetGhosteoDuration(ghosteoDuration);
         }
 
