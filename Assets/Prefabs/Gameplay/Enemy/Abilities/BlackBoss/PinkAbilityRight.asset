@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a2a49f495f79f043bb3048eb0b7c07f, type: 3}
-  m_Name: PinkAbility2
+  m_Name: PinkAbilityRight
   m_EditorClassIdentifier: 
   path: {fileID: 5106358154211079759, guid: ad7e8ecb0004f4344b872eb1277871c6, type: 3}
   firePointLevel: 1
