@@ -8,7 +8,7 @@ namespace Game.UserInterfaces.InGame
     {
         public delegate void EndGameRequestDelegate();
 
-        public event EndGameRequestDelegate OnReturnToMainMenuRequest;
+        public event EndGameRequestDelegate OnReturnToMainRequest;
 
         [SerializeField] private TMP_Text congratulationsText;
         [SerializeField] private TMP_Text savePlanetText;
@@ -68,7 +68,7 @@ namespace Game.UserInterfaces.InGame
 
         public void RequestReturnToMainMenu()
         {
-            OnReturnToMainMenuRequest?.Invoke();
+            OnReturnToMainRequest?.Invoke();
         }
 
         private void DisableCongratulationsText()
