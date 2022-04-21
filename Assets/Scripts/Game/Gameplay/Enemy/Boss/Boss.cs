@@ -5,6 +5,7 @@ namespace Game.Gameplay.Enemy.Boss
 {
     public class Boss : MonoBehaviour
     {
+        //TODO Inherit from Enemy
         [SerializeField] private Ability[] abilities;
         [SerializeField] private Cannon cannon;
         [SerializeField] private int score;
