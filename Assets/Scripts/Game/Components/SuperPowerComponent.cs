@@ -23,7 +23,7 @@ namespace Game.Components
         public event SuperPowerChangeDelegate OnActivateBombeo;
         public event SuperPowerChangeDelegate OnActivateGhosteo;
 
-        private const int _superPowerCooldown = 30;
+        private const int _superPowerCooldown = 45;
 
         private DataComponent _dataComponent;
 
