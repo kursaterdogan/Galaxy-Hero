@@ -5,7 +5,7 @@ namespace Game.Gameplay.Enemy.Boss
 {
     public class Boss : MonoBehaviour
     {
-        //TODO Inherit from Enemy
+        //TODO Inherit from Enemy -> Go to Wave's TODO
         [SerializeField] private Ability[] abilities;
         [SerializeField] private Cannon cannon;
         [SerializeField] private int score;
@@ -37,7 +37,6 @@ namespace Game.Gameplay.Enemy.Boss
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            // TODO Handle Player
             if (col.CompareTag("PlayerProjectile"))
             {
                 CreateDeathParticle();
