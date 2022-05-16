@@ -23,9 +23,9 @@ namespace Game.States
             AddSubState(_mainState);
             AddSubState(_gameState);
 
-            AddTransition(_splashState, _mainState, (int)StateTrigger.GoToMainMenu);
+            AddTransition(_splashState, _mainState, (int)StateTrigger.GoToMain);
             AddTransition(_mainState, _gameState, (int)StateTrigger.StartGame);
-            AddTransition(_gameState, _mainState, (int)StateTrigger.ReturnToMainMenu);
+            AddTransition(_gameState, _mainState, (int)StateTrigger.ReturnToMain);
         }
 
         protected override void OnEnter()

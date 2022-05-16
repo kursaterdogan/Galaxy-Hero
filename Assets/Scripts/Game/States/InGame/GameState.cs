@@ -21,7 +21,7 @@ namespace Game.States.InGame
             AddSubState(_endGameState);
 
             AddTransition(_prepareGameState, _inGameState, (int)StateTrigger.PlayGame);
-            AddTransition(_inGameState, _endGameState, (int)StateTrigger.EndGame);
+            AddTransition(_inGameState, _endGameState, (int)StateTrigger.FinishGame);
         }
 
         protected override void OnEnter()

@@ -60,12 +60,12 @@ namespace Game.States.InGame
 
         public void SubscribeToCanvasRequestDelegates()
         {
-            _endGameCanvas.OnReturnToMainMenuRequest += RequestReturnToMainMenu;
+            _endGameCanvas.OnReturnToMainRequest += RequestReturnToMain;
         }
 
         public void UnsubscribeToCanvasRequestDelegates()
         {
-            _endGameCanvas.OnReturnToMainMenuRequest -= RequestReturnToMainMenu;
+            _endGameCanvas.OnReturnToMainRequest -= RequestReturnToMain;
         }
 
         #region Changes
@@ -102,9 +102,9 @@ namespace Game.States.InGame
 
         #endregion
 
-        private void RequestReturnToMainMenu()
+        private void RequestReturnToMain()
         {
-            SendTrigger((int)StateTrigger.ReturnToMainMenu);
+            SendTrigger((int)StateTrigger.ReturnToMain);
         }
     }
 }

@@ -60,6 +60,12 @@ namespace Game.Gameplay.Player
                 DecreaseHealth();
         }
 
+        void OnTriggerStay2D(Collider2D col)
+        {
+            if (col.CompareTag("Enemy"))
+                DecreaseHealth();
+        }
+
         void OnDestroy()
         {
             SetTimeScale(_normalTimeScale);

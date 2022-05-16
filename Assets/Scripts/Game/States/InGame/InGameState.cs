@@ -82,7 +82,7 @@ namespace Game.States.InGame
 
         private void RequestEndGame()
         {
-            SendTrigger((int)StateTrigger.EndGame);
+            SendTrigger((int)StateTrigger.FinishGame);
         }
     }
 }

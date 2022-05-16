@@ -18,6 +18,7 @@ namespace Base.State
 
         public void Enter()
         {
+            //TODO Conditional Logging
             Debug.Log(
                 "<color=orange>" + GetType().Name + " " +
                 System.Reflection.MethodBase.GetCurrentMethod().Name + "</color>");

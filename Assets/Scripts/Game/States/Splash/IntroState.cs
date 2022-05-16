@@ -42,13 +42,13 @@ namespace Game.States.Splash
         public void SubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart += StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete += RequestMainMenu;
+            _introComponent.OnIntroAnimationComplete += RequestMain;
         }
 
         public void UnsubscribeToComponentChangeDelegates()
         {
             _introComponent.OnIntroAnimationStart -= StartIntroAnimation;
-            _introComponent.OnIntroAnimationComplete -= RequestMainMenu;
+            _introComponent.OnIntroAnimationComplete -= RequestMain;
         }
 
         private void StartIntroAnimation(float time)
@@ -56,9 +56,9 @@ namespace Game.States.Splash
             _introCanvas.PlayLogoFadeOutAnimation(time);
         }
 
-        private void RequestMainMenu()
+        private void RequestMain()
         {
-            SendTrigger((int)StateTrigger.GoToMainMenu);
+            SendTrigger((int)StateTrigger.GoToMain);
         }
     }
 }

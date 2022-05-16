@@ -2,7 +2,7 @@ namespace Game.Enums
 {
     public enum StateTrigger
     {
-        GoToMainMenu,
+        GoToMain,
         ReturnToMainMenu,
         GoToInventory,
         GoToGarage,
@@ -11,6 +11,7 @@ namespace Game.Enums
         GoToAchievement,
         StartGame,
         PlayGame,
-        EndGame,
+        FinishGame,
+        ReturnToMain
     }
 }
